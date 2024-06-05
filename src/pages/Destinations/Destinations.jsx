@@ -22,7 +22,7 @@ const Destinations = () => {
               mb={4}
               fontSize={{ base: "3xl", sm: "4xl", md: "5xl" }}
             >
-              Paquetes de Viaje
+              Patagonia Argentina
             </Heading>
             <Text
               color="gray.500"
@@ -31,9 +31,7 @@ const Destinations = () => {
               maxW="700px"
               mx="auto"
             >
-              Explora una amplia variedad de paquetes de viaje diseñados para
-              satisfacer tus necesidades y hacer realidad tus sueños de
-              aventura.
+              Encuentrate en los destinos naturales más espectaculares del sur del mundo
             </Text>
           </Box>
           <Grid

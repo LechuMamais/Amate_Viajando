@@ -18,7 +18,7 @@ export const destinations = [
     {
         _id: 'b0m4s4gf3z5er4geg3d25sft',
         name: 'San Martín y Villa la Angostura',
-        heading: 'Recorre los 7 lagos',
+        heading: 'San Martín y Villa la Angostura',
         description: 'Junto a la mítica ruta 40, los paisajes mas cautivantes de la Patagonia',
         longDescription: '',
         images: [
