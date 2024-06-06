@@ -34,7 +34,7 @@ const Home = () => {
             >
               Descubre el mundo con nosotros
             </Heading>
-            <Text
+            <Text className='yeseva-one-regular'
               color="gray.200"
               fontSize={{ base: "md", md: "xl", lg: "base", xl: "xl" }}
               lineHeight="relaxed"

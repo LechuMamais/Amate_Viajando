@@ -4,12 +4,53 @@ export const destinations = [
         name: 'Bariloche',
         heading: 'Descubre Bariloche',
         description: 'Bariloche es el paraíso del Chocolate',
-        longDescription: 'Bariloche, un destino icónico en el corazón de la Patagonia argentina, cautiva con su impresionante belleza natural y su encanto alpino. Ubicada en la provincia de Río Negro, a orillas del majestuoso Lago Nahuel Huapi y rodeada por la imponente Cordillera de los Andes, esta ciudad ofrece un escenario de ensueño para los amantes de la naturaleza y los aficionados a los deportes al aire libre.\nConocida como la "Suiza argentina", Bariloche atrae a visitantes de todo el mundo con su arquitectura alpina, sus pintorescos chalets y su ambiente alpino. Sus calles empedradas y arboladas invitan a explorar sus encantadoras tiendas de chocolate, galerías de arte y restaurantes que ofrecen una deliciosa variedad de platos regionales y especialidades culinarias.\nLos alrededores de Bariloche son un paraíso para los amantes del trekking, el montañismo, el esquí y el snowboard. Durante el invierno, sus centros de esquí, como el Cerro Catedral, ofrecen pistas de clase mundial y paisajes nevados espectaculares. En verano, los lagos cristalinos y los bosques frondosos brindan el escenario perfecto para practicar deportes acuáticos, como el kayak, la pesca y el windsurf, así como para realizar caminatas escénicas y excursiones en bicicleta.\nAdemás de su impresionante entorno natural, Bariloche también es famosa por su producción de chocolate artesanal, siendo uno de los principales productores de chocolate en Argentina. Los turistas pueden deleitarse con una amplia variedad de dulces y golosinas en las numerosas chocolaterías de la ciudad, disfrutando de auténticos sabores locales.\nCon su combinación única de paisajes asombrosos, actividades al aire libre y delicias gastronómicas, Bariloche es un destino que invita a los viajeros a sumergirse en la naturaleza, descubrir nuevas aventuras y crear recuerdos inolvidables en uno de los rincones más bellos de Argentina.'
-,
+        longDescription: 'Bariloche, un destino icónico en el corazón de la Patagonia argentina, cautiva con su impresionante belleza natural y su encanto alpino. Ubicada en la provincia de Río Negro, a orillas del majestuoso Lago Nahuel Huapi y rodeada por la imponente Cordillera de los Andes, esta ciudad ofrece un escenario de ensueño para los amantes de la naturaleza y los aficionados a los deportes al aire libre.\nConocida como la "Suiza argentina", Bariloche atrae a visitantes de todo el mundo con su arquitectura alpina, sus pintorescos chalets y su ambiente alpino. Sus calles empedradas y arboladas invitan a explorar sus encantadoras tiendas de chocolate, galerías de arte y restaurantes que ofrecen una deliciosa variedad de platos regionales y especialidades culinarias.\nLos alrededores de Bariloche son un paraíso para los amantes del trekking, el montañismo, el esquí y el snowboard. Durante el invierno, sus centros de esquí, como el Cerro Catedral, ofrecen pistas de clase mundial y paisajes nevados espectaculares. En verano, los lagos cristalinos y los bosques frondosos brindan el escenario perfecto para practicar deportes acuáticos, como el kayak, la pesca y el windsurf, así como para realizar caminatas escénicas y excursiones en bicicleta.\nAdemás de su impresionante entorno natural, Bariloche también es famosa por su producción de chocolate artesanal, siendo uno de los principales productores de chocolate en Argentina. Los turistas pueden deleitarse con una amplia variedad de dulces y golosinas en las numerosas chocolaterías de la ciudad, disfrutando de auténticos sabores locales.\nCon su combinación única de paisajes asombrosos, actividades al aire libre y delicias gastronómicas, Bariloche es un destino que invita a los viajeros a sumergirse en la naturaleza, descubrir nuevas aventuras y crear recuerdos inolvidables en uno de los rincones más bellos de Argentina.',
         images: [
             {
                 name: 'Bariloche ciudad',
-                url: '/assets/images/Bariloche/Bariloche1.png',
+                url: '/assets/images/Bariloche/bariloche1.png',
+                alt: 'Bariloche Ciudad',
+                description: 'Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche2.jpg',
+                alt: 'Bariloche Ciudad',
+                description: 'Descripción de la foto de Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche3.jpg',
+                alt: 'Bariloche Ciudad',
+                description: 'Descripción de la foto'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche4.webp',
+                alt: 'Bariloche Ciudad',
+                description: 'Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche5.webp',
+                alt: 'Bariloche Ciudad',
+                description: 'Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche6.jpg',
+                alt: 'Bariloche Ciudad',
+                description: 'Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche7.jpg',
+                alt: 'Bariloche Ciudad',
+                description: 'Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
+            },
+            {
+                name: 'Bariloche ciudad',
+                url: '/assets/images/Bariloche/bariloche8.jpg',
                 alt: 'Bariloche Ciudad',
                 description: 'Bariloche es la ciudad más grande de la cordillera patagónica Argentina'
             },

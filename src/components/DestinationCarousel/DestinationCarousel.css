@@ -1,0 +1,11 @@
+.carousel.carousel-slider .control-next {
+    padding: 0 5px 0 20% !important;
+}
+
+.carousel.carousel-slider .control-prev {
+    padding: 0 20% 0 5px !important;
+}
+
+.carousel.carousel-slider .control-arrow:hover{
+    background-color: transparent !important;
+}

@@ -1,5 +1,7 @@
-import { useParams } from "react-router-dom";
 import "./Destination.css";
+import { useParams } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import {
   Button,
   Container,
@@ -17,6 +19,7 @@ import {
 import { destinations } from "../../resources/Destinations";
 
 import { useEffect, useState } from "react";
+import DestinationCarousel from "../../components/DestinationCarousel/DestinationCarousel";
 
 const Destination = () => {
   const { destination_id } = useParams();
@@ -41,26 +44,32 @@ const Destination = () => {
 
   useEffect(() => {
     setDescripionParagraphs(destination?.longDescription.split("\n"));
-    console.log(destination);
-  }, [destination, destination_id]);
+  }, [destination]);
 
   return (
     <Box as="main" flex="1">
+      <DestinationCarousel destination={destination} />
       <Box w="full" py={{ base: 12, md: 24, lg: 32 }}>
-      <Link href="/destinations">
-        <Button size="lg" variant="link" m={8} p={8}>
-          Back
-        </Button>
-      </Link>
-        <section className="w-full h-[80vh] relative"></section>
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section w="full" py={{ base: 12, md: 24, lg: 32 }}>
           <Container maxW="container.lg" px={{ base: 4, md: 6 }}>
+            <Link href="/destinations">
+              <Button
+                size="lg"
+                variant="link"
+                p={6}
+                pl={0}
+                my={{ base: 2, md: 3, lg: 4 }}
+                fontWeight={"light"}
+              >
+                Otros Destinos
+              </Button>
+            </Link>
             <Flex direction="column" gap={6}>
               <div className="space-y-4">
                 <Heading size="xl" fontWeight="bold">
                   {destination?.heading}
                 </Heading>
-                <Stack spacing={3}>
+                <Stack spacing={3} my={4}>
                   {descriptionParagraphs?.map((paragraph, index) => {
                     return (
                       <Text key={index} color="gray.500">
@@ -70,25 +79,25 @@ const Destination = () => {
                   })}
                 </Stack>
               </div>
-              <div className="space-y-4">
+              <Box>
                 <Heading size="xl" fontWeight="bold">
                   Incluido en el Paquete
                 </Heading>
                 <UnorderedList>
                   <ListItem>
                     <Icon as={CheckboxIcon} color="primary" />
-                    <div>
+                    <Box>
                       <Heading size="md" fontWeight="semibold">
                         Vuelos de ida y vuelta
                       </Heading>
                       <Text color="gray.500">
                         Vuelos directos desde tu ciudad de origen.
                       </Text>
-                    </div>
+                    </Box>
                   </ListItem>
                   <ListItem>
                     <Icon as={CheckboxIcon} color="primary" />
-                    <div>
+                    <Box>
                       <Heading size="md" fontWeight="semibold">
                         Alojamiento en hotel 5 estrellas
                       </Heading>
@@ -96,32 +105,32 @@ const Destination = () => {
                         Disfruta de una estadía lujosa en un hotel de primera
                         clase.
                       </Text>
-                    </div>
+                    </Box>
                   </ListItem>
                   <ListItem>
                     <Icon as={CheckboxIcon} color="primary" />
-                    <div>
+                    <Box>
                       <Heading size="md" fontWeight="semibold">
                         Traslados al aeropuerto
                       </Heading>
                       <Text color="gray.500">
                         Servicio de traslado de ida y vuelta al aeropuerto.
                       </Text>
-                    </div>
+                    </Box>
                   </ListItem>
                   <ListItem>
                     <Icon as={CheckboxIcon} color="primary" />
-                    <div>
+                    <Box>
                       <Heading size="md" fontWeight="semibold">
                         Excursiones y actividades
                       </Heading>
                       <Text color="gray.500">
                         Visita a las ruinas mayas, snorkel en cenotes y más.
                       </Text>
-                    </div>
+                    </Box>
                   </ListItem>
                 </UnorderedList>
-              </div>
+              </Box>
               <Flex direction={{ base: "column", md: "row" }} gap={2}>
                 <Button size="lg" className="w-full">
                   Reservar Ahora

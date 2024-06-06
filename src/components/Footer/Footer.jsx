@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa"
 const Footer = () => {
   return (
     <footer>
-      <Box bg="gray.800" color="white" py="4">
+      <Box py="4">
         <Flex justify="space-between" align="center" px="6">
           <Text>&copy; {new Date().getFullYear()} Amate Viajando. Todos los derechos reservados.</Text>
           <Flex>
