@@ -17,7 +17,7 @@ const DestinationCarousel = ({destination}) => {
               maxW="50vh"
             >
               {destination.images.map((image, index) => (
-                <div key={index}>
+                <div key={index} className='carousel-img-container'>
                   <img
                     src={image.url}
                     alt={image.alt}
@@ -25,7 +25,7 @@ const DestinationCarousel = ({destination}) => {
                     height={1080}
                     className="w-full h-full object-cover"
                   />
-                  <p className="legend">{image.description}</p>
+                  {/*<p className="legend">{image.description}</p>*/}
                 </div>
               ))}
             </Carousel>
