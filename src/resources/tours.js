@@ -18,6 +18,12 @@ export const tours = [
                 alt: 'Cabalgata en Bariloche',
                 description: 'Explora los bosques y montañas a caballo'
             },
+            {
+                name: 'Cabalgata en Bariloche',
+                url: '/assets/images/Tours/Cabalgata/Cabalgata3.jpg',
+                alt: 'Cabalgata en Bariloche',
+                description: 'Explora los bosques y montañas a caballo'
+            },
         ],
     },
     {
@@ -35,7 +41,7 @@ export const tours = [
             },
             {
                 name: 'Paseo en Bote',
-                url: '/assets/images/Tours/Bote/Bote2.jpg',
+                url: '/assets/images/Tours/Bote/Bote1.jpg',
                 alt: 'Paseo en Bote en el Lago Nahuel Huapi',
                 description: 'Descubre los paisajes naturales desde el agua'
             },
@@ -54,12 +60,6 @@ export const tours = [
                 alt: 'Recorrido por la Montaña en Bariloche',
                 description: 'Explora los impresionantes paisajes montañosos de Bariloche'
             },
-            {
-                name: 'Recorrido por la Montaña',
-                url: '/assets/images/Tours/Recorrido_Montana/Recorrido_Montana2.jpg',
-                alt: 'Recorrido por la Montaña en Bariloche',
-                description: 'Descubre la naturaleza en su estado más puro'
-            },
         ],
     },
     {
@@ -74,12 +74,6 @@ export const tours = [
                 url: '/assets/images/Tours/Tronador/Tronador1.jpg',
                 alt: 'Trekking al Cerro Tronador',
                 description: 'Desafía tus límites en el majestuoso Cerro Tronador'
-            },
-            {
-                name: 'Trekking al Cerro Tronador',
-                url: '/assets/images/Tours/Trekking/Trekking2.jpg',
-                alt: 'Trekking al Cerro Tronador',
-                description: 'Una aventura inolvidable en la cima de la Patagonia'
             },
         ],
     },
