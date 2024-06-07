@@ -1,12 +1,12 @@
-import './DestinationCarousel.css'
+import './MyCarousel.css'
 import { Box } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 
-const DestinationCarousel = ({destination}) => {
+const MyCarousel = ({obj}) => {
   return (
     <>
       <Box w="full">
-          {destination?.images && destination.images.length > 0 && (
+          {obj?.images && obj.images.length > 0 && (
             <Carousel
               className="w-full h-full"
               useKeyboardArrows={true}
@@ -14,9 +14,8 @@ const DestinationCarousel = ({destination}) => {
                 return <></>;
               }}
               showThumbs={false}
-              maxW="50vh"
             >
-              {destination.images.map((image, index) => (
+              {obj.images.map((image, index) => (
                 <div key={index} className='carousel-img-container'>
                   <img
                     src={image.url}
@@ -36,4 +35,4 @@ const DestinationCarousel = ({destination}) => {
   );
 };
 
-export default DestinationCarousel;
+export default MyCarousel;

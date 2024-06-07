@@ -1,11 +1,11 @@
 import "./Header.css";
 import { Box, Flex, IconButton, Spacer } from "@chakra-ui/react";
-import { HamburgerIcon } from '@chakra-ui/icons'
-import { Link } from "react-router-dom";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link, NavLink } from "react-router-dom";
 
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import {
-Menu,
+  Menu,
   MenuButton,
   MenuList,
   MenuItem,
@@ -32,14 +32,18 @@ const Header = () => {
               variant="outline"
             />
             <MenuList>
-              <MenuGroup title="Profile">
-                <MenuItem>My Account</MenuItem>
-                <MenuItem>Payments </MenuItem>
-              </MenuGroup>
-              <MenuDivider />
-              <MenuGroup title="Help">
-                <MenuItem>Docs</MenuItem>
-                <MenuItem>FAQ</MenuItem>
+              <MenuGroup title="Viaja">
+                <MenuItem>
+                  <NavLink to="/destinations">Destinos</NavLink>
+                </MenuItem>
+                <MenuItem>
+                  <NavLink to="/tours">Tours</NavLink>
+                </MenuItem>
+                <MenuDivider />
+                <MenuGroup title="Perfil">
+                  <MenuItem>Cuenta</MenuItem>
+                  <MenuItem>Carrito</MenuItem>
+                </MenuGroup>
               </MenuGroup>
             </MenuList>
           </Menu>

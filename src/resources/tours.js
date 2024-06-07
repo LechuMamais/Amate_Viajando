@@ -8,13 +8,13 @@ export const tours = [
         images: [
             {
                 name: 'Cabalgata en Bariloche',
-                url: '/assets/images/Cabalgata/Cabalgata1.jpg',
+                url: '/assets/images/Tours/Cabalgata/Cabalgata1.jpg',
                 alt: 'Cabalgata en Bariloche',
                 description: 'Disfruta de una cabalgata a través de los impresionantes paisajes de Bariloche'
             },
             {
                 name: 'Cabalgata en Bariloche',
-                url: '/assets/images/Cabalgata/Cabalgata2.jpg',
+                url: '/assets/images/Tours/Cabalgata/Cabalgata2.jpg',
                 alt: 'Cabalgata en Bariloche',
                 description: 'Explora los bosques y montañas a caballo'
             },
@@ -29,13 +29,13 @@ export const tours = [
         images: [
             {
                 name: 'Paseo en Bote',
-                url: '/assets/images/Bote/Bote1.jpg',
+                url: '/assets/images/Tours/Bote/Bote1.jpg',
                 alt: 'Paseo en Bote en el Lago Nahuel Huapi',
                 description: 'Navega por las aguas cristalinas del Lago Nahuel Huapi'
             },
             {
                 name: 'Paseo en Bote',
-                url: '/assets/images/Bote/Bote2.jpg',
+                url: '/assets/images/Tours/Bote/Bote2.jpg',
                 alt: 'Paseo en Bote en el Lago Nahuel Huapi',
                 description: 'Descubre los paisajes naturales desde el agua'
             },
@@ -50,13 +50,13 @@ export const tours = [
         images: [
             {
                 name: 'Recorrido por la Montaña',
-                url: '/assets/images/Montaña/Montaña1.jpg',
+                url: '/assets/images/Tours/Recorrido_Montana/Recorrido_Montana1.jpg',
                 alt: 'Recorrido por la Montaña en Bariloche',
                 description: 'Explora los impresionantes paisajes montañosos de Bariloche'
             },
             {
                 name: 'Recorrido por la Montaña',
-                url: '/assets/images/Montaña/Montaña2.jpg',
+                url: '/assets/images/Tours/Recorrido_Montana/Recorrido_Montana2.jpg',
                 alt: 'Recorrido por la Montaña en Bariloche',
                 description: 'Descubre la naturaleza en su estado más puro'
             },
@@ -71,13 +71,13 @@ export const tours = [
         images: [
             {
                 name: 'Trekking al Cerro Tronador',
-                url: '/assets/images/Trekking/Trekking1.jpg',
+                url: '/assets/images/Tours/Tronador/Tronador1.jpg',
                 alt: 'Trekking al Cerro Tronador',
                 description: 'Desafía tus límites en el majestuoso Cerro Tronador'
             },
             {
                 name: 'Trekking al Cerro Tronador',
-                url: '/assets/images/Trekking/Trekking2.jpg',
+                url: '/assets/images/Tours/Trekking/Trekking2.jpg',
                 alt: 'Trekking al Cerro Tronador',
                 description: 'Una aventura inolvidable en la cima de la Patagonia'
             },
@@ -92,13 +92,19 @@ export const tours = [
         images: [
             {
                 name: 'Kayak en el Lago Gutiérrez',
-                url: '/assets/images/Kayak/Kayak1.jpg',
+                url: '/assets/images/Tours/Kayak/Kayak1.jpg',
                 alt: 'Kayak en el Lago Gutiérrez',
                 description: 'Explora las aguas tranquilas del Lago Gutiérrez en kayak'
             },
             {
                 name: 'Kayak en el Lago Gutiérrez',
-                url: '/assets/images/Kayak/Kayak2.jpg',
+                url: '/assets/images/Tours/Kayak/Kayak2.jpg',
+                alt: 'Kayak en el Lago Gutiérrez',
+                description: 'Disfruta de la serenidad del lago y las vistas panorámicas'
+            },
+            {
+                name: 'Kayak en el Lago Gutiérrez',
+                url: '/assets/images/Tours/Kayak/Kayak3.jpg',
                 alt: 'Kayak en el Lago Gutiérrez',
                 description: 'Disfruta de la serenidad del lago y las vistas panorámicas'
             },
@@ -113,13 +119,19 @@ export const tours = [
         images: [
             {
                 name: 'Rafting en el Río Manso',
-                url: '/assets/images/Rafting/Rafting1.jpg',
+                url: '/assets/images/Tours/Rafting/Rafting1.jpg',
                 alt: 'Rafting en el Río Manso',
                 description: 'Disfruta de la emoción del rafting en el Río Manso'
             },
             {
                 name: 'Rafting en el Río Manso',
-                url: '/assets/images/Rafting/Rafting2.jpg',
+                url: '/assets/images/Tours/Rafting/Rafting2.jpg',
+                alt: 'Rafting en el Río Manso',
+                description: 'Aventúrate en los rápidos del Río Manso con amigos y familia'
+            },
+            {
+                name: 'Rafting en el Río Manso',
+                url: '/assets/images/Tours/Rafting/Rafting3.jpg',
                 alt: 'Rafting en el Río Manso',
                 description: 'Aventúrate en los rápidos del Río Manso con amigos y familia'
             },
