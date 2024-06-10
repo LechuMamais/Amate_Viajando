@@ -2,29 +2,29 @@ import "./Destination.css";
 import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Box } from "@chakra-ui/react";
-import { destinations } from "../../resources/destinations";
 import { useEffect, useState } from "react";
 import DetailsPage from "../../components/DetailsPage/DetailsPage";
+import { getDestinationById } from "../../services/api/destinations";
 
 const Destination = () => {
   const { destination_id } = useParams();
   const [destination, setDestination] = useState();
+  const [loading, setLoading] = useState(true);
   const [descriptionParagraphs, setDescripionParagraphs] = useState();
 
-  const getDestinationInfo = (destination_id) => {
-    const destinationInfo = destinations.find(
-      (dest) => dest._id === destination_id
-    );
-
-    if (destinationInfo) {
-      setDestination(destinationInfo);
-    } else {
-      return null;
-    }
-  };
-
   useEffect(() => {
-    getDestinationInfo(destination_id);
+    const fetchDestinations = async () => {
+      try {
+        const data = await getDestinationById(destination_id);
+        setDestination(data);
+      } catch (error) {
+        console.error("Error fetching destinations:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
   }, [destination_id]);
 
   useEffect(() => {
@@ -33,10 +33,14 @@ const Destination = () => {
 
   return (
     <Box as="main" flex="1">
-      <DetailsPage
-        obj={destination}
-        descriptionParagraphs={descriptionParagraphs}
-      />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <DetailsPage
+          obj={destination}
+          descriptionParagraphs={descriptionParagraphs}
+        />
+      )}
     </Box>
   );
 };
