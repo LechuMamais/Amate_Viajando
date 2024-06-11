@@ -2,16 +2,12 @@ import "./Header.css";
 import { Box, Flex, IconButton, Spacer } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link, NavLink } from "react-router-dom";
-
-import { Button, ButtonGroup } from "@chakra-ui/react";
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
   MenuGroup,
-  MenuOptionGroup,
   MenuDivider,
 } from "@chakra-ui/react";
 

@@ -1,9 +1,8 @@
 import { Box } from "@chakra-ui/react";
-import { tours } from "../../resources/tours";
 import CardsList from "../../components/CardsList/CardsList";
 
 const Tours = () => {
-  return (
+  /*return (
     <Box as="main" flex="1">
       <CardsList
         headingText={"Patagonia Argentina"}
@@ -14,7 +13,7 @@ const Tours = () => {
         usingFor={'tours'}
       />
     </Box>
-  );
+  );*/
 };
 
 export default Tours;

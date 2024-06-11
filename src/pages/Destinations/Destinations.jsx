@@ -31,7 +31,7 @@ const Destinations = () => {
         <CardsList
           headingText={"Patagonia Argentina"}
           descriptionText={
-            "Encuentrate en los destinos naturales más espectaculares del sur del mundo"
+            "Encuéntrate en los destinos naturales más espectaculares del sur del mundo"
           }
           arrayToRender={destinations}
           usingFor={'destinations'}
