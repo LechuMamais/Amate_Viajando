@@ -1,11 +1,33 @@
+import './Cards.css'
 import { Box, Card, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import MyLink from "../MyLink/MyLink";
 
-const Cards = ({ obj, usingFor }) => {
-  const { name, heading, description, _id, images } = obj;
+const Cards = ({ obj }) => {
+  const { heading, description, _id, images } = obj;
+  const { destination_id } = useParams();
+  const [url, setUrl] = useState('');
+
+  const buildCardLink = () => {
+    let link = '';
+    if (!destination_id) {
+      link = `/destinations/${_id}`;
+    } else if (destination_id) {
+      link = `/destinations/${destination_id}/tours/${_id}`;
+    }
+    return link;
+  };
+
+  useEffect(() => {
+    setUrl(buildCardLink());
+  }, [_id, destination_id]);
 
   return (
     <Card key={_id}>
-      <Link href={`/${usingFor}/${_id}`} _hover={{ textDecoration: "none" }}>
+      <MyLink
+        to={url}
+      >
         <Box overflow="hidden" borderRadius="xl">
           <Image
             src={images[0].url}
@@ -25,7 +47,7 @@ const Cards = ({ obj, usingFor }) => {
             </Text>
           </Box>
         </Box>
-      </Link>
+      </MyLink>
     </Card>
   );
 };

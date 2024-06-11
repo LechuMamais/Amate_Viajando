@@ -1,5 +1,4 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
 import {
   Button,
   Container,
@@ -7,13 +6,16 @@ import {
   Heading,
   Text,
   Stack,
-  Link,
   Box,
 } from "@chakra-ui/react";
 import MyCarousel from "../../components/DestinationCarousel/MyCarousel";
 import CardsList from "../CardsList/CardsList";
+import MyLink from "../MyLink/MyLink";
+import { useContext } from "react";
+import { DestinationContext } from "../../providers/DestinationProvider";
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
+  const { destination } = useContext(DestinationContext);
   return (
     <>
       <MyCarousel obj={obj} />
@@ -23,7 +25,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
         py={{ base: 12, md: 24, lg: 32 }}
       >
         {usingFor == "destination" && (
-          <Link href="/destinations">
+          <MyLink to="/destinations">
             <Button
               size="lg"
               variant="link"
@@ -32,9 +34,9 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
               my={{ base: 2, md: 3, lg: 4 }}
               fontWeight={"light"}
             >
-              Otros Destinos
+              Más Destinos
             </Button>
-          </Link>
+          </MyLink>
         )}
         <Flex direction="column" gap={6}>
           <Box>
@@ -54,10 +56,16 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
           </Box>
           {usingFor == "destination" && (
             <CardsList
-              headingText={`Tours en ${obj.name}`}
+              headingText={`Tours en ${obj?.name}`}
               descriptionText={"Seleccionados para tí"}
               arrayToRender={obj?.tours}
-              usingFor={"tours"}
+            />
+          )}
+          {usingFor == "tour" && (
+            <CardsList
+              headingText={`Otros tours en ${destination?.name}`}
+              descriptionText={"Seleccionados para tí"}
+              arrayToRender={destination?.tours.filter((tour, index) =>tour._id !== obj?._id)}
             />
           )}
         </Flex>

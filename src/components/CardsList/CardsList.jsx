@@ -3,7 +3,7 @@ import { Box, Container, Grid, Heading, Text } from "@chakra-ui/react";
 
 import Cards from "../Cards/Cards";
 
-const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor }) => {
+const CardsList = ({ headingText, descriptionText, arrayToRender }) => {
   return (
     <Box w="full" py={{ base: 12, md: 24, lg: 32 }}>
       <Container maxW="container.lg" px={{ base: 4, md: 6 }}>
@@ -36,8 +36,8 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor }) =>
           }}
           gap={6}
         >
-          {arrayToRender.map((obj) => (
-            <Cards key={obj._id} obj={obj} usingFor={usingFor} />
+          {arrayToRender?.map((obj) => (
+            <Cards key={obj._id} obj={obj}/>
           ))}
         </Grid>
       </Container>

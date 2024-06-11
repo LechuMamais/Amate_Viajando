@@ -1,34 +1,18 @@
 import "./Destination.css";
-import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Box } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DetailsPage from "../../components/DetailsPage/DetailsPage";
-import { getDestinationById } from "../../services/api/destinations";
+import { DestinationContext } from "../../providers/DestinationProvider";
 
 const Destination = () => {
-  const { destination_id } = useParams();
-  const [destination, setDestination] = useState();
-  const [loading, setLoading] = useState(true);
-  const [descriptionParagraphs, setDescripionParagraphs] = useState();
+  const { destination, loading } = useContext(DestinationContext);
+  const [descriptionParagraphs, setDescriptionParagraphs] = useState([]);
 
   useEffect(() => {
-    const fetchDestinationById = async () => {
-      try {
-        const data = await getDestinationById(destination_id);
-        setDestination(data);
-      } catch (error) {
-        console.error("Error fetching destinations:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDestinationById();
-  }, [destination_id]);
-
-  useEffect(() => {
-    setDescripionParagraphs(destination?.longDescription.split("\n"));
+    if (destination?.longDescription) {
+      setDescriptionParagraphs(destination.longDescription.split("\n"));
+    }
   }, [destination]);
 
   return (

@@ -7,6 +7,7 @@ import Destinations from "./pages/Destinations/Destinations";
 import Destination from "./pages/Destination/Destination";
 import Tour from "./pages/Tour/Tour";
 import Tours from "./pages/Tours/Tours";
+import { DestinationProvider } from "./providers/DestinationProvider";
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
-        <Route path="/destinations/:destination_id" element={<Destination />} />
-        <Route path="/tours" element={<Tours />} />
-        <Route path="/tours/:tour_id" element={<Tour />} />
+        <Route path="/destinations/:destination_id" element={<DestinationProvider><Destination/></DestinationProvider>} />
+        <Route path="/destinations/:destination_id/tours" element={<DestinationProvider><Tours /></DestinationProvider>} />
+        <Route path="/destinations/:destination_id/tours/:tour_id" element={<DestinationProvider><Tour /></DestinationProvider>} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
