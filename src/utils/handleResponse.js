@@ -4,6 +4,5 @@ export const handleResponse = async (response) => {
     throw new Error(error.message || 'Something went wrong');
   }
   const res = await response.json();
-  console.log(res);
   return res
 };

@@ -13,7 +13,7 @@ const Destination = () => {
   const [descriptionParagraphs, setDescripionParagraphs] = useState();
 
   useEffect(() => {
-    const fetchDestinations = async () => {
+    const fetchDestinationById = async () => {
       try {
         const data = await getDestinationById(destination_id);
         setDestination(data);
@@ -24,7 +24,7 @@ const Destination = () => {
       }
     };
 
-    fetchDestinations();
+    fetchDestinationById();
   }, [destination_id]);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const Destination = () => {
         <DetailsPage
           obj={destination}
           descriptionParagraphs={descriptionParagraphs}
+          usingFor={"destination"}
         />
       )}
     </Box>
