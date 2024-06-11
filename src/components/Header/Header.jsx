@@ -10,13 +10,14 @@ import {
   MenuGroup,
   MenuDivider,
 } from "@chakra-ui/react";
+import MyLink from "../MyLink/MyLink";
 
 const Header = () => {
   return (
     <header>
       <Flex>
         <Box p="4">
-          <Link to={"/"}>Logo</Link>
+          <Link to={"/"}>Amate</Link>
         </Box>
         <Spacer />
         <Box p="4">
@@ -29,16 +30,20 @@ const Header = () => {
             />
             <MenuList>
               <MenuGroup title="Viaja">
-                <MenuItem>
-                  <NavLink to="/destinations">Destinos</NavLink>
-                </MenuItem>
-                <MenuItem>
-                  <NavLink to="/tours">Tours</NavLink>
-                </MenuItem>
+                <MyLink to="/destinations">
+                  <MenuItem>Destinos</MenuItem>
+                </MyLink>
+                <MyLink to="/tours">
+                  <MenuItem>Tours</MenuItem>
+                </MyLink>
                 <MenuDivider />
                 <MenuGroup title="Perfil">
-                  <MenuItem>Cuenta</MenuItem>
-                  <MenuItem>Carrito</MenuItem>
+                  <MyLink to={"/login"}>
+                    <MenuItem>Login</MenuItem>
+                  </MyLink>
+                  <MyLink to={"/carrito"}>
+                    <MenuItem>Carrito</MenuItem>
+                  </MyLink>
                 </MenuGroup>
               </MenuGroup>
             </MenuList>

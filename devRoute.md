@@ -10,13 +10,11 @@ Por hacer:
 FRONTEND:
 
 Por hacer:
+    - Crear un UserProvider para manejar la infromación del usuario logueado
     - Chequear que pasa con la page tours y el boton tours del Header
     - Eslint
     - Prettier
     - Comunicacion con la Base de datos.
-    - Mostrar los tours en la pag destination by id
     - paginas de login, register, 
-    - Creacion de destinations y tours
-    - Creación de objetos images, con su respectivo archivo
     - Carrito
     - Skeletor loaders

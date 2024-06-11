@@ -41,14 +41,16 @@ export const registerUser = async (userData) => {
     }
 };
 
-export const loginUser = async (credentials) => {
+export const loginUser = async (email, password) => {
     try {
         const response = await fetch(LOGIN_URL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': '*/*',
+                "Origin": "*"
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify({ email, password })
         });
         return await handleResponse(response);
     } catch (error) {
