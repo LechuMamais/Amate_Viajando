@@ -11,30 +11,14 @@ import {
 import MyCarousel from "../../components/DestinationCarousel/MyCarousel";
 import CardsList from "../CardsList/CardsList";
 import MyLink from "../MyLink/MyLink";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
-import { useState } from "react";
-import { getDestinations } from "../../services/api/destinations";
+import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
   const { destination } = useContext(DestinationContext);
 
-  const [allDestinations, setAllDestinations] = useState([]);
-
-  useEffect(() => {
-      const fetchDestinations = async () => {
-        try {
-          //setLoading(true);
-          const data = await getDestinations();
-          setAllDestinations(data);
-        } catch (error) {
-          console.error("Error fetching destinations:", error);
-        } finally {
-          //setLoading(false);
-        }
-      };
-      fetchDestinations();
-  }, []);
+  const {allDestinations} = useContext(AllDestinationsContext)
 
   return (
     <>
