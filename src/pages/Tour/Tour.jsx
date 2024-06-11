@@ -4,39 +4,28 @@ import { useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import DetailsPage from "../../components/DetailsPage/DetailsPage";
-import { getTourById } from "../../services/api/tours";
 import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
 
-
 const Tour = () => {
   const { tour_id } = useParams();
-  const [ tour, setTour ] = useState();
-  const [ loading, setLoading ] = useState(true);
-  const [ descriptionParagraphs, setDescripionParagraphs ] = useState();
-  const { destination } = useContext(DestinationContext);
-  console.log(destination);
-
+  const [tour, setTour] = useState();
+  //const [loading, setLoading] = useState(true);
+  const [descriptionParagraphs, setDescripionParagraphs] = useState();
+  const { destination, loading } = useContext(DestinationContext);
 
   useEffect(() => {
-    const fetchTourById = async () => {
-      try {
-        const data = await getTourById(tour_id);
-        setTour(data);
-        console.log(data);
-      } catch (error) {
-        console.error("Error fetching tours:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTourById();
-  }, [tour_id]);
+    if (tour) {
+      setDescripionParagraphs(tour?.longDescription.split("\n"));
+    }
+  }, [destination, tour_id, tour]);
 
   useEffect(() => {
+    setTour(
+      destination?.tours.filter((tour, index) => tour._id === tour_id)[0]
+    );
     setDescripionParagraphs(tour?.longDescription.split("\n"));
-  }, [tour]);
+  }, [destination, tour_id]);
 
   return (
     <Box as="main" flex="1">

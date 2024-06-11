@@ -11,6 +11,7 @@ const Tours = () => {
           "Los caminos son nuestros guías"
         }
         arrayToRender={tours}
+        usingFor={'tours'}
       />
     </Box>
   );

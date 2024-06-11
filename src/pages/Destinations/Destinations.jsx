@@ -34,6 +34,7 @@ const Destinations = () => {
             "Encuentrate en los destinos naturales más espectaculares del sur del mundo"
           }
           arrayToRender={destinations}
+          usingFor={'destinations'}
         />
       )}
     </Box>

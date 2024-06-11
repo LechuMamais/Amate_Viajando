@@ -21,7 +21,6 @@ export const DestinationProvider = ({ children }) => {
         setLoading(false);
       }
     };
-    console.log(destination_id)
 
     if (destination_id) {
       fetchDestinationById();

@@ -11,11 +11,31 @@ import {
 import MyCarousel from "../../components/DestinationCarousel/MyCarousel";
 import CardsList from "../CardsList/CardsList";
 import MyLink from "../MyLink/MyLink";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
+import { useState } from "react";
+import { getDestinations } from "../../services/api/destinations";
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
   const { destination } = useContext(DestinationContext);
+
+  const [allDestinations, setAllDestinations] = useState([]);
+
+  useEffect(() => {
+      const fetchDestinations = async () => {
+        try {
+          //setLoading(true);
+          const data = await getDestinations();
+          setAllDestinations(data);
+        } catch (error) {
+          console.error("Error fetching destinations:", error);
+        } finally {
+          //setLoading(false);
+        }
+      };
+      fetchDestinations();
+  }, []);
+
   return (
     <>
       <MyCarousel obj={obj} />
@@ -56,18 +76,30 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
           </Box>
           {usingFor == "destination" && (
             <CardsList
-              headingText={`Tours en ${obj?.name}`}
+              headingText={`Que hacer en ${obj?.name}`}
               descriptionText={"Seleccionados para tí"}
               arrayToRender={obj?.tours}
+              usingFor={'tours'}
             />
           )}
           {usingFor == "tour" && (
             <CardsList
               headingText={`Otros tours en ${destination?.name}`}
               descriptionText={"Seleccionados para tí"}
-              arrayToRender={destination?.tours.filter((tour, index) =>tour._id !== obj?._id)}
+              arrayToRender={destination?.tours.filter(
+                (tour) => tour._id !== obj?._id
+              )}
+              usingFor={'tours'}
             />
           )}
+          <CardsList
+            headingText={`Otros destinos`}
+            descriptionText={"De la Patagonia Argentina"}
+            arrayToRender={allDestinations?.filter(
+              (dest) => dest._id !== destination?._id
+            )}
+            usingFor={'destinations'}
+          />
         </Flex>
       </Container>
     </>
