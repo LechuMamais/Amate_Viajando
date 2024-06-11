@@ -1,3 +1,4 @@
+import MyLink from '../../components/MyLink/MyLink';
 import'./Home.css';
 
 import { Box, Button, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
@@ -44,7 +45,7 @@ const Home = () => {
             >
               Explora una amplia variedad de paquetes de viaje diseñados para satisfacer tus necesidades y hacer realidad tus sueños de aventura.
             </Text>
-            <Link href="/destinations" _hover={{ textDecoration: "none" }}>
+            <MyLink to="/destinations">
               <Button
                 size="lg"
                 colorScheme="gray"
@@ -61,7 +62,7 @@ const Home = () => {
               >
                 Explorar
               </Button>
-            </Link>
+            </MyLink>
           </Box>
         </Flex>
       </Box>
