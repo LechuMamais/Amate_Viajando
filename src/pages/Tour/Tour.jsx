@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import DetailsPage from "../../components/DetailsPage/DetailsPage";
 import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
+import ToursButtonContainer from "../../components/ToursButtonContainer/ToursButtonContainer";
 
 const Tour = () => {
   const { tour_id } = useParams();
@@ -38,6 +39,7 @@ const Tour = () => {
           usingFor={"tour"}
         />
       )}
+      <ToursButtonContainer tour_id={tour_id}/>
     </Box>
   );
 };

@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
         setUser({ logged: false });
       } else {
         console.log("Checkeo de logged correcto");
-        setUser({ ...userLogged, logged: true });
+        setUser({ ...userLogged, logged: true, token: tokenLocal });
       }
     };
 

@@ -2,7 +2,9 @@ import {
     USERS_URL,
     REGISTER_URL,
     LOGIN_URL,
-    CHECK_LOGGED_URL
+    CHECK_LOGGED_URL,
+    ADD_TOUR_TO_CART_URL,
+    ADD_TOUR_TO_FAVORITES_URL
 } from "../../resources/api.endpoints";
 import { handleError } from "../../utils/handleError";
 import { handleResponse } from "../../utils/handleResponse";
@@ -98,6 +100,56 @@ export const deleteUser = async (id, token) => {
             }
         });
         return await handleResponse(response);
+    } catch (error) {
+        handleError(error);
+    }
+};
+
+
+/******************************************************************************************************************* */
+
+export const addTourToFavorites = async (userId, token, tourId) => {
+    console.log('user id',userId);
+    console.log('tour id',tourId);
+    console.log('token',token);
+    try {
+      const response = await fetch(`${ADD_TOUR_TO_FAVORITES_URL}/${userId}/${tourId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      console.log('response', response);
+      if (!response.ok) {
+        throw new Error('Error al agregar el tour a favoritos');
+      }
+  
+      const userUpdated = await response.json();
+      console.log(userUpdated)
+      return userUpdated;
+    } catch (error) {
+        handleError(error);
+    }
+  };
+  
+
+export const addTourToCart = async (userId, token, tourId) => {
+    try {
+        const response = await fetch(`${ADD_TOUR_TO_CART_URL}/${userId}/${tourId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al agregar el tour al carrito');
+        }
+
+        const userUpdated = await response.json();
+        return userUpdated;
     } catch (error) {
         handleError(error);
     }
