@@ -58,9 +58,9 @@ export const loginUser = async (email, password) => {
     }
 };
 
-export const checkLogged = async (token) => {
+export const checkLogged = async (id, token) => {
     try {
-        const response = await fetch(CHECK_LOGGED_URL, {
+        const response = await fetch(`${CHECK_LOGGED_URL}/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -68,7 +68,8 @@ export const checkLogged = async (token) => {
         });
         return await handleResponse(response);
     } catch (error) {
-        handleError(error);
+        //console.error(error);
+        return { authorized: false, error };
     }
 };
 

@@ -1,7 +1,7 @@
 import "./Header.css";
 import { Box, Flex, IconButton, Spacer } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Menu,
   MenuButton,
@@ -11,8 +11,11 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import MyLink from "../MyLink/MyLink";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserProvider";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   return (
     <header>
       <Flex>
@@ -28,7 +31,7 @@ const Header = () => {
               icon={<HamburgerIcon />}
               variant="outline"
             />
-            <MenuList>
+            <MenuList className="header-menu-list">
               <MenuGroup title="Viaja">
                 <MyLink to="/destinations">
                   <MenuItem>Destinos</MenuItem>
@@ -38,12 +41,23 @@ const Header = () => {
                 </MyLink>
                 <MenuDivider />
                 <MenuGroup title="Perfil">
-                  <MyLink to={"/login"}>
-                    <MenuItem>Login</MenuItem>
-                  </MyLink>
-                  <MyLink to={"/carrito"}>
-                    <MenuItem>Carrito</MenuItem>
-                  </MyLink>
+                  {user.logged ? (
+                    <>
+                      <MyLink to={"/profile"}>
+                        <MenuItem>Mi cuenta</MenuItem>
+                      </MyLink>
+                      <MyLink to={"/carrito"}>
+                        <MenuItem>Ver carrito</MenuItem>
+                      </MyLink>
+                      <MyLink to={"/logout"}>
+                        <MenuItem color={'red.400'} pl={4}>Cerrar Sesión</MenuItem>
+                      </MyLink>
+                    </>
+                  ) : (
+                    <MyLink to={"/login"}>
+                      <MenuItem>Login</MenuItem>
+                    </MyLink>
+                  )}
                 </MenuGroup>
               </MenuGroup>
             </MenuList>

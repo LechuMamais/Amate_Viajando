@@ -9,6 +9,8 @@ import Tour from "./pages/Tour/Tour";
 import Tours from "./pages/Tours/Tours";
 import { DestinationProvider } from "./providers/DestinationProvider";
 import Login from "./pages/Login/Login";
+import Logout from "./components/Logout/Logout";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/profile" element={<Profile />} />
+
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/destinations/:destination_id" element={<DestinationProvider><Destination/></DestinationProvider>} />
         <Route path="/destinations/:destination_id/tours" element={<DestinationProvider><Tours /></DestinationProvider>} />
