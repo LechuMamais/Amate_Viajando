@@ -7,12 +7,7 @@ import {
   Button,
   Container,
   Text,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-  Stack,
-  useToast,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import MyLink from "../../components/MyLink/MyLink";
 
@@ -33,11 +28,14 @@ const Profile = () => {
             </Text>
           </Box>
         )}
-        <MyLink to={"/create-tour"}>
+        <ButtonGroup>
           <Button mt={4} colorScheme="teal">
-            Crear Tour
+            <MyLink to={"/create-tour"}>Crear Tour</MyLink>
           </Button>
-        </MyLink>
+          <Button mt={4} colorScheme="teal">
+            <MyLink to={"/create-destination"}>Crear Destino</MyLink>
+          </Button>
+        </ButtonGroup>
       </Container>
     </Box>
   );

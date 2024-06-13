@@ -1,15 +1,10 @@
 import {
-    Button,
-    Container,
-    Flex,
     Heading,
     Icon,
     Text,
     UnorderedList,
     ListItem,
     CheckboxIcon,
-    Stack,
-    Link,
     Box,
   } from "@chakra-ui/react";
 

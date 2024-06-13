@@ -17,7 +17,7 @@ Por hacer:
 
     - Profile
     - Para admin, que pueda ir creando en la BD los destinations, los tours y las images.
-        Habrá que hacer un formulario para cada uno, que incluya un selector de archivos de imagen, algo así.
+        Habrá que hacer un formulario para cada uno, que incluya un selector de archivos de imagen
 
     - Register
     - Tour: Mostrar si está en la lista de fav, por ej con un corazon (que funcione también como boton)

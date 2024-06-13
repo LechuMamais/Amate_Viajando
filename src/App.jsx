@@ -12,6 +12,7 @@ import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import Profile from "./pages/Profile/Profile";
 import CreateTour from "./components/CreateTour/CreateTour";
+import CreateDestination from "./components/CreateDestination/CreateDestination";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/destinations/:destination_id/tours/:tour_id" element={<DestinationProvider><Tour /></DestinationProvider>} />
 
         <Route path="/create-tour" element={<CreateTour />} />
+        <Route path="/create-destination" element={<CreateDestination />} />
 
         <Route path="*" element={<Home />} />
       </Routes>
