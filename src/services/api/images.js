@@ -22,21 +22,22 @@ export const getImages = async () => {
   
   export const createImage = async (imageData, token) => {
     try {
-      const formData = new FormData();
-      for (const key in imageData) {
-        formData.append(key, imageData[key]);
-      }
-  
       const response = await fetch(IMAGES_URL, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
         },
-        body: formData
+        body: imageData // Enviar FormData directamente como body
       });
-      return await handleResponse(response);
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      return await response.json(); // Asegurarse de parsear la respuesta correctamente
     } catch (error) {
-      handleError(error);
+      console.error('Error:', error);
+      throw error; // Asegurarse de que el error se propague a la función que llama
     }
   };
   

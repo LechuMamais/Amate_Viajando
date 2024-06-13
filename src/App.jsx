@@ -11,6 +11,7 @@ import { DestinationProvider } from "./providers/DestinationProvider";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import Profile from "./pages/Profile/Profile";
+import CreateTour from "./components/CreateTour/CreateTour";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path="/destinations/:destination_id" element={<DestinationProvider><Destination/></DestinationProvider>} />
         <Route path="/destinations/:destination_id/tours" element={<DestinationProvider><Tours /></DestinationProvider>} />
         <Route path="/destinations/:destination_id/tours/:tour_id" element={<DestinationProvider><Tour /></DestinationProvider>} />
+
+        <Route path="/create-tour" element={<CreateTour />} />
 
         <Route path="*" element={<Home />} />
       </Routes>
