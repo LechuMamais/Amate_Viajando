@@ -1,69 +1,84 @@
-import React from 'react';
-import { Box, FormControl, FormLabel, Input, Textarea, Text, Heading, Button, Flex } from '@chakra-ui/react';
-import { useFieldArray } from 'react-hook-form';
+import React from "react";
+import { useFieldArray } from "react-hook-form";
+import { Box, Button, FormControl, FormLabel, Heading, Image, Input, Stack, Text, Textarea } from "@chakra-ui/react";
 
-const ImagesForm = ({ control, register, errors }) => {
-  const { fields, append } = useFieldArray({
+const ImagesForm = ({ control, register, errors, initialImages }) => {
+  const { fields, append, remove } = useFieldArray({
     control,
-    name: 'images',
+    name: "images",
   });
 
+  // Pre-fill the images field array with initial images
+  React.useEffect(() => {
+    if (initialImages.length && fields.length === 0) {
+      initialImages.forEach((image) => append(image));
+    }
+  }, [initialImages, fields, append]);
+
   return (
-    <>
-      {fields.map((field, index) => (
-        <Box key={field.id} mb={4}>
-          <Heading fontSize="lg" mb={4}>Imagen {index + 1}</Heading>
-          <Box borderWidth="1px" borderRadius="lg" p={4} mb={4}>
-            <FormControl isInvalid={errors.images?.[index]?.name}>
-              <FormLabel htmlFor={`images[${index}].name`}>Nombre de la Imagen</FormLabel>
+    <Box borderWidth="1px" borderRadius="lg" p={4} mb={4}>
+      <Stack spacing={4}>
+        <Heading size="lg" mb={4}>Imágenes</Heading>
+        {fields.map((item, index) => (
+          <>
+                  <Heading size="md" mb={4}>Imagen {index+1}</Heading>
+          <Box key={item.id} mb={4}>
+            <FormControl>
+              <FormLabel>Nombre</FormLabel>
               <Input
-                id={`images[${index}].name`}
-                placeholder={`Nombre de la imagen ${index + 1}`}
-                {...register(`images[${index}].name`, { required: "Este campo es requerido" })}
-              />
-              {errors.images?.[index]?.name && <Text color="red.500">{errors.images[index].name.message}</Text>}
+                defaultValue={item.name}
+                {...register(`images.${index}.name`, { required: "Este campo es requerido" })}
+                />
+              {errors.images?.[index]?.name && (
+                <Text color="red.500">{errors.images[index].name.message}</Text>
+                )}
             </FormControl>
 
-            <FormControl isInvalid={errors.images?.[index]?.url}>
-              <FormLabel htmlFor={`images[${index}].url`}>Archivo de la Imagen {index + 1}</FormLabel>
+            <FormControl>
+              <FormLabel>Descripción</FormLabel>
+              <Textarea
+                defaultValue={item.description}
+                {...register(`images.${index}.description`, { required: "Este campo es requerido" })}
+                />
+              {errors.images?.[index]?.description && (
+                <Text color="red.500">{errors.images[index].description.message}</Text>
+                )}
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Texto alternativo (alt)</FormLabel>
+              <Input
+                defaultValue={item.alt}
+                {...register(`images.${index}.alt`, { required: "Este campo es requerido" })}
+                />
+              {errors.images?.[index]?.alt && (
+                <Text color="red.500">{errors.images[index].alt.message}</Text>
+                )}
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Imagen</FormLabel>
+              {item.url && (
+                <Image src={item.url} alt={item.alt} boxSize="100px" objectFit="cover" mb={2} />
+                )}
               <Input
                 type="file"
-                id={`images[${index}].url`}
-                {...register(`images[${index}].url`, { required: "Este campo es requerido" })}
-              />
-              {errors.images?.[index]?.url && <Text color="red.500">{errors.images[index].url.message}</Text>}
+                {...register(`images.${index}.url`)}
+                />
             </FormControl>
 
-            <FormControl isInvalid={errors.images?.[index]?.alt}>
-              <FormLabel htmlFor={`images[${index}].alt`}>Texto Alternativo</FormLabel>
-              <Input
-                id={`images[${index}].alt`}
-                placeholder={`Texto alternativo de la imagen ${index + 1}`}
-                {...register(`images[${index}].alt`, { required: "Este campo es requerido" })}
-              />
-              {errors.images?.[index]?.alt && <Text color="red.500">{errors.images[index].alt.message}</Text>}
-            </FormControl>
-
-            <FormControl isInvalid={errors.images?.[index]?.description}>
-              <FormLabel htmlFor={`images[${index}].description`}>Descripción</FormLabel>
-              <Textarea
-                id={`images[${index}].description`}
-                placeholder={`Descripción de la imagen ${index + 1}`}
-                {...register(`images[${index}].description`)}
-              />
-              {errors.images?.[index]?.description && <Text color="red.500">{errors.images[index].description.message}</Text>}
-            </FormControl>
+            <Button mt={2} colorScheme="red" onClick={() => remove(index)}>Eliminar Imagen</Button>
           </Box>
-        </Box>
-      ))}
+        </>
+        ))}
+      </Stack>
 
-      <Flex spacing="6" direction={{ base: "column", md: "row" }} gap={2}>
-        <Button variant="outline" mt={4} colorScheme="teal" onClick={() => append({ name: "", url: "", alt: "", description: "" })}>
-          Añadir Otra Imagen
-        </Button>
-      </Flex>
-    </>
-  );
-};
-
-export default ImagesForm;
+<Button mt={4} colorScheme="blue" onClick={() => append({ name: "", description: "", alt: "", url: "" })}>
+        Añadir Imagen
+      </Button>
+    </Box>
+    );
+    };
+    
+    export default ImagesForm;
+    

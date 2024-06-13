@@ -16,8 +16,12 @@ FRONTEND:
 Por hacer:
 
     - Profile
-    - Para admin, que pueda ir creando en la BD los destinations, los tours y las images.
-        Habrá que hacer un formulario para cada uno, que incluya un selector de archivos de imagen
+    - Para admin, que pueda modificar los destinations y los tours:
+        - Vamos bien, lo siguiente es que las imagenes que ya están las muestre, y no las tome como campo requerido
+            el campo file si no queremos modificarlas.
+        - Que nos permita borrar imágenes, y que esto genere la solicitud deleteImage con el id.
+        - Al darle a modificar una imagen, chequear que la anterior se borre de cloudinary
+
 
     - Register
     - Tour: Mostrar si está en la lista de fav, por ej con un corazon (que funcione también como boton)

@@ -13,6 +13,8 @@ import Logout from "./components/Logout/Logout";
 import Profile from "./pages/Profile/Profile";
 import CreateTour from "./components/CreateTour/CreateTour";
 import CreateDestination from "./components/CreateDestination/CreateDestination";
+import UpdateDestination from "./components/UpdateDestination/UpdateDestination";
+import UpdateTour from "./components/UpdateTour/UpdateTour";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
 
         <Route path="/create-tour" element={<CreateTour />} />
         <Route path="/create-destination" element={<CreateDestination />} />
+        <Route path="/update-destination/:destination_id" element={<UpdateDestination />} />
+        <Route path="/update-tour/:tour_id" element={<UpdateTour />} />
 
         <Route path="*" element={<Home />} />
       </Routes>
