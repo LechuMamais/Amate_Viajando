@@ -15,10 +15,10 @@ import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
 import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 
-const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
+const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
 
-  const {allDestinations} = useContext(AllDestinationsContext)
+  const { allDestinations } = useContext(AllDestinationsContext);
 
   return (
     <>
@@ -49,40 +49,21 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor }) => {
             </Heading>
             <Stack spacing={3} my={4}>
               {Array.isArray(descriptionParagraphs) &&
-                descriptionParagraphs.map((paragraph, index) => {
-                  return (
-                    <Text key={index} color="gray.500">
-                      {paragraph}
-                    </Text>
-                  );
-                })}
+                descriptionParagraphs.map((paragraph, index) => (
+                  <Text key={index} color="gray.500">
+                    {paragraph}
+                  </Text>
+                ))}
             </Stack>
           </Box>
-          {usingFor == "destination" && (
-            <CardsList
-              headingText={`Que hacer en ${obj?.name}`}
-              descriptionText={"Seleccionados para tí"}
-              arrayToRender={obj?.tours}
-              usingFor={'tours'}
-            />
-          )}
-          {usingFor == "tour" && (
-            <CardsList
-              headingText={`Otros tours en ${destination?.name}`}
-              descriptionText={"Seleccionados para tí"}
-              arrayToRender={destination?.tours.filter(
-                (tour) => tour._id !== obj?._id
-              )}
-              usingFor={'tours'}
-            />
-          )}
+          {children}
           <CardsList
             headingText={`Otros destinos`}
             descriptionText={"De la Patagonia Argentina"}
             arrayToRender={allDestinations?.filter(
               (dest) => dest._id !== destination?._id
             )}
-            usingFor={'destinations'}
+            usingFor={"destinations"}
           />
         </Flex>
       </Container>

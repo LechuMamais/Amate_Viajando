@@ -7,6 +7,7 @@ import DetailsPage from "../../components/DetailsPage/DetailsPage";
 import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
 import ToursButtonContainer from "../../components/ToursButtonContainer/ToursButtonContainer";
+import CardsList from "../../components/CardsList/CardsList";
 
 const Tour = () => {
   const { tour_id } = useParams();
@@ -37,9 +38,18 @@ const Tour = () => {
           obj={tour}
           descriptionParagraphs={descriptionParagraphs}
           usingFor={"tour"}
-        />
+        >
+          <ToursButtonContainer tour_id={tour_id} />
+          <CardsList
+            headingText={`Otros tours en ${destination?.name}`}
+            descriptionText={"Seleccionados para tí"}
+            arrayToRender={destination?.tours.filter(
+              (other_tour) => other_tour._id !== tour?._id
+            )}
+            usingFor={"tours"}
+          />
+        </DetailsPage>
       )}
-      <ToursButtonContainer tour_id={tour_id}/>
     </Box>
   );
 };
