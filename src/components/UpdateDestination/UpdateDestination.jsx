@@ -1,3 +1,4 @@
+// UpdateDestination.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, Stack, Heading, useToast, Text } from "@chakra-ui/react";
@@ -12,6 +13,7 @@ import { createImage } from "../../services/api/images";
 import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
+import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
@@ -37,6 +39,7 @@ const UpdateDestination = () => {
         setValue("description", response.description);
         setValue("longDescription", response.longDescription);
         setValue("images", response.images);
+        setValue("tours", response.tours.map(tour => tour._id)); // Set initial tours as ids
       } catch (error) {
         toast({
           title: "Error",
@@ -53,7 +56,7 @@ const UpdateDestination = () => {
 
   const onSubmit = async (data) => {
     try {
-      const { images, ...formData } = data;
+      const { images, tours, ...formData } = data;
       let imageIds = [];
 
       for (const image of images) {
@@ -72,12 +75,14 @@ const UpdateDestination = () => {
       }
 
       formData.images = imageIds;
+      formData.tours = tours;
+      console.log(tours);
 
       await updateDestination(destination_id, formData, user.token);
 
       toast({
-        title: "Destino Eliminado.",
-        description: "El destino ha sido eliminado exitosamente.",
+        title: "Destino Actualizado.",
+        description: "El destino ha sido actualizado exitosamente.",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -86,7 +91,7 @@ const UpdateDestination = () => {
     } catch (error) {
       toast({
         title: "Error",
-        description: "Hubo un error al eliminar el destino.",
+        description: "Hubo un error al actualizar el destino.",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -132,6 +137,13 @@ const UpdateDestination = () => {
           errors={errors}
           initialImages={destination.images}
         />
+        <ToursCheckboxGroup
+          control={control}
+          register={register}
+          errors={errors}
+          initialTours={destination.tours}
+          user={user}
+        />
         <Button
           mt={4}
           size="lg"
@@ -153,6 +165,7 @@ const UpdateDestination = () => {
         >
           Eliminar Destino
         </Button>
+        <BackButton to="/profile" />
       </Stack>
     </Box>
   );
