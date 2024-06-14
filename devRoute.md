@@ -16,6 +16,7 @@ FRONTEND:
 
 Por hacer:
 
+    - Update Destinations: marcar que tours se pueden hacer ahí
     - Profile
     - Para admin, que pueda modificar los destinations y los tours:
         - Al darle a modificar una imagen, que la anterior se borre de cloudinary

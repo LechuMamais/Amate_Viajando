@@ -48,10 +48,8 @@ const Home = () => {
             <MyLink to="/destinations">
               <Button
                 size="lg"
-                colorScheme="gray"
-                bg="gray.900"
-                color="gray.100"
-                _hover={{ bg: "gray.800", color: "gray.50" }}
+                colorScheme="whiteAlpha"
+                px={16}
                 _focus={{
                   outline: "none",
                   ring: 1,
