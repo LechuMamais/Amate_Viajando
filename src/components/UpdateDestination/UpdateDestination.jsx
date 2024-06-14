@@ -1,7 +1,7 @@
 // UpdateDestination.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Box, Button, Stack, Heading, useToast, Text } from "@chakra-ui/react";
+import { Box, Button, Stack, Heading, useToast, Text, Container } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
 import {
@@ -39,7 +39,10 @@ const UpdateDestination = () => {
         setValue("description", response.description);
         setValue("longDescription", response.longDescription);
         setValue("images", response.images);
-        setValue("tours", response.tours.map(tour => tour._id)); // Set initial tours as ids
+        setValue(
+          "tours",
+          response.tours.map((tour) => tour._id)
+        ); // Set initial tours as ids
       } catch (error) {
         toast({
           title: "Error",
@@ -127,46 +130,52 @@ const UpdateDestination = () => {
 
   return (
     <Box as="main" flex={1} p={6}>
-      <Stack as="form" spacing={4} onSubmit={handleSubmit(onSubmit)}>
-        <BackButton to="/profile" />
-        <Heading size="lg">Actualizar Destino</Heading>
-        <TourDestinationForm register={register} errors={errors} />
-        <ImagesForm
-          control={control}
-          register={register}
-          errors={errors}
-          initialImages={destination.images}
-        />
-        <ToursCheckboxGroup
-          control={control}
-          register={register}
-          errors={errors}
-          initialTours={destination.tours}
-          user={user}
-        />
-        <Button
-          mt={4}
-          size="lg"
-          colorScheme="teal"
-          type="submit"
-          w={{ base: "100%", md: "320px" }}
-        >
-          Actualizar Destino
-        </Button>
-        <Button
-          mt={12}
-          size="sm"
-          colorScheme="red"
-          onClick={() => {
-            handleDeleteDestinationClick();
-          }}
-          w={{ base: "100%", md: "160px" }}
-          variant="outline"
-        >
-          Eliminar Destino
-        </Button>
-        <BackButton to="/profile" />
-      </Stack>
+      <Container
+        maxW="container.lg"
+        px={{ base: 4, md: 6 }}
+        py={{ base: 12, md: 24, lg: 32 }}
+      >
+        <Stack as="form" spacing={4} onSubmit={handleSubmit(onSubmit)}>
+          <BackButton to="/profile" />
+          <Heading size="lg">Actualizar Destino</Heading>
+          <TourDestinationForm register={register} errors={errors} />
+          <ImagesForm
+            control={control}
+            register={register}
+            errors={errors}
+            initialImages={destination.images}
+          />
+          <ToursCheckboxGroup
+            control={control}
+            register={register}
+            errors={errors}
+            initialTours={destination.tours}
+            user={user}
+          />
+          <Button
+            mt={4}
+            size="lg"
+            colorScheme="teal"
+            type="submit"
+            w={{ base: "100%", md: "320px" }}
+          >
+            Actualizar Destino
+          </Button>
+          <Button
+            mt={12}
+            size="sm"
+            colorScheme="red"
+            onClick={() => {
+              handleDeleteDestinationClick();
+            }}
+            w={{ base: "100%", md: "160px" }}
+            variant="outline"
+          >
+            Eliminar Destino
+          </Button>
+          <BackButton to="/profile" />
+        </Stack>
+      </Container>
     </Box>
   );
 };

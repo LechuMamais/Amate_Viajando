@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
-import { CloseIcon } from '@chakra-ui/icons'
+import { CloseIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -61,12 +61,12 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
                 colorScheme="red"
                 onClick={() => handleDeleteImageClick(index)}
               >
-                <Text size="sm" >Eliminar</Text>
+                <Text size="sm">Eliminar</Text>
               </Button>
             </Flex>
             <Box mb={4}>
-              <FormControl>
-                <FormLabel>Nombre</FormLabel>
+              <FormControl mt={4}>
+                <FormLabel><Text fontSize="lg">Nombre</Text></FormLabel>
                 <Input
                   defaultValue={item.name}
                   {...register(`images.${index}.name`, {
@@ -80,8 +80,8 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
                 )}
               </FormControl>
 
-              <FormControl>
-                <FormLabel>Descripción</FormLabel>
+              <FormControl mt={4}>
+                <FormLabel><Text fontSize="lg">Descripción</Text></FormLabel>
                 <Textarea
                   defaultValue={item.description}
                   {...register(`images.${index}.description`, {
@@ -95,8 +95,8 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
                 )}
               </FormControl>
 
-              <FormControl>
-                <FormLabel>Texto alternativo (alt)</FormLabel>
+              <FormControl mt={4}>
+                <FormLabel><Text fontSize="lg">Texto alternativo (alt)</Text></FormLabel>
                 <Input
                   defaultValue={item.alt}
                   {...register(`images.${index}.alt`, {
@@ -110,18 +110,23 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
                 )}
               </FormControl>
 
-              <FormControl>
-                <FormLabel>Imagen</FormLabel>
-                {item.url && (
-                  <Image
-                    src={item.url}
-                    alt={item.alt}
-                    boxSize="100px"
-                    objectFit="cover"
-                    mb={2}
-                  />
-                )}
-                <Input type="file" {...register(`images.${index}.url`)} />
+              <FormControl mt={4}>
+                <FormLabel><Text fontSize="lg">Archivo de la Imagen</Text></FormLabel>
+                <Flex direction="row" gap={4}>
+                  {item.url && (
+                    <Image
+                      src={item.url}
+                      alt={item.alt}
+                      boxSize="100px"
+                      objectFit="cover"
+                      mb={2}
+                    />
+                  )}
+                  <Box>
+                    <Text p={4}>Selecciona una imagen para modificarla</Text>
+                    <Input type="file" {...register(`images.${index}.url`)} />
+                  </Box>
+                </Flex>
               </FormControl>
             </Box>
           </Box>
