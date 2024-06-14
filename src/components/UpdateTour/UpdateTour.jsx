@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Box, Button, Stack, Heading, useToast, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
-import { getTourById, updateTour } from "../../services/api/tours";
+import { deleteTour, getTourById, updateTour } from "../../services/api/tours";
 import { createImage } from "../../services/api/images";
 import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
@@ -15,7 +15,13 @@ const UpdateTour = () => {
   const { tour_id } = useParams();
   const [tour, setTour] = useState(null);
   const toast = useToast();
-  const { register, handleSubmit, control, setValue, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     const fetchTour = async () => {
@@ -83,6 +89,28 @@ const UpdateTour = () => {
       });
     }
   };
+  
+  const handleDeleteTourClick = async () => {
+    try {
+        await deleteTour  (tour_id, user.token);
+        toast({
+          title: "Tour eliminado.",
+          description: "El tour ha sido eliminado exitosamente.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        navigate("/profile");
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Hubo un error al eliminar el tour.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+  }
 
   if (!tour) {
     return <Text>Cargando...</Text>;
@@ -92,11 +120,29 @@ const UpdateTour = () => {
     <Box as="main" flex={1} p={6}>
       <Stack as="form" spacing={4} onSubmit={handleSubmit(onSubmit)}>
         <BackButton to="/profile" />
-        <Heading fontSize="xl">Actualizar Tour</Heading>
+        <Heading size="lg">Actualizar Tour</Heading>
         <TourDestinationForm register={register} errors={errors} />
         <ImagesForm control={control} register={register} errors={errors} />
-        <Button mt={4} colorScheme="teal" type="submit">
+        <Button
+          mt={4}
+          size="lg"
+          colorScheme="teal"
+          type="submit"
+          w={{ base: "100%", md: "320px" }}
+        >
           Actualizar Tour
+        </Button>
+        <Button
+          mt={12}
+          size="sm"
+          colorScheme="red"
+          onClick={() => {
+            handleDeleteTourClick();
+          }}
+          w={{ base: "100%", md: "160px" }}
+          variant="outline"
+        >
+          Eliminar Tour
         </Button>
       </Stack>
     </Box>

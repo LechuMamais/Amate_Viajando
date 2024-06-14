@@ -6,15 +6,20 @@ import MyLink from "../../components/MyLink/MyLink";
 import CardsList from "../../components/CardsList/CardsList";
 import { useState } from "react";
 import { useEffect } from "react";
-import { fetchDestinations } from "../../services/fetchDestinations";
+import { fetchSetDestinations } from "../../services/fetchSetDestinations";
+import { fetchSetTours } from "../../services/fetchSetTours";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
   const [destinations, setDestinations] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingDestinations, setLoadingDestinations] = useState(true);
+
+  const [tours, setTours] = useState([]);
+  const [loadingTours, setLoadingTours] = useState(true);
 
   useEffect(() => {
-    fetchDestinations(setDestinations, setLoading);
+    fetchSetDestinations(setDestinations, setLoadingDestinations);
+    fetchSetTours(setTours, setLoadingTours);
   }, []);
 
   return (
@@ -33,10 +38,8 @@ const Profile = () => {
             </Box>
 
             <Flex direction="column" gap={6} borderWidth="1px" p={4}>
-              <Text fontSize="2xl" fontWeight="bold">
-                Editar Destinos
-              </Text>
-              {loading ? (
+
+              {loadingDestinations ? (
                 <div>Loading...</div>
               ) : (
                 <CardsList
@@ -48,16 +51,6 @@ const Profile = () => {
                   usingFor={"updateDestinations"}
                 />
               )}
-
-              <MyLink to="/destinations">
-                <Button
-                  mt={4}
-                  colorScheme="teal"
-                  w={{ base: "100%", md: "300px" }}
-                >
-                  Ver Destinos
-                </Button>
-              </MyLink>
 
               <MyLink to="/create-destination">
                 <Button
@@ -71,18 +64,20 @@ const Profile = () => {
             </Flex>
 
             <Flex direction="column" gap={6} borderWidth="1px" p={4}>
-              <Text fontSize="2xl" fontWeight="bold">
-                Editar Tours
-              </Text>
-              <MyLink to="/tours">
-                <Button
-                  mt={4}
-                  colorScheme="teal"
-                  w={{ base: "100%", md: "300px" }}
-                >
-                  Ver Tours
-                </Button>
-              </MyLink>
+
+              {loadingTours ? (
+                <div>Loading...</div>
+              ) : (
+                <CardsList
+                  headingText={"Modificar Tours"}
+                  descriptionText={
+                    "Selecciona el tour que quieras modificar"
+                  }
+                  arrayToRender={tours}
+                  usingFor={"updateTours"}
+                />
+              )}
+              
               <MyLink to="/create-tour">
                 <Button
                   mt={4}

@@ -1,6 +1,6 @@
 import { getDestinations } from "./api/destinations";
 
-export const fetchDestinations = async (setDestinations, setLoading) => {
+export const fetchSetDestinations = async (setDestinations, setLoading) => {
     try {
         const data = await getDestinations();
         setDestinations(data);

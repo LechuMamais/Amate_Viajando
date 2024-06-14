@@ -25,8 +25,8 @@ const Cards = ({ obj, usingFor }) => {
       <MyLink to={buildCardLink()}>
         <Box overflow="hidden" borderRadius="xl">
           <Image
-            src={images[0].url}
-            alt={images[0].alt}
+            src={images[0]?.url}
+            alt={images[0]?.alt}
             width={700}
             height={400}
             objectFit="cover"
