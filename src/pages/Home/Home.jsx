@@ -6,7 +6,7 @@ import { Box, Button, Flex, Heading, Image, Link, Text } from "@chakra-ui/react"
 const Home = () => {
   return (
     <Box as="main" flex="1">
-      <Box position="relative" w="full" h="100vh">
+      <Box position="relative" w="full" h="calc(100vh - 72px)">
         <Image
           src="/assets/background.jpg"
           alt="Travel"

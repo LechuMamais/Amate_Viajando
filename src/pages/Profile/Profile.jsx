@@ -33,12 +33,14 @@ const Profile = () => {
           <Flex direction="column" gap={8}>
             <Box>
               <Text fontSize="xl" fontWeight="bold">
-                Administrador
+                {user.userName}{" "}
+                <Text as="span" fontSize="md">
+                  (admin)
+                </Text>
               </Text>
             </Box>
 
             <Flex direction="column" gap={6} borderWidth="1px" p={4}>
-
               {loadingDestinations ? (
                 <div>Loading...</div>
               ) : (
@@ -57,6 +59,7 @@ const Profile = () => {
                   mt={4}
                   colorScheme="teal"
                   w={{ base: "100%", md: "300px" }}
+                  size="lg"
                 >
                   Crear Nuevo Destino
                 </Button>
@@ -64,25 +67,23 @@ const Profile = () => {
             </Flex>
 
             <Flex direction="column" gap={6} borderWidth="1px" p={4}>
-
               {loadingTours ? (
                 <div>Loading...</div>
               ) : (
                 <CardsList
                   headingText={"Modificar Tours"}
-                  descriptionText={
-                    "Selecciona el tour que quieras modificar"
-                  }
+                  descriptionText={"Selecciona el tour que quieras modificar"}
                   arrayToRender={tours}
                   usingFor={"updateTours"}
                 />
               )}
-              
+
               <MyLink to="/create-tour">
                 <Button
                   mt={4}
                   colorScheme="teal"
                   w={{ base: "100%", md: "300px" }}
+                  size="lg"
                 >
                   Crear Nuevo Tour
                 </Button>
