@@ -12,15 +12,12 @@ export const UserProvider = ({ children }) => {
       const userIdLocal = localStorage.getItem("userId");
       // Contrastamos los datos de localStorage con la BBDD
       const userLogged = await checkLogged(userIdLocal, tokenLocal);
-      console.log(userLogged);
       if (userLogged.authorized == false) {
-        console.log("Usuario no logueado correctamente");
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userId");
         localStorage.removeItem("email");
         setUser({ logged: false });
       } else {
-        console.log("Checkeo de logged correcto");
         setUser({ ...userLogged, logged: true, token: tokenLocal });
       }
     };
