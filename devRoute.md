@@ -1,6 +1,4 @@
 BACKEND:
-
-Por hacer:
     - Modificacion importante: Agregar orden a las imagenes de destinations.
       Ahora images es un array de objetos:
               {
@@ -17,6 +15,8 @@ Por hacer:
         Modificar los controllers con los popupate
         Actualizar la base de datos con la informacion que ya está
         Actualizar el front
+
+Por hacer:
     - Corregir: delete de cloudinary
     - Correccion de Santi en Auth con la password
         - isAuth_ Chequear que esté ok la parte de         req.user = user;        user.password = null
@@ -31,8 +31,19 @@ Por hacer:
 FRONTEND:
 
 Por hacer:
+    - Ahora que tours.images es un array de objetos, actualizar el CREATE Tours
+
+    - Ahora que destination.images es un array de objetos, actualizar el CREATE destinations
+    - Ahora que destination.tours es un array de objetos, actualizar el CREATE destinations
+
+    - Ahora que tours.images es un array de objetos, actualizar el UPDATE Tours
+
+    - Ahora que destination.images es un array de objetos, actualizar el UPDATE destinations
+    - Ahora que destination.tours es un array de objetos, actualizar el UPDATE destinations
 
     - Update Destinations: marcar que tours se pueden hacer ahí
+    - Create Destinations: marcar que tours se pueden hacer ahí
+    
     - Profile
     - Para admin, que pueda modificar los destinations y los tours:
         - Al darle a modificar una imagen, que la anterior se borre de cloudinary

@@ -49,7 +49,7 @@ export const getTours = async () => {
       return await handleResponse(response);
     } catch (error) {
       handleError(error);
-    }
+    }x
   };
   
   export const deleteTour = async (id, token) => {

@@ -24,13 +24,6 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
     name: "images",
   });
 
-  // Pre-fill the images field array with initial images
-  React.useEffect(() => {
-    if (initialImages?.length && fields.length === 0) {
-      initialImages.forEach((image) => append(image));
-    }
-  }, [initialImages, fields, append]);
-
   const handleDeleteImageClick = async (index) => {
     remove(index);
     if (initialImages?.length && fields.length === 0) {
@@ -45,7 +38,15 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
           Imágenes
         </Heading>
         {fields.map((item, index) => (
-          <Box borderWidth="1px" borderRadius="lg" key={item.id} p={4} mt={4} mb={4} bg="white">
+          <Box
+            borderWidth="1px"
+            borderRadius="lg"
+            key={item.id}
+            p={4}
+            mt={4}
+            mb={4}
+            bg="white"
+          >
             <Flex
               direction="row"
               gap={4}
@@ -66,7 +67,9 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
             </Flex>
             <Box mb={4}>
               <FormControl mt={4}>
-                <FormLabel><Text fontSize="lg">Nombre</Text></FormLabel>
+                <FormLabel>
+                  <Text fontSize="lg">Nombre</Text>
+                </FormLabel>
                 <Input
                   defaultValue={item.name}
                   {...register(`images.${index}.name`, {
@@ -81,7 +84,9 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
               </FormControl>
 
               <FormControl mt={4}>
-                <FormLabel><Text fontSize="lg">Descripción</Text></FormLabel>
+                <FormLabel>
+                  <Text fontSize="lg">Descripción</Text>
+                </FormLabel>
                 <Textarea
                   defaultValue={item.description}
                   {...register(`images.${index}.description`, {
@@ -96,7 +101,9 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
               </FormControl>
 
               <FormControl mt={4}>
-                <FormLabel><Text fontSize="lg">Texto alternativo (alt)</Text></FormLabel>
+                <FormLabel>
+                  <Text fontSize="lg">Texto alternativo (alt)</Text>
+                </FormLabel>
                 <Input
                   defaultValue={item.alt}
                   {...register(`images.${index}.alt`, {
@@ -111,7 +118,23 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
               </FormControl>
 
               <FormControl mt={4}>
-                <FormLabel><Text fontSize="lg">Archivo de la Imagen</Text></FormLabel>
+                <FormLabel>
+                  <Text fontSize="lg">Orden de prioridad</Text>
+                </FormLabel>
+                <Input
+                  defaultValue={item.order}
+                  placeholder="Orden"
+                  type="number"
+                  {...register(`images.${index}.order`, {
+                    required: "Requerido",
+                  })}
+                />
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>
+                  <Text fontSize="lg">Archivo de la Imagen</Text>
+                </FormLabel>
                 <Flex direction="row" gap={4}>
                   {item.url && (
                     <Image
@@ -123,8 +146,15 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
                     />
                   )}
                   <Box>
-                    <Text p={4}>Selecciona una nueva imagen para modificarla</Text>
-                    <Input type="file" {...register(`images.${index}.url`)} border="none" cursor="pointer"/>
+                    <Text p={4}>
+                      Selecciona una nueva imagen para modificarla
+                    </Text>
+                    <Input
+                      type="file"
+                      {...register(`images.${index}.url`)}
+                      border="none"
+                      cursor="pointer"
+                    />
                   </Box>
                 </Flex>
               </FormControl>
@@ -137,7 +167,7 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
         mt={4}
         colorScheme="blue"
         w={{ base: "100%", md: "300px" }}
-        onClick={() => append({ name: "", description: "", alt: "", url: "" })}
+        onClick={() => append({ name: "", description: "", alt: "", url: "", order: fields.length + 1 })}
       >
         Añadir Imagen
       </Button>

@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDestinationById } from "../services/api/destinations";
+import { toursToRenderArrayConstructor } from "../utils/toursToRenderArrayConstructor";
 
 export const DestinationContext = createContext();
 
@@ -9,20 +10,12 @@ export const DestinationProvider = ({ children }) => {
   const [destination, setDestination] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const toursToRenderConstructor = (destination)=>{
-    let array = [];
-    destination?.tours.map((tour)=>{
-      array.push(tour.tourObj)
-    })
-    return array
-  }
-
   useEffect(() => {
     const fetchDestinationById = async () => {
       try {
         setLoading(true);
         const data = await getDestinationById(destination_id);
-        const toursToRender = toursToRenderConstructor(data);
+        const toursToRender = toursToRenderArrayConstructor(data);
         setDestination({...data, tours: toursToRender });
       } catch (error) {
         console.error("Error fetching destination:", error);

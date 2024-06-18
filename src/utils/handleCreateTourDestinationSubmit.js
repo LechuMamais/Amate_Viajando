@@ -15,7 +15,7 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
             imageData.append("description", image.description);
 
             const uploadedImg = await createImage(imageData, token);
-            imageIds.push(uploadedImg.element._id);
+            imageIds.push({ order: image.order, imgObj: uploadedImg.element._id });
         }
 
         formData.images = imageIds;

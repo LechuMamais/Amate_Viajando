@@ -23,16 +23,25 @@ const UpdateTour = () => {
     formState: { errors },
   } = useForm();
 
+  const imagesArrayConstructor = (response) => {
+    return response.images.map(image => ({
+      ...image.imgObj,
+      order: image.order
+    }));
+  };
+  
   useEffect(() => {
     const fetchTour = async () => {
       try {
         const response = await getTourById(tour_id, user.token);
-        setTour(response);
+        const imagesArray = imagesArrayConstructor(response);
+        setTour({ ...response, images: imagesArray });
+
         setValue("name", response.name);
         setValue("heading", response.heading);
         setValue("description", response.description);
         setValue("longDescription", response.longDescription);
-        setValue("images", response.images);
+        setValue("images", imagesArray);
       } catch (error) {
         toast({
           title: "Error",
@@ -51,7 +60,7 @@ const UpdateTour = () => {
     try {
       const { images, ...formData } = data;
       let imageIds = [];
-
+  
       for (const image of images) {
         if (image.url && typeof image.url !== "string") {
           const imageData = new FormData();
@@ -59,18 +68,18 @@ const UpdateTour = () => {
           imageData.append("url", image.url[0]);
           imageData.append("alt", image.alt);
           imageData.append("description", image.description);
-
+  
           const uploadedImg = await createImage(imageData, user.token);
-          imageIds.push(uploadedImg.element._id);
+          imageIds.push({ order: image.order, imgObj: uploadedImg.element._id });
         } else {
-          imageIds.push(image._id);
+          imageIds.push({ order: image.order, imgObj: image._id });
         }
       }
-
+  
       formData.images = imageIds;
-
+  
       await updateTour(tour_id, formData, user.token);
-
+  
       toast({
         title: "Tour actualizado.",
         description: "El tour ha sido actualizado exitosamente.",
@@ -90,27 +99,29 @@ const UpdateTour = () => {
     }
   };
   
+  
+
   const handleDeleteTourClick = async () => {
     try {
-        await deleteTour  (tour_id, user.token);
-        toast({
-          title: "Tour eliminado.",
-          description: "El tour ha sido eliminado exitosamente.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        navigate("/profile");
-      } catch (error) {
-        toast({
-          title: "Error",
-          description: "Hubo un error al eliminar el tour.",
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-        });
-      }
-  }
+      await deleteTour(tour_id, user.token);
+      toast({
+        title: "Tour eliminado.",
+        description: "El tour ha sido eliminado exitosamente.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      navigate("/profile");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Hubo un error al eliminar el tour.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
 
   if (!tour) {
     return <Text>Cargando...</Text>;
@@ -122,7 +133,7 @@ const UpdateTour = () => {
         <BackButton to="/profile" />
         <Heading size="lg">Actualizar Tour</Heading>
         <TourDestinationForm register={register} errors={errors} />
-        <ImagesForm control={control} register={register} errors={errors} />
+        <ImagesForm control={control} register={register} errors={errors} initialImages={tour.images}/>
         <Button
           mt={4}
           size="lg"
@@ -136,9 +147,7 @@ const UpdateTour = () => {
           mt={12}
           size="sm"
           colorScheme="red"
-          onClick={() => {
-            handleDeleteTourClick();
-          }}
+          onClick={handleDeleteTourClick}
           w={{ base: "100%", md: "160px" }}
           variant="outline"
         >
