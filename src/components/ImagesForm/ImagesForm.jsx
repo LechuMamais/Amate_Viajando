@@ -39,13 +39,13 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
   };
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" p={4} mb={4}>
+    <Box borderWidth="1px" borderRadius="lg" p={4} mb={4} bg="gray.100">
       <Stack spacing={4}>
         <Heading size="lg" mb={4}>
           Imágenes
         </Heading>
         {fields.map((item, index) => (
-          <Box key={item.id} mt={4} mb={4}>
+          <Box borderWidth="1px" borderRadius="lg" key={item.id} p={4} mt={4} mb={4} bg="white">
             <Flex
               direction="row"
               gap={4}
@@ -123,8 +123,8 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
                     />
                   )}
                   <Box>
-                    <Text p={4}>Selecciona una imagen para modificarla</Text>
-                    <Input type="file" {...register(`images.${index}.url`)} />
+                    <Text p={4}>Selecciona una nueva imagen para modificarla</Text>
+                    <Input type="file" {...register(`images.${index}.url`)} border="none" cursor="pointer"/>
                   </Box>
                 </Flex>
               </FormControl>

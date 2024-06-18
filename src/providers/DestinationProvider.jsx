@@ -9,12 +9,21 @@ export const DestinationProvider = ({ children }) => {
   const [destination, setDestination] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const toursToRenderConstructor = (destination)=>{
+    let array = [];
+    destination?.tours.map((tour)=>{
+      array.push(tour.tourObj)
+    })
+    return array
+  }
+
   useEffect(() => {
     const fetchDestinationById = async () => {
       try {
         setLoading(true);
         const data = await getDestinationById(destination_id);
-        setDestination(data);
+        const toursToRender = toursToRenderConstructor(data);
+        setDestination({...data, tours: toursToRender });
       } catch (error) {
         console.error("Error fetching destination:", error);
       } finally {
@@ -25,6 +34,7 @@ export const DestinationProvider = ({ children }) => {
     if (destination_id) {
       fetchDestinationById();
     }
+
   }, [destination_id]);
 
   return (

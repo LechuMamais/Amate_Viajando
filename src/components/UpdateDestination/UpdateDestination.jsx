@@ -1,4 +1,3 @@
-// UpdateDestination.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, Stack, Heading, useToast, Text, Container } from "@chakra-ui/react";
@@ -9,7 +8,7 @@ import {
   getDestinationById,
   updateDestination,
 } from "../../services/api/destinations";
-import { createImage } from "../../services/api/images";
+import { createImage, updateImage } from "../../services/api/images";
 import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
@@ -32,7 +31,7 @@ const UpdateDestination = () => {
   useEffect(() => {
     const fetchDestination = async () => {
       try {
-        const response = await getDestinationById(destination_id, user.token);
+        const response = await getDestinationById(destination_id);
         setDestination(response);
         setValue("name", response.name);
         setValue("heading", response.heading);
@@ -55,15 +54,42 @@ const UpdateDestination = () => {
     };
 
     fetchDestination();
-  }, [destination_id, user.token, setValue, toast]);
+  }, [destination_id]);
 
   const onSubmit = async (data) => {
     try {
       const { images, tours, ...formData } = data;
       let imageIds = [];
 
-      for (const image of images) {
-        if (image.url && typeof image.url !== "string") {
+      const imagePromises = images.map(async (image) => {
+        // Si es una imagen ya existente
+        if (image._id) {
+          const originalImage = destination.images.find(img => img._id === image._id);
+          console.log(originalImage);
+          // Si la imagen original no coincide con la nueva, la actualizamos
+          if (
+            originalImage.name !== image.name ||
+            originalImage.alt !== image.alt ||
+            originalImage.description !== image.description ||
+            (image.url && typeof image.url !== "string")
+          ) {
+            const imageData = new FormData();
+            imageData.append("name", image.name);
+            imageData.append("alt", image.alt);
+            imageData.append("description", image.description);
+            /////////////////////
+            if (image.url && typeof image.url !== "string") {
+              imageData.append("url", image.url[0]);
+            }
+            /////////////////////
+
+            const updatedImg = await updateImage(image._id, imageData, user.token);
+            imageIds.push(updatedImg.element._id);
+          } else {
+            imageIds.push(image._id);
+          }
+        } else if (image.url && typeof image.url !== "string") {
+          // Si es una nueva imagen, la creamos
           const imageData = new FormData();
           imageData.append("name", image.name);
           imageData.append("url", image.url[0]);
@@ -73,13 +99,15 @@ const UpdateDestination = () => {
           const uploadedImg = await createImage(imageData, user.token);
           imageIds.push(uploadedImg.element._id);
         } else {
+          // Si no hay cambios, solo agregamos el _id
           imageIds.push(image._id);
         }
-      }
+      });
+
+      await Promise.all(imagePromises);
 
       formData.images = imageIds;
       formData.tours = tours;
-      console.log(tours);
 
       await updateDestination(destination_id, formData, user.token);
 

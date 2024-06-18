@@ -1,12 +1,13 @@
 import "./Cards.css";
 import { Box, Card, Heading, Image, Link, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MyLink from "../MyLink/MyLink";
 
 const Cards = ({ obj, usingFor }) => {
   const { heading, description, _id, images } = obj;
   const { destination_id } = useParams();
+
+  //console.log(obj)
 
   const buildCardLink = () => {
     if (usingFor === "destinations") {
@@ -24,13 +25,14 @@ const Cards = ({ obj, usingFor }) => {
     <Card key={_id}>
       <MyLink to={buildCardLink()}>
         <Box overflow="hidden" borderRadius="xl">
-          <Image
-            src={images[0]?.url}
-            alt={images[0]?.alt}
+          {images &&<Image
+            src={images[0]?.imgObj?.url}
+            alt={images[0]?.imgObj?.alt}
             width={700}
             height={400}
             objectFit="cover"
-          />
+          />}
+          
           <Box p={{ base: 4, sm: 6 }}>
             <Heading as="h3" size="md" fontWeight="semibold">
               {heading}

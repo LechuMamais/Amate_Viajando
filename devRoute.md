@@ -1,14 +1,30 @@
 BACKEND:
 
 Por hacer:
-    - Correccion de Santi en Auth con la password
+    - Modificacion importante: Agregar orden a las imagenes de destinations.
+      Ahora images es un array de objetos:
+              {
+            order: { type: Number, required: true },
+            imgObj: { type: mongoose.Types.ObjectId, required: true, default: {}, ref: "images" }
+        }
+        Modificar el modelos,
+        Modificar los controllers con los popupate --> .populate('images.imgObj')
+        Actualizar la base de datos con la informacion que ya está
+        Actualizar el front
+    - Luego, lo mismo para tours
+    - Modificacion: Agregar orden de tours dentro de destinations:
+        Modificar los modelos,
+        Modificar los controllers con los popupate
+        Actualizar la base de datos con la informacion que ya está
+        Actualizar el front
     - Corregir: delete de cloudinary
+    - Correccion de Santi en Auth con la password
+        - isAuth_ Chequear que esté ok la parte de         req.user = user;        user.password = null
     - Controladores para agregar tour a fav y a carritos => que no se dupliquen.
     - Controladores para quitar tour de favoritos y de carrito
     - users, isAuth, isAdmin, carrito, etc.
     - login con verificacion de email, utilizando alguna API de correo electrónico
     - Carrito: manejar opciones de tour: precio y cantidad de pax.
-    - isAuth_ Chequear que esté ok la parte de         req.user = user;        user.password = null
 
 
 -----------------------------------------------------------------------------------------------------------------------

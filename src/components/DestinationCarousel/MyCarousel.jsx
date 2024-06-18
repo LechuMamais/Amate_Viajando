@@ -18,8 +18,8 @@ const MyCarousel = ({obj}) => {
               {obj.images.map((image, index) => (
                 <div key={index} className='carousel-img-container'>
                   <img
-                    src={image.url}
-                    alt={image.alt}
+                    src={image.imgObj.url}
+                    alt={image.imgObj.alt}
                     width={1920}
                     height={1080}
                     className="w-full h-full object-cover"
