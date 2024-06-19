@@ -135,6 +135,7 @@ const UpdateTour = () => {
           register={register}
           errors={errors}
           initialImages={tour.images}
+          tour_id={tour_id}
         />
         <Button
           mt={4}
@@ -149,6 +150,7 @@ const UpdateTour = () => {
           heading="Confirmar eliminación"
           text="¿Estás seguro de que deseas eliminar este tour?"
           onAcceptClick={handleDeleteTourClick}
+          buttonText="Eliminar tour"
         />
       </Stack>
     </Box>

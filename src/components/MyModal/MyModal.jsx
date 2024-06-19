@@ -10,7 +10,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-const MyModal = ({ heading, text, onAcceptClick }) => {
+const MyModal = ({buttonText,  heading, text, onAcceptClick }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleAccept = () => {
@@ -28,7 +28,7 @@ const MyModal = ({ heading, text, onAcceptClick }) => {
         w={{ base: "100%", md: "160px" }}
         variant="outline"
       >
-        Eliminar Tour
+        {buttonText}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>

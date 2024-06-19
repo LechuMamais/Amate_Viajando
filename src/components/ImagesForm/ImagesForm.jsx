@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
-import { CloseIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -16,19 +15,24 @@ import {
 } from "@chakra-ui/react";
 import { deleteImage } from "../../services/api/images";
 import { UserContext } from "../../providers/UserProvider";
+import MyModal from "../MyModal/MyModal";
+import { deleteImageFromTour, updateTour } from "../../services/api/tours";
 
-const ImagesForm = ({ control, register, errors, initialImages }) => {
+const ImagesForm = ({ control, register, errors, initialImages, tour_id }) => {
   const { user } = useContext(UserContext);
   const { fields, append, remove } = useFieldArray({
     control,
     name: "images",
   });
 
-  const handleDeleteImageClick = async (index) => {
+  const handleDeleteImageClick = async (index, item) => {
+    console.log("·HandleDeleteImageClick")
+    console.log(index)
+    console.log(item)
+
+    await deleteImageFromTour(item._id, tour_id, user.token);
+    await deleteImage(item._id, user.token);
     remove(index);
-    if (initialImages?.length && fields.length === 0) {
-      await deleteImage(initialImages[index]._id, user.token);
-    }
   };
 
   return (
@@ -56,14 +60,12 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
               <Heading size="md" mb={4}>
                 Imagen {index + 1}
               </Heading>
-              <Button
-                mt={2}
-                size="sm"
-                colorScheme="red"
-                onClick={() => handleDeleteImageClick(index)}
-              >
-                <Text size="sm">Eliminar</Text>
-              </Button>
+              <MyModal
+                heading="Confirmar eliminación"
+                text="¿Estás seguro de que deseas eliminar esta imagen?"
+                onAcceptClick={()=>handleDeleteImageClick(index, item)}
+                buttonText="Eliminar imagen"
+              />
             </Flex>
             <Box mb={4}>
               <FormControl mt={4}>
@@ -167,7 +169,15 @@ const ImagesForm = ({ control, register, errors, initialImages }) => {
         mt={4}
         colorScheme="blue"
         w={{ base: "100%", md: "300px" }}
-        onClick={() => append({ name: "", description: "", alt: "", url: "", order: fields.length + 1 })}
+        onClick={() =>
+          append({
+            name: "",
+            description: "",
+            alt: "",
+            url: "",
+            order: fields.length + 1,
+          })
+        }
       >
         Añadir Imagen
       </Button>

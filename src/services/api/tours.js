@@ -51,6 +51,22 @@ export const getTours = async () => {
       handleError(error);
     }x
   };
+
+  export const deleteImageFromTour = async (image_id, tour_id, token) => {
+    console.log(tour_id)
+    try {
+      const response = await fetch(`${TOURS_URL}/${tour_id}/deleteImage/${image_id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      return await handleResponse(response);
+    } catch (error) {
+      handleError(error);
+    }
+  }
   
   export const deleteTour = async (id, token) => {
     try {
