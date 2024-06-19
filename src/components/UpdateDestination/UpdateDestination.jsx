@@ -1,6 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Box, Button, Stack, Heading, useToast, Text, Container } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Stack,
+  Heading,
+  useToast,
+  Text,
+  Container,
+} from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
 import {
@@ -13,6 +21,7 @@ import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
 import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
+import { handleImageUpdate } from "../../services/handleImageUpdate";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
@@ -56,55 +65,13 @@ const UpdateDestination = () => {
     fetchDestination();
   }, [destination_id]);
 
+  // Archivo donde está definida la función onSubmit
+
   const onSubmit = async (data) => {
     try {
       const { images, tours, ...formData } = data;
-      let imageIds = [];
 
-      const imagePromises = images.map(async (image) => {
-        // Si es una imagen ya existente
-        if (image._id) {
-          const originalImage = destination.images.find(img => img._id === image._id);
-          console.log(originalImage);
-          // Si la imagen original no coincide con la nueva, la actualizamos
-          if (
-            originalImage.name !== image.name ||
-            originalImage.alt !== image.alt ||
-            originalImage.description !== image.description ||
-            (image.url && typeof image.url !== "string")
-          ) {
-            const imageData = new FormData();
-            imageData.append("name", image.name);
-            imageData.append("alt", image.alt);
-            imageData.append("description", image.description);
-            /////////////////////
-            if (image.url && typeof image.url !== "string") {
-              imageData.append("url", image.url[0]);
-            }
-            /////////////////////
-
-            const updatedImg = await updateImage(image._id, imageData, user.token);
-            imageIds.push(updatedImg.element._id);
-          } else {
-            imageIds.push(image._id);
-          }
-        } else if (image.url && typeof image.url !== "string") {
-          // Si es una nueva imagen, la creamos
-          const imageData = new FormData();
-          imageData.append("name", image.name);
-          imageData.append("url", image.url[0]);
-          imageData.append("alt", image.alt);
-          imageData.append("description", image.description);
-
-          const uploadedImg = await createImage(imageData, user.token);
-          imageIds.push(uploadedImg.element._id);
-        } else {
-          // Si no hay cambios, solo agregamos el _id
-          imageIds.push(image._id);
-        }
-      });
-
-      await Promise.all(imagePromises);
+      const imageIds = await handleImageUpdate(images, destination, user.token);
 
       formData.images = imageIds;
       formData.tours = tours;

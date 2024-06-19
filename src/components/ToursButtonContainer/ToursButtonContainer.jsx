@@ -4,7 +4,6 @@ import { UserContext } from "../../providers/UserProvider";
 import { addTourToCart, addTourToFavorites } from "../../services/api/users";
 
 const ToursButtonContainer = ({tour_id}) => {
-  console.log(tour_id);
   const { user } = useContext(UserContext);
   const toast = useToast();
 

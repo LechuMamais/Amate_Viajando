@@ -43,17 +43,12 @@ export const getImages = async () => {
   
   export const updateImage = async (id, imageData, token) => {
     try {
-      const formData = new FormData();
-      for (const key in imageData) {
-        formData.append(key, imageData[key]);
-      }
-  
       const response = await fetch(`${IMAGES_URL}/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
         },
-        body: formData
+        body: imageData
       });
       return await handleResponse(response);
     } catch (error) {

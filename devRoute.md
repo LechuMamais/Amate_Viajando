@@ -31,7 +31,7 @@ Por hacer:
 FRONTEND:
 
 Por hacer:
-    - Ahora que tours.images es un array de objetos, actualizar el CREATE Tours
+    - Ahora que tours.images es un array de objetos, actualizar el CREATE Tours - Por aca quedé
 
     - Ahora que destination.images es un array de objetos, actualizar el CREATE destinations
     - Ahora que destination.tours es un array de objetos, actualizar el CREATE destinations
@@ -43,7 +43,7 @@ Por hacer:
 
     - Update Destinations: marcar que tours se pueden hacer ahí
     - Create Destinations: marcar que tours se pueden hacer ahí
-    
+
     - Profile
     - Para admin, que pueda modificar los destinations y los tours:
         - Al darle a modificar una imagen, que la anterior se borre de cloudinary

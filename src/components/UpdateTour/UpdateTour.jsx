@@ -4,10 +4,10 @@ import { Box, Button, Stack, Heading, useToast, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
 import { deleteTour, getTourById, updateTour } from "../../services/api/tours";
-import { createImage } from "../../services/api/images";
 import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
+import { handleImageUpdate } from "../../services/handleImageUpdate";
 
 const UpdateTour = () => {
   const { user } = useContext(UserContext);
@@ -23,19 +23,25 @@ const UpdateTour = () => {
     formState: { errors },
   } = useForm();
 
+  const orderImages = (imagesArray) => {
+    return imagesArray.sort((a, b) => a.order - b.order);
+  };
+
   const imagesArrayConstructor = (response) => {
-    return response.images.map(image => ({
+    return response.images.map((image) => ({
       ...image.imgObj,
-      order: image.order
+      order: image.order,
     }));
   };
-  
+
   useEffect(() => {
     const fetchTour = async () => {
       try {
         const response = await getTourById(tour_id, user.token);
         const imagesArray = imagesArrayConstructor(response);
-        setTour({ ...response, images: imagesArray });
+        const orderedImagesArray = orderImages(imagesArray);
+
+        setTour({ ...response, images: orderedImagesArray });
 
         setValue("name", response.name);
         setValue("heading", response.heading);
@@ -58,28 +64,20 @@ const UpdateTour = () => {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data);
       const { images, ...formData } = data;
-      let imageIds = [];
-  
-      for (const image of images) {
-        if (image.url && typeof image.url !== "string") {
-          const imageData = new FormData();
-          imageData.append("name", image.name);
-          imageData.append("url", image.url[0]);
-          imageData.append("alt", image.alt);
-          imageData.append("description", image.description);
-  
-          const uploadedImg = await createImage(imageData, user.token);
-          imageIds.push({ order: image.order, imgObj: uploadedImg.element._id });
-        } else {
-          imageIds.push({ order: image.order, imgObj: image._id });
-        }
-      }
-  
+      console.log(formData);
+      // Estamos teniendo problema con el update de los objeto images. a ver que ocurre, que no se modifican
+      console.log(images);
+      //a on submit llega bien el contenido a subir de cada imagen.
+
+      const imageIds = await handleImageUpdate(images, tour, user.token);
+
       formData.images = imageIds;
-  
+      console.log(formData.images);
+
       await updateTour(tour_id, formData, user.token);
-  
+
       toast({
         title: "Tour actualizado.",
         description: "El tour ha sido actualizado exitosamente.",
@@ -98,8 +96,6 @@ const UpdateTour = () => {
       });
     }
   };
-  
-  
 
   const handleDeleteTourClick = async () => {
     try {
@@ -133,7 +129,12 @@ const UpdateTour = () => {
         <BackButton to="/profile" />
         <Heading size="lg">Actualizar Tour</Heading>
         <TourDestinationForm register={register} errors={errors} />
-        <ImagesForm control={control} register={register} errors={errors} initialImages={tour.images}/>
+        <ImagesForm
+          control={control}
+          register={register}
+          errors={errors}
+          initialImages={tour.images}
+        />
         <Button
           mt={4}
           size="lg"
