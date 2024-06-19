@@ -31,6 +31,7 @@ Por hacer:
 FRONTEND:
 
 Por hacer:
+    - 
     - Ahora que tours.images es un array de objetos, actualizar el CREATE Tours - Por aca quedé
 
     - Ahora que destination.images es un array de objetos, actualizar el CREATE destinations
@@ -43,6 +44,8 @@ Por hacer:
 
     - Update Destinations: marcar que tours se pueden hacer ahí
     - Create Destinations: marcar que tours se pueden hacer ahí
+
+    - MyModal: Aplicar en todos los delete
 
     - Profile
     - Para admin, que pueda modificar los destinations y los tours:

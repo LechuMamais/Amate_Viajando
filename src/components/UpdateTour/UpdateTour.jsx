@@ -9,6 +9,8 @@ import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
 import MyModal from "../MyModal/MyModal";
+import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
+import { orderImagesArray } from "../../utils/orderImagesArray";
 
 const UpdateTour = () => {
   const { user } = useContext(UserContext);
@@ -24,23 +26,12 @@ const UpdateTour = () => {
     formState: { errors },
   } = useForm();
 
-  const orderImages = (imagesArray) => {
-    return imagesArray.sort((a, b) => a.order - b.order);
-  };
-
-  const imagesArrayConstructor = (response) => {
-    return response.images.map((image) => ({
-      ...image.imgObj,
-      order: image.order,
-    }));
-  };
-
   useEffect(() => {
     const fetchTour = async () => {
       try {
         const response = await getTourById(tour_id, user.token);
         const imagesArray = imagesArrayConstructor(response);
-        const orderedImagesArray = orderImages(imagesArray);
+        const orderedImagesArray = orderImagesArray(imagesArray);
 
         setTour({ ...response, images: orderedImagesArray });
 
@@ -148,7 +139,7 @@ const UpdateTour = () => {
         </Button>
         <MyModal
           heading="Confirmar eliminación"
-          text="¿Estás seguro de que deseas eliminar este tour?"
+          text="¿Estás seguro de que deseas eliminar este tour? Si quieres eliminar las imagenes de la base de datos debes hacerlo manualmente antes de eliminar el tour."
           onAcceptClick={handleDeleteTourClick}
           buttonText="Eliminar tour"
         />

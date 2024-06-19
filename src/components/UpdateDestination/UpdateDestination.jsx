@@ -16,12 +16,13 @@ import {
   getDestinationById,
   updateDestination,
 } from "../../services/api/destinations";
-import { createImage, updateImage } from "../../services/api/images";
 import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
 import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
+import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
+import { orderImagesArray } from "../../utils/orderImagesArray";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
@@ -41,16 +42,22 @@ const UpdateDestination = () => {
     const fetchDestination = async () => {
       try {
         const response = await getDestinationById(destination_id);
-        setDestination(response);
+        const imagesArray = imagesArrayConstructor(response);
+        const orderedImagesArray = orderImagesArray(imagesArray);
+        
+        console.log(orderedImagesArray);
+
+        setDestination({ ...response, images: orderedImagesArray });
         setValue("name", response.name);
         setValue("heading", response.heading);
         setValue("description", response.description);
         setValue("longDescription", response.longDescription);
-        setValue("images", response.images);
+        setValue("images", orderedImagesArray);
+      
         setValue(
           "tours",
-          response.tours.map((tour) => tour._id)
-        ); // Set initial tours as ids
+          response.tours.map(tour => tour.tourObj._id)
+        );
       } catch (error) {
         toast({
           title: "Error",
@@ -65,7 +72,6 @@ const UpdateDestination = () => {
     fetchDestination();
   }, [destination_id]);
 
-  // Archivo donde está definida la función onSubmit
 
   const onSubmit = async (data) => {
     try {
