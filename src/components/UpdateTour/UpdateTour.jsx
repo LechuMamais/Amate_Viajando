@@ -8,6 +8,7 @@ import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
 import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
+import MyModal from "../MyModal/MyModal";
 
 const UpdateTour = () => {
   const { user } = useContext(UserContext);
@@ -144,16 +145,11 @@ const UpdateTour = () => {
         >
           Actualizar Tour
         </Button>
-        <Button
-          mt={12}
-          size="sm"
-          colorScheme="red"
-          onClick={handleDeleteTourClick}
-          w={{ base: "100%", md: "160px" }}
-          variant="outline"
-        >
-          Eliminar Tour
-        </Button>
+        <MyModal
+          heading="Confirmar eliminación"
+          text="¿Estás seguro de que deseas eliminar este tour?"
+          onAcceptClick={handleDeleteTourClick}
+        />
       </Stack>
     </Box>
   );
