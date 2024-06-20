@@ -11,7 +11,6 @@ import { handleImageUpdate } from "../../services/handleImageUpdate";
 import MyModal from "../MyModal/MyModal";
 import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
 import { orderArray } from "../../utils/orderArray";
-import { deleteImage } from "../../services/api/images";
 import { deleteAllImages } from "../../services/deleteAllImages";
 
 const UpdateTour = () => {

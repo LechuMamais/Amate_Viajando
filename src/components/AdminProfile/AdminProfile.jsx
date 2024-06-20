@@ -3,20 +3,24 @@ import MyLink from "../../components/MyLink/MyLink";
 import CardsList from "../../components/CardsList/CardsList";
 import { useState } from "react";
 import { useEffect } from "react";
-import { fetchSetDestinations } from "../../services/fetchSetDestinations";
 import { fetchSetTours } from "../../services/fetchSetTours";
+import { useContext } from "react";
+import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 
 const AdminProfile = (user) => {
-    const [destinations, setDestinations] = useState([]);
-    const [loadingDestinations, setLoadingDestinations] = useState(true);
-  
-    const [tours, setTours] = useState([]);
-    const [loadingTours, setLoadingTours] = useState(true);
-  
-    useEffect(() => {
-      fetchSetDestinations(setDestinations, setLoadingDestinations);
-      fetchSetTours(setTours, setLoadingTours);
-    }, []);
+  const { allDestinations, loading } = useContext(AllDestinationsContext);
+
+  const [tours, setTours] = useState([]);
+  const [loadingTours, setLoadingTours] = useState(true);
+
+  useEffect(() => {
+    fetchSetTours(setTours, setLoadingTours);
+  }, []);
+
+
+  if (loading) {
+    return <Text>Loading</Text>;
+  }
   return (
     <Flex direction="column" gap={8}>
       <Box>
@@ -29,13 +33,13 @@ const AdminProfile = (user) => {
       </Box>
 
       <Flex direction="column" gap={6} borderWidth="1px" p={4}>
-        {loadingDestinations ? (
+        {loading ? (
           <div>Loading...</div>
         ) : (
           <CardsList
             headingText={"Modificar Destinos"}
             descriptionText={"Selecciona el destino que quieras modificar"}
-            arrayToRender={destinations}
+            arrayToRender={allDestinations}
             usingFor={"updateDestinations"}
           />
         )}

@@ -1,7 +1,7 @@
 import MyLink from '../../components/MyLink/MyLink';
 import'./Home.css';
 
-import { Box, Button, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
 const Home = () => {
   return (

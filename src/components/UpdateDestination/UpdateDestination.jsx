@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
+import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 import {
   deleteDestination,
   getDestinationById,
@@ -27,11 +28,11 @@ import {
 } from "../../utils/imagesArrayConstructor";
 import { fetchSetTours } from "../../services/fetchSetTours";
 import MyModal from "../MyModal/MyModal";
-import { deleteImage } from "../../services/api/images";
 import { deleteAllImages } from "../../services/deleteAllImages";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
+  const { reloadDestinations } = useContext(AllDestinationsContext);
   const navigate = useNavigate();
   const { destination_id } = useParams();
   const [destination, setDestination] = useState(null);
@@ -109,6 +110,7 @@ const UpdateDestination = () => {
         duration: 5000,
         isClosable: true,
       });
+      reloadDestinations();
       navigate("/profile");
     } catch (error) {
       toast({
@@ -137,6 +139,7 @@ const UpdateDestination = () => {
         duration: 5000,
         isClosable: true,
       });
+      reloadDestinations();
       navigate("/profile");
     } catch (error) {
       toast({
@@ -154,6 +157,7 @@ const UpdateDestination = () => {
     setLoadingSubmit(true);
     await deleteAllImages(destination.images, user.token);
     await handleDeleteDestinationButton();
+    reloadDestinations();
     setLoadingSubmit(false);
   };
 
