@@ -17,7 +17,6 @@ import { AllDestinationsContext } from "../../providers/AllDestinationsProvider"
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
-
   const { allDestinations } = useContext(AllDestinationsContext);
 
   return (

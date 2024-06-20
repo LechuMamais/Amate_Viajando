@@ -4,7 +4,6 @@ import { Carousel } from 'react-responsive-carousel';
 
 const MyCarousel = ({obj}) => {
   return (
-    <>
       <Box w="full">
           {obj?.images && obj.images.length > 0 && (
             <Carousel
@@ -31,7 +30,6 @@ const MyCarousel = ({obj}) => {
           )}
 
       </Box>
-    </>
   );
 };
 
