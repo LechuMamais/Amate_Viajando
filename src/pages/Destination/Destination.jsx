@@ -8,13 +8,6 @@ import CardsList from "../../components/CardsList/CardsList";
 
 const Destination = () => {
   const { destination, loading } = useContext(DestinationContext);
-  const [descriptionParagraphs, setDescriptionParagraphs] = useState([]);
-
-  useEffect(() => {
-    if (destination?.longDescription) {
-      setDescriptionParagraphs(destination.longDescription.split("\n"));
-    }
-  }, [destination]);
 
   return (
     <Box as="main" flex="1">
@@ -23,7 +16,7 @@ const Destination = () => {
       ) : (
         <DetailsPage
           obj={destination}
-          descriptionParagraphs={descriptionParagraphs}
+          descriptionParagraphs={destination?.longDescription.split("\n")}
           usingFor={"destination"}
         >
           <CardsList

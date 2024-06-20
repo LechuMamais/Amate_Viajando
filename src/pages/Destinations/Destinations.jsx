@@ -1,16 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import CardsList from "../../components/CardsList/CardsList";
-import { useState } from "react";
-import { useEffect } from "react";
-import { fetchSetDestinations } from "../../services/fetchSetDestinations";
+import { useContext } from "react";
+import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 
 const Destinations = () => {
-  const [destinations, setDestinations] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchSetDestinations(setDestinations,setLoading);
-  }, []);
+  const { allDestinations, loading } = useContext(AllDestinationsContext);
 
   return (
     <Box as="main" flex="1">
@@ -22,7 +16,7 @@ const Destinations = () => {
           descriptionText={
             "Encuéntrate en los destinos naturales más espectaculares del sur del mundo"
           }
-          arrayToRender={destinations}
+          arrayToRender={allDestinations}
           usingFor={'destinations'}
         />
       )}

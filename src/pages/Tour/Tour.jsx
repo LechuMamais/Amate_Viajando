@@ -11,23 +11,14 @@ import CardsList from "../../components/CardsList/CardsList";
 
 const Tour = () => {
   const { tour_id } = useParams();
-  const [tour, setTour] = useState();
-  //const [loading, setLoading] = useState(true);
-  const [descriptionParagraphs, setDescripionParagraphs] = useState();
   const { destination, loading } = useContext(DestinationContext);
-
-  useEffect(() => {
-    if (tour) {
-      setDescripionParagraphs(tour?.longDescription.split("\n"));
-    }
-  }, [destination, tour_id, tour]);
+  const [tour, setTour] = useState();
 
   useEffect(() => {
     setTour(
       destination?.tours.filter((tour, index) => tour._id === tour_id)[0]
     );
-    setDescripionParagraphs(tour?.longDescription.split("\n"));
-  }, [destination, tour_id]);
+  }, [destination, tour_id, tour]);
 
   return (
     <Box as="main" flex="1">
@@ -36,7 +27,7 @@ const Tour = () => {
       ) : (
         <DetailsPage
           obj={tour}
-          descriptionParagraphs={descriptionParagraphs}
+          descriptionParagraphs={tour?.longDescription.split("\n")}
           usingFor={"tour"}
         >
           <ToursButtonContainer tour_id={tour_id} />

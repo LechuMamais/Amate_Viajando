@@ -18,7 +18,7 @@ const AdminProfile = (user) => {
   }, []);
 
 
-  if (loading) {
+  if (loading || loadingTours) {
     return <Text>Loading</Text>;
   }
   return (

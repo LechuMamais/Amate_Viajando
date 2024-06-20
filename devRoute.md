@@ -53,7 +53,6 @@ FRONTEND:
 
 Por hacer:
 
-
     - Tours: Que tengan PRECIO
 
     - Profile
