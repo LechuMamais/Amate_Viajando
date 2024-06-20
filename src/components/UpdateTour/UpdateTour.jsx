@@ -12,12 +12,14 @@ import MyModal from "../MyModal/MyModal";
 import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
 import { orderArray } from "../../utils/orderArray";
 import { deleteImage } from "../../services/api/images";
+import { deleteAllImages } from "../../services/deleteAllImages";
 
 const UpdateTour = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const { tour_id } = useParams();
   const [tour, setTour] = useState(null);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const toast = useToast();
   const {
     register,
@@ -55,7 +57,9 @@ const UpdateTour = () => {
     fetchTour();
   }, [tour_id, user.token, setValue, toast]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
+    setLoadingSubmit(true);
     try {
       const { images, ...formData } = data;
       const imageIds = await handleImageUpdate(images, tour, user.token);
@@ -79,9 +83,11 @@ const UpdateTour = () => {
         isClosable: true,
       });
     }
+    setLoadingSubmit(false);
   };
 
   const handleDeleteTourButton = async () => {
+    setLoadingSubmit(true);
     try {
       await deleteTour(tour_id, user.token);
       toast({
@@ -101,19 +107,15 @@ const UpdateTour = () => {
         isClosable: true,
       });
     }
-  };
-
-  const deleteAllImages = async () => {
-    await tour.images.forEach(image=>{
-      deleteImage(image._id, user.token)
-    });
+    setLoadingSubmit(false);
   };
 
   const handleDeleteAllClick = async () => {
-    await deleteAllImages();
-    await handleDeleteTourButton()
+    setLoadingSubmit(true);
+    await deleteAllImages(tour.images, user.token);
+    await handleDeleteTourButton();
+    setLoadingSubmit(false);
   };
-
 
   if (!tour) {
     return <Text>Cargando...</Text>;
@@ -131,36 +133,53 @@ const UpdateTour = () => {
           errors={errors}
           initialImages={tour.images}
           tour_id={tour_id}
+          usingFor="tour"
         />
-        <Button
-          mt={4}
-          size="lg"
-          colorScheme="teal"
-          type="submit"
-          w={{ base: "100%", md: "320px" }}
-        >
-          Actualizar Tour
-        </Button>
-        <MyModal
-            heading="Confirmar eliminación"
-            question="¿Estás seguro de que deseas eliminar este tour?"
-            text="¿Quieres eliminar tambien las imagenes de la base de datos?"
-            onAcceptClick={handleDeleteTourButton}
-            buttonText="Eliminar tour"
-            type="delete"
-            modalMainButtonText="Eliminar sólo el tour"
+
+        {loadingSubmit && (
+          <Button
+            isLoading
+            loadingText="Actualizando"
+            spinnerPlacement="start"
+            mt={4}
+            size="lg"
+            colorScheme="teal"
+            type="submit"
+            w={{ base: "100%", md: "320px" }}
+          ></Button>
+        )}
+        {!loadingSubmit && (
+          <Button
+            mt={4}
+            size="lg"
+            colorScheme="teal"
+            type="submit"
+            w={{ base: "100%", md: "320px" }}
           >
-            <Button
-              onClick={handleDeleteAllClick}
-              mt={8}
-              size="md"
-              colorScheme="red"
-              w={{ base: "100%", md: "280px" }}
-              mb={8}
-            >
-              Borrar todo
-            </Button>
-          </MyModal>
+            Actualizar Tour
+          </Button>
+        )}
+        <MyModal
+          heading="Confirmar eliminación"
+          question="¿Estás seguro de que deseas eliminar este tour?"
+          text="¿Quieres eliminar tambien las imagenes de la base de datos?"
+          onAcceptClick={handleDeleteTourButton}
+          buttonText="Eliminar tour"
+          type="delete"
+          modalMainButtonText="Eliminar sólo el tour"
+        >
+          <Button
+            onClick={handleDeleteAllClick}
+            mt={8}
+            size="md"
+            colorScheme="red"
+            w={{ base: "100%", md: "280px" }}
+            mb={8}
+          >
+            Borrar todo
+          </Button>
+        </MyModal>
+        <BackButton to="/profile" />
       </Stack>
     </Box>
   );

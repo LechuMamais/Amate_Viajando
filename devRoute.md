@@ -30,7 +30,6 @@ Por hacer:
 -----------------------------------------------------------------------------------------------------------------------
 FRONTEND:
 
-Por hacer:
 
 
     / CheckList - Destinations:
@@ -45,18 +44,19 @@ Por hacer:
                     Que se modifique correctamente la lista de tours
                     Que se modifiquen las propiedades de las imagenes
                     Que se modifiquen correctamente las imagenes de cloudinary: Que se borren las anteriores y se agreguen las nuevas. - Por aca quedé
-        
-                    
-
-
+  
     - MyModal: Aplicar en todos los delete
-
-    - Profile
-    - Para admin, que pueda modificar los destinations y los tours:
-        - Al darle a modificar una imagen, que la anterior se borre de cloudinary
 
     - ORDER: El front debe ordenar los arrrays de imagenes y tours antes de mostrarlos.
         Podría hacer esto directamente dentro de las funciones de services/api
+
+
+Por hacer:
+
+
+    - Tours: Que tengan PRECIO
+
+    - Profile
 
     - Register
     - Tour: Mostrar si está en la lista de fav, por ej con un corazon (que funcione también como boton)

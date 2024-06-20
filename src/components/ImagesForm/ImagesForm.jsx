@@ -17,21 +17,40 @@ import { deleteImage } from "../../services/api/images";
 import { UserContext } from "../../providers/UserProvider";
 import MyModal from "../MyModal/MyModal";
 import { deleteImageFromTour, updateTour } from "../../services/api/tours";
+import { deleteImageFromDestination } from "../../services/api/destinations";
+import { useParams } from "react-router-dom";
 
-const ImagesForm = ({ control, register, errors, initialImages, tour_id }) => {
+const ImagesForm = ({
+  control,
+  register,
+  errors,
+  initialImages,
+  //tour_id,
+  usingFor,
+}) => {
   const { user } = useContext(UserContext);
   const { fields, append, remove } = useFieldArray({
     control,
     name: "images",
   });
+  const { tour_id, destination_id } = useParams();
+  console.log(tour_id);
+  console.log(destination_id);
 
-  const handleDeleteImageClick = async (index, item) => {
-    console.log("·HandleDeleteImageClick");
+  const handleDeleteImage = async (index, item, usingFor, remove) => {
+    console.log("·HandleDeleteImage");
     console.log(index);
     console.log(item);
 
-    await deleteImageFromTour(item._id, tour_id, user.token);
-    await deleteImage(item._id, user.token);
+    if (item._id) {
+      if (usingFor == "tour") {
+        await deleteImageFromTour(item._id, tour_id, user.token);
+      } else if (usingFor == "destination") {
+        await deleteImageFromDestination(item._id, destination_id, user.token);
+      }
+      await deleteImage(item._id, user.token);
+    }
+
     remove(index);
   };
 
@@ -64,9 +83,9 @@ const ImagesForm = ({ control, register, errors, initialImages, tour_id }) => {
                 heading="Confirmar eliminación"
                 question="¿Estás seguro de que deseas eliminar esta imagen?"
                 text="Se borraran todos los datos de la imagen"
-                onAcceptClick={() => handleDeleteImageClick(index, item)}
+                onAcceptClick={() => handleDeleteImage(index, item, usingFor, remove)}
                 buttonText="Eliminar imagen"
-                type="delete" 
+                type="delete"
               />
             </Flex>
             <Box mb={4}>

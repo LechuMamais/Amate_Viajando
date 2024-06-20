@@ -51,6 +51,21 @@ export const getDestinations = async () => {
       handleError(error);
     }
   };
+
+  export const deleteImageFromDestination = async (image_id, destination_id, token) => {
+    try {
+      const response = await fetch(`${DESTINATIONS_URL}/${destination_id}/deleteImage/${image_id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      return await handleResponse(response);
+    } catch (error) {
+      handleError(error);
+    }
+  }
   
   export const deleteDestination = async (id, token) => {
     try {

@@ -28,6 +28,7 @@ import {
 import { fetchSetTours } from "../../services/fetchSetTours";
 import MyModal from "../MyModal/MyModal";
 import { deleteImage } from "../../services/api/images";
+import { deleteAllImages } from "../../services/deleteAllImages";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
@@ -83,7 +84,8 @@ const UpdateDestination = () => {
     fetchDestination();
   }, [destination_id, setValue, toast]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
     setLoadingSubmit(true);
     try {
       const { images, tours, ...formData } = data;
@@ -125,6 +127,7 @@ const UpdateDestination = () => {
   }
 
   const handleDeleteDestinationButton = async () => {
+    setLoadingSubmit(true);
     try {
       await deleteDestination(destination_id, user.token);
       toast({
@@ -144,17 +147,14 @@ const UpdateDestination = () => {
         isClosable: true,
       });
     }
-  };
-
-  const deleteAllImages = async () => {
-    await destination.images.forEach(image=>{
-      deleteImage(image._id, user.token)
-    });
+    setLoadingSubmit(false);
   };
 
   const handleDeleteAllClick = async () => {
-    await deleteAllImages();
-    await handleDeleteDestinationButton()
+    setLoadingSubmit(true);
+    await deleteAllImages(destination.images, user.token);
+    await handleDeleteDestinationButton();
+    setLoadingSubmit(false);
   };
 
   return (
@@ -173,6 +173,7 @@ const UpdateDestination = () => {
             register={register}
             errors={errors}
             initialImages={destination.images}
+            usingFor="destination"
           />
           <ToursCheckboxGroup
             loading={loading}
@@ -225,7 +226,6 @@ const UpdateDestination = () => {
               Borrar todo
             </Button>
           </MyModal>
-
           <BackButton to="/profile" />
         </Stack>
       </Container>
