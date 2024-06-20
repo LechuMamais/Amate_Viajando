@@ -22,7 +22,7 @@ import BackButton from "../BackButton/BackButton";
 import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
 import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
-import { orderImagesArray } from "../../utils/orderImagesArray";
+import { orderArray } from "../../utils/orderArray";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
@@ -43,9 +43,7 @@ const UpdateDestination = () => {
       try {
         const response = await getDestinationById(destination_id);
         const imagesArray = imagesArrayConstructor(response);
-        const orderedImagesArray = orderImagesArray(imagesArray);
-        
-        console.log(orderedImagesArray);
+        const orderedImagesArray = orderArray(imagesArray);
 
         setDestination({ ...response, images: orderedImagesArray });
         setValue("name", response.name);
@@ -53,10 +51,14 @@ const UpdateDestination = () => {
         setValue("description", response.description);
         setValue("longDescription", response.longDescription);
         setValue("images", orderedImagesArray);
-      
+
+        const orderedTours = orderArray(response.tours);
         setValue(
           "tours",
-          response.tours.map(tour => tour.tourObj._id)
+          orderedTours.map((tour) => ({
+            tourObj: tour.tourObj._id,
+            order: tour.order || null,
+          }))
         );
       } catch (error) {
         toast({
@@ -70,8 +72,7 @@ const UpdateDestination = () => {
     };
 
     fetchDestination();
-  }, [destination_id]);
-
+  }, [destination_id, setValue, toast]);
 
   const onSubmit = async (data) => {
     try {
@@ -80,7 +81,15 @@ const UpdateDestination = () => {
       const imageIds = await handleImageUpdate(images, destination, user.token);
 
       formData.images = imageIds;
-      formData.tours = tours;
+
+      const toursArray = tours.map((tour) => ({
+        tourObj: tour.tourObj,
+        order: tour.order || null,
+      }));
+
+      console.log(toursArray);
+
+      formData.tours = toursArray;
 
       await updateDestination(destination_id, formData, user.token);
 
@@ -148,10 +157,8 @@ const UpdateDestination = () => {
           />
           <ToursCheckboxGroup
             control={control}
-            register={register}
             errors={errors}
             initialTours={destination.tours}
-            user={user}
           />
           <Button
             mt={4}
@@ -166,9 +173,7 @@ const UpdateDestination = () => {
             mt={12}
             size="sm"
             colorScheme="red"
-            onClick={() => {
-              handleDeleteDestinationClick();
-            }}
+            onClick={handleDeleteDestinationClick}
             w={{ base: "100%", md: "160px" }}
             variant="outline"
           >

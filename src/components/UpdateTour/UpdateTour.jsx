@@ -10,7 +10,7 @@ import BackButton from "../BackButton/BackButton";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
 import MyModal from "../MyModal/MyModal";
 import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
-import { orderImagesArray } from "../../utils/orderImagesArray";
+import { orderArray } from "../../utils/orderArray";
 
 const UpdateTour = () => {
   const { user } = useContext(UserContext);
@@ -31,7 +31,7 @@ const UpdateTour = () => {
       try {
         const response = await getTourById(tour_id, user.token);
         const imagesArray = imagesArrayConstructor(response);
-        const orderedImagesArray = orderImagesArray(imagesArray);
+        const orderedImagesArray = orderArray(imagesArray);
 
         setTour({ ...response, images: orderedImagesArray });
 
@@ -56,17 +56,15 @@ const UpdateTour = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
+      //console.log(data);
       const { images, ...formData } = data;
-      console.log(formData);
-      // Estamos teniendo problema con el update de los objeto images. a ver que ocurre, que no se modifican
-      console.log(images);
-      //a on submit llega bien el contenido a subir de cada imagen.
+      //console.log(formData);
+      //console.log(images);
 
       const imageIds = await handleImageUpdate(images, tour, user.token);
 
       formData.images = imageIds;
-      console.log(formData.images);
+      //console.log(formData.images);
 
       await updateTour(tour_id, formData, user.token);
 

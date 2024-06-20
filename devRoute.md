@@ -31,8 +31,23 @@ Por hacer:
 FRONTEND:
 
 Por hacer:
-    - 
-    - Ahora que tours.images es un array de objetos, actualizar el CREATE Tours - Por aca quedé
+
+
+    / CheckList - Destinations:
+        - Create:   Que se cree el destino
+                    Que se creen las imagenes  
+                    Que se suban correctamente las imagenes a cloudinary
+                    Decidir si la lista de tours la voy a agregar acá o luego en update
+                    
+        
+        - Update:   Que se modifique el destino
+                    Que se modifique correctamente la lista de tours - Por aca quedé
+                    Que se modifiquen las propiedades de las imagenes
+                    Que se modifiquen las correctamente las imagenes de cloudinary: Que se borren las anteriores y se agreguen las nuevas.
+        
+        - Delete:   Que se elimine el destino
+                    
+
 
     - Ahora que destination.images es un array de objetos, actualizar el CREATE destinations
     - Ahora que destination.tours es un array de objetos, actualizar el CREATE destinations
@@ -51,6 +66,8 @@ Por hacer:
     - Para admin, que pueda modificar los destinations y los tours:
         - Al darle a modificar una imagen, que la anterior se borre de cloudinary
 
+    - ORDER: El front debe ordenar los arrrays de imagenes y tours antes de mostrarlos.
+        Podría hacer esto directamente dentro de las funciones de services/api
 
     - Register
     - Tour: Mostrar si está en la lista de fav, por ej con un corazon (que funcione también como boton)
@@ -60,6 +77,9 @@ Por hacer:
     - Eslint
     - Prettier
     - Ver Carrito
+
+    - Renombrar orderImagesArray
+
     - Comunicacion con la Base de datos.
     - paginas de login, register, 
     - Carrito
