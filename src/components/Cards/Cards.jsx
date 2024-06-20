@@ -2,28 +2,15 @@ import "./Cards.css";
 import { Box, Card, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import MyLink from "../MyLink/MyLink";
+import { buildCardEndPoint } from "../../utils/buildCardEndPoint";
 
 const Cards = ({ obj, usingFor }) => {
   const { heading, description, _id, images } = obj;
   const { destination_id } = useParams();
 
-  //console.log(obj)
-
-  const buildCardLink = () => {
-    if (usingFor === "destinations") {
-      return `/destinations/${_id}`;
-    } else if (usingFor === "tours") {
-      return `/destinations/${destination_id}/tours/${_id}`;
-    } else if (usingFor === "updateDestinations") {
-      return `/update-destination/${_id}`;
-    }else if (usingFor === "updateTours") {
-      return `/update-tour/${_id}`;
-    }
-  };
-
   return (
     <Card key={_id}>
-      <MyLink to={buildCardLink()}>
+      <MyLink to={buildCardEndPoint(usingFor, _id, destination_id)}>
         <Box overflow="hidden" borderRadius="xl">
           {images &&<Image
             src={images[0]?.imgObj?.url}

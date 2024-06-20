@@ -1,7 +1,7 @@
 import "./Destination.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Box } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import DetailsPage from "../../components/DetailsPage/DetailsPage";
 import { DestinationContext } from "../../providers/DestinationProvider";
 import CardsList from "../../components/CardsList/CardsList";
