@@ -21,14 +21,16 @@ import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
 import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
-import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
-import { orderArray } from "../../utils/orderArray";
+import { imagesArrayConstructor, toursArrayConstructor } from "../../utils/imagesArrayConstructor";
+import { fetchSetTours } from "../../services/fetchSetTours";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const { destination_id } = useParams();
   const [destination, setDestination] = useState(null);
+  const [allTours, setAllTours] = useState([]);
+  const [loading, setLoading] = useState(true);
   const toast = useToast();
   const {
     register,
@@ -39,25 +41,26 @@ const UpdateDestination = () => {
   } = useForm();
 
   useEffect(() => {
+    fetchSetTours(setAllTours, setLoading);
+  }, []);
+
+  useEffect(() => {
     const fetchDestination = async () => {
       try {
         const response = await getDestinationById(destination_id);
         const imagesArray = imagesArrayConstructor(response);
-        const orderedImagesArray = orderArray(imagesArray);
 
-        setDestination({ ...response, images: orderedImagesArray });
+        setDestination({ ...response, images: imagesArray });
         setValue("name", response.name);
         setValue("heading", response.heading);
         setValue("description", response.description);
         setValue("longDescription", response.longDescription);
-        setValue("images", orderedImagesArray);
-
-        const orderedTours = orderArray(response.tours);
+        setValue("images", imagesArray);
         setValue(
           "tours",
-          orderedTours.map((tour) => ({
+          response.tours.map((tour) => ({
             tourObj: tour.tourObj._id,
-            order: tour.order || null,
+            order: tour.order || 100,
           }))
         );
       } catch (error) {
@@ -77,22 +80,18 @@ const UpdateDestination = () => {
   const onSubmit = async (data) => {
     try {
       const { images, tours, ...formData } = data;
-
+  
       const imageIds = await handleImageUpdate(images, destination, user.token);
-
+  
       formData.images = imageIds;
-
-      const toursArray = tours.map((tour) => ({
+  
+      formData.tours = tours.map((tour) => ({
         tourObj: tour.tourObj,
-        order: tour.order || null,
+        order: tour.order !== undefined && tour.order !== null ? tour.order : 100,
       }));
 
-      console.log(toursArray);
-
-      formData.tours = toursArray;
-
       await updateDestination(destination_id, formData, user.token);
-
+  
       toast({
         title: "Destino Actualizado.",
         description: "El destino ha sido actualizado exitosamente.",
@@ -111,6 +110,7 @@ const UpdateDestination = () => {
       });
     }
   };
+  
 
   if (!destination) {
     return <Text>Cargando...</Text>;
@@ -156,9 +156,11 @@ const UpdateDestination = () => {
             initialImages={destination.images}
           />
           <ToursCheckboxGroup
+            loading={loading}
+            allTours={allTours}
             control={control}
             errors={errors}
-            initialTours={destination.tours}
+            initialTours={toursArrayConstructor(destination.tours)}
           />
           <Button
             mt={4}

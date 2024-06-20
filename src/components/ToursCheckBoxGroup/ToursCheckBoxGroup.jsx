@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   Checkbox,
   Text,
@@ -11,17 +10,9 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { Controller } from "react-hook-form";
-import { fetchSetTours } from "../../services/fetchSetTours";
 
-const ToursCheckboxGroup = ({ control, errors, initialTours }) => {
-  const [tours, setTours] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => {
-      fetchSetTours(setTours, setLoading);
-    }, []);
-
+const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }) => {
+  if (loading) return <Text>Loading...</Text>;
 
   return (
     <Box borderWidth="1px" borderRadius="lg" p={4} mb={4}>
@@ -34,44 +25,68 @@ const ToursCheckboxGroup = ({ control, errors, initialTours }) => {
         <Controller
           name="tours"
           control={control}
-          defaultValue={initialTours.map(tour => tour.tourObj._id)}
+          defaultValue={initialTours.map((tour) => ({
+            tourObj: tour.tourObj,
+            order: tour.order,
+          }))}
           render={({ field }) => (
             <Stack spacing={2}>
-              {tours?.map((tour, index) => (
-                <Box key={tour._id} borderWidth="1px" borderRadius="lg" p={2}>
-                  <Checkbox
-                    value={tour._id}
-                    isChecked={field.value.includes(tour._id)}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        field.onChange([...field.value, e.target.value]);
-                      } else {
-                        field.onChange(field.value.filter((id) => id !== e.target.value));
-                      }
-                    }}
-                  >
-                    <Text fontWeight="bold">{tour.name}</Text>
-                    <Text fontSize="sm">{tour.heading}</Text>
-                  </Checkbox>
-                  <Input
-                    type="number"
-                    placeholder="Order"
-                    value={tour.order || ""}
-                    onChange={(e) => {
-                      const newOrder = parseInt(e.target.value, 10);
-                      setTours(prevTours => {
-                        const updatedTours = [...prevTours];
-                        updatedTours[index].order = isNaN(newOrder) ? null : newOrder;
-                        return updatedTours;
-                      });
-                    }}
-                  />
-                </Box>
-              ))}
+              {allTours?.map((tour, index) => {
+                const isChecked = field.value.some(
+                  (t) => t.tourObj === tour._id
+                );
+                const orderValue =
+                  field.value.find((t) => t.tourObj === tour._id)?.order || "";
+                return (
+                  <Box key={tour._id} borderWidth="1px" borderRadius="lg" p={2}>
+                    <Checkbox
+                      value={tour._id}
+                      isChecked={isChecked}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          field.onChange([
+                            ...field.value,
+                            { tourObj: e.target.value, order: "" },
+                          ]);
+                        } else {
+                          field.onChange(
+                            field.value.filter(
+                              (t) => t.tourObj !== e.target.value
+                            )
+                          );
+                        }
+                      }}
+                    >
+                      <Text fontWeight="bold">{tour.name}</Text>
+                      <Text fontSize="sm">{tour.heading}</Text>
+                    </Checkbox>
+                    <Input
+                      type="number"
+                      placeholder="Order"
+                      value={orderValue}
+                      onChange={(e) => {
+                        const newOrder = parseInt(e.target.value, 10);
+                        const updatedFieldValue = field.value.map((t) => {
+                          if (t.tourObj === tour._id) {
+                            return {
+                              ...t,
+                              order: isNaN(newOrder) ? null : newOrder,
+                            };
+                          }
+                          return t;
+                        });
+                        field.onChange(updatedFieldValue);
+                      }}
+                    />
+                  </Box>
+                );
+              })}
             </Stack>
           )}
         />
-        <FormErrorMessage>{errors.tours && errors.tours.message}</FormErrorMessage>
+        <FormErrorMessage>
+          {errors.tours && errors.tours.message}
+        </FormErrorMessage>
       </FormControl>
     </Box>
   );

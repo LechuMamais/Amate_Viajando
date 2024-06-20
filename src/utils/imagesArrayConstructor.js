@@ -4,3 +4,10 @@ export const imagesArrayConstructor = (response) => {
         order: image.order,
     }));
 };
+
+export const toursArrayConstructor = (tours) => {
+    return tours.map((tour) => ({
+        ...tour.tourObj,
+        order: tour.order,
+    }));
+};
