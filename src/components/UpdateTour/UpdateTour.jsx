@@ -131,7 +131,6 @@ const UpdateTour = () => {
           control={control}
           register={register}
           errors={errors}
-          initialImages={tour.images}
           tour_id={tour_id}
           usingFor="tour"
         />

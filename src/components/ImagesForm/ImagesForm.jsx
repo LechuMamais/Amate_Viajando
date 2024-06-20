@@ -13,19 +13,15 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { deleteImage } from "../../services/api/images";
 import { UserContext } from "../../providers/UserProvider";
 import MyModal from "../MyModal/MyModal";
-import { deleteImageFromTour, updateTour } from "../../services/api/tours";
-import { deleteImageFromDestination } from "../../services/api/destinations";
 import { useParams } from "react-router-dom";
+import { handleDeleteImage } from "../../services/handleDeleteImage";
 
 const ImagesForm = ({
   control,
   register,
   errors,
-  initialImages,
-  //tour_id,
   usingFor,
 }) => {
   const { user } = useContext(UserContext);
@@ -34,25 +30,6 @@ const ImagesForm = ({
     name: "images",
   });
   const { tour_id, destination_id } = useParams();
-  console.log(tour_id);
-  console.log(destination_id);
-
-  const handleDeleteImage = async (index, item, usingFor, remove) => {
-    console.log("·HandleDeleteImage");
-    console.log(index);
-    console.log(item);
-
-    if (item._id) {
-      if (usingFor == "tour") {
-        await deleteImageFromTour(item._id, tour_id, user.token);
-      } else if (usingFor == "destination") {
-        await deleteImageFromDestination(item._id, destination_id, user.token);
-      }
-      await deleteImage(item._id, user.token);
-    }
-
-    remove(index);
-  };
 
   return (
     <Box borderWidth="1px" borderRadius="lg" p={4} mb={4} bg="gray.100">
@@ -83,7 +60,7 @@ const ImagesForm = ({
                 heading="Confirmar eliminación"
                 question="¿Estás seguro de que deseas eliminar esta imagen?"
                 text="Se borraran todos los datos de la imagen"
-                onAcceptClick={() => handleDeleteImage(index, item, usingFor, remove)}
+                onAcceptClick={() => handleDeleteImage(index, item, usingFor, remove, tour_id, destination_id, user.token)}
                 buttonText="Eliminar imagen"
                 type="delete"
               />

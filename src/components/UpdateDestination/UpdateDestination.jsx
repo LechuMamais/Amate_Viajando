@@ -172,7 +172,6 @@ const UpdateDestination = () => {
             control={control}
             register={register}
             errors={errors}
-            initialImages={destination.images}
             usingFor="destination"
           />
           <ToursCheckboxGroup
