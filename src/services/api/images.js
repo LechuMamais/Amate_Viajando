@@ -27,17 +27,17 @@ export const getImages = async () => {
         headers: {
           'Authorization': `Bearer ${token}`
         },
-        body: imageData // Enviar FormData directamente como body
+        body: imageData
       });
   
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
   
-      return await response.json(); // Asegurarse de parsear la respuesta correctamente
+      return await response.json();
     } catch (error) {
       console.error('Error:', error);
-      throw error; // Asegurarse de que el error se propague a la función que llama
+      throw error;
     }
   };
   

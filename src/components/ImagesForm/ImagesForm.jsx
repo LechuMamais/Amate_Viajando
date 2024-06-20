@@ -26,9 +26,9 @@ const ImagesForm = ({ control, register, errors, initialImages, tour_id }) => {
   });
 
   const handleDeleteImageClick = async (index, item) => {
-    console.log("·HandleDeleteImageClick")
-    console.log(index)
-    console.log(item)
+    console.log("·HandleDeleteImageClick");
+    console.log(index);
+    console.log(item);
 
     await deleteImageFromTour(item._id, tour_id, user.token);
     await deleteImage(item._id, user.token);
@@ -62,9 +62,11 @@ const ImagesForm = ({ control, register, errors, initialImages, tour_id }) => {
               </Heading>
               <MyModal
                 heading="Confirmar eliminación"
-                text="¿Estás seguro de que deseas eliminar esta imagen?"
-                onAcceptClick={()=>handleDeleteImageClick(index, item)}
+                question="¿Estás seguro de que deseas eliminar esta imagen?"
+                text="Se borraran todos los datos de la imagen"
+                onAcceptClick={() => handleDeleteImageClick(index, item)}
                 buttonText="Eliminar imagen"
+                type="delete" 
               />
             </Flex>
             <Box mb={4}>

@@ -11,6 +11,7 @@ import { handleImageUpdate } from "../../services/handleImageUpdate";
 import MyModal from "../MyModal/MyModal";
 import { imagesArrayConstructor } from "../../utils/imagesArrayConstructor";
 import { orderArray } from "../../utils/orderArray";
+import { deleteImage } from "../../services/api/images";
 
 const UpdateTour = () => {
   const { user } = useContext(UserContext);
@@ -56,16 +57,9 @@ const UpdateTour = () => {
 
   const onSubmit = async (data) => {
     try {
-      //console.log(data);
       const { images, ...formData } = data;
-      //console.log(formData);
-      //console.log(images);
-
       const imageIds = await handleImageUpdate(images, tour, user.token);
-
       formData.images = imageIds;
-      //console.log(formData.images);
-
       await updateTour(tour_id, formData, user.token);
 
       toast({
@@ -87,7 +81,7 @@ const UpdateTour = () => {
     }
   };
 
-  const handleDeleteTourClick = async () => {
+  const handleDeleteTourButton = async () => {
     try {
       await deleteTour(tour_id, user.token);
       toast({
@@ -108,6 +102,18 @@ const UpdateTour = () => {
       });
     }
   };
+
+  const deleteAllImages = async () => {
+    await tour.images.forEach(image=>{
+      deleteImage(image._id, user.token)
+    });
+  };
+
+  const handleDeleteAllClick = async () => {
+    await deleteAllImages();
+    await handleDeleteTourButton()
+  };
+
 
   if (!tour) {
     return <Text>Cargando...</Text>;
@@ -136,11 +142,25 @@ const UpdateTour = () => {
           Actualizar Tour
         </Button>
         <MyModal
-          heading="Confirmar eliminación"
-          text="¿Estás seguro de que deseas eliminar este tour? Si quieres eliminar las imagenes de la base de datos debes hacerlo manualmente antes de eliminar el tour."
-          onAcceptClick={handleDeleteTourClick}
-          buttonText="Eliminar tour"
-        />
+            heading="Confirmar eliminación"
+            question="¿Estás seguro de que deseas eliminar este tour?"
+            text="¿Quieres eliminar tambien las imagenes de la base de datos?"
+            onAcceptClick={handleDeleteTourButton}
+            buttonText="Eliminar tour"
+            type="delete"
+            modalMainButtonText="Eliminar sólo el tour"
+          >
+            <Button
+              onClick={handleDeleteAllClick}
+              mt={8}
+              size="md"
+              colorScheme="red"
+              w={{ base: "100%", md: "280px" }}
+              mb={8}
+            >
+              Borrar todo
+            </Button>
+          </MyModal>
       </Stack>
     </Box>
   );

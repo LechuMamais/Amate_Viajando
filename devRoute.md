@@ -39,26 +39,15 @@ Por hacer:
                     Que se suban correctamente las imagenes a cloudinary
                     Decidir si la lista de tours la voy a agregar acá o luego en update
                     
+        - Delete:   Que se elimine el destino
         
         - Update:   Que se modifique el destino
-                    Que se modifique correctamente la lista de tours - Por aca quedé
+                    Que se modifique correctamente la lista de tours
                     Que se modifiquen las propiedades de las imagenes
-                    Que se modifiquen las correctamente las imagenes de cloudinary: Que se borren las anteriores y se agreguen las nuevas.
+                    Que se modifiquen correctamente las imagenes de cloudinary: Que se borren las anteriores y se agreguen las nuevas. - Por aca quedé
         
-        - Delete:   Que se elimine el destino
                     
 
-
-    - Ahora que destination.images es un array de objetos, actualizar el CREATE destinations
-    - Ahora que destination.tours es un array de objetos, actualizar el CREATE destinations
-
-    - Ahora que tours.images es un array de objetos, actualizar el UPDATE Tours
-
-    - Ahora que destination.images es un array de objetos, actualizar el UPDATE destinations
-    - Ahora que destination.tours es un array de objetos, actualizar el UPDATE destinations
-
-    - Update Destinations: marcar que tours se pueden hacer ahí
-    - Create Destinations: marcar que tours se pueden hacer ahí
 
     - MyModal: Aplicar en todos los delete
 

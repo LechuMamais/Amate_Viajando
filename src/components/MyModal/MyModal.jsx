@@ -8,9 +8,20 @@ import {
   ModalCloseButton,
   Button,
   useDisclosure,
+  Text,
 } from "@chakra-ui/react";
 
-const MyModal = ({buttonText,  heading, text, onAcceptClick }) => {
+const MyModal = ({
+  buttonText,
+  heading = "",
+  question = "",
+  text = "",
+  onAcceptClick,
+  type = "delete",
+  modalMainButtonText = "Aceptar",
+  modalSecondaryButtonText = "Cancelar",
+  children,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleAccept = () => {
@@ -31,19 +42,31 @@ const MyModal = ({buttonText,  heading, text, onAcceptClick }) => {
         {buttonText}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{heading}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>{text}</ModalBody>
+          <ModalBody>
+            {question != "" && (
+              <Text fontSize="xl" mb={4}>
+                {question}
+              </Text>
+            )}
+            {text != "" && <Text>{text}</Text>}
+            {children}
+          </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleAccept}>
-              Aceptar
+            <Button
+              colorScheme={type == "delete" ? "red" : "blue"}
+              mr={3}
+              onClick={handleAccept}
+            >
+              {modalMainButtonText}
             </Button>
             <Button variant="ghost" onClick={onClose}>
-              Cancelar
+              {modalSecondaryButtonText}
             </Button>
           </ModalFooter>
         </ModalContent>

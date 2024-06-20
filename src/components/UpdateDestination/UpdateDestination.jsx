@@ -21,8 +21,13 @@ import ImagesForm from "../ImagesForm/ImagesForm";
 import BackButton from "../BackButton/BackButton";
 import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
 import { handleImageUpdate } from "../../services/handleImageUpdate";
-import { imagesArrayConstructor, toursArrayConstructor } from "../../utils/imagesArrayConstructor";
+import {
+  imagesArrayConstructor,
+  toursArrayConstructor,
+} from "../../utils/imagesArrayConstructor";
 import { fetchSetTours } from "../../services/fetchSetTours";
+import MyModal from "../MyModal/MyModal";
+import { deleteImage } from "../../services/api/images";
 
 const UpdateDestination = () => {
   const { user } = useContext(UserContext);
@@ -31,6 +36,7 @@ const UpdateDestination = () => {
   const [destination, setDestination] = useState(null);
   const [allTours, setAllTours] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const toast = useToast();
   const {
     register,
@@ -78,20 +84,22 @@ const UpdateDestination = () => {
   }, [destination_id, setValue, toast]);
 
   const onSubmit = async (data) => {
+    setLoadingSubmit(true);
     try {
       const { images, tours, ...formData } = data;
-  
+
       const imageIds = await handleImageUpdate(images, destination, user.token);
-  
+
       formData.images = imageIds;
-  
+
       formData.tours = tours.map((tour) => ({
         tourObj: tour.tourObj,
-        order: tour.order !== undefined && tour.order !== null ? tour.order : 100,
+        order:
+          tour.order !== undefined && tour.order !== null ? tour.order : 100,
       }));
 
       await updateDestination(destination_id, formData, user.token);
-  
+
       toast({
         title: "Destino Actualizado.",
         description: "El destino ha sido actualizado exitosamente.",
@@ -109,14 +117,14 @@ const UpdateDestination = () => {
         isClosable: true,
       });
     }
+    setLoadingSubmit(false);
   };
-  
 
   if (!destination) {
     return <Text>Cargando...</Text>;
   }
 
-  const handleDeleteDestinationClick = async () => {
+  const handleDeleteDestinationButton = async () => {
     try {
       await deleteDestination(destination_id, user.token);
       toast({
@@ -136,6 +144,17 @@ const UpdateDestination = () => {
         isClosable: true,
       });
     }
+  };
+
+  const deleteAllImages = async () => {
+    await destination.images.forEach(image=>{
+      deleteImage(image._id, user.token)
+    });
+  };
+
+  const handleDeleteAllClick = async () => {
+    await deleteAllImages();
+    await handleDeleteDestinationButton()
   };
 
   return (
@@ -162,25 +181,51 @@ const UpdateDestination = () => {
             errors={errors}
             initialTours={toursArrayConstructor(destination.tours)}
           />
-          <Button
-            mt={4}
-            size="lg"
-            colorScheme="teal"
-            type="submit"
-            w={{ base: "100%", md: "320px" }}
+          {loadingSubmit && (
+            <Button
+              isLoading
+              loadingText="Actualizando"
+              spinnerPlacement="start"
+              mt={4}
+              size="lg"
+              colorScheme="teal"
+              type="submit"
+              w={{ base: "100%", md: "320px" }}
+            ></Button>
+          )}
+          {!loadingSubmit && (
+            <Button
+              mt={4}
+              size="lg"
+              colorScheme="teal"
+              type="submit"
+              w={{ base: "100%", md: "320px" }}
+            >
+              Actualizar Destino
+            </Button>
+          )}
+
+          <MyModal
+            heading="Confirmar eliminación"
+            question="¿Estás seguro de que deseas eliminar este destino?"
+            text="¿Quieres eliminar tambien las imagenes de la base de datos?"
+            onAcceptClick={handleDeleteDestinationButton}
+            buttonText="Eliminar destino"
+            type="delete"
+            modalMainButtonText="Eliminar sólo el destino"
           >
-            Actualizar Destino
-          </Button>
-          <Button
-            mt={12}
-            size="sm"
-            colorScheme="red"
-            onClick={handleDeleteDestinationClick}
-            w={{ base: "100%", md: "160px" }}
-            variant="outline"
-          >
-            Eliminar Destino
-          </Button>
+            <Button
+              onClick={handleDeleteAllClick}
+              mt={8}
+              size="md"
+              colorScheme="red"
+              w={{ base: "100%", md: "280px" }}
+              mb={8}
+            >
+              Borrar todo
+            </Button>
+          </MyModal>
+
           <BackButton to="/profile" />
         </Stack>
       </Container>
