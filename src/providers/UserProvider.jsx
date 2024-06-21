@@ -5,10 +5,10 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
+
   const getUserFromLocalStorage = async () => {
     const tokenLocal = localStorage.getItem("accessToken");
     const userIdLocal = localStorage.getItem("userId");
-    // Contrastamos los datos de localStorage con la BBDD
     const userLogged = await checkLogged(userIdLocal, tokenLocal);
     if (userLogged.authorized == false) {
       localStorage.removeItem("accessToken");
