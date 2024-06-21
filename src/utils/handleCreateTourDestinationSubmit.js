@@ -2,7 +2,7 @@ import { createDestination } from "../services/api/destinations";
 import { createImage } from "../services/api/images";
 import { createTour } from "../services/api/tours";
 
-export const handleCreateTourDestinationSubmit = async (data, token, toast, usingFor, navigate) => {
+export const handleCreateTourDestinationSubmit = async (data, token, toast, usingFor, navigate, reloadDestinations) => {
     try {
         const { images, ...formData } = data;
         let imageIds = [];
@@ -27,7 +27,6 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
             await createDestination(formData, token);
         }
 
-
         toast({
             title: `${usingFor==="destination"? "Destino":usingFor==="tour"? "Tour": usingFor} creado.`,
             description: `El ${usingFor==="destination"? "Destino":usingFor} ha sido creado exitosamente.`,
@@ -35,6 +34,7 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
             duration: 5000,
             isClosable: true,
         });
+        reloadDestinations();
         navigate("/profile");
     } catch (error) {
         toast({
