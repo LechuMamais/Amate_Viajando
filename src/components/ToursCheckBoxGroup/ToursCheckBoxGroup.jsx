@@ -8,6 +8,7 @@ import {
   FormErrorMessage,
   Input,
   Box,
+  Flex,
 } from "@chakra-ui/react";
 import { Controller } from "react-hook-form";
 
@@ -28,7 +29,7 @@ const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }
           defaultValue={initialTours.map((tour) => ({
             tourObj: tour.tourObj,
             order: tour.order,
-          }))}
+          }))}  
           render={({ field }) => (
             <Stack spacing={2}>
               {allTours?.map((tour, index) => {
@@ -38,8 +39,9 @@ const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }
                 const orderValue =
                   field.value.find((t) => t.tourObj === tour._id)?.order || "";
                 return (
-                  <Box key={tour._id} borderWidth="1px" borderRadius="lg" p={2}>
+                  <Flex key={tour._id} borderWidth="1px" borderRadius="lg" p={2}>
                     <Checkbox
+                    flex={5}
                       value={tour._id}
                       isChecked={isChecked}
                       onChange={(e) => {
@@ -61,6 +63,8 @@ const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }
                       <Text fontSize="sm">{tour.heading}</Text>
                     </Checkbox>
                     <Input
+                    w="60px"
+                    required={isChecked}
                       type="number"
                       placeholder="Order"
                       value={orderValue}
@@ -78,7 +82,7 @@ const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }
                         field.onChange(updatedFieldValue);
                       }}
                     />
-                  </Box>
+                  </Flex>
                 );
               })}
             </Stack>

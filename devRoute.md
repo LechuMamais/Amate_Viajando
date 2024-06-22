@@ -43,7 +43,7 @@ FRONTEND:
         - Update:   Que se modifique el destino
                     Que se modifique correctamente la lista de tours
                     Que se modifiquen las propiedades de las imagenes
-                    Que se modifiquen correctamente las imagenes de cloudinary: Que se borren las anteriores y se agreguen las nuevas. - Por aca quedé
+                    Que se modifiquen correctamente las imagenes de cloudinary: Que se borren las anteriores y se agreguen las nuevas.
   
     - MyModal: Aplicar en todos los delete
 
@@ -52,7 +52,7 @@ FRONTEND:
 
 
 Por hacer:
-
+    - CreateDestination: Que se puedan seleccionar los tours
     - Tours: Que tengan PRECIO
 
     - Profile
