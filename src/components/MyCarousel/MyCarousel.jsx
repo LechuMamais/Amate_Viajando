@@ -7,7 +7,7 @@ const MyCarousel = ({obj}) => {
       <Box w="full">
           {obj?.images && obj.images.length > 0 && (
             <Carousel
-             className="w-full h-full carousel"
+             className="w-full"
               useKeyboardArrows={true}
               statusFormatter={() => {
                 return <></>;
@@ -21,7 +21,7 @@ const MyCarousel = ({obj}) => {
                     alt={image.imgObj.alt}
                     width={1920}
                     height={1000}
-                    className="w-full h-full object-cover"
+                    className="w-full  object-cover"
                   />
                   {/*<p className="legend">{image.description}</p>*/}
                 </div>

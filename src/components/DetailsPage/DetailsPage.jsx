@@ -14,10 +14,19 @@ import MyLink from "../MyLink/MyLink";
 import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
 import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
+import { useEffect } from "react";
+import { handleDetailsPageScroll } from "../../handleScroll/handleDetailsPageScroll";
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
   const { allDestinations } = useContext(AllDestinationsContext);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleDetailsPageScroll);
+    return () => {
+      window.removeEventListener('scroll', handleDetailsPageScroll);
+    };
+  }, []);
 
   return (
     <>
