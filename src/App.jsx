@@ -11,10 +11,10 @@ import { DestinationProvider } from "./providers/DestinationProvider";
 import Login from "./pages/Login/Login";
 import Logout from "./components/Logout/Logout";
 import Profile from "./pages/Profile/Profile";
-import CreateTour from "./components/CreateTour/CreateTour";
-import CreateDestination from "./components/CreateDestination/CreateDestination";
-import UpdateDestination from "./components/UpdateDestination/UpdateDestination";
-import UpdateTour from "./components/UpdateTour/UpdateTour";
+import CreateTour from "./pages/CreateTour/CreateTour";
+import CreateDestination from "./pages/CreateDestination/CreateDestination";
+import UpdateDestination from "./pages/UpdateDestination/UpdateDestination";
+import UpdateTour from "./pages/UpdateTour/UpdateTour";
 
 function App() {
   return (

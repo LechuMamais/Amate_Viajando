@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, Stack, Heading, Text, Container } from "@chakra-ui/react";
-import TourDestinationForm from "../TourDestinationForm/TourDestinationForm";
-import ImagesForm from "../ImagesForm/ImagesForm";
-import BackButton from "../BackButton/BackButton";
-import ToursCheckboxGroup from "../ToursCheckBoxGroup/ToursCheckBoxGroup";
-import MyModal from "../MyModal/MyModal";
+import TourDestinationForm from "../../components/TourDestinationForm/TourDestinationForm";
+import ImagesForm from "../../components/ImagesForm/ImagesForm";
+import BackButton from "../../components/BackButton/BackButton";
+import ToursCheckboxGroup from "../../components/ToursCheckBoxGroup/ToursCheckBoxGroup";
+import MyModal from "../../components/MyModal/MyModal";
 import { useUpdateDestination } from "../../customHooks/useUpdateDestination/useUpdateDestination";
 import { toursArrayConstructor } from "../../utils/imagesArrayConstructor";
 
