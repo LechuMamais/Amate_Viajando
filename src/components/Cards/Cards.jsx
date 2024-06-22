@@ -15,8 +15,8 @@ const Cards = ({ obj, usingFor }) => {
           {images &&<Image
             src={images[0]?.imgObj?.url}
             alt={images[0]?.imgObj?.alt}
-            width={700}
-            height={400}
+            width={800}
+            height={{base: "300", sm: "400"}}
             objectFit="cover"
           />}
           

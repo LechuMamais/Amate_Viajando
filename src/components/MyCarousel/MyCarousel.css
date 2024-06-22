@@ -1,9 +1,13 @@
+.carousel{
+    height: calc(100vh - 72px);
+}
+
 .carousel.carousel-slider .control-next {
-    padding: 0 5px 0 40% !important;
+    padding: 0 5px 0 calc(50% - 23px) !important;
 }
 
 .carousel.carousel-slider .control-prev {
-    padding: 0 40% 0 5px !important;
+    padding: 0 calc(50% - 23px) 0 5px !important;
 }
 
 .carousel.carousel-slider .control-arrow:hover {

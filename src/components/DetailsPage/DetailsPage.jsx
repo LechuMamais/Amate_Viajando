@@ -8,7 +8,7 @@ import {
   Stack,
   Box,
 } from "@chakra-ui/react";
-import MyCarousel from "../../components/DestinationCarousel/MyCarousel";
+import MyCarousel from "../MyCarousel/MyCarousel";
 import CardsList from "../CardsList/CardsList";
 import MyLink from "../MyLink/MyLink";
 import { useContext } from "react";
