@@ -1,28 +1,17 @@
+import'./Home.css';
 import { useEffect } from 'react';
 import MyLink from '../../components/MyLink/MyLink';
-import'./Home.css';
-
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { handleHomeScroll } from '../../handleScroll/handleHomeScroll';
 
 const Home = () => {
   useEffect(() => {
-    const handleScroll = () => {
-      const parallaxTranslateFactor = -1.5;
-      const parallaxScaleFactor = 0.001
-      const scrolled = window.scrollY;
-      const heroElement = document.querySelector('.hero');
-      if (heroElement) {
-        heroElement.style.transform = `translateY(${scrolled * parallaxTranslateFactor}px)`;
-        heroElement.style.transform = `scale(${1+ scrolled * parallaxScaleFactor})`;
-      }
-      console.log(scrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleHomeScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleHomeScroll);
     };
   }, []);
+
   return (
     <Box as="main" flex="1">
       <Box position="relative" w="full" h="calc(100vh - 72px)">
