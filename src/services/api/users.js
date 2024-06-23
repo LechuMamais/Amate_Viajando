@@ -37,9 +37,14 @@ export const registerUser = async (userData) => {
             },
             body: JSON.stringify(userData)
         });
-        return await handleResponse(response);
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Error en el registro');
+        }
+        return response.json();
     } catch (error) {
-        handleError(error);
+        console.log(error.message)
+        return error;
     }
 };
 
@@ -70,7 +75,6 @@ export const checkLogged = async (id, token) => {
         });
         return await handleResponse(response);
     } catch (error) {
-        //console.error(error);
         return { authorized: false, error };
     }
 };
