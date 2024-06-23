@@ -15,6 +15,7 @@ import CreateTour from "./pages/CreateTour/CreateTour";
 import CreateDestination from "./pages/CreateDestination/CreateDestination";
 import UpdateDestination from "./pages/UpdateDestination/UpdateDestination";
 import UpdateTour from "./pages/UpdateTour/UpdateTour";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/destinations" element={<Destinations />} />

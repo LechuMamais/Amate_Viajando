@@ -15,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { loginUser } from "../../services/api/users";
 import { UserContext } from "../../providers/UserProvider";
+import MyLink from "../../components/MyLink/MyLink";
 
 // Esquema de validación de Yup
 const schema = yup.object().shape({
@@ -117,13 +118,14 @@ const Login = () => {
               >
                 ¿Olvidaste tu contraseña?
               </Text>
-              <Text
-                as="button"
-                color="teal.500"
-                onClick={() => alert("Redirigir a Register")}
-              >
-                Regístrate
-              </Text>
+              <MyLink to="/register">
+                <Text
+                  as="button"
+                  color="teal.500"
+                >
+                  Regístrate
+                </Text>
+              </MyLink>
             </Stack>
           </Stack>
         </form>
