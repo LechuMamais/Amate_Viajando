@@ -57,7 +57,7 @@ Por hacer:
 
     - Profile
 
-    - Register
+    - Register ... chequear de componetizar las funciones del customHook
     - Tour: Mostrar si está en la lista de fav, por ej con un corazon (que funcione también como boton)
 
     - Hay un bug con el menu burger sobre el slider, dejan de funcionar los clicks

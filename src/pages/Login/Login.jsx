@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -8,90 +8,25 @@ import {
   Input,
   Stack,
   Text,
-  useToast,
 } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { loginUser } from "../../services/api/users";
-import { UserContext } from "../../providers/UserProvider";
 import MyLink from "../../components/MyLink/MyLink";
-
-// Esquema de validación de Yup
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Correo electrónico inválido")
-    .required("El correo electrónico es obligatorio"),
-  password: yup.string().required("La contraseña es obligatoria"),
-});
+import useLogin from "../../customHooks/useLogin/useLogin";
+import EmailField from "../../components/userFormComponents/emailField/emailField";
+import PasswordField from "../../components/userFormComponents/passwordField/passwordField";
+import useRegisterForm from "../../customHooks/useRegisterForm/useRegisterForm";
 
 const Login = () => {
-  const { user } = useContext(UserContext);
-
-  useEffect(() => {
-    if (user.logged) {
-      window.location.href = "/";
-    }
-  }, [user]);
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const toast = useToast();
-
-  const handleLoginSubmit = async (values) => {
-    try {
-      const data = await loginUser(values.email, values.password);
-      toast({
-        title: "Inicio de sesión exitoso.",
-        description: "Has iniciado sesión correctamente.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-
-      localStorage.setItem("accessToken", data.token);
-      localStorage.setItem("userId", data.user._id);
-      localStorage.setItem("email", data.user.email);
-      window.location.href = "/";
-    } catch (error) {
-      toast({
-        title: "Error al iniciar sesión.",
-        description: error.message || "Algo salió mal. Inténtalo de nuevo.",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  };
-
-  const onSubmit = (values) => {
-    handleLoginSubmit(values);
-  };
+  const { register, errors, isSubmitting, onSubmit } = useLogin();
+  const { showPassword, togglePasswordVisibility, handlePasswordChange, validatePassword , passwordSecurityLevel  } = useRegisterForm();
 
   return (
     <Box as="main" flex="1">
       <Box maxW="sm" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="lg">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
           <Stack spacing={4}>
-            <FormControl id="email" isInvalid={errors.email}>
-              <FormLabel>Correo Electrónico</FormLabel>
-              <Input
-                type="email"
-                placeholder="Correo Electrónico"
-                {...register("email")}
-              />
-              <FormErrorMessage>
-                {errors.email && errors.email.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl id="password" isInvalid={errors.password}>
+            <EmailField register={register} error={errors.email} />
+
+            {/*<FormControl id="password" isInvalid={errors.password}>
               <FormLabel>Contraseña</FormLabel>
               <Input
                 type="password"
@@ -101,12 +36,33 @@ const Login = () => {
               <FormErrorMessage>
                 {errors.password && errors.password.message}
               </FormErrorMessage>
-            </FormControl>
+            </FormControl>*/}
+
+
+
+            <PasswordField
+              register={register}
+              error={errors.password}
+
+              showPassword={showPassword}
+              togglePasswordVisibility={togglePasswordVisibility}
+              handlePasswordChange={handlePasswordChange}
+
+              validatePassword={validatePassword}
+
+              //passwordSecurityLevel={passwordSecurityLevel}
+              isRegisterForm={false}
+            />
+
+
+
             <Button
               mt={4}
               colorScheme="teal"
               isLoading={isSubmitting}
               type="submit"
+              spinnerPlacement="end"
+              loadingText="Iniciar Sesión"
             >
               Iniciar Sesión
             </Button>
@@ -119,10 +75,7 @@ const Login = () => {
                 ¿Olvidaste tu contraseña?
               </Text>
               <MyLink to="/register">
-                <Text
-                  as="button"
-                  color="teal.500"
-                >
+                <Text as="button" color="teal.500">
                   Regístrate
                 </Text>
               </MyLink>
