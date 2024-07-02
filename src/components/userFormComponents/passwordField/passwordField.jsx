@@ -101,7 +101,7 @@ const PasswordField = ({
               : ""
           }
           my={2}
-          isAnimated={true}
+          isAnimated="true"
         />
       </>
     )}
