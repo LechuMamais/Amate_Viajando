@@ -15,8 +15,7 @@ const AdminProfile = (user) => {
 
   useEffect(() => {
     fetchSetTours(setTours, setLoadingTours);
-    console.log("admin profile loadedS")
-  }, []);
+    }, []);
 
 
   if (loading || loadingTours) {
