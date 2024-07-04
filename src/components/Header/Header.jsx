@@ -18,19 +18,22 @@ const Header = () => {
   const { user } = useContext(UserContext);
   return (
     <Flex as="header">
-      <Box className="home-link-container">
-        <Link to={"/"}>
-          <Image
-            src="/assets/logo_header.jpg"
-            alt="Amate Viajando"
-            objectFit="cover"
-            w="72px"
-            h="72px"
-            position="absolute"
-          />
-        </Link>
+      <Box id="home-gradient-container">
+        <Box className="home-link-container">
+          <Link to={"/"} w="72px" h="72px">
+            <Image
+              px={2}
+              pb={2}
+              w="80px"
+              h="72px"
+              src="/assets/logo_header.jpg"
+              alt="Amate Viajando"
+              objectFit="cover"
+              position="absolute"
+            />
+          </Link>
+        </Box>
       </Box>
-      <Box id="home-gradient-container"></Box>
       <Spacer />
       <Box p="4">
         <Menu>
