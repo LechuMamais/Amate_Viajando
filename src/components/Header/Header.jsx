@@ -22,9 +22,9 @@ const Header = () => {
         <Box className="home-link-container">
           <Link to={"/"} w="72px" h="72px">
             <Image
-              px={2}
+              px={4}
               pb={2}
-              w="80px"
+              w="88px"
               h="72px"
               src="/assets/logo_header.jpg"
               alt="Amate Viajando"
