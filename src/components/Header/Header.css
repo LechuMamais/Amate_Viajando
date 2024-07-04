@@ -3,3 +3,14 @@
     z-index: 200;
 } No funciona
 */
+
+header{
+    background-color: #95baff;
+}
+header::before{
+    content: '';
+    height: 72px;
+    width: 16px;
+    background-color: #cfffda;
+    z-index: 20000;
+}
