@@ -1,14 +1,14 @@
-import'./Home.css';
-import { useEffect } from 'react';
-import MyLink from '../../components/MyLink/MyLink';
+import "./Home.css";
+import { useEffect } from "react";
+import MyLink from "../../components/MyLink/MyLink";
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { handleHomeScroll } from '../../handleScroll/handleHomeScroll';
+import { handleHomeScroll } from "../../handleScroll/handleHomeScroll";
 
 const Home = () => {
   useEffect(() => {
-    window.addEventListener('scroll', handleHomeScroll);
+    window.addEventListener("scroll", handleHomeScroll);
     return () => {
-      window.removeEventListener('scroll', handleHomeScroll);
+      window.removeEventListener("scroll", handleHomeScroll);
     };
   }, []);
 
@@ -31,7 +31,7 @@ const Home = () => {
           justify="center"
           px={{ base: 4, md: 6 }}
         >
-          <Box textAlign="center" spacing={4} className='hero'>
+          <Box textAlign="center" spacing={4} className="hero" >
             <Heading
               as="h1"
               size="2xl"
@@ -41,17 +41,28 @@ const Home = () => {
               mb={4}
               fontSize={{ base: "3xl", sm: "4xl", md: "5xl" }}
             >
-              Descubre el mundo con nosotros
+              Descubre tu propósito viajando
             </Heading>
-            <Text className='yeseva-one-regular'
+            <Text
+              className="yeseva-one-regular"
               color="gray.200"
-              fontSize={{ base: "md", md: "xl", lg: "base", xl: "xl" }}
+              fontSize={{ base: "0.8rem",sm: "md",  md: "xl", lg: "base", xl: "xl" }}
+              width={{
+                base: "300px",
+                sm: "450px",
+                md: "700px",
+                lg: "800px",
+              }}
               lineHeight="relaxed"
-              maxW="600px"
               mx="auto"
-              mb={4}
+              mb={6}
+              letterSpacing="1.1px"
             >
-              Explora una amplia variedad de paquetes de viaje diseñados para satisfacer tus necesidades y hacer realidad tus sueños de aventura.
+              La naturaleza enciende nuestros sentidos, nos transporta a lugares
+              mágicos dónde podremos escuchar a nuestra voz interior para
+              iluminar el destino correcto en ésta gran aventura.
+              <br />
+              Están listos?
             </Text>
             <MyLink to="/destinations">
               <Button
@@ -62,11 +73,11 @@ const Home = () => {
                   outline: "none",
                   ring: 1,
                   ringColor: "gray.950",
-                  color: "gray.100"
+                  color: "gray.100",
                 }}
                 isDisabled={false}
               >
-                Explorar
+                Vamos
               </Button>
             </MyLink>
           </Box>
@@ -76,4 +87,4 @@ const Home = () => {
   );
 };
 
-export default Home
+export default Home;
