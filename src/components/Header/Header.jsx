@@ -18,7 +18,7 @@ const Header = () => {
   const { user } = useContext(UserContext);
   return (
     <Flex as="header">
-      <Box>
+      <Box className="home-link-container">
         <Link to={"/"}>
           <Image
             src="/assets/logo_header.jpg"
@@ -30,6 +30,7 @@ const Header = () => {
           />
         </Link>
       </Box>
+      <Box id="home-gradient-container"></Box>
       <Spacer />
       <Box p="4">
         <Menu>

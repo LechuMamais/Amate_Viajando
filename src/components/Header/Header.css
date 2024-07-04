@@ -1,16 +1,20 @@
-/*header .header-menu-list{
-    position: relative !important;
-    z-index: 200;
-} No funciona
-*/
-
-header{
-    background-color: #95baff;
-}
-header::before{
+header::before {
     content: '';
     height: 72px;
-    width: 16px;
-    background-color: #cfffda;
-    z-index: 20000;
+    width: 28px;
+    z-index: 2000;
+    margin-left: 8px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(207, 255, 218, 1) 100%);
+}
+
+#home-gradient-container {
+    content: '';
+    height: 72px;
+    width: 36px;
+    z-index: 20300;
+    margin-left: 72px;
+    background: rgb(149,186,255);
+    background: linear-gradient(90deg, rgb(149, 184, 250) 2%, rgba(182,207,255,1) 26%, rgba(255,255,255,1) 81%); 
+    
 }
