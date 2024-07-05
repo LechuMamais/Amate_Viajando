@@ -1,0 +1,4 @@
+.hero{
+    background: rgb(207,255,218);
+    background: linear-gradient(90deg, rgba(207,255,218,1) 0%, rgba(149,186,255,1) 100%); 
+}

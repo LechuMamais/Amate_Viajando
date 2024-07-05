@@ -17,7 +17,7 @@ import { UserContext } from "../../providers/UserProvider";
 const Header = () => {
   const { user } = useContext(UserContext);
   return (
-    <Flex as="header">
+    <Flex as="header" zIndex='100' bgColor='white'>
       <Box id="home-gradient-container">
         <Box className="home-link-container">
           <Link to={"/"} w="72px" h="72px">

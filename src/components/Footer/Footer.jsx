@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <Box as="footer" py={{ base: 6, md: 8 }}>
+    <Box as="footer" py={{ base: 6, md: 8 }} zIndex={300} bgColor='white'>
       <Flex
         justify="space-between"
         align="center"
