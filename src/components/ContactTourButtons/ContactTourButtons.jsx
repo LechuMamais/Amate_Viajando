@@ -6,9 +6,6 @@ const ContactTourButtons = ({tourName, destinationName}) => {
   const whatsappText = encodeURIComponent(`Hola, estoy interesado en el tour ${tourName} en ${destinationName} y quisiera más información.`);
   const emailText = encodeURIComponent(`Hola,\n\nEstoy interesado en el tour ${tourName} en ${destinationName} y quisiera más información.\n\nMuchas gracias.`);
 
-  console.log(tourName)
-  console.log(destinationName)
-
   return (
     <>
       <Text>
