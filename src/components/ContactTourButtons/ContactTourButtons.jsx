@@ -8,8 +8,8 @@ const ContactTourButtons = ({tourName, destinationName}) => {
 
   return (
     <>
-      <Text>
-        ¿Te interesa este tour y quieres más información? No dudes en ponerte en
+      <Text color="gray.500">
+        Si te interesa este tour y quieres más información, no dudes en ponerte en
         contacto con nosotros.
       </Text>
       <Flex direction={{ base: "column", md: "row" }} gap={2}>

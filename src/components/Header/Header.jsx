@@ -17,7 +17,7 @@ import { UserContext } from "../../providers/UserProvider";
 const Header = () => {
   const { user } = useContext(UserContext);
   return (
-    <Flex as="header" zIndex='100' bgColor='white'>
+    <Flex as="header" zIndex="100" bgColor="white">
       <Box id="home-gradient-container">
         <Box className="home-link-container">
           <Link to={"/"} w="72px" h="72px">
@@ -58,9 +58,12 @@ const Header = () => {
                     <MyLink to={"/profile"}>
                       <MenuItem>Mi cuenta</MenuItem>
                     </MyLink>
+                    {/*
                     <MyLink to={"/carrito"}>
                       <MenuItem>Ver carrito</MenuItem>
                     </MyLink>
+                    */}
+
                     <MyLink to={"/logout"}>
                       <MenuItem color={"red.400"} pl={4}>
                         Cerrar Sesión
