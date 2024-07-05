@@ -30,7 +30,7 @@ const Home = () => {
               alt="Travel"
               objectFit="cover"
               w="100%"
-              mt={{base: 0, sm: 0, md: "-120px"}}
+              mt={{base: 0, sm: 0, md: "-80px"}}
               zIndex="1"
               opacity="0.65"
             />

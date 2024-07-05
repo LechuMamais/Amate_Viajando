@@ -8,7 +8,7 @@ const HeroText = () => {
       w="100vw"
       mx="auto"
       position="absolute"
-      bottom={{ base: "144px", sm: "110px", lg: "96px" }}
+      bottom={{ base: "144px", sm: "110px" }}
       zIndex="2"
       className="hero-text-container"
     >
