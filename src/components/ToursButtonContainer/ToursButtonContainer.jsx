@@ -1,16 +1,22 @@
-import { Flex, Button, useToast } from "@chakra-ui/react";
+import { Flex, Button, useToast, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { addTourToCart, addTourToFavorites } from "../../services/api/users";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaWhatsapp,
+  FaEnvelope,
+} from "react-icons/fa";
 
-const ToursButtonContainer = ({tour_id}) => {
+const ToursButtonContainer = ({ tour_id }) => {
   const { user } = useContext(UserContext);
   const toast = useToast();
 
   const handleAddToFavoritesClick = async (user, tour_id) => {
-    console.log('user id',user._id);
-    console.log('tour id',tour_id);
-    console.log('token',user.token);
+    console.log("user id", user._id);
+    console.log("tour id", tour_id);
+    console.log("token", user.token);
     try {
       const updatedUser = await addTourToFavorites(
         user._id,

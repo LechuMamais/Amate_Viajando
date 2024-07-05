@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
 import ToursButtonContainer from "../../components/ToursButtonContainer/ToursButtonContainer";
 import CardsList from "../../components/CardsList/CardsList";
+import ContactTourButtons from "../../components/ContactTourButtons/ContactTourButtons";
 
 const Tour = () => {
   const { tour_id } = useParams();
@@ -30,7 +31,8 @@ const Tour = () => {
           descriptionParagraphs={tour?.longDescription.split("\n")}
           usingFor={"tour"}
         >
-          <ToursButtonContainer tour_id={tour_id} />
+          <ContactTourButtons tourName={tour?.name} destinationName={destination?.name}/>
+          {/* <ToursButtonContainer tour_id={tour_id} />  */}
           <CardsList
             headingText={`Otros tours en ${destination?.name}`}
             descriptionText={"Seleccionados para tí"}
