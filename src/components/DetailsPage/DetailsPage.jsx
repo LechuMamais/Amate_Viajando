@@ -22,9 +22,9 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { allDestinations } = useContext(AllDestinationsContext);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleDetailsPageScroll);
+    window.addEventListener("scroll", handleDetailsPageScroll);
     return () => {
-      window.removeEventListener('scroll', handleDetailsPageScroll);
+      window.removeEventListener("scroll", handleDetailsPageScroll);
     };
   }, []);
 
@@ -32,7 +32,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
     <>
       <MyCarousel obj={obj} />
       <Container
-        maxW="container.lg"
+        maxW="928px"
         px={{ base: 4, md: 6 }}
         py={{ base: 12, md: 24, lg: 32 }}
       >
@@ -51,14 +51,22 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
           </MyLink>
         )}
         <Flex direction="column" gap={6}>
-          <Box>
+          <Box px={{ base: 4, sm: 6, md: 0 }}>
             <Heading size="xl" fontWeight="bold">
               {obj?.heading}
             </Heading>
-            <Stack spacing={3} my={4}>
+            <Stack spacing={4} mt={6} mb={4}>
               {Array.isArray(descriptionParagraphs) &&
                 descriptionParagraphs.map((paragraph, index) => (
-                  <Text key={index} color="gray.500">
+                  <Text
+                    key={index}
+                    maxW="90ch"
+                    textAlign="justify"
+                    color="gray.600"
+                    lineHeight="1.5em"
+                    letterSpacing={{ base: 0, md: "0.04em" }}
+                    fontSize="lg"
+                  >
                     {paragraph}
                   </Text>
                 ))}

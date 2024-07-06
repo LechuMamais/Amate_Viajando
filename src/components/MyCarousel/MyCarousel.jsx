@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const MyCarousel = ({obj}) => {
   return (
-      <Box w="full">
+      <Box w="full" overflow="hidden">
           {obj?.images && obj.images.length > 0 && (
             <Carousel
              className="w-full"

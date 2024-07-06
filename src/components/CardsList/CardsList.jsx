@@ -7,7 +7,7 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor }) =>
 
   return (
     <Box w="full" py={{ base: 12, md: 24, lg: 32 }}>
-      <Container maxW="container.lg" px={{ base: 4, md: 6 }}>
+      <Container maxW="container.lg" px={0}>
         <Box textAlign="center" mb={8}>
           <Heading
             as="h2"
