@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { registerUser } from "../../services/api/users";
+import { registerUser, verifyUserEmail } from "../../services/api/users";
 import useLogin from "../../customHooks/useLogin/useLogin";
 
 const useRegisterForm = () => {
@@ -16,6 +16,8 @@ const useRegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [passwordSecurityLevel, setPasswordSecurityLevel] = useState(0);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [verificationToken, setVerificationToken] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -57,13 +59,28 @@ const useRegisterForm = () => {
         setError("email", { type: "manual", message: <>Ya existe un usuario con este correo electrónico. <Link color="blue.500" href="/forgot-password">¿Olvidaste tu contraseña?</Link></> });
       } else if (response.message?.includes("error")) {
         setError("userName", { type: "manual", message: "Ha ocurrido un problema, intentalo de nuevo" });
-      } else if (response._id) {
-        await loginBeforeRegister({ email: formData.email, password: formData.password });
+      } else if (response.message) {
+        setIsRegistered(true);
       }
     } catch (error) {
       setError("server", { type: "manual", message: "Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo." });
     }
     setLoading(false);
+  };
+
+  const submitVerificationToken = async () => {
+    try {
+      console.log("SubmitVerificationToken");
+      const response = await verifyUserEmail({ email: formState.values.email, verificationToken });
+      console.log(response);
+      if (response.message === 'Correo electrónico verificado correctamente') {
+        await loginBeforeRegister({ email: formState.values.email, password: formState.values.password });
+      } else {
+        setError("verificationToken", { type: "manual", message: "Código de verificación incorrecto" });
+      }
+    } catch (error) {
+      setError("server", { type: "manual", message: "Error al verificar el correo electrónico. Por favor, inténtalo de nuevo." });
+    }
   };
 
   return {
@@ -78,6 +95,10 @@ const useRegisterForm = () => {
     passwordSecurityLevel,
     loading,
     submit,
+    isRegistered,
+    verificationToken,
+    setVerificationToken,
+    submitVerificationToken,
   };
 };
 

@@ -41,12 +41,28 @@ export const registerUser = async (userData) => {
             const errorData = await response.json();
             throw new Error(errorData.message || 'Error en el registro');
         }
-        return response.json();
+        return await handleResponse(response);
     } catch (error) {
         console.log(error.message)
-        return error;
+        handleError(error);
     }
 };
+
+export const verifyUserEmail = async (verificationData)=>{
+    console.log(verificationData)
+    try {
+        const response = await fetch(`${VERIFY_EMAIL_URL}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(verificationData)
+        });
+        return await handleResponse(response);
+    } catch (error) {
+        handleError(error);
+    }
+}
 
 export const loginUser = async (email, password) => {
     try {

@@ -16,7 +16,8 @@ BACKEND:
         Actualizar la base de datos con la informacion que ya está
         Actualizar el front
 
-Por hacer:
+Por hacer:  
+    - Poner el logo y la imagen en mailer.js
     - Corregir: delete de cloudinary
     - Correccion de Santi en Auth con la password
         - isAuth_ Chequear que esté ok la parte de         req.user = user;        user.password = null
@@ -52,7 +53,7 @@ FRONTEND:
 
 Por hacer:
 
-    - tours => arreglar el constructor de url en cardslist
+    - Configurar el boton de submit de verifyEmail y sus funciones, que no funcionan correctamente
     - Eslint
     - Prettier
 
