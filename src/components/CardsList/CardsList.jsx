@@ -4,6 +4,7 @@ import { Box, Container, Grid, Heading, Text } from "@chakra-ui/react";
 import Cards from "../Cards/Cards";
 
 const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor }) => {
+  console.log(arrayToRender);
 
   return (
     <Box w="full" py={{ base: 12, md: 24, lg: 32 }}>
@@ -37,7 +38,7 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor }) =>
           }}
           gap={6}
         >
-          {arrayToRender?.map((obj, index) => (
+          {arrayToRender?.map((obj) => (
             <Cards key={obj._id} obj={obj} usingFor={usingFor}/>
           ))}
         </Grid>

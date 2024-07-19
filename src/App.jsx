@@ -30,8 +30,10 @@ function App() {
 
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/destinations/:destination_id" element={<DestinationProvider><Destination/></DestinationProvider>} />
-        <Route path="/destinations/:destination_id/tours" element={<DestinationProvider><Tours /></DestinationProvider>} />
+        {/*<Route path="/destinations/:destination_id/tours" element={<DestinationProvider><Tours /></DestinationProvider>} />*/}
         <Route path="/destinations/:destination_id/tours/:tour_id" element={<DestinationProvider><Tour /></DestinationProvider>} />
+
+        <Route path="/tours" element={<Tours />} />
 
         <Route path="/create-tour" element={<CreateTour />} />
         <Route path="/create-destination" element={<CreateDestination />} />

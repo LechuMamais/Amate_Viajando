@@ -51,10 +51,8 @@ FRONTEND:
 
 
 Por hacer:
-    - /tours
-        - Crear la ruta
-        - Crear el componente, que vaya mostrando los tours, agrupados por destinos
 
+    - tours => arreglar el constructor de url en cardslist
     - Eslint
     - Prettier
 
