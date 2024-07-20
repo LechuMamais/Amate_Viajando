@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { registerUser, verifyUserEmail } from "../../services/api/users";
+import { registerUser } from "../../services/api/users";
 import useLogin from "../../customHooks/useLogin/useLogin";
 import { checkPasswordStrength } from "./useRegisterForm.functions";
 
@@ -24,8 +24,6 @@ const useRegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [passwordSecurityLevel, setPasswordSecurityLevel] = useState(0);
-  const [isRegistered, setIsRegistered] = useState(false);
-  const [verificationToken, setVerificationToken] = useState("");
   const { loginAfterRegister } = useLogin();
 
   const togglePasswordVisibility = () => {
@@ -39,7 +37,6 @@ const useRegisterForm = () => {
   const validatePassword = () => {
     return passwordSecurityLevel >= 3 || "Nivel mínimo requerido: Alto";
   };
-
 
   const submit = async (formData) => {
     setLoading(true);
@@ -57,9 +54,7 @@ const useRegisterForm = () => {
     delete formData.confirmPassword;
     try {
       const response = await registerUser(formData);
-      if (
-        response.message?.includes("There is already a user with this email")
-      ) {
+      if (response.message?.includes("There is already a user with this email")) {
         setError("email", {
           type: "manual",
           message: (
@@ -77,39 +72,15 @@ const useRegisterForm = () => {
           message: "Ha ocurrido un problema, intentalo de nuevo",
         });
       } else if (response.message) {
-        setIsRegistered(true);
+        await loginAfterRegister({ email: formData.email, password: formData.password });
       }
     } catch (error) {
       setError("server", {
         type: "manual",
-        message:
-          "Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.",
+        message: "Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.",
       });
     }
     setLoading(false);
-  };
-
-  const submitVerificationToken = async () => {
-    const email = watch("email");
-    const password = watch("password");
-
-    try {
-      const response = await verifyUserEmail({ email, verificationToken });
-      if (response.message === "Correo electrónico verificado correctamente") {
-        await loginAfterRegister({ email, password });
-      } else {
-        setError("verificationToken", {
-          type: "manual",
-          message: "Código de verificación incorrecto",
-        });
-      }
-    } catch (error) {
-      setError("server", {
-        type: "manual",
-        message:
-          "Error al verificar el correo electrónico. Por favor, inténtalo de nuevo.",
-      });
-    }
   };
 
   return {
@@ -124,10 +95,6 @@ const useRegisterForm = () => {
     passwordSecurityLevel,
     loading,
     submit,
-    isRegistered,
-    verificationToken,
-    setVerificationToken,
-    submitVerificationToken,
   };
 };
 

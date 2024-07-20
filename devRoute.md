@@ -54,10 +54,11 @@ FRONTEND:
 Por hacer:
 
     USER:
-    - Componetizar verifyEmail
-    - Ver cuando es necesario reutiliarlo
-    - Crear la recuperación de contraseña
+    - Ver cuando es necesario reutiliarlo verifyEmail:
+      '-> Login
 
+
+    - Crear la recuperación de contraseña
 
 
     - Eslint

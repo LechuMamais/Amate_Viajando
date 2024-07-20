@@ -1,7 +1,15 @@
 import { loginUser } from "../../services/api/users";
 
+export const checkAndRedirectIfEmailIsVerified = (user) => {
+  if (!user.isVerified) {
+    window.location.href = "/email_verification";
+  } else {
+    window.location.href = "/";
+  }
+};
+
 export const handleLoginSubmit = async (values, toast) => {
-    //console.log(values);
+  //console.log(values);
   try {
     const data = await loginUser(values.email, values.password);
     toast({
@@ -15,7 +23,8 @@ export const handleLoginSubmit = async (values, toast) => {
     localStorage.setItem("accessToken", data.token);
     localStorage.setItem("userId", data.user._id);
     localStorage.setItem("email", data.user.email);
-    window.location.href = "/";
+
+    checkAndRedirectIfEmailIsVerified(data.user)
   } catch (error) {
     toast({
       title: "Error al iniciar sesión.",

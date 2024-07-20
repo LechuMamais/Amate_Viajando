@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useToast } from "@chakra-ui/react";
 import { UserContext } from "../../providers/UserProvider";
-import { handleLoginSubmit } from "./useLogin.functions";
+import { checkAndRedirectIfEmailIsVerified, handleLoginSubmit } from "./useLogin.functions";
 
 // Esquema de validación de Yup
 const schema = yup.object().shape({
@@ -17,13 +17,7 @@ const schema = yup.object().shape({
 
 const useLogin = () => {
   const { user } = useContext(UserContext);
-
-  useEffect(() => {
-    if (user.logged) {
-      window.location.href = "/";
-    }
-  }, [user]);
-
+  const toast = useToast();
 
   const {
     handleSubmit,
@@ -32,14 +26,18 @@ const useLogin = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const toast = useToast();
+  
+  useEffect(() => {
+    if(user.logged){
+      checkAndRedirectIfEmailIsVerified(user);
+    }
+  }, [user]);
 
   const onSubmit = handleSubmit((values) => handleLoginSubmit(values, toast));
 
-  const loginAfterRegister = async(values) => {
-    await handleLoginSubmit(values, toast)
-  }
+  const loginAfterRegister = async (values) => {
+    await handleLoginSubmit(values, toast);
+  };
 
   return { register, errors, isSubmitting, onSubmit, loginAfterRegister };
 };
