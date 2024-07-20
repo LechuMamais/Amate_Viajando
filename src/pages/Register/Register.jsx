@@ -1,10 +1,11 @@
 import React from "react";
-import { Box, VStack, Text, Button, Input } from "@chakra-ui/react";
+import { Box, VStack, Text, Button} from "@chakra-ui/react";
 import UserNameField from "../../components/userFormComponents/userNameField/userNameField";
 import EmailField from "../../components/userFormComponents/emailField/emailField";
 import PasswordField from "../../components/userFormComponents/passwordField/passwordField";
 import ConfirmPasswordField from "../../components/userFormComponents/confirmPasswordField/confirmPasswordField";
 import useRegisterForm from "../../customHooks/useRegisterForm/useRegisterForm";
+import VerifyEmail from "../../components/userFormComponents/verifyEmail/verifyEmail";
 
 const RegisterForm = () => {
   const {
@@ -34,11 +35,11 @@ const RegisterForm = () => {
               <Text fontSize="2xl" mb={4}>
                 Comencemos...
               </Text>
-
-              <UserNameField register={register} error={formState.errors.userName} />
-
+              <UserNameField
+                register={register}
+                error={formState.errors.userName}
+              />
               <EmailField register={register} error={formState.errors.email} />
-
               <PasswordField
                 register={register}
                 error={formState.errors.password}
@@ -49,13 +50,11 @@ const RegisterForm = () => {
                 passwordSecurityLevel={passwordSecurityLevel}
                 isRegisterForm={true}
               />
-
               <ConfirmPasswordField
                 register={register}
                 error={formState.errors.confirmPassword}
                 watch={watch}
               />
-
               {formState.errors.server && (
                 <Text color="red.500">{formState.errors.server.message}</Text>
               )}
@@ -74,32 +73,13 @@ const RegisterForm = () => {
             </VStack>
           </form>
         ) : (
-          <VStack spacing={4}>
-            <Text fontSize="2xl" mb={4}>
-              Verificación de correo
-            </Text>
-            <Text>Introduce el código de verificación enviado a tu correo:</Text>
-            <Input
-              type="text"
-              value={verificationToken}
-              onChange={(e) => setVerificationToken(e.target.value)}
-              maxLength={6}
-              placeholder="Código de verificación"
-            />
-            {formState.errors.verificationToken && (
-              <Text color="red.500">{formState.errors.verificationToken.message}</Text>
-            )}
-            <Button
-              onClick={submitVerificationToken}
-              colorScheme="blue"
-              isLoading={loading}
-              spinnerPlacement="end"
-              loadingText="Verificar"
-              w={{ base: "100%" }}
-            >
-              Verificar
-            </Button>
-          </VStack>
+          <VerifyEmail
+            verificationToken={verificationToken}
+            setVerificationToken={setVerificationToken}
+            formState={formState}
+            submitVerificationToken={submitVerificationToken}
+            loading={loading}
+          />
         )}
       </Box>
     </Box>

@@ -1,7 +1,7 @@
 import { loginUser } from "../../services/api/users";
 
 export const handleLoginSubmit = async (values, toast) => {
-    console.log(values);
+    //console.log(values);
   try {
     const data = await loginUser(values.email, values.password);
     toast({

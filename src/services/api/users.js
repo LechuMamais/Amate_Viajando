@@ -4,7 +4,8 @@ import {
     LOGIN_URL,
     CHECK_LOGGED_URL,
     ADD_TOUR_TO_CART_URL,
-    ADD_TOUR_TO_FAVORITES_URL
+    ADD_TOUR_TO_FAVORITES_URL,
+    VERIFY_EMAIL_URL
 } from "../../resources/api.endpoints";
 import { handleError } from "../../utils/handleError";
 import { handleResponse } from "../../utils/handleResponse";

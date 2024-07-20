@@ -53,7 +53,13 @@ FRONTEND:
 
 Por hacer:
 
-    - Configurar el boton de submit de verifyEmail y sus funciones, que no funcionan correctamente
+    USER:
+    - Componetizar verifyEmail
+    - Ver cuando es necesario reutiliarlo
+    - Crear la recuperación de contraseña
+
+
+
     - Eslint
     - Prettier
 

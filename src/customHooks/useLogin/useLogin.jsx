@@ -37,11 +37,11 @@ const useLogin = () => {
 
   const onSubmit = handleSubmit((values) => handleLoginSubmit(values, toast));
 
-  const loginBeforeRegister = async(values) => {
+  const loginAfterRegister = async(values) => {
     await handleLoginSubmit(values, toast)
   }
 
-  return { register, errors, isSubmitting, onSubmit, loginBeforeRegister };
+  return { register, errors, isSubmitting, onSubmit, loginAfterRegister };
 };
 
 export default useLogin;
