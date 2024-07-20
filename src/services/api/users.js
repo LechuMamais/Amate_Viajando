@@ -5,7 +5,8 @@ import {
     CHECK_LOGGED_URL,
     ADD_TOUR_TO_CART_URL,
     ADD_TOUR_TO_FAVORITES_URL,
-    VERIFY_EMAIL_URL
+    VERIFY_EMAIL_URL,
+    GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL
 } from "../../resources/api.endpoints";
 import { handleError } from "../../utils/handleError";
 import { handleResponse } from "../../utils/handleResponse";
@@ -49,8 +50,7 @@ export const registerUser = async (userData) => {
     }
 };
 
-export const verifyUserEmail = async (verificationData)=>{
-    console.log(verificationData)
+export const verifyUserEmail = async (verificationData) => {
     try {
         const response = await fetch(`${VERIFY_EMAIL_URL}`, {
             method: 'POST',
@@ -59,6 +59,23 @@ export const verifyUserEmail = async (verificationData)=>{
             },
             body: JSON.stringify(verificationData)
         });
+        return await handleResponse(response);
+    } catch (error) {
+        handleError(error);
+    }
+}
+
+export const generateNewEmailVerificationToken = async (email) => {
+    console.log(email)
+    try {
+        const response = await fetch(`${GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(email)
+        });
+        console.log(response)
         return await handleResponse(response);
     } catch (error) {
         handleError(error);
@@ -130,30 +147,30 @@ export const deleteUser = async (id, token) => {
 /******************************************************************************************************************* */
 
 export const addTourToFavorites = async (userId, token, tourId) => {
-    console.log('user id',userId);
-    console.log('tour id',tourId);
-    console.log('token',token);
+    console.log('user id', userId);
+    console.log('tour id', tourId);
+    console.log('token', token);
     try {
-      const response = await fetch(`${ADD_TOUR_TO_FAVORITES_URL}/${userId}/${tourId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      });
-      console.log('response', response);
-      if (!response.ok) {
-        throw new Error('Error al agregar el tour a favoritos');
-      }
-  
-      const userUpdated = await response.json();
-      console.log(userUpdated)
-      return userUpdated;
+        const response = await fetch(`${ADD_TOUR_TO_FAVORITES_URL}/${userId}/${tourId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+        console.log('response', response);
+        if (!response.ok) {
+            throw new Error('Error al agregar el tour a favoritos');
+        }
+
+        const userUpdated = await response.json();
+        console.log(userUpdated)
+        return userUpdated;
     } catch (error) {
         handleError(error);
     }
-  };
-  
+};
+
 
 export const addTourToCart = async (userId, token, tourId) => {
     try {

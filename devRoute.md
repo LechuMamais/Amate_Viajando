@@ -57,7 +57,7 @@ Por hacer:
     - Ver cuando es necesario reutiliarlo verifyEmail:
       '-> Login
 
-
+    - Generar nuevo código de verificación y volver a enviarlo
     - Crear la recuperación de contraseña
 
 

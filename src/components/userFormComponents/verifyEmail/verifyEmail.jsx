@@ -9,6 +9,7 @@ const VerifyEmail = ({ email }) => {
     formState,
     loading,
     submitVerificationToken,
+    generateAndSendNewVerificationToken,
   } = useVerifyEmailForm();
 
   return (
@@ -44,6 +45,14 @@ const VerifyEmail = ({ email }) => {
             w={{ base: "100%" }}
           >
             Verificar
+          </Button>
+          <Button
+            onClick={() => generateAndSendNewVerificationToken()}
+            variant="link"
+            size="sm"
+            mt={3}
+          >
+            Enviar nuevo código
           </Button>
         </VStack>
       </Box>

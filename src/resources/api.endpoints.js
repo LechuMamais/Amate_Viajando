@@ -8,6 +8,7 @@ export const IMAGES_URL = `${BASE_URL}/images`;
 export const USERS_URL = `${BASE_URL}/users`;
 export const REGISTER_URL = `${USERS_URL}/register`;
 export const VERIFY_EMAIL_URL = `${USERS_URL}/verify-email`;
+export const GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL = `${USERS_URL}/generateNewVerificationToken`;
 export const LOGIN_URL = `${USERS_URL}/login`;
 export const CHECK_LOGGED_URL = `${USERS_URL}/checkLogged`;
 
