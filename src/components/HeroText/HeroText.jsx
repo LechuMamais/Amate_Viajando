@@ -8,14 +8,14 @@ const HeroText = () => {
       className="hero-text-wrapper"
       w="100lvw"
       position="absolute"
-      bottom={{ base: "144px", sm: "110px" }}
+      bottom={{ base: "111px", sm: "71px", md: "110px" }}
       zIndex="2"
       overflow="hidden"
     >
       <Box
-        w={{ base: "100%", sm: "90%" }}
+        className="hero-text-parallax-effect"
+        w={{ base: "100%", md: "min(800px, 90%)" }}
         mx="auto"
-        className="hero-text-container"
       >
         <Flex
           direction="column"
@@ -23,10 +23,9 @@ const HeroText = () => {
           spacing={4}
           mx="auto"
           bgColor="rgba(255, 255, 255, 0.25)"
-          px={6}
+          px={2}
           py={4}
-          borderRadius={{ base: "0", sm: "16" }}
-          w={{ base: "100%", md: "700px", lg: "860px" }}
+          borderRadius={{ base: "0", md: "16" }}
         >
           <Heading
             as="h1"
