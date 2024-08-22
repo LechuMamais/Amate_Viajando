@@ -66,10 +66,10 @@ const useResetPassword = () => {
         newPassword: formData.password,
       };
       
-      console.log('Payload enviado:', payload);
+      //console.log('Payload enviado:', payload);
       
       const response = await resetPassword(payload);
-      console.log('Respuesta de la API:', response);
+      //console.log('Respuesta de la API:', response);
       
       if(response.message = "Contraseña restablecida correctamente"){
 
@@ -85,8 +85,8 @@ const useResetPassword = () => {
           email: payload.email,
           password: payload.newPassword,
         }
-        console.log(userDataForLogin)
-        console.log('Starting LoginAfterRegister')
+        //console.log(userDataForLogin)
+        //console.log('Starting LoginAfterRegister')
         await loginAfterRegister(userDataForLogin);
       }
     } catch (error) {

@@ -52,7 +52,7 @@ const ResetPassword = () => {
 
           <PasswordField
             register={register}
-            error={errors.password} // Cambiado a "password" para ser consistente con la lógica de validación
+            error={errors.password}
             showPassword={showPassword}
             togglePasswordVisibility={togglePasswordVisibility}
             handlePasswordChange={handlePasswordChange}
