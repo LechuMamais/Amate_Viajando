@@ -16,11 +16,12 @@ const PasswordField = ({
   togglePasswordVisibility,
   handlePasswordChange,
   validatePassword,
-  passwordSecurityLevel = '',
+  passwordSecurityLevel = "",
   isRegisterForm = false,
+  newPassword = false,
 }) => (
   <FormControl id="password" isInvalid={error}>
-    <FormLabel>Contraseña</FormLabel>
+    <FormLabel>{newPassword ? "Nueva contraseña" : "Contraseña"}</FormLabel>
     <InputGroup>
       <Input
         id="password-input"

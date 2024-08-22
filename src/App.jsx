@@ -17,6 +17,8 @@ import UpdateDestination from "./pages/UpdateDestination/UpdateDestination";
 import UpdateTour from "./pages/UpdateTour/UpdateTour";
 import Register from "./pages/Register/Register";
 import VerifyEmail from "./components/userFormComponents/verifyEmail/verifyEmail";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
         <Route path="/email_verification" element={<VerifyEmail />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/resetPassword/:email" element={<ResetPassword />} />
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/destinations" element={<Destinations />} />

@@ -54,11 +54,10 @@ FRONTEND:
 Por hacer:
 
     USER:
-    - Ver cuando es necesario reutiliarlo verifyEmail:
-      '-> Login
-
-    - Generar nuevo código de verificación y volver a enviarlo
-    - Crear la recuperación de contraseña
+        - Crear la recuperación de contraseña
+            Todos los customHooks hechos y funcionando, falta hacer pruebas!!!
+            Chequear que se este modificando la contraseña
+            
 
 
     - Eslint

@@ -6,7 +6,8 @@ import {
     ADD_TOUR_TO_CART_URL,
     ADD_TOUR_TO_FAVORITES_URL,
     VERIFY_EMAIL_URL,
-    GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL
+    GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL,
+    RESET_PASSWORD
 } from "../../resources/api.endpoints";
 import { handleError } from "../../utils/handleError";
 import { handleResponse } from "../../utils/handleResponse";
@@ -45,7 +46,6 @@ export const registerUser = async (userData) => {
         }
         return await handleResponse(response);
     } catch (error) {
-        console.log(error.message)
         handleError(error);
     }
 };
@@ -66,7 +66,6 @@ export const verifyUserEmail = async (verificationData) => {
 }
 
 export const generateNewEmailVerificationToken = async (email) => {
-    console.log(email)
     try {
         const response = await fetch(`${GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL}`, {
             method: 'POST',
@@ -75,9 +74,26 @@ export const generateNewEmailVerificationToken = async (email) => {
             },
             body: JSON.stringify(email)
         });
-        console.log(response)
         return await handleResponse(response);
     } catch (error) {
+        handleError(error);
+    }
+}
+
+export const resetPassword = async (formData) => {
+    console.log('Payload recibido en resetPassword:', formData);
+    try {
+        const response = await fetch(`${RESET_PASSWORD}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        console.log('Respuesta del servidor:', response);
+        return await handleResponse(response);
+    } catch (error) {
+        console.log('Error en la solicitud:', error);
         handleError(error);
     }
 }

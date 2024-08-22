@@ -2,41 +2,29 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerUser } from "../../services/api/users";
 import useLogin from "../../customHooks/useLogin/useLogin";
-import { checkPasswordStrength } from "./useRegisterForm.functions";
+import usePasswordForm from "../usePasswordForm/usePasswordForm";
 
 const useRegisterForm = () => {
-  const {
-    handleSubmit,
-    register,
-    formState,
-    watch,
-    setError,
-    clearErrors,
-  } = useForm({
-    defaultValues: {
-      userName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
+  const { handleSubmit, register, formState, watch, setError, clearErrors } =
+    useForm({
+      defaultValues: {
+        userName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      },
+    });
 
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [passwordSecurityLevel, setPasswordSecurityLevel] = useState(0);
   const { loginAfterRegister } = useLogin();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handlePasswordChange = (e) => {
-    checkPasswordStrength(setPasswordSecurityLevel, e.target.value);
-  };
-
-  const validatePassword = () => {
-    return passwordSecurityLevel >= 3 || "Nivel mínimo requerido: Alto";
-  };
+  const {
+    showPassword,
+    togglePasswordVisibility,
+    handlePasswordChange,
+    validatePassword,
+    passwordSecurityLevel
+  } = usePasswordForm();
 
   const submit = async (formData) => {
     setLoading(true);
@@ -54,7 +42,9 @@ const useRegisterForm = () => {
     delete formData.confirmPassword;
     try {
       const response = await registerUser(formData);
-      if (response.message?.includes("There is already a user with this email")) {
+      if (
+        response.message?.includes(" There is already a user with this email")
+      ) {
         setError("email", {
           type: "manual",
           message: (
@@ -72,12 +62,16 @@ const useRegisterForm = () => {
           message: "Ha ocurrido un problema, intentalo de nuevo",
         });
       } else if (response.message) {
-        await loginAfterRegister({ email: formData.email, password: formData.password });
+        await loginAfterRegister({
+          email: formData.email,
+          password: formData.password,
+        });
       }
     } catch (error) {
       setError("server", {
         type: "manual",
-        message: "Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.",
+        message:
+          "Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.",
       });
     }
     setLoading(false);

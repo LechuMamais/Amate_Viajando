@@ -9,7 +9,7 @@ export const checkAndRedirectIfEmailIsVerified = (user) => {
 };
 
 export const handleLoginSubmit = async (values, toast) => {
-  //console.log(values);
+
   try {
     const data = await loginUser(values.email, values.password);
     toast({

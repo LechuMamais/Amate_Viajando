@@ -2,7 +2,7 @@ import { FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 
 const ConfirmPasswordField = ({ register, error, watch }) => (
   <FormControl id="confirmPassword" isInvalid={error}>
-    <FormLabel>Confirmar Contraseña</FormLabel>
+    <FormLabel>Confirmar contraseña</FormLabel>
     <Input
       id="confirm-password-input"
       type="password"
