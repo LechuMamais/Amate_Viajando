@@ -50,14 +50,15 @@ FRONTEND:
     - ORDER: El front debe ordenar los arrrays de imagenes y tours antes de mostrarlos.
         Podría hacer esto directamente dentro de las funciones de services/api
 
-
-Por hacer:
-
     USER:
         - Crear la recuperación de contraseña
             Todos los customHooks hechos y funcionando, falta hacer pruebas!!!
             Chequear que se este modificando la contraseña
             
+
+
+Por hacer:
+
 
 
     - Eslint
