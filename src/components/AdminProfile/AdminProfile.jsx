@@ -15,13 +15,13 @@ const AdminProfile = (user) => {
 
   useEffect(() => {
     fetchSetTours(setTours, setLoadingTours);
-    console.log("admin profile loadedS")
   }, []);
 
 
   if (loading || loadingTours) {
     return <Text>Loading</Text>;
   }
+  
   return (
     <Flex direction="column" gap={8}>
       <Box>
