@@ -7,7 +7,7 @@ import { fetchSetTours } from "../../services/fetchSetTours";
 import { useContext } from "react";
 import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 
-const AdminProfile = (user) => {
+const AdminProfile = ({user}) => {
   const { allDestinations, loading } = useContext(AllDestinationsContext);
 
   const [tours, setTours] = useState([]);

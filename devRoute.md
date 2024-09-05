@@ -18,14 +18,12 @@ BACKEND:
 
 Por hacer:  
     - Poner el logo y la imagen en mailer.js
-    - Corregir: delete de cloudinary
     - Correccion de Santi en Auth con la password
         - isAuth_ Chequear que esté ok la parte de         req.user = user;        user.password = null
     - Controladores para agregar tour a fav y a carritos => que no se dupliquen.
     - Controladores para quitar tour de favoritos y de carrito
     - users, isAuth, isAdmin, carrito, etc.
     - Carrito: manejar opciones de tour: precio y cantidad de pax.
-    - login con verificacion de email, utilizando alguna API de correo electrónico
 
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -59,6 +57,7 @@ FRONTEND:
 
 Por hacer:
 
+    - MiCuenta - Perfil de usuario
 
 
     - Eslint

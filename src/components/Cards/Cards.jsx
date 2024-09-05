@@ -7,19 +7,20 @@ import { buildCardEndPoint } from "../../utils/buildCardEndPoint";
 const Cards = ({ obj, usingFor }) => {
   const { heading, description, _id, images } = obj;
   const { destination_id } = useParams();
-
   return (
     <Card key={_id}>
-      <MyLink to={buildCardEndPoint(usingFor, _id, destination_id)}>
+      <MyLink to={buildCardEndPoint(usingFor,obj, _id, destination_id)}>
         <Box overflow="hidden" borderRadius="xl">
-          {images &&<Image
-            src={images[0]?.imgObj?.url}
-            alt={images[0]?.imgObj?.alt}
-            width={800}
-            height={{base: "300", sm: "400"}}
-            objectFit="cover"
-          />}
-          
+          {images && (
+            <Image
+              src={images[0]?.imgObj?.url}
+              alt={images[0]?.imgObj?.alt}
+              width={800}
+              height={{ base: "300", sm: "400" }}
+              objectFit="cover"
+            />
+          )}
+
           <Box p={{ base: 4, sm: 6 }}>
             <Heading as="h3" size="md" fontWeight="semibold">
               {heading}
