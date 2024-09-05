@@ -7,5 +7,7 @@ export const buildCardEndPoint = (usingFor, obj, _id, destination_id) => {
         return `/update-destination/${_id}`;
     } else if (usingFor === "updateTours") {
         return `/update-tour/${_id}`;
-    } else if (usingFor.favTours) { return `/destinations/${obj.destinationId}/tours/${_id}` }
+    } else if (usingFor === "favouriteTours") {
+        return `/destinations/${obj.destinationId}/tours/${_id}`
+    }
 };

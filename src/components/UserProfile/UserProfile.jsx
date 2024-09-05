@@ -19,7 +19,7 @@ const UserProfile = ({ user }) => {
         headingText={"Tours Favoritos"}
         descriptionText={""}
         arrayToRender={transformedFavouriteTours}
-        usingFor={{favTours: true, destinationId: user.favouriteTours.destinationId}}
+        usingFor={"favouriteTours"}
       />
     </Flex>
   );
