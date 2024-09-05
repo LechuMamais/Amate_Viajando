@@ -2,22 +2,22 @@ import { Flex, Button, useToast, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { addTourToCart, addTourToFavorites } from "../../services/api/users";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaWhatsapp,
-  FaEnvelope,
-} from "react-icons/fa";
 
 const ToursButtonContainer = ({ tour_id, destination_id }) => {
   const { user } = useContext(UserContext);
   const toast = useToast();
 
-  const handleAddToFavoritesClick = async (user, tour_id) => {
-    console.log("user id:", user._id);
-    console.log("tour id:", tour_id);
-    console.log("destination id:", destination_id);
-    console.log("token:", user.token);
+  const handleAddToFavoritesClick = async () => {
+    if (!user || !user._id || !user.token) {
+      toast({
+        title: "No has iniciado sesión",
+        description: "Debes iniciar sesión para agregar tour a favoritos",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+
     try {
       const updatedUser = await addTourToFavorites(
         user._id,
@@ -25,7 +25,24 @@ const ToursButtonContainer = ({ tour_id, destination_id }) => {
         tour_id,
         destination_id
       );
-      console.log("Tour agregado a favoritos:", updatedUser);
+      if (updatedUser.message == "Tour already in favorites") {
+        toast({
+          title: "Tour agregado",
+          description: "El tour ya se encontraba en la lista de favoritos.",
+          status: "info",
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
+      }
+
+      toast({
+        title: "Éxito",
+        description: "El tour fue agregado a favoritos.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
     } catch (error) {
       toast({
         title: "Error al agregar a favoritos.",
