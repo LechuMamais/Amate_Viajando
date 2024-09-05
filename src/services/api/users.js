@@ -187,6 +187,28 @@ export const addTourToFavorites = async (userId, token, tourId, destinationId) =
     }
 };
 
+export const removeTourFromFavorites = async (userId, token, tourId) => {
+    try {
+        const response = await fetch(`${ADD_TOUR_TO_FAVORITES_URL}/${userId}/${tourId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al agregar el tour a favoritos");
+        }
+
+        const userUpdated = await response.json();
+        return userUpdated;
+    } catch (error) {
+        console.error("Error:", error);
+        throw error;
+    }
+};
+
 
 
 export const addTourToCart = async (userId, token, tourId) => {

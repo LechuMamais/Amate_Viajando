@@ -57,7 +57,9 @@ FRONTEND:
 
 Por hacer:
 
-    - Tours: Quitar de favoritos
+    - Tours: 
+        ToursButtonContainer: componetizar
+        Testear que esté funcionando todo ok la función de agregar y quitar
 
 
     - Eslint
