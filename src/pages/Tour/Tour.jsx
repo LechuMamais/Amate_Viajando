@@ -32,7 +32,7 @@ const Tour = () => {
           usingFor={"tour"}
         >
           <ContactTourButtons tourName={tour?.name} destinationName={destination?.name}/>
-          {/* <ToursButtonContainer tour_id={tour_id} />  */}
+          <ToursButtonContainer tour_id={tour_id} destination_id={destination?._id}/>
           <CardsList
             headingText={`Otros tours en ${destination?.name}`}
             descriptionText={"Seleccionados para tí"}

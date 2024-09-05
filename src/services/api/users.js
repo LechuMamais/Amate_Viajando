@@ -162,10 +162,7 @@ export const deleteUser = async (id, token) => {
 
 /******************************************************************************************************************* */
 
-export const addTourToFavorites = async (userId, token, tourId) => {
-    console.log('user id', userId);
-    console.log('tour id', tourId);
-    console.log('token', token);
+export const addTourToFavorites = async (userId, token, tourId, destinationId) => {
     try {
         const response = await fetch(`${ADD_TOUR_TO_FAVORITES_URL}/${userId}/${tourId}`, {
             method: 'PUT',
@@ -173,19 +170,23 @@ export const addTourToFavorites = async (userId, token, tourId) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
+            body: JSON.stringify({
+                destination_id: destinationId
+            })
         });
-        console.log('response', response);
+
         if (!response.ok) {
             throw new Error('Error al agregar el tour a favoritos');
         }
 
         const userUpdated = await response.json();
-        console.log(userUpdated)
         return userUpdated;
     } catch (error) {
-        handleError(error);
+        console.error('Error:', error);
+        throw error;
     }
 };
+
 
 
 export const addTourToCart = async (userId, token, tourId) => {

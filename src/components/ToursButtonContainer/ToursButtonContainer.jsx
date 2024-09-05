@@ -9,19 +9,21 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 
-const ToursButtonContainer = ({ tour_id }) => {
+const ToursButtonContainer = ({ tour_id, destination_id }) => {
   const { user } = useContext(UserContext);
   const toast = useToast();
 
   const handleAddToFavoritesClick = async (user, tour_id) => {
-    console.log("user id", user._id);
-    console.log("tour id", tour_id);
-    console.log("token", user.token);
+    console.log("user id:", user._id);
+    console.log("tour id:", tour_id);
+    console.log("destination id:", destination_id);
+    console.log("token:", user.token);
     try {
       const updatedUser = await addTourToFavorites(
         user._id,
         user.token,
-        tour_id
+        tour_id,
+        destination_id
       );
       console.log("Tour agregado a favoritos:", updatedUser);
     } catch (error) {
@@ -35,7 +37,7 @@ const ToursButtonContainer = ({ tour_id }) => {
     }
   };
 
-  const handleAddToCartClick = async (user, tour_id) => {
+  /*const handleAddToCartClick = async (user, tour_id) => {
     try {
       const updatedUser = await addTourToCart(user._id, user.token, tour_id);
       console.log("Tour agregado al carrito:", updatedUser);
@@ -49,6 +51,7 @@ const ToursButtonContainer = ({ tour_id }) => {
       });
     }
   };
+*/
 
   return (
     <Flex direction={{ base: "column", md: "row" }} gap={2}>
@@ -59,14 +62,14 @@ const ToursButtonContainer = ({ tour_id }) => {
       >
         Agregar a Favoritos
       </Button>
-      <Button
+      {/*<Button
         variant="outline"
         size="lg"
         className="w-full"
         onClick={() => handleAddToCartClick(user, tour_id)}
       >
         Agregar al Carrito
-      </Button>
+      </Button>*/}
     </Flex>
   );
 };

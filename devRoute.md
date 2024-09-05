@@ -58,6 +58,9 @@ FRONTEND:
 Por hacer:
 
     - MiCuenta - Perfil de usuario
+        - Mostrar lista de favoritos
+
+    - Tours: Agregar a favoritos
 
 
     - Eslint
