@@ -31,8 +31,9 @@ const Tour = () => {
           descriptionParagraphs={tour?.longDescription.split("\n")}
           usingFor={"tour"}
         >
-          <ContactTourButtons tourName={tour?.name} destinationName={destination?.name}/>
           <ToursButtonContainer tour_id={tour_id} destination_id={destination?._id}/>
+          <ContactTourButtons tourName={tour?.name} destinationName={destination?.name}/>
+          <ToursButtonContainer tour_id={tour_id} destination_id={destination?._id} type='text'/>
           <CardsList
             headingText={`Otros tours en ${destination?.name}`}
             descriptionText={"Seleccionados para tí"}

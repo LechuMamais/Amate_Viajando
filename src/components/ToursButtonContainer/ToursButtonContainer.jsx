@@ -1,11 +1,23 @@
 import { Flex, Button, useToast, Text } from "@chakra-ui/react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
-import { addTourToCart, addTourToFavorites } from "../../services/api/users";
+import { addTourToFavorites } from "../../services/api/users";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const ToursButtonContainer = ({ tour_id, destination_id }) => {
+const ToursButtonContainer = ({ tour_id, destination_id, type = "icon" }) => {
   const { user } = useContext(UserContext);
   const toast = useToast();
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (user && user.favouriteTours) {
+      const found = user.favouriteTours.some(
+        (favTour) => favTour.tourId._id === tour_id
+      );
+      setIsFavorite(found);
+      //console.log("Tour está en favoritos:", found);
+    }
+  }, [user, tour_id]);
 
   const handleAddToFavoritesClick = async () => {
     if (!user || !user._id || !user.token) {
@@ -16,6 +28,7 @@ const ToursButtonContainer = ({ tour_id, destination_id }) => {
         duration: 5000,
         isClosable: true,
       });
+      return;
     }
 
     try {
@@ -25,9 +38,9 @@ const ToursButtonContainer = ({ tour_id, destination_id }) => {
         tour_id,
         destination_id
       );
-      if (updatedUser.message == "Tour already in favorites") {
+      if (updatedUser.message === "Tour already in favorites") {
         toast({
-          title: "Tour agregado",
+          title: "Tour ya en favoritos",
           description: "El tour ya se encontraba en la lista de favoritos.",
           status: "info",
           duration: 5000,
@@ -43,6 +56,8 @@ const ToursButtonContainer = ({ tour_id, destination_id }) => {
         duration: 5000,
         isClosable: true,
       });
+
+      setIsFavorite(true);
     } catch (error) {
       toast({
         title: "Error al agregar a favoritos.",
@@ -54,39 +69,27 @@ const ToursButtonContainer = ({ tour_id, destination_id }) => {
     }
   };
 
-  /*const handleAddToCartClick = async (user, tour_id) => {
-    try {
-      const updatedUser = await addTourToCart(user._id, user.token, tour_id);
-      console.log("Tour agregado al carrito:", updatedUser);
-    } catch (error) {
-      toast({
-        title: "Error al agregar al carrito.",
-        description: error.message || "Algo salió mal. Inténtalo de nuevo.",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  };
-*/
-
   return (
     <Flex direction={{ base: "column", md: "row" }} gap={2}>
-      <Button
-        size="lg"
-        className="w-full"
-        onClick={() => handleAddToFavoritesClick(user, tour_id)}
-      >
-        Agregar a Favoritos
-      </Button>
-      {/*<Button
-        variant="outline"
-        size="lg"
-        className="w-full"
-        onClick={() => handleAddToCartClick(user, tour_id)}
-      >
-        Agregar al Carrito
-      </Button>*/}
+      {type === "icon" ? (
+        <Button
+          size="lg"
+          className="w-full"
+          onClick={handleAddToFavoritesClick}
+          leftIcon={isFavorite ? <FaHeart size="28px" /> : <FaRegHeart size="28px" />}
+          color="red"
+          variant="link"
+          _hover={{transform:"scale(1.05)"}}
+        />
+      ) : (
+        <Button
+          size="lg"
+          className="w-full"
+          onClick={handleAddToFavoritesClick}
+        >
+          <Text>Agregar a favoritos</Text>
+        </Button>
+      )}
     </Flex>
   );
 };
