@@ -9,6 +9,7 @@ import { DestinationContext } from "../../providers/DestinationProvider";
 import ToursButtonContainer from "../../components/ToursButtonContainer/ToursButtonContainer";
 import CardsList from "../../components/CardsList/CardsList";
 import ContactTourButtons from "../../components/ContactTourButtons/ContactTourButtons";
+import AddAndRemoveFromFavoritesButton from "../../components/AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton";
 
 const Tour = () => {
   const { tour_id } = useParams();
@@ -31,9 +32,15 @@ const Tour = () => {
           descriptionParagraphs={tour?.longDescription.split("\n")}
           usingFor={"tour"}
         >
-          <ToursButtonContainer tour_id={tour_id} destination_id={destination?._id}/>
-          <ContactTourButtons tourName={tour?.name} destinationName={destination?.name}/>
-          <ToursButtonContainer tour_id={tour_id} destination_id={destination?._id} type='text'/>
+          <AddAndRemoveFromFavoritesButton
+            tour_id={tour_id}
+            destination_id={destination?._id}
+          />
+          <ToursButtonContainer
+            tour={tour}
+            destination={destination}
+            tour_id={tour_id}
+          />
           <CardsList
             headingText={`Otros tours en ${destination?.name}`}
             descriptionText={"Seleccionados para tí"}

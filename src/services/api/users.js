@@ -7,7 +7,8 @@ import {
     ADD_TOUR_TO_FAVORITES_URL,
     VERIFY_EMAIL_URL,
     GENERATE_SEND_NEW_EMAIL_VERIFICATION_TOKEN_URL,
-    RESET_PASSWORD
+    RESET_PASSWORD,
+    REMOVE_TOUR_FROM_FAVORITES_URL
 } from "../../resources/api.endpoints";
 import { handleError } from "../../utils/handleError";
 import { handleResponse } from "../../utils/handleResponse";
@@ -187,14 +188,17 @@ export const addTourToFavorites = async (userId, token, tourId, destinationId) =
     }
 };
 
-export const removeTourFromFavorites = async (userId, token, tourId) => {
+export const removeTourFromFavorites = async (userId, token, tourId, destinationId) => {
     try {
-        const response = await fetch(`${ADD_TOUR_TO_FAVORITES_URL}/${userId}/${tourId}`, {
+        const response = await fetch(`${REMOVE_TOUR_FROM_FAVORITES_URL}/${userId}/${tourId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify({
+                destination_id: destinationId,
+            }),
         });
 
         if (!response.ok) {
