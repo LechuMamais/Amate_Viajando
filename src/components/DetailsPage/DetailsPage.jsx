@@ -16,9 +16,12 @@ import { DestinationContext } from "../../providers/DestinationProvider";
 import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
 import { useEffect } from "react";
 import { handleDetailsPageScroll } from "../../handleScroll/handleDetailsPageScroll";
+import AddAndRemoveFromFavoritesButton from "../AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton";
+import { useParams } from "react-router-dom";
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
+  const { tour_id } = useParams();
   const { allDestinations } = useContext(AllDestinationsContext);
 
   useEffect(() => {
@@ -55,6 +58,12 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
             <Heading size="xl" fontWeight="bold">
               {obj?.heading}
             </Heading>
+            {usingFor === "tour" && (
+              <AddAndRemoveFromFavoritesButton
+                tour_id={tour_id}
+                destination_id={destination?._id}
+              />
+            )}
             <Stack spacing={4} mt={6} mb={4}>
               {Array.isArray(descriptionParagraphs) &&
                 descriptionParagraphs.map((paragraph, index) => (

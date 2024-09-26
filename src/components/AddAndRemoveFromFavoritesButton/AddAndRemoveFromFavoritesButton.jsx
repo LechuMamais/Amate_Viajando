@@ -9,7 +9,7 @@ const AddAndRemoveFromFavoritesButton = ({ tour_id, destination_id, type = "icon
   const { isFavorite, handleAddToFavorites, handleRemoveFromFavorites } = useFavoriteTour(user, tour_id, destination_id);
 
   return (
-    <Flex direction={{ base: "column", md: "row" }} gap={2}>
+    <Flex my={4} mx={0} direction={{ base: "column", md: "row" }} gap={0}>
       {type === "icon" ? (
         <Button
           size="lg"

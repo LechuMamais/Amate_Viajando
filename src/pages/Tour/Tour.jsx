@@ -32,10 +32,7 @@ const Tour = () => {
           descriptionParagraphs={tour?.longDescription.split("\n")}
           usingFor={"tour"}
         >
-          <AddAndRemoveFromFavoritesButton
-            tour_id={tour_id}
-            destination_id={destination?._id}
-          />
+
           <ToursButtonContainer
             tour={tour}
             destination={destination}

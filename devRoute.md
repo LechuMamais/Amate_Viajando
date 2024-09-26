@@ -52,14 +52,13 @@ FRONTEND:
         - Crear la recuperación de contraseña
             Todos los customHooks hechos y funcionando, falta hacer pruebas!!!
             Chequear que se este modificando la contraseña
-            
-
-
-Por hacer:
 
     - Tours: 
         ToursButtonContainer: componetizar
-        Testear que esté funcionando todo ok la función de agregar y quitar
+        Testear que esté funcionando todo ok la función de agregar y quitar            
+
+
+Por hacer:
 
 
     - Eslint
