@@ -9,11 +9,11 @@ const ToursButtonContainer = ({ tour, destination, tour_id }) => {
         tourName={tour?.name}
         destinationName={destination?.name}
       />
-      <AddAndRemoveFromFavoritesButton
+      {/*      <AddAndRemoveFromFavoritesButton
         tour_id={tour_id}
         destination_id={destination?._id}
         type="text"
-      />
+      />*/}
     </Flex>
   );
 };
