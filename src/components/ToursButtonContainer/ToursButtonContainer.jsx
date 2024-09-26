@@ -3,9 +3,8 @@ import AddAndRemoveFromFavoritesButton from "../AddAndRemoveFromFavoritesButton/
 import { Flex } from "@chakra-ui/react";
 
 const ToursButtonContainer = ({ tour, destination, tour_id }) => {
-  console.log(tour)
   return (
-    <Flex>
+    <Flex direction="column" gap={{ base: 4, md: 6 }}>
       <ContactTourButtons
         tourName={tour?.name}
         destinationName={destination?.name}
