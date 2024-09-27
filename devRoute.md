@@ -60,18 +60,21 @@ FRONTEND:
 
 Por hacer:
 
+    - Profile
+    - chequear el tema del userProvider y los favoritos, que no se está actualizando 
+        Estoy actualizando manualmente el provider luego de agregar y quitar el tour de favoritos, pero la pag tour no lo está reflejando
+        Bueno ahora he cambiado el backend para que devuelva el tour que se ha agregado o quitado, y luego modificar el estado del 
+        UserProvider manualmente, agregando o quitando le tour. Pero, aparentemente tengo un problema de sincronicidad con el provider, 
+        ya que no se renderizan correctamente los datos actualizados, a menos que refresque la página.
 
     - Eslint
     - Prettier
 
+    - Skeleton loaders
+
     - Tours: Que tengan PRECIO
 
-    - Profile
-
-    - Tour: Mostrar si está en la lista de fav, por ej con un corazon (que funcione también como boton)
 
     - Ver Carrito
 
     - Renombrar orderImagesArray
-
-    - Skeleton loaders

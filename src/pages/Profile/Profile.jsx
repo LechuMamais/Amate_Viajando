@@ -1,7 +1,7 @@
 import "./Profile.css";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
-import { Box, Button, Container, Text, Flex } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import AdminProfile from "../../components/AdminProfile/AdminProfile";
 import UserProfile from "../../components/UserProfile/UserProfile";
 

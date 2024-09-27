@@ -4,7 +4,8 @@ import CardsList from "../CardsList/CardsList";
 import MyLink from "../MyLink/MyLink";
 
 const UserProfile = ({ user }) => {
-  const transformedFavouriteTours = user.favouriteTours.map((favTour) => ({
+  console.log(user)
+  const transformedFavouriteTours = user.favouriteTours?.map((favTour) => ({
     tour_id: favTour.tourId._id,
     destinationId: favTour.destinationId,
     ...favTour.tourId,
