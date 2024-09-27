@@ -1,13 +1,12 @@
 import { useEffect } from "react";
+import { clearUserFromLocalStorage } from "../../utils/clearUserFromLocalStorage";
 
 const Logout = () => {
   useEffect(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("email");
+    clearUserFromLocalStorage();
     window.location.href = "/";
   });
-  return
+  return;
 };
 
 export default Logout;

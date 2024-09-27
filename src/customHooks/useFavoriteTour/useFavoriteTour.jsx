@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { useToast } from "@chakra-ui/react";
 import { UserContext } from "../../providers/UserProvider";
 import { isTourInFavorites, handleAddFavorite, handleRemoveFavorite } from "./useFavoriteTour.functions";
@@ -12,13 +12,13 @@ const useFavoriteTour = (tour_id, destination_id) => {
     setIsFavorite(isTourInFavorites(user, tour_id, destination_id));
   }, [user, tour_id, destination_id]);
 
-  const handleAddToFavorites = async () => {
+  const handleAddToFavorites = useCallback(async () => {
     await handleAddFavorite({ user, tour_id, destination_id, setUser, toast, setIsFavorite });
-  };
+  }, [user, tour_id, destination_id]);
 
-  const handleRemoveFromFavorites = async () => {
+  const handleRemoveFromFavorites = useCallback(async () => {
     await handleRemoveFavorite({ user, tour_id, destination_id, setUser, toast, setIsFavorite });
-  };
+  }, [user, tour_id, destination_id]);
 
   return {
     isFavorite,

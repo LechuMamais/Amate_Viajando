@@ -11,11 +11,16 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import MyLink from "../MyLink/MyLink";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
+import React, { useEffect, useState } from "react";
 
-const Header = () => {
-  const { user } = useContext(UserContext);
+const Header = React.memo(() => {
+  const [logged, setLogged] = useState(false);
+  useEffect(() => {
+    if ((localStorage.getItem("AmateViajandoLogged") == "true")) {
+      setLogged(true);
+    } else {setLogged(false)}
+  }, []);
+
   return (
     <Flex as="header" zIndex="100" bgColor="white">
       <Box id="home-gradient-container">
@@ -53,7 +58,7 @@ const Header = () => {
               </MyLink>
               <MenuDivider />
               <MenuGroup title="Perfil">
-                {user.logged ? (
+                {logged ? (
                   <>
                     <MyLink to={"/profile"}>
                       <MenuItem>Mi cuenta</MenuItem>
@@ -82,6 +87,6 @@ const Header = () => {
       </Box>
     </Flex>
   );
-};
+});
 
 export default Header;

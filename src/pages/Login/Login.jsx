@@ -19,7 +19,6 @@ const Login = () => {
     togglePasswordVisibility,
     handlePasswordChange,
     validatePassword,
-    passwordSecurityLevel,
   } = useRegisterForm();
 
   return (

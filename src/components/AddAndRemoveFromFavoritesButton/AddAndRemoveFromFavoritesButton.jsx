@@ -2,7 +2,9 @@ import { Flex, Button, Text } from "@chakra-ui/react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import useFavoriteTour from "../../customHooks/useFavoriteTour/useFavoriteTour";
 
-const AddAndRemoveFromFavoritesButton = ({ tour_id, destination_id, type = "icon" }) => {
+import React from "react";
+
+const AddAndRemoveFromFavoritesButton = React.memo(({ tour_id, destination_id, type = "icon" }) => {
   const { isFavorite, handleAddToFavorites, handleRemoveFromFavorites } = useFavoriteTour( tour_id, destination_id);
 
   return (
@@ -10,8 +12,10 @@ const AddAndRemoveFromFavoritesButton = ({ tour_id, destination_id, type = "icon
       {type === "icon" ? (
         <Button
           size="lg"
-          onClick={isFavorite ? handleRemoveFromFavorites : handleAddToFavorites}
-          leftIcon={isFavorite ? <FaHeart size="28px" /> : <FaRegHeart size="28px" />}
+          onClick={(e) => {
+            e.preventDefault();
+            isFavorite ? handleRemoveFromFavorites() : handleAddToFavorites();
+          }}          leftIcon={isFavorite ? <FaHeart size="28px" /> : <FaRegHeart size="28px" />}
           color="red"
           variant="link"
           _hover={{ transform: "scale(1.05)" }}
@@ -26,6 +30,6 @@ const AddAndRemoveFromFavoritesButton = ({ tour_id, destination_id, type = "icon
       )}
     </Flex>
   );
-};
+});
 
 export default AddAndRemoveFromFavoritesButton;

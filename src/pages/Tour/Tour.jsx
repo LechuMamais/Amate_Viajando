@@ -8,8 +8,6 @@ import { useContext } from "react";
 import { DestinationContext } from "../../providers/DestinationProvider";
 import ToursButtonContainer from "../../components/ToursButtonContainer/ToursButtonContainer";
 import CardsList from "../../components/CardsList/CardsList";
-import ContactTourButtons from "../../components/ContactTourButtons/ContactTourButtons";
-import AddAndRemoveFromFavoritesButton from "../../components/AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton";
 
 const Tour = () => {
   const { tour_id } = useParams();
