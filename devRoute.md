@@ -60,7 +60,7 @@ FRONTEND:
 
 Por hacer:
 
-    - Profile
+    - Mejorar el diseño de la home - hero
 
     - Eslint
     - Prettier

@@ -16,28 +16,28 @@ import React, { useEffect, useState } from "react";
 const Header = React.memo(() => {
   const [logged, setLogged] = useState(false);
   useEffect(() => {
-    if ((localStorage.getItem("AmateViajandoLogged") == "true")) {
+    if (localStorage.getItem("AmateViajandoLogged") == "true") {
       setLogged(true);
-    } else {setLogged(false)}
+    } else {
+      setLogged(false);
+    }
   }, []);
 
   return (
-    <Flex as="header" zIndex="100" bgColor="white">
-      <Box id="home-gradient-container">
-        <Box className="home-link-container">
-          <Link to={"/"} w="72px" h="72px">
-            <Image
-              px={4}
-              pb={2}
-              w="88px"
-              h="72px"
-              src="/assets/logo_header.jpg"
-              alt="Amate Viajando"
-              objectFit="cover"
-              position="absolute"
-            />
-          </Link>
-        </Box>
+    <Flex as="header" zIndex="100" h="72px">
+      <Box className="home-link-container" zIndex="200">
+        <Link to={"/"} w="72px" h="72px">
+          <Image
+            px={4}
+            pb={2}
+            w="88px"
+            h="72px"
+            src="/assets/logo_header.png"
+            alt="Amate Viajando"
+            objectFit="cover"
+            position="absolute"
+          />
+        </Link>
       </Box>
       <Spacer />
       <Box p="4">
@@ -48,36 +48,36 @@ const Header = React.memo(() => {
             icon={<HamburgerIcon />}
             variant="outline"
           />
-          <MenuList className="header-menu-list">
+          <MenuList className="header-menu-list" border="none" bgColor="#ffffffce">
             <MenuGroup title="Viaja">
               <MyLink to="/destinations">
-                <MenuItem>Destinos</MenuItem>
+                <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Destinos</MenuItem>
               </MyLink>
               <MyLink to="/tours">
-                <MenuItem>Tours</MenuItem>
+                <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Tours</MenuItem>
               </MyLink>
               <MenuDivider />
               <MenuGroup title="Perfil">
                 {logged ? (
                   <>
                     <MyLink to={"/profile"}>
-                      <MenuItem>Mi cuenta</MenuItem>
+                      <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Mi cuenta</MenuItem>
                     </MyLink>
                     {/*
                     <MyLink to={"/carrito"}>
-                      <MenuItem>Ver carrito</MenuItem>
+                      <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Ver carrito</MenuItem>
                     </MyLink>
                     */}
 
                     <MyLink to={"/logout"}>
-                      <MenuItem color={"red.400"} pl={4}>
+                      <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}} color={"red.400"} pl={4}>
                         Cerrar Sesión
                       </MenuItem>
                     </MyLink>
                   </>
                 ) : (
                   <MyLink to={"/login"}>
-                    <MenuItem>Login</MenuItem>
+                    <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Login</MenuItem>
                   </MyLink>
                 )}
               </MenuGroup>

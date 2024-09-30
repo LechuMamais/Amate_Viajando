@@ -6,24 +6,23 @@ const HeroText = () => {
   return (
     <Box
       className="hero-text-wrapper"
-      w="100lvw"
-      position="absolute"
-      bottom={{ base: "111px", sm: "71px", md: "110px" }}
+      //w="100vw"
       zIndex="2"
       overflow="hidden"
+      w={{ base: "100vw", md: "min(960px, 90vw)" }}
     >
       <Box
-        className="hero-text-parallax-effect"
-        w={{ base: "100%", md: "min(800px, 90%)" }}
+        className={{base: "", md: "hero-text-parallax-effect"}}
         mx="auto"
       >
         <Flex
           direction="column"
           textAlign="center"
           spacing={4}
-          mx="auto"
+          //mx="auto"
+          w="100%"
           bgColor="rgba(255, 255, 255, 0.25)"
-          px={2}
+          px={{ base: 4, sm: 8, md: 16 }}
           py={4}
           borderRadius={{ base: "0", md: "16" }}
         >
@@ -33,8 +32,8 @@ const HeroText = () => {
             fontWeight="bold"
             lineHeight="tight"
             color="gray.800"
-            mb={4}
-            fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+            mb={{ base: 4, md: 6 }}
+            fontSize={{ base: "2xl", sm: "2xl", md: "3xl" }}
           >
             Descubre tu propósito viajando
           </Heading>
@@ -44,9 +43,6 @@ const HeroText = () => {
             fontSize={{
               base: "0.8rem",
               sm: "md",
-              md: "lg",
-              lg: "base",
-              xl: "lg",
             }}
             maxW={{
               base: "300px",
@@ -56,7 +52,7 @@ const HeroText = () => {
             }}
             lineHeight="relaxed"
             mx="auto"
-            mb={6}
+            mb={{ base: 4, md: 6 }}
             letterSpacing="1.1px"
           >
             La naturaleza enciende nuestros sentidos, nos transporta a lugares
