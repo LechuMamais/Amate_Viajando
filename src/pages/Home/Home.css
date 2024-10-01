@@ -1,5 +1,7 @@
-/*.hero{
-    background: rgb(207,255,218);
-    background: linear-gradient(90deg, rgba(207,255,218,1) 0%, rgba(149,186,255,1) 100%); 
-}
-*/
+.hero-background {
+    filter: hue-rotate(-74deg) saturate(120%) brightness(95%) contrast(100%);
+    opacity: 0.70;
+  }
+  #Amate_Viajando_Hero_img{
+    border-color: rgba(255, 255, 255) !important;
+  }

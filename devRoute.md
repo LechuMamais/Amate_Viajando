@@ -63,7 +63,6 @@ Por hacer:
     - HOME: Mejorar el diseño de la home - hero
         En celu se tiene que ver distinta la organización de los componentes!
         Arreglar el minibug, de que si la pantalla es más corta que el contenido, abajo queda sin fondo!
-    - Header: quitar el logo en la home.
 
     - Eslint
     - Prettier

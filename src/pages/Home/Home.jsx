@@ -13,7 +13,7 @@ const Home = () => {
     };
   }, []);
 
-  const heroImageUrl = "/assets/LogoAmate_1024_ajustado_2.png";
+  const heroImageUrl = "/assets/Logo_Acuarelas_redondo.png";
 
   return (
     <Box as="main" flex="1" minHeight="calc(100lvh-72px)">
@@ -31,35 +31,51 @@ const Home = () => {
       <Flex
         className="hero"
         direction="column"
-        justifyContent={{base: "space-between", md: "center"}}
+        justifyContent={{ base: "space-between", md: "center" }}
         w="100%"
         minH="100lvh"
         maxH="1400px"
         mt="-72px"
-        gap="clamp(2rem, 4.5vh, 24rem)"
+        gap={{base: 0, md: "clamp(2rem, 4.5vh, 24rem)"}}
         mx="auto"
         alignItems="center"
+        pb={{base:0, md: 4}}
       >
-        <Flex></Flex>
+        <Flex
+        flex={{base: "1", md: ""}}
+        className="hero-image-wrapper"
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        w="100%"
+        h="100%"
+        >
           <Flex
             className="hero-image-container"
             direction="column"
             alignItems="center"
             justifyItems="center"
-            w="clamp(300px, 85vmin, 1024px)"
-            mt={0}
-            
+            w={{
+              base: "clamp(300px, 50vmin, 1024px)",
+              md: "clamp(300px, 50vmin, 1024px)",
+            }}
+            //mt={{ base: "10svh", md: 0 }}
           >
             <Image
+              bgColor="#FFFFFF"
+              id="Amate_Viajando_Hero_img"
               src={heroImageUrl}
               alt="Amate_Viajando_Logo"
               objectFit="cover"
               mt={{ base: 2 }}
               zIndex="1"
+              opacity="0.8"
+              border="10px solid #ffffff"
+              borderRadius="100%"
             />
           </Flex>
-          <HeroText />
-
+        </Flex>
+        <HeroText />
       </Flex>
     </Box>
   );

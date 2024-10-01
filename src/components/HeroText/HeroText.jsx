@@ -4,6 +4,7 @@ import { Box, Button, Heading, Text, Flex } from "@chakra-ui/react";
 const HeroText = () => {
   return (
     <Box
+    flex={{base: "0", md: "1"}}
       className="hero-text-wrapper"
       zIndex="2"
       overflow="hidden"
@@ -53,7 +54,7 @@ const HeroText = () => {
             letterSpacing="1.1px"
           >
             La naturaleza enciende nuestros sentidos, nos transporta a lugares
-            mágicos dónde podremos escuchar nuestra voz interior para iluminar
+            mágicos donde podremos escuchar nuestra voz interior para iluminar
             el destino correcto en ésta gran aventura.
             <br />
             Están listos?
