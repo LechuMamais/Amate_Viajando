@@ -31,38 +31,35 @@ const Home = () => {
       <Flex
         className="hero"
         direction="column"
-        justifyContent="space-evenly"
+        justifyContent={{base: "space-between", md: "center"}}
         w="100%"
         minH="100vh"
         maxH="1400px"
         mt="-72px"
+        gap="clamp(2rem, 4.5vh, 24rem)"
+        mx="auto"
+        alignItems="center"
       >
-        <Flex
-          className="hero-wrapper"
-          direction="column"
-          gap="clamp(2rem, 8vh, 24rem)"
-          w="clamp(80%, 90%, 1024px)"
-          h="100%"
-          alignItems="center"
-          justifyContent="space-evenly"
-          mx="auto"
-        >
+        <Flex></Flex>
           <Flex
+            className="hero-image-container"
             direction="column"
             alignItems="center"
             justifyItems="center"
-            w="clamp(320px, 75vmin, 1024px)"
+            w="clamp(300px, 85vmin, 1024px)"
+            mt={{base:  "20%", md: 0}}
+            
           >
             <Image
               src={heroImageUrl}
               alt="Amate_Viajando_Logo"
               objectFit="cover"
-              mt={{ base: 2}}
+              mt={{ base: 2 }}
               zIndex="1"
             />
           </Flex>
-          <HeroText/>
-        </Flex>
+          <HeroText />
+
       </Flex>
     </Box>
   );
