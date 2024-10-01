@@ -1,4 +1,3 @@
-import "./Header.css";
 import { Box, Flex, IconButton, Image, Spacer } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
@@ -12,9 +11,12 @@ import {
 } from "@chakra-ui/react";
 import MyLink from "../MyLink/MyLink";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Header = React.memo(() => {
   const [logged, setLogged] = useState(false);
+  const isHome = useLocation().pathname === "/";
+
   useEffect(() => {
     if (localStorage.getItem("AmateViajandoLogged") == "true") {
       setLogged(true);
@@ -25,20 +27,23 @@ const Header = React.memo(() => {
 
   return (
     <Flex as="header" zIndex="100" h="72px">
-      <Box className="home-link-container" zIndex="200">
-        <Link to={"/"} w="72px" h="72px">
-          <Image
-            px={4}
-            pb={2}
-            w="88px"
-            h="72px"
-            src="/assets/logo_header.png"
-            alt="Amate Viajando"
-            objectFit="cover"
-            position="absolute"
-          />
-        </Link>
-      </Box>
+      {!isHome && (
+        <Box className="home-link-container" zIndex="200">
+          <Link to={"/"} w="72px" h="72px">
+            <Image
+              px={4}
+              pb={2}
+              w="88px"
+              h="72px"
+              src="/assets/logo_header.png"
+              alt="Amate Viajando"
+              objectFit="cover"
+              position="absolute"
+            />
+          </Link>
+        </Box>
+      )}
+
       <Spacer />
       <Box p="4">
         <Menu>
@@ -48,20 +53,39 @@ const Header = React.memo(() => {
             icon={<HamburgerIcon />}
             variant="outline"
           />
-          <MenuList className="header-menu-list" border="none" bgColor="#ffffffce">
+          <MenuList
+            className="header-menu-list"
+            border="none"
+            bgColor="#ffffffce"
+          >
             <MenuGroup title="Viaja">
               <MyLink to="/destinations">
-                <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Destinos</MenuItem>
+                <MenuItem
+                  bgColor="transparent"
+                  _hover={{ bgColor: "#ffffffab" }}
+                >
+                  Destinos
+                </MenuItem>
               </MyLink>
               <MyLink to="/tours">
-                <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Tours</MenuItem>
+                <MenuItem
+                  bgColor="transparent"
+                  _hover={{ bgColor: "#ffffffab" }}
+                >
+                  Tours
+                </MenuItem>
               </MyLink>
               <MenuDivider />
               <MenuGroup title="Perfil">
                 {logged ? (
                   <>
                     <MyLink to={"/profile"}>
-                      <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Mi cuenta</MenuItem>
+                      <MenuItem
+                        bgColor="transparent"
+                        _hover={{ bgColor: "#ffffffab" }}
+                      >
+                        Mi cuenta
+                      </MenuItem>
                     </MyLink>
                     {/*
                     <MyLink to={"/carrito"}>
@@ -70,14 +94,24 @@ const Header = React.memo(() => {
                     */}
 
                     <MyLink to={"/logout"}>
-                      <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}} color={"red.400"} pl={4}>
+                      <MenuItem
+                        bgColor="transparent"
+                        _hover={{ bgColor: "#ffffffab" }}
+                        color={"red.400"}
+                        pl={4}
+                      >
                         Cerrar Sesión
                       </MenuItem>
                     </MyLink>
                   </>
                 ) : (
                   <MyLink to={"/login"}>
-                    <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Login</MenuItem>
+                    <MenuItem
+                      bgColor="transparent"
+                      _hover={{ bgColor: "#ffffffab" }}
+                    >
+                      Login
+                    </MenuItem>
                   </MyLink>
                 )}
               </MenuGroup>

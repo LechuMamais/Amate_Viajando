@@ -16,7 +16,7 @@ const Home = () => {
   const heroImageUrl = "/assets/LogoAmate_1024_ajustado_2.png";
 
   return (
-    <Box as="main" flex="1" minHeight="calc(100vh-72px)">
+    <Box as="main" flex="1" minHeight="calc(100lvh-72px)">
       <Box
         minH="100vh"
         className="hero-background"
@@ -33,7 +33,7 @@ const Home = () => {
         direction="column"
         justifyContent={{base: "space-between", md: "center"}}
         w="100%"
-        minH="100vh"
+        minH="100lvh"
         maxH="1400px"
         mt="-72px"
         gap="clamp(2rem, 4.5vh, 24rem)"
@@ -47,7 +47,7 @@ const Home = () => {
             alignItems="center"
             justifyItems="center"
             w="clamp(300px, 85vmin, 1024px)"
-            mt={{base:  "20%", md: 0}}
+            mt={0}
             
           >
             <Image

@@ -1,4 +1,3 @@
-import "./Footer.css";
 import { Box, Flex, Link, Text } from "@chakra-ui/react";
 import {
   FaFacebook,
@@ -9,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <Box as="footer" py={{ base: 6, md: 8 }} zIndex={300} bgColor='white'>
+    <Box as="footer" py={{ base: 6, md: 8 }} zIndex={300} bgColor='white' w='100%'>
       <Flex
         justify="space-between"
         align="center"

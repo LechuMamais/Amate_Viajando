@@ -1,4 +1,3 @@
-import "./HeroText.css";
 import MyLink from "../../components/MyLink/MyLink";
 import { Box, Button, Heading, Text, Flex } from "@chakra-ui/react";
 
@@ -6,10 +5,9 @@ const HeroText = () => {
   return (
     <Box
       className="hero-text-wrapper"
-      //w="100vw"
       zIndex="2"
       overflow="hidden"
-      w={{ base: "100vw", md: "min(960px, 90vw)" }}
+      w={{ base: "100vw", md: "min(960px, 90svw)" }}
     >
       <Box
         className={{base: "", md: "hero-text-parallax-effect"}}
@@ -19,7 +17,6 @@ const HeroText = () => {
           direction="column"
           textAlign="center"
           spacing={4}
-          //mx="auto"
           w="100%"
           bgColor="rgba(255, 255, 255, 0.25)"
           px={{ base: 4, sm: 8, md: 16 }}
