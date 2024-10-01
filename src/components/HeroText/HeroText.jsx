@@ -19,7 +19,7 @@ const HeroText = () => {
           textAlign="center"
           spacing={4}
           w="100%"
-          bgColor="rgba(255, 255, 255, 0.25)"
+          bgColor="rgba(255, 255, 255, 0.4)"
           px={{ base: 4, sm: 8, md: 16 }}
           py={4}
           borderRadius={{ base: "0", md: "16" }}

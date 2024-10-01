@@ -1,7 +1,9 @@
 .hero-background {
-    filter: hue-rotate(-74deg) saturate(120%) brightness(95%) contrast(100%);
-    opacity: 0.70;
-  }
-  #Amate_Viajando_Hero_img{
-    border-color: rgba(255, 255, 255) !important;
-  }
+  filter: hue-rotate(-74deg) saturate(120%) brightness(85%) contrast(100%);
+}
+
+.hero-image-container {
+  border-radius: 100%;
+  box-shadow: 20px 20px 60px #000000,
+    -20px -20px 60px #ffffff,-20px -20px 30px #ffffff;
+}

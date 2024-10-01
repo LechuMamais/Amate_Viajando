@@ -25,6 +25,7 @@ const Home = () => {
         position="absolute"
         top="0px"
         left="0px"
+        opacity="0.9"
       >
         <Lumiflex />
       </Box>
@@ -59,7 +60,6 @@ const Home = () => {
               base: "clamp(300px, 50vmin, 1024px)",
               md: "clamp(300px, 50vmin, 1024px)",
             }}
-            //mt={{ base: "10svh", md: 0 }}
           >
             <Image
               bgColor="#FFFFFF"
@@ -67,10 +67,10 @@ const Home = () => {
               src={heroImageUrl}
               alt="Amate_Viajando_Logo"
               objectFit="cover"
-              mt={{ base: 2 }}
+              mt={{ base: 0, md: 8 }}
               zIndex="1"
               opacity="0.8"
-              border="10px solid #ffffff"
+              border="10px solid #FFFFFF"
               borderRadius="100%"
             />
           </Flex>
