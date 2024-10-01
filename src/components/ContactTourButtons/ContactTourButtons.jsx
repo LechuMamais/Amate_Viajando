@@ -1,15 +1,9 @@
 import React from "react";
 import { Text, Flex, Button } from "@chakra-ui/react";
-import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { useContact } from "../../customHooks/useContact/useContact";
 
 const ContactTourButtons = ({ tourName, destinationName }) => {
-  const whatsappText = encodeURIComponent(
-    `Hola, estoy interesado en el tour ${tourName} en ${destinationName} y quisiera más información.`
-  );
-  const emailText = encodeURIComponent(
-    `Hola,\n\nEstoy interesado en el tour ${tourName} en ${destinationName} y quisiera más información.\n\nMuchas gracias.`
-  );
-  const emailSubject = encodeURIComponent(`Solicitud de infromación`);
+  const { whatsappUrl, emailUrl, icons } = useContact(tourName, destinationName);
 
   return (
     <>
@@ -27,9 +21,9 @@ const ContactTourButtons = ({ tourName, destinationName }) => {
       <Flex direction={{ base: "column", md: "row" }} gap={2}>
         <Button
           as="a"
-          href={`https://wa.me/5492942639282?text=${whatsappText}`}
+          href={whatsappUrl}
           target="_blank"
-          leftIcon={<FaWhatsapp size="24px" />}
+          leftIcon={<icons.whatsapp size="24px" />}
           colorScheme="teal"
           variant="solid"
         >
@@ -37,9 +31,9 @@ const ContactTourButtons = ({ tourName, destinationName }) => {
         </Button>
         <Button
           as="a"
-          href={`mailto:amateviajandoreservas@gmail.com?subject=${emailSubject}?body=${emailText}`}
+          href={emailUrl}
           target="_blank"
-          leftIcon={<FaEnvelope size="24px" />}
+          leftIcon={<icons.email size="24px" />}
           colorScheme="teal"
           variant="outline"
         >

@@ -1,19 +1,20 @@
 import MyLink from "../../components/MyLink/MyLink";
 import { Box, Button, Heading, Text, Flex } from "@chakra-ui/react";
+import { useContact } from "../../customHooks/useContact/useContact";
 
 const HeroText = () => {
+  const coachMessage = `Hola, me interesa el coaching viajero y quisiera más información. ¿Cuándo podríamos agendar una cita?`;
+  const { whatsappUrl, icons } = useContact(null, null, coachMessage);
+
   return (
     <Box
-    flex={{base: "0", md: "1"}}
+      flex={{ base: "0", md: "1" }}
       className="hero-text-wrapper"
       zIndex="2"
       overflow="hidden"
       w={{ base: "100vw", md: "min(960px, 90svw)" }}
     >
-      <Box
-        className={{base: "", md: "hero-text-parallax-effect"}}
-        mx="auto"
-      >
+      <Box className={{ base: "", md: "hero-text-parallax-effect" }} mx="auto">
         <Flex
           direction="column"
           textAlign="center"
@@ -38,47 +39,49 @@ const HeroText = () => {
           <Text
             className="yeseva-one-regular"
             color="gray.700"
-            fontSize={{
-              base: "0.8rem",
-              sm: "md",
-            }}
-            maxW={{
-              base: "300px",
-              sm: "450px",
-              md: "660px",
-              lg: "800x",
-            }}
+            fontSize={{ base: "0.8rem", sm: "md" }}
+            maxW={{ base: "300px", sm: "450px", md: "660px", lg: "800x" }}
             lineHeight="relaxed"
             mx="auto"
             mb={{ base: 4, md: 6 }}
             letterSpacing="1.1px"
           >
             La naturaleza enciende nuestros sentidos, nos transporta a lugares
-            mágicos donde podremos escuchar nuestra voz interior para iluminar
-            el destino correcto en ésta gran aventura.
-            <br />
-            Están listos?
+            mágicos donde podremos escuchar nuestra voz interior.
           </Text>
-          <MyLink to="/destinations">
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            gap={{ base: 2, md: 8 }}
+            justifyContent="center"
+          >
+            <MyLink to="/destinations">
+              <Button
+                size="lg"
+                colorScheme="blackAlpha"
+                px={16}
+                w={{ base: "100%", md: "240px" }}
+                isDisabled={false}
+              >
+                Ver destinos
+              </Button>
+            </MyLink>
             <Button
               size="lg"
-              colorScheme="blackAlpha"
+              w={{ base: "100%", md: "240px" }}
               px={16}
-              _focus={{
-                outline: "none",
-                ring: 1,
-                ringColor: "gray.950",
-                color: "gray.100",
-              }}
-              isDisabled={false}
+              as="a"
+              href={whatsappUrl}
+              target="_blank"
+              leftIcon={<icons.whatsapp size="24px" />}
+              variant="solid"
+              _hover={{ bgColor: "white", color: "#000000d0" }}
             >
-              Vamos
+              Agendar cita
             </Button>
-          </MyLink>
+          </Flex>
         </Flex>
       </Box>
     </Box>
   );
 };
-
 export default HeroText;
