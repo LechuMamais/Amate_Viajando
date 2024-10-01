@@ -19,6 +19,7 @@ import Register from "./pages/Register/Register";
 import VerifyEmail from "./components/userFormComponents/verifyEmail/verifyEmail";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
         <Route path="/update-destination/:destination_id" element={<UpdateDestination />} />
         <Route path="/update-tour/:tour_id" element={<UpdateTour />} />
 
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
