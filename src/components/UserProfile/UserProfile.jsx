@@ -1,5 +1,4 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import React from "react";
 import CardsList from "../CardsList/CardsList";
 import MyLink from "../MyLink/MyLink";
 
@@ -10,9 +9,9 @@ const UserProfile = ({ user }) => {
     ...favTour.tourId,
   }));
   return (
-    <Flex direction="column" gap={8}>
+    <Flex direction='column' gap={8}>
       <Box>
-        <Text fontSize="xl" fontWeight="bold">
+        <Text fontSize='xl' fontWeight='bold'>
           {user.userName}
         </Text>
       </Box>
@@ -25,14 +24,8 @@ const UserProfile = ({ user }) => {
       {user.favouriteTours.length === 0 && (
         <Flex direction='column' alignItems='center' gap={4}>
           <Text textAlign='center'>Aún no has agregado tours a tu lista de favoritos</Text>
-          <MyLink to="/destinations">
-            <Button
-              size="lg"
-              p={6}
-              mx='auto'
-              my={{ base: 2, md: 3, lg: 4 }}
-              fontWeight={"light"}
-            >
+          <MyLink to='/destinations'>
+            <Button size='lg' p={6} mx='auto' my={{ base: 2, md: 3, lg: 4 }} fontWeight={"light"}>
               Ver Destinos
             </Button>
           </MyLink>

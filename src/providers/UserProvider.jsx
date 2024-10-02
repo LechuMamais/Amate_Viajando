@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { checkLogged } from "../services/api/users";
 import { clearUserFromLocalStorage } from "../utils/clearUserFromLocalStorage";
 
@@ -7,12 +7,11 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
 
-
-  const setLoggedInLocalStorage = ()=>{
+  const setLoggedInLocalStorage = () => {
     localStorage.setItem("AmateViajandoLogged", "true");
   };
 
-  const setLogOutInLocalStorage = ()=>{
+  const setLogOutInLocalStorage = () => {
     localStorage.setItem("AmateViajandoLogged", "false");
   };
 
@@ -40,9 +39,5 @@ export const UserProvider = ({ children }) => {
     getUserFromLocalStorage();
   }, [user.logged]);
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };

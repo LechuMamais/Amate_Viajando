@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, Stack, Heading, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -31,29 +31,22 @@ const CreateDestination = () => {
   });
 
   return (
-    <Box as="main" flex={1} p={6}>
+    <Box as='main' flex={1} p={6}>
       <Stack
-        as="form"
+        as='form'
         spacing={4}
         onSubmit={handleSubmit((data) =>
-          handleCreateTourDestinationSubmit(
-            data,
-            user.token,
-            toast,
-            "destination",
-            navigate,
-            reloadDestinations
-          )
+          handleCreateTourDestinationSubmit(data, user.token, toast, "destination", navigate, reloadDestinations),
         )}
       >
-        <BackButton to="/profile" />
-        <Heading fontSize="xl">Nuevo Destino</Heading>
+        <BackButton to='/profile' />
+        <Heading fontSize='xl'>Nuevo Destino</Heading>
         <TourDestinationForm register={register} errors={errors} />
         <ImagesForm control={control} register={register} errors={errors} />
-        <Button mt={4} colorScheme="teal" type="submit">
+        <Button mt={4} colorScheme='teal' type='submit'>
           Crear Destino
         </Button>
-        <BackButton to="/profile" />
+        <BackButton to='/profile' />
       </Stack>
     </Box>
   );

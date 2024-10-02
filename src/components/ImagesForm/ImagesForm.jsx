@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
 import {
   Box,
@@ -18,12 +18,7 @@ import MyModal from "../MyModal/MyModal";
 import { useParams } from "react-router-dom";
 import { handleDeleteImage } from "../../services/handleDeleteImage";
 
-const ImagesForm = ({
-  control,
-  register,
-  errors,
-  usingFor,
-}) => {
+const ImagesForm = ({ control, register, errors, usingFor }) => {
   const { user } = useContext(UserContext);
   const { fields, append, remove } = useFieldArray({
     control,
@@ -32,43 +27,32 @@ const ImagesForm = ({
   const { tour_id, destination_id } = useParams();
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" p={4} mb={4} bg="gray.100">
+    <Box borderWidth='1px' borderRadius='lg' p={4} mb={4} bg='gray.100'>
       <Stack spacing={4}>
-        <Heading size="lg" mb={4}>
+        <Heading size='lg' mb={4}>
           Imágenes
         </Heading>
         {fields.map((item, index) => (
-          <Box
-            borderWidth="1px"
-            borderRadius="lg"
-            key={item.id}
-            p={4}
-            mt={4}
-            mb={4}
-            bg="white"
-          >
-            <Flex
-              direction="row"
-              gap={4}
-              justifyContent="space-between"
-              align="baseline"
-            >
-              <Heading size="md" mb={4}>
+          <Box borderWidth='1px' borderRadius='lg' key={item.id} p={4} mt={4} mb={4} bg='white'>
+            <Flex direction='row' gap={4} justifyContent='space-between' align='baseline'>
+              <Heading size='md' mb={4}>
                 Imagen {index + 1}
               </Heading>
               <MyModal
-                heading="Confirmar eliminación"
-                question="¿Estás seguro de que deseas eliminar esta imagen?"
-                text="Se borraran todos los datos de la imagen"
-                onAcceptClick={() => handleDeleteImage(index, item, usingFor, remove, tour_id, destination_id, user.token)}
-                buttonText="Eliminar imagen"
-                type="delete"
+                heading='Confirmar eliminación'
+                question='¿Estás seguro de que deseas eliminar esta imagen?'
+                text='Se borraran todos los datos de la imagen'
+                onAcceptClick={() =>
+                  handleDeleteImage(index, item, usingFor, remove, tour_id, destination_id, user.token)
+                }
+                buttonText='Eliminar imagen'
+                type='delete'
               />
             </Flex>
             <Box mb={4}>
               <FormControl mt={4}>
                 <FormLabel>
-                  <Text fontSize="lg">Nombre</Text>
+                  <Text fontSize='lg'>Nombre</Text>
                 </FormLabel>
                 <Input
                   defaultValue={item.name}
@@ -76,16 +60,12 @@ const ImagesForm = ({
                     required: "Este campo es requerido",
                   })}
                 />
-                {errors.images?.[index]?.name && (
-                  <Text color="red.500">
-                    {errors.images[index].name.message}
-                  </Text>
-                )}
+                {errors.images?.[index]?.name && <Text color='red.500'>{errors.images[index].name.message}</Text>}
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>
-                  <Text fontSize="lg">Descripción</Text>
+                  <Text fontSize='lg'>Descripción</Text>
                 </FormLabel>
                 <Textarea
                   defaultValue={item.description}
@@ -94,15 +74,13 @@ const ImagesForm = ({
                   })}
                 />
                 {errors.images?.[index]?.description && (
-                  <Text color="red.500">
-                    {errors.images[index].description.message}
-                  </Text>
+                  <Text color='red.500'>{errors.images[index].description.message}</Text>
                 )}
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>
-                  <Text fontSize="lg">Texto alternativo (alt)</Text>
+                  <Text fontSize='lg'>Texto alternativo (alt)</Text>
                 </FormLabel>
                 <Input
                   defaultValue={item.alt}
@@ -110,21 +88,17 @@ const ImagesForm = ({
                     required: "Este campo es requerido",
                   })}
                 />
-                {errors.images?.[index]?.alt && (
-                  <Text color="red.500">
-                    {errors.images[index].alt.message}
-                  </Text>
-                )}
+                {errors.images?.[index]?.alt && <Text color='red.500'>{errors.images[index].alt.message}</Text>}
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>
-                  <Text fontSize="lg">Orden de prioridad</Text>
+                  <Text fontSize='lg'>Orden de prioridad</Text>
                 </FormLabel>
                 <Input
                   defaultValue={item.order}
-                  placeholder="Orden"
-                  type="number"
+                  placeholder='Orden'
+                  type='number'
                   {...register(`images.${index}.order`, {
                     required: "Requerido",
                   })}
@@ -133,28 +107,13 @@ const ImagesForm = ({
 
               <FormControl mt={4}>
                 <FormLabel>
-                  <Text fontSize="lg">Archivo de la Imagen</Text>
+                  <Text fontSize='lg'>Archivo de la Imagen</Text>
                 </FormLabel>
-                <Flex direction="row" gap={4}>
-                  {item.url && (
-                    <Image
-                      src={item.url}
-                      alt={item.alt}
-                      boxSize="100px"
-                      objectFit="cover"
-                      mb={2}
-                    />
-                  )}
+                <Flex direction='row' gap={4}>
+                  {item.url && <Image src={item.url} alt={item.alt} boxSize='100px' objectFit='cover' mb={2} />}
                   <Box>
-                    <Text p={4}>
-                      Selecciona una nueva imagen para modificarla
-                    </Text>
-                    <Input
-                      type="file"
-                      {...register(`images.${index}.url`)}
-                      border="none"
-                      cursor="pointer"
-                    />
+                    <Text p={4}>Selecciona una nueva imagen para modificarla</Text>
+                    <Input type='file' {...register(`images.${index}.url`)} border='none' cursor='pointer' />
                   </Box>
                 </Flex>
               </FormControl>
@@ -165,7 +124,7 @@ const ImagesForm = ({
 
       <Button
         mt={4}
-        colorScheme="blue"
+        colorScheme='blue'
         w={{ base: "100%", md: "300px" }}
         onClick={() =>
           append({

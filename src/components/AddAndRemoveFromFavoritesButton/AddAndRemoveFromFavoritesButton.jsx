@@ -5,31 +5,31 @@ import useFavoriteTour from "../../customHooks/useFavoriteTour/useFavoriteTour";
 import React from "react";
 
 const AddAndRemoveFromFavoritesButton = React.memo(({ tour_id, destination_id, type = "icon" }) => {
-  const { isFavorite, handleAddToFavorites, handleRemoveFromFavorites } = useFavoriteTour( tour_id, destination_id);
+  const { isFavorite, handleAddToFavorites, handleRemoveFromFavorites } = useFavoriteTour(tour_id, destination_id);
 
   return (
     <Flex my={4} mx={0} direction={{ base: "column", md: "row" }} gap={0}>
       {type === "icon" ? (
         <Button
-          size="lg"
+          size='lg'
           onClick={(e) => {
             e.preventDefault();
             isFavorite ? handleRemoveFromFavorites() : handleAddToFavorites();
-          }}          leftIcon={isFavorite ? <FaHeart size="28px" /> : <FaRegHeart size="28px" />}
-          color="red"
-          variant="link"
+          }}
+          leftIcon={isFavorite ? <FaHeart size='28px' /> : <FaRegHeart size='28px' />}
+          color='red'
+          variant='link'
           _hover={{ transform: "scale(1.05)" }}
         />
       ) : (
-        <Button
-          size="lg"
-          onClick={isFavorite ? handleRemoveFromFavorites : handleAddToFavorites}
-        >
+        <Button size='lg' onClick={isFavorite ? handleRemoveFromFavorites : handleAddToFavorites}>
           <Text>{isFavorite ? "Eliminar de favoritos" : "Agregar a favoritos"}</Text>
         </Button>
       )}
     </Flex>
   );
 });
+
+AddAndRemoveFromFavoritesButton.displayName = "AddAndRemoveFromFavoritesButton";
 
 export default AddAndRemoveFromFavoritesButton;

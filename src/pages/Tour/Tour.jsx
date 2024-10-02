@@ -10,44 +10,41 @@ import ToursButtonContainer from "../../components/ToursButtonContainer/ToursBut
 import CardsList from "../../components/CardsList/CardsList";
 
 const Tour = () => {
-  const { tour_id } = useParams();
-  const { destination, loading } = useContext(DestinationContext);
-  const [tour, setTour] = useState();
+    const { tour_id } = useParams();
+    const { destination, loading } = useContext(DestinationContext);
+    const [tour, setTour] = useState();
 
-  useEffect(() => {
-    setTour(
-      destination?.tours.filter((tour, index) => tour._id === tour_id)[0]
-    );
-  }, [destination, tour_id, tour]);
+    useEffect(() => {
+        setTour(destination?.tours.filter((tour) => tour._id === tour_id)[0]);
+    }, [destination, tour_id, tour]);
 
-  return (
-    <Box as="main" flex="1">
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <DetailsPage
-          obj={tour}
-          descriptionParagraphs={tour?.longDescription.split("\n")}
-          usingFor={"tour"}
-        >
-
-          <ToursButtonContainer
-            tour={tour}
-            destination={destination}
-            tour_id={tour_id}
-          />
-          <CardsList
-            headingText={`Otros tours en ${destination?.name}`}
-            descriptionText={"Seleccionados para tí"}
-            arrayToRender={destination?.tours.filter(
-              (other_tour) => other_tour._id !== tour?._id
+    return (
+        <Box as='main' flex='1'>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <DetailsPage
+                    obj={tour}
+                    descriptionParagraphs={tour?.longDescription.split("\n")}
+                    usingFor={"tour"}
+                >
+                    <ToursButtonContainer
+                        tour={tour}
+                        destination={destination}
+                        tour_id={tour_id}
+                    />
+                    <CardsList
+                        headingText={`Otros tours en ${destination?.name}`}
+                        descriptionText={"Seleccionados para tí"}
+                        arrayToRender={destination?.tours.filter(
+                            (other_tour) => other_tour._id !== tour?._id,
+                        )}
+                        usingFor={"tours"}
+                    />
+                </DetailsPage>
             )}
-            usingFor={"tours"}
-          />
-        </DetailsPage>
-      )}
-    </Box>
-  );
+        </Box>
+    );
 };
 
 export default Tour;

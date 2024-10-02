@@ -7,14 +7,7 @@ import { useState } from "react";
 import useLogin from "../useLogin/useLogin";
 
 const useResetPassword = () => {
-  const {
-    handleSubmit,
-    register,
-    watch,
-    formState,
-    setError,
-    clearErrors,
-  } = useForm({
+  const { handleSubmit, register, watch, formState, setError, clearErrors } = useForm({
     defaultValues: {
       verificationToken: "",
       password: "",
@@ -26,14 +19,9 @@ const useResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const { email } = useParams();
-  
-  const {
-    showPassword,
-    togglePasswordVisibility,
-    handlePasswordChange,
-    validatePassword,
-    passwordSecurityLevel
-  } = usePasswordForm();
+
+  const { showPassword, togglePasswordVisibility, handlePasswordChange, validatePassword, passwordSecurityLevel } =
+    usePasswordForm();
 
   const handleResetPasswordSubmit = async (formData) => {
     setLoading(true);
@@ -58,21 +46,16 @@ const useResetPassword = () => {
     }
 
     delete formData.confirmPassword;
-    
+
     try {
       const payload = {
         email,
         verificationToken: formData.verificationToken,
         newPassword: formData.password,
       };
-      
-      //console.log('Payload enviado:', payload);
-      
       const response = await resetPassword(payload);
-      //console.log('Respuesta de la API:', response);
-      
-      if(response.message = "Contraseña restablecida correctamente"){
 
+      if (response.message == "Contraseña restablecida correctamente") {
         toast({
           title: "Contraseña restablecida",
           description: response.message,
@@ -85,8 +68,7 @@ const useResetPassword = () => {
           email: payload.email,
           password: payload.newPassword,
         };
-        //console.log(userDataForLogin)
-        //console.log('Starting LoginAfterRegister')
+
         await loginAfterRegister(userDataForLogin);
       }
     } catch (error) {

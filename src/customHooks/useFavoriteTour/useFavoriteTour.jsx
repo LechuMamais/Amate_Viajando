@@ -14,11 +14,11 @@ const useFavoriteTour = (tour_id, destination_id) => {
 
   const handleAddToFavorites = useCallback(async () => {
     await handleAddFavorite({ user, tour_id, destination_id, setUser, toast, setIsFavorite });
-  }, [user, tour_id, destination_id]);
+  }, [user, tour_id, destination_id, setUser, toast]);
 
   const handleRemoveFromFavorites = useCallback(async () => {
     await handleRemoveFavorite({ user, tour_id, destination_id, setUser, toast, setIsFavorite });
-  }, [user, tour_id, destination_id]);
+  }, [user, tour_id, destination_id, setUser, toast]);
 
   return {
     isFavorite,
