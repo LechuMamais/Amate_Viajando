@@ -1,7 +1,7 @@
-import { Box, Button, VStack, Text, FormControl, FormLabel, Input } from '@chakra-ui/react';
-import PasswordField from '../../components/userFormComponents/passwordField/passwordField';
-import ConfirmPasswordField from '../../components/userFormComponents/confirmPasswordField/confirmPasswordField';
-import useResetPassword from '../../customHooks/useResetPassword/useResetPassword';
+import { Box, Button, VStack, Text, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import PasswordField from "../../components/userFormComponents/passwordField/passwordField";
+import ConfirmPasswordField from "../../components/userFormComponents/confirmPasswordField/confirmPasswordField";
+import useResetPassword from "../../customHooks/useResetPassword/useResetPassword";
 
 const ResetPassword = () => {
   const {
@@ -29,7 +29,7 @@ const ResetPassword = () => {
 
           <FormControl id='verificationToken' isInvalid={errors.verificationToken} autoComplete='none'>
             <FormLabel>Código de Verificación - 6 dígitos</FormLabel>
-            <Input type='number' {...register('verificationToken')} />
+            <Input type='number' {...register("verificationToken")} />
             {errors.verificationToken && (
               <Text color='red.500' my={2}>
                 {errors.verificationToken.message}

@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
-import { useToast } from '@chakra-ui/react';
-import { UserContext } from '../../providers/UserProvider';
-import { isTourInFavorites, handleAddFavorite, handleRemoveFavorite } from './useFavoriteTour.functions';
+import { useState, useEffect, useContext, useCallback } from "react";
+import { useToast } from "@chakra-ui/react";
+import { UserContext } from "../../providers/UserProvider";
+import { isTourInFavorites, handleAddFavorite, handleRemoveFavorite } from "./useFavoriteTour.functions";
 
 const useFavoriteTour = (tour_id, destination_id) => {
   const [isFavorite, setIsFavorite] = useState(false);

@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from 'react';
-import { useToast } from '@chakra-ui/react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { deleteAllImages } from '../../services/deleteAllImages';
-import { UserContext } from '../../providers/UserProvider';
-import { fetchTourAndSetValues, handleDeteteTour, submitHandler } from './useUpdateTour.functions';
+import { useState, useEffect, useContext } from "react";
+import { useToast } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteAllImages } from "../../services/deleteAllImages";
+import { UserContext } from "../../providers/UserProvider";
+import { fetchTourAndSetValues, handleDeteteTour, submitHandler } from "./useUpdateTour.functions";
 
 export const useUpdateTour = (setValue) => {
   const { user } = useContext(UserContext);

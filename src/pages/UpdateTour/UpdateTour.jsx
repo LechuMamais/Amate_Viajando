@@ -1,10 +1,10 @@
-import { useForm } from 'react-hook-form';
-import { Box, Button, Stack, Heading, Text, Container } from '@chakra-ui/react';
-import TourDestinationForm from '../../components/TourDestinationForm/TourDestinationForm';
-import ImagesForm from '../../components/ImagesForm/ImagesForm';
-import BackButton from '../../components/BackButton/BackButton';
-import MyModal from '../../components/MyModal/MyModal';
-import { useUpdateTour } from '../../customHooks/useUpdateTour/useUpdateTour';
+import { useForm } from "react-hook-form";
+import { Box, Button, Stack, Heading, Text, Container } from "@chakra-ui/react";
+import TourDestinationForm from "../../components/TourDestinationForm/TourDestinationForm";
+import ImagesForm from "../../components/ImagesForm/ImagesForm";
+import BackButton from "../../components/BackButton/BackButton";
+import MyModal from "../../components/MyModal/MyModal";
+import { useUpdateTour } from "../../customHooks/useUpdateTour/useUpdateTour";
 
 const UpdateTour = () => {
   const {
@@ -37,9 +37,9 @@ const UpdateTour = () => {
             size='lg'
             colorScheme='teal'
             type='submit'
-            w={{ base: '100%', md: '320px' }}
+            w={{ base: "100%", md: "320px" }}
           >
-            {loadingSubmit ? 'Actualizando' : 'Actualizar Tour'}
+            {loadingSubmit ? "Actualizando" : "Actualizar Tour"}
           </Button>
 
           <MyModal
@@ -56,7 +56,7 @@ const UpdateTour = () => {
               mt={8}
               size='md'
               colorScheme='red'
-              w={{ base: '100%', md: '280px' }}
+              w={{ base: "100%", md: "280px" }}
               mb={8}
             >
               Borrar todo

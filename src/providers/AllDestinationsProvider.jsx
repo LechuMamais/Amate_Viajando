@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
-import { getDestinations } from '../services/api/destinations';
+import { createContext, useEffect, useState } from "react";
+import { getDestinations } from "../services/api/destinations";
 
 export const AllDestinationsContext = createContext();
 
@@ -13,7 +13,7 @@ export const AllDestinationsProvider = ({ children }) => {
       const data = await getDestinations();
       setAllDestinations(data);
     } catch (error) {
-      console.error('Error fetching destinations:', error);
+      console.error("Error fetching destinations:", error);
     } finally {
       setLoading(false);
     }

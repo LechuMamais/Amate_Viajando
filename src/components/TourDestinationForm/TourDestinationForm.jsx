@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel, Input, Textarea, Text } from '@chakra-ui/react';
+import { Box, FormControl, FormLabel, Input, Textarea, Text } from "@chakra-ui/react";
 
 const TourDestinationForm = ({ register, errors }) => (
   <Box borderWidth='1px' borderRadius='lg' p={4} mb={4} bg='gray.100'>
@@ -7,7 +7,7 @@ const TourDestinationForm = ({ register, errors }) => (
         <FormLabel htmlFor='name'>
           <Text fontSize='lg'>Nombre</Text>
         </FormLabel>
-        <Input id='name' placeholder='Nombre' {...register('name', { required: 'Este campo es requerido' })} />
+        <Input id='name' placeholder='Nombre' {...register("name", { required: "Este campo es requerido" })} />
         {errors.name && <Text color='red.500'>{errors.name.message}</Text>}
       </FormControl>
     </Box>
@@ -20,7 +20,7 @@ const TourDestinationForm = ({ register, errors }) => (
         <Input
           id='heading'
           placeholder='Encabezado'
-          {...register('heading', { required: 'Este campo es requerido' })}
+          {...register("heading", { required: "Este campo es requerido" })}
         />
         {errors.heading && <Text color='red.500'>{errors.heading.message}</Text>}
       </FormControl>
@@ -34,7 +34,7 @@ const TourDestinationForm = ({ register, errors }) => (
         <Textarea
           id='description'
           placeholder='Descripción corta'
-          {...register('description', { required: 'Este campo es requerido' })}
+          {...register("description", { required: "Este campo es requerido" })}
         />
         {errors.description && <Text color='red.500'>{errors.description.message}</Text>}
       </FormControl>
@@ -47,8 +47,8 @@ const TourDestinationForm = ({ register, errors }) => (
         <Textarea
           id='longDescription'
           placeholder='Descripción larga'
-          {...register('longDescription', {
-            required: 'Este campo es requerido',
+          {...register("longDescription", {
+            required: "Este campo es requerido",
           })}
         />
         {errors.longDescription && <Text color='red.500'>{errors.longDescription.message}</Text>}

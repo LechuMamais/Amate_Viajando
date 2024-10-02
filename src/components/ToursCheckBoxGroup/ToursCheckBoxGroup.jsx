@@ -9,8 +9,8 @@ import {
   Input,
   Box,
   Flex,
-} from '@chakra-ui/react';
-import { Controller } from 'react-hook-form';
+} from "@chakra-ui/react";
+import { Controller } from "react-hook-form";
 
 const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }) => {
   if (loading) return <Text>Loading...</Text>;
@@ -34,7 +34,7 @@ const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }
             <Stack spacing={2}>
               {allTours?.map((tour) => {
                 const isChecked = field.value.some((t) => t.tourObj === tour._id);
-                const orderValue = field.value.find((t) => t.tourObj === tour._id)?.order || '';
+                const orderValue = field.value.find((t) => t.tourObj === tour._id)?.order || "";
                 return (
                   <Flex key={tour._id} borderWidth='1px' borderRadius='lg' p={2}>
                     <Checkbox
@@ -43,7 +43,7 @@ const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }
                       isChecked={isChecked}
                       onChange={(e) => {
                         if (e.target.checked) {
-                          field.onChange([...field.value, { tourObj: e.target.value, order: '' }]);
+                          field.onChange([...field.value, { tourObj: e.target.value, order: "" }]);
                         } else {
                           field.onChange(field.value.filter((t) => t.tourObj !== e.target.value));
                         }

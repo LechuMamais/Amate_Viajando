@@ -1,18 +1,18 @@
-import { Box, Flex, IconButton, Image, Spacer } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
-import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider } from '@chakra-ui/react';
-import MyLink from '../MyLink/MyLink';
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Box, Flex, IconButton, Image, Spacer } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
+import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider } from "@chakra-ui/react";
+import MyLink from "../MyLink/MyLink";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Header = React.memo(() => {
   const [logged, setLogged] = useState(false);
-  const isHome = useLocation().pathname === '/';
-  const logo_url = '/assets/logo_header.png';
+  const isHome = useLocation().pathname === "/";
+  const logo_url = "/assets/logo_header.png";
 
   useEffect(() => {
-    if (localStorage.getItem('AmateViajandoLogged') == 'true') {
+    if (localStorage.getItem("AmateViajandoLogged") == "true") {
       setLogged(true);
     } else {
       setLogged(false);
@@ -23,7 +23,7 @@ const Header = React.memo(() => {
     <Flex as='header' zIndex='100' h='72px'>
       {!isHome && (
         <Box className='home-link-container' zIndex='200'>
-          <Link to={'/'} w='72px' h='72px'>
+          <Link to={"/"} w='72px' h='72px'>
             <Image
               px={4}
               pb={2}
@@ -45,12 +45,12 @@ const Header = React.memo(() => {
           <MenuList className='header-menu-list' border='none' bgColor='#ffffffce'>
             <MenuGroup title='Viaja'>
               <MyLink to='/destinations'>
-                <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
+                <MenuItem bgColor='transparent' _hover={{ bgColor: "#ffffffab" }}>
                   Destinos
                 </MenuItem>
               </MyLink>
               <MyLink to='/tours'>
-                <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
+                <MenuItem bgColor='transparent' _hover={{ bgColor: "#ffffffab" }}>
                   Tours
                 </MenuItem>
               </MyLink>
@@ -58,8 +58,8 @@ const Header = React.memo(() => {
               <MenuGroup title='Perfil'>
                 {logged ? (
                   <>
-                    <MyLink to={'/profile'}>
-                      <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
+                    <MyLink to={"/profile"}>
+                      <MenuItem bgColor='transparent' _hover={{ bgColor: "#ffffffab" }}>
                         Mi cuenta
                       </MenuItem>
                     </MyLink>
@@ -69,15 +69,15 @@ const Header = React.memo(() => {
                     </MyLink>
                     */}
 
-                    <MyLink to={'/logout'}>
-                      <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }} color={'red.400'} pl={4}>
+                    <MyLink to={"/logout"}>
+                      <MenuItem bgColor='transparent' _hover={{ bgColor: "#ffffffab" }} color={"red.400"} pl={4}>
                         Cerrar Sesión
                       </MenuItem>
                     </MyLink>
                   </>
                 ) : (
-                  <MyLink to={'/login'}>
-                    <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
+                  <MyLink to={"/login"}>
+                    <MenuItem bgColor='transparent' _hover={{ bgColor: "#ffffffab" }}>
                       Login
                     </MenuItem>
                   </MyLink>
@@ -91,6 +91,6 @@ const Header = React.memo(() => {
   );
 });
 
-Header.displayName = 'Header';
+Header.displayName = "Header";
 
 export default Header;

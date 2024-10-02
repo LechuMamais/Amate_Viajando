@@ -1,9 +1,9 @@
-import { Box, Button, Stack, VStack, Text } from '@chakra-ui/react';
-import MyLink from '../../components/MyLink/MyLink';
-import useLogin from '../../customHooks/useLogin/useLogin';
-import EmailField from '../../components/userFormComponents/emailField/emailField';
-import PasswordField from '../../components/userFormComponents/passwordField/passwordField';
-import useRegisterForm from '../../customHooks/useRegisterForm/useRegisterForm';
+import { Box, Button, Stack, VStack, Text } from "@chakra-ui/react";
+import MyLink from "../../components/MyLink/MyLink";
+import useLogin from "../../customHooks/useLogin/useLogin";
+import EmailField from "../../components/userFormComponents/emailField/emailField";
+import PasswordField from "../../components/userFormComponents/passwordField/passwordField";
+import useRegisterForm from "../../customHooks/useRegisterForm/useRegisterForm";
 
 const Login = () => {
   const { register, errors, isSubmitting, onSubmit } = useLogin();

@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { useFieldArray } from 'react-hook-form';
+import { useContext } from "react";
+import { useFieldArray } from "react-hook-form";
 import {
   Box,
   Button,
@@ -12,17 +12,17 @@ import {
   Stack,
   Text,
   Textarea,
-} from '@chakra-ui/react';
-import { UserContext } from '../../providers/UserProvider';
-import MyModal from '../MyModal/MyModal';
-import { useParams } from 'react-router-dom';
-import { handleDeleteImage } from '../../services/handleDeleteImage';
+} from "@chakra-ui/react";
+import { UserContext } from "../../providers/UserProvider";
+import MyModal from "../MyModal/MyModal";
+import { useParams } from "react-router-dom";
+import { handleDeleteImage } from "../../services/handleDeleteImage";
 
 const ImagesForm = ({ control, register, errors, usingFor }) => {
   const { user } = useContext(UserContext);
   const { fields, append, remove } = useFieldArray({
     control,
-    name: 'images',
+    name: "images",
   });
   const { tour_id, destination_id } = useParams();
 
@@ -57,7 +57,7 @@ const ImagesForm = ({ control, register, errors, usingFor }) => {
                 <Input
                   defaultValue={item.name}
                   {...register(`images.${index}.name`, {
-                    required: 'Este campo es requerido',
+                    required: "Este campo es requerido",
                   })}
                 />
                 {errors.images?.[index]?.name && <Text color='red.500'>{errors.images[index].name.message}</Text>}
@@ -70,7 +70,7 @@ const ImagesForm = ({ control, register, errors, usingFor }) => {
                 <Textarea
                   defaultValue={item.description}
                   {...register(`images.${index}.description`, {
-                    required: 'Este campo es requerido',
+                    required: "Este campo es requerido",
                   })}
                 />
                 {errors.images?.[index]?.description && (
@@ -85,7 +85,7 @@ const ImagesForm = ({ control, register, errors, usingFor }) => {
                 <Input
                   defaultValue={item.alt}
                   {...register(`images.${index}.alt`, {
-                    required: 'Este campo es requerido',
+                    required: "Este campo es requerido",
                   })}
                 />
                 {errors.images?.[index]?.alt && <Text color='red.500'>{errors.images[index].alt.message}</Text>}
@@ -100,7 +100,7 @@ const ImagesForm = ({ control, register, errors, usingFor }) => {
                   placeholder='Orden'
                   type='number'
                   {...register(`images.${index}.order`, {
-                    required: 'Requerido',
+                    required: "Requerido",
                   })}
                 />
               </FormControl>
@@ -125,13 +125,13 @@ const ImagesForm = ({ control, register, errors, usingFor }) => {
       <Button
         mt={4}
         colorScheme='blue'
-        w={{ base: '100%', md: '300px' }}
+        w={{ base: "100%", md: "300px" }}
         onClick={() =>
           append({
-            name: '',
-            description: '',
-            alt: '',
-            url: '',
+            name: "",
+            description: "",
+            alt: "",
+            url: "",
             order: fields.length + 1,
           })
         }

@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input, InputGroup, InputRightElement, Button, Text, Progress } from '@chakra-ui/react';
+import { FormControl, FormLabel, Input, InputGroup, InputRightElement, Button, Text, Progress } from "@chakra-ui/react";
 
 const PasswordField = ({
   register,
@@ -7,18 +7,18 @@ const PasswordField = ({
   togglePasswordVisibility,
   handlePasswordChange,
   validatePassword,
-  passwordSecurityLevel = '',
+  passwordSecurityLevel = "",
   isRegisterForm = false,
   newPassword = false,
 }) => (
   <FormControl id='password' isInvalid={error}>
-    <FormLabel>{newPassword ? 'Nueva contraseña' : 'Contraseña'}</FormLabel>
+    <FormLabel>{newPassword ? "Nueva contraseña" : "Contraseña"}</FormLabel>
     <InputGroup>
       <Input
         id='password-input'
-        type={showPassword ? 'text' : 'password'}
-        {...register('password', {
-          required: 'Introduce la contraseña',
+        type={showPassword ? "text" : "password"}
+        {...register("password", {
+          required: "Introduce la contraseña",
           validate: validatePassword,
         })}
         onChange={handlePasswordChange}
@@ -28,8 +28,8 @@ const PasswordField = ({
           h='2.25rem'
           bgColor='transparent'
           color='black'
-          _hover={{ bgColor: 'transparent' }}
-          _active={{ bgColor: 'transparent' }}
+          _hover={{ bgColor: "transparent" }}
+          _active={{ bgColor: "transparent" }}
           onClick={togglePasswordVisibility}
         >
           {showPassword ? (
@@ -64,16 +64,16 @@ const PasswordField = ({
     {isRegisterForm && (
       <>
         <Text id='password-strength-text' h='1.5rem' my={2}>
-          {passwordSecurityLevel !== 0 ? 'Nivel de seguridad: ' : ' '}
+          {passwordSecurityLevel !== 0 ? "Nivel de seguridad: " : " "}
           {passwordSecurityLevel === 1
-            ? 'Bajo'
+            ? "Bajo"
             : passwordSecurityLevel === 2
-              ? 'Medio'
+              ? "Medio"
               : passwordSecurityLevel === 3
-                ? 'Alto'
+                ? "Alto"
                 : passwordSecurityLevel === 4
-                  ? 'Muy Alto'
-                  : ''}
+                  ? "Muy Alto"
+                  : ""}
         </Text>
 
         <Progress
@@ -83,14 +83,14 @@ const PasswordField = ({
           borderRadius='md'
           colorScheme={
             passwordSecurityLevel === 1
-              ? 'red'
+              ? "red"
               : passwordSecurityLevel === 2
-                ? 'yellow'
+                ? "yellow"
                 : passwordSecurityLevel === 3
-                  ? 'teal'
+                  ? "teal"
                   : passwordSecurityLevel === 4
-                    ? 'green'
-                    : ''
+                    ? "green"
+                    : ""
           }
           my={2}
           isAnimated='true'

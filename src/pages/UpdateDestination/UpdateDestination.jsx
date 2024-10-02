@@ -1,12 +1,12 @@
-import { useForm } from 'react-hook-form';
-import { Box, Button, Stack, Heading, Text, Container } from '@chakra-ui/react';
-import TourDestinationForm from '../../components/TourDestinationForm/TourDestinationForm';
-import ImagesForm from '../../components/ImagesForm/ImagesForm';
-import BackButton from '../../components/BackButton/BackButton';
-import ToursCheckboxGroup from '../../components/ToursCheckBoxGroup/ToursCheckBoxGroup';
-import MyModal from '../../components/MyModal/MyModal';
-import { useUpdateDestination } from '../../customHooks/useUpdateDestination/useUpdateDestination';
-import { toursArrayConstructor } from '../../utils/imagesArrayConstructor';
+import { useForm } from "react-hook-form";
+import { Box, Button, Stack, Heading, Text, Container } from "@chakra-ui/react";
+import TourDestinationForm from "../../components/TourDestinationForm/TourDestinationForm";
+import ImagesForm from "../../components/ImagesForm/ImagesForm";
+import BackButton from "../../components/BackButton/BackButton";
+import ToursCheckboxGroup from "../../components/ToursCheckBoxGroup/ToursCheckBoxGroup";
+import MyModal from "../../components/MyModal/MyModal";
+import { useUpdateDestination } from "../../customHooks/useUpdateDestination/useUpdateDestination";
+import { toursArrayConstructor } from "../../utils/imagesArrayConstructor";
 
 const UpdateDestination = () => {
   const {
@@ -53,9 +53,9 @@ const UpdateDestination = () => {
             size='lg'
             colorScheme='teal'
             type='submit'
-            w={{ base: '100%', md: '320px' }}
+            w={{ base: "100%", md: "320px" }}
           >
-            {loadingSubmit ? 'Actualizando' : 'Actualizar Destino'}
+            {loadingSubmit ? "Actualizando" : "Actualizar Destino"}
           </Button>
 
           <MyModal
@@ -72,7 +72,7 @@ const UpdateDestination = () => {
               mt={8}
               size='md'
               colorScheme='red'
-              w={{ base: '100%', md: '280px' }}
+              w={{ base: "100%", md: "280px" }}
               mb={8}
             >
               Borrar todo

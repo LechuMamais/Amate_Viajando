@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { checkPasswordStrength } from './usePasswordForm.functions';
+import { useState } from "react";
+import { checkPasswordStrength } from "./usePasswordForm.functions";
 
 const usePasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +14,7 @@ const usePasswordForm = () => {
   };
 
   const validatePassword = () => {
-    return passwordSecurityLevel >= 3 || 'Nivel mínimo requerido: Alto';
+    return passwordSecurityLevel >= 3 || "Nivel mínimo requerido: Alto";
   };
 
   return {

@@ -1,17 +1,17 @@
-import { useForm } from 'react-hook-form';
-import { useToast } from '@chakra-ui/react';
-import { resetPassword } from '../../services/api/users';
-import { useParams } from 'react-router-dom';
-import usePasswordForm from '../usePasswordForm/usePasswordForm';
-import { useState } from 'react';
-import useLogin from '../useLogin/useLogin';
+import { useForm } from "react-hook-form";
+import { useToast } from "@chakra-ui/react";
+import { resetPassword } from "../../services/api/users";
+import { useParams } from "react-router-dom";
+import usePasswordForm from "../usePasswordForm/usePasswordForm";
+import { useState } from "react";
+import useLogin from "../useLogin/useLogin";
 
 const useResetPassword = () => {
   const { handleSubmit, register, watch, formState, setError, clearErrors } = useForm({
     defaultValues: {
-      verificationToken: '',
-      password: '',
-      confirmPassword: '',
+      verificationToken: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 
@@ -28,18 +28,18 @@ const useResetPassword = () => {
     clearErrors();
 
     if (!formData.verificationToken || formData.verificationToken.length !== 6) {
-      setError('verificationToken', {
-        type: 'manual',
-        message: 'El código de verificación debe tener 6 dígitos',
+      setError("verificationToken", {
+        type: "manual",
+        message: "El código de verificación debe tener 6 dígitos",
       });
       setLoading(false);
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      setError('confirmPassword', {
-        type: 'manual',
-        message: 'Las contraseñas no coinciden',
+      setError("confirmPassword", {
+        type: "manual",
+        message: "Las contraseñas no coinciden",
       });
       setLoading(false);
       return;
@@ -55,11 +55,11 @@ const useResetPassword = () => {
       };
       const response = await resetPassword(payload);
 
-      if (response.message == 'Contraseña restablecida correctamente') {
+      if (response.message == "Contraseña restablecida correctamente") {
         toast({
-          title: 'Contraseña restablecida',
+          title: "Contraseña restablecida",
           description: response.message,
-          status: 'success',
+          status: "success",
           duration: 5000,
           isClosable: true,
         });
@@ -72,9 +72,9 @@ const useResetPassword = () => {
         await loginAfterRegister(userDataForLogin);
       }
     } catch (error) {
-      setError('server', {
-        type: 'manual',
-        message: error.response?.data?.message || 'Ha ocurrido un error',
+      setError("server", {
+        type: "manual",
+        message: error.response?.data?.message || "Ha ocurrido un error",
       });
     }
 

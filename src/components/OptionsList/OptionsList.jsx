@@ -1,4 +1,4 @@
-import { Heading, Icon, Text, UnorderedList, ListItem, CheckboxIcon, Box } from '@chakra-ui/react';
+import { Heading, Icon, Text, UnorderedList, ListItem, CheckboxIcon, Box } from "@chakra-ui/react";
 
 const OptionsList = () => {
   return (

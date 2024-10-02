@@ -1,12 +1,12 @@
-import { FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
+import { FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 
 const EmailField = ({ register, error }) => (
   <FormControl id='email' isInvalid={error}>
     <FormLabel>Email</FormLabel>
     <Input
-      {...register('email', {
-        required: 'Introduce tu email',
-        pattern: { value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, message: 'Introduce un email válido' },
+      {...register("email", {
+        required: "Introduce tu email",
+        pattern: { value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, message: "Introduce un email válido" },
       })}
     />
     {error && (

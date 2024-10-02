@@ -1,24 +1,24 @@
-import { Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import Home from './pages/Home/Home';
-import Destinations from './pages/Destinations/Destinations';
-import Destination from './pages/Destination/Destination';
-import Tour from './pages/Tour/Tour';
-import Tours from './pages/Tours/Tours';
-import { DestinationProvider } from './providers/DestinationProvider';
-import Login from './pages/Login/Login';
-import Logout from './components/Logout/Logout';
-import Profile from './pages/Profile/Profile';
-import CreateTour from './pages/CreateTour/CreateTour';
-import CreateDestination from './pages/CreateDestination/CreateDestination';
-import UpdateDestination from './pages/UpdateDestination/UpdateDestination';
-import UpdateTour from './pages/UpdateTour/UpdateTour';
-import Register from './pages/Register/Register';
-import VerifyEmail from './components/userFormComponents/verifyEmail/verifyEmail';
-import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
-import ResetPassword from './pages/ResetPassword/ResetPassword';
-import NotFound from './pages/NotFound/NotFound';
+import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import Destinations from "./pages/Destinations/Destinations";
+import Destination from "./pages/Destination/Destination";
+import Tour from "./pages/Tour/Tour";
+import Tours from "./pages/Tours/Tours";
+import { DestinationProvider } from "./providers/DestinationProvider";
+import Login from "./pages/Login/Login";
+import Logout from "./components/Logout/Logout";
+import Profile from "./pages/Profile/Profile";
+import CreateTour from "./pages/CreateTour/CreateTour";
+import CreateDestination from "./pages/CreateDestination/CreateDestination";
+import UpdateDestination from "./pages/UpdateDestination/UpdateDestination";
+import UpdateTour from "./pages/UpdateTour/UpdateTour";
+import Register from "./pages/Register/Register";
+import VerifyEmail from "./components/userFormComponents/verifyEmail/verifyEmail";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
