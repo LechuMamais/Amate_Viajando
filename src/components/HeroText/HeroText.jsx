@@ -48,6 +48,8 @@ const HeroText = () => {
           >
             La naturaleza enciende nuestros sentidos, nos transporta a lugares
             mágicos donde podremos escuchar nuestra voz interior.
+            {/* para iluminar el
+          destino correcto en ésta gran aventura.*/}
           </Text>
           <Flex
             direction={{ base: "column", md: "row" }}
