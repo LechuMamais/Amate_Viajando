@@ -1,7 +1,7 @@
 import { addTourToFavorites, removeTourFromFavorites } from "../../services/api/users";
 
 export const isTourInFavorites = (user, tour_id, destination_id) => {
-  if (user && user.favouriteTours && user.favouriteTours.length>0) {
+  if (user && user.favouriteTours && user.favouriteTours.length > 0) {
     const found = user.favouriteTours.some(
       (favTour) => {
         const favTourId = favTour.tourId._id || favTour.tourId;

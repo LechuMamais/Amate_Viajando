@@ -20,7 +20,7 @@ export const handleImageUpdate = async (images, destination, token) => {
         imageData.append("name", image.name);
         imageData.append("alt", image.alt);
         imageData.append("description", image.description);
-        
+
         if (image.url && typeof image.url !== "string") {
           imageData.append("url", image.url[0]);
         }

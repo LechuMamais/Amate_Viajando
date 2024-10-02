@@ -1,6 +1,6 @@
-import { createContext, useEffect, useState } from "react";
-import { checkLogged } from "../services/api/users";
-import { clearUserFromLocalStorage } from "../utils/clearUserFromLocalStorage";
+import { createContext, useEffect, useState } from 'react';
+import { checkLogged } from '../services/api/users';
+import { clearUserFromLocalStorage } from '../utils/clearUserFromLocalStorage';
 
 export const UserContext = createContext();
 
@@ -8,16 +8,16 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
 
   const setLoggedInLocalStorage = () => {
-    localStorage.setItem("AmateViajandoLogged", "true");
+    localStorage.setItem('AmateViajandoLogged', 'true');
   };
 
   const setLogOutInLocalStorage = () => {
-    localStorage.setItem("AmateViajandoLogged", "false");
+    localStorage.setItem('AmateViajandoLogged', 'false');
   };
 
   const getUserFromLocalStorage = async () => {
-    const tokenLocal = localStorage.getItem("accessToken");
-    const userIdLocal = localStorage.getItem("userId");
+    const tokenLocal = localStorage.getItem('accessToken');
+    const userIdLocal = localStorage.getItem('userId');
     if (!tokenLocal || !userIdLocal) {
       clearUserFromLocalStorage(setUser);
       setUser({ logged: false });

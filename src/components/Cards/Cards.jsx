@@ -1,8 +1,8 @@
-import "./Cards.css";
-import { Box, Card, Heading, Image, Text } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
-import MyLink from "../MyLink/MyLink";
-import { buildCardEndPoint } from "../../utils/buildCardEndPoint";
+import './Cards.css';
+import { Box, Card, Heading, Image, Text } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+import MyLink from '../MyLink/MyLink';
+import { buildCardEndPoint } from '../../utils/buildCardEndPoint';
 
 const Cards = ({ obj, usingFor }) => {
   const { heading, description, _id, images } = obj;
@@ -16,7 +16,7 @@ const Cards = ({ obj, usingFor }) => {
               src={images[0]?.imgObj?.url}
               alt={images[0]?.imgObj?.alt}
               width={800}
-              height={{ base: "300", sm: "400" }}
+              height={{ base: '300', sm: '400' }}
               objectFit='cover'
             />
           )}

@@ -61,7 +61,7 @@
 
 
 /* Show Password Toggle */
-.password-toggle-container{
+.password-toggle-container {
     width: 24px;
     height: 24px;
     right: 8px;
@@ -76,15 +76,19 @@
 #password-input {
     transition: color 0.3s ease;
 }
+
 .low-security {
     color: var(--low-security-color);
 }
+
 .medium-security {
     color: var(--medium-security-color);
 }
+
 .high-security {
     color: var(--high-security-color);
 }
+
 .very-high-security {
     color: var(--very-high-security-color);
 }
@@ -110,19 +114,22 @@
     font-size: 13px;
 }
 
-.low-security-bar{
+.low-security-bar {
     width: 25%;
     background-color: var(--low-security-color);
 }
-.medium-security-bar{
+
+.medium-security-bar {
     width: 50%;
     background-color: var(--medium-security-color);
 }
-.high-security-bar{
+
+.high-security-bar {
     width: 75%;
     background-color: var(--high-security-color);
 }
-.very-high-security-bar{
+
+.very-high-security-bar {
     width: 100%;
     background-color: var(--very-high-security-color);
 }

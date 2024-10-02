@@ -28,8 +28,8 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
         }
 
         toast({
-            title: `${usingFor==="destination"? "Destino":usingFor==="tour"? "Tour": usingFor} creado.`,
-            description: `El ${usingFor==="destination"? "Destino":usingFor} ha sido creado exitosamente.`,
+            title: `${usingFor === "destination" ? "Destino" : usingFor === "tour" ? "Tour" : usingFor} creado.`,
+            description: `El ${usingFor === "destination" ? "Destino" : usingFor} ha sido creado exitosamente.`,
             status: "success",
             duration: 5000,
             isClosable: true,
@@ -39,7 +39,7 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
     } catch (error) {
         toast({
             title: "Error",
-            description: `Hubo un error al crear el ${usingFor==="destination"? "Destino":usingFor}.`,
+            description: `Hubo un error al crear el ${usingFor === "destination" ? "Destino" : usingFor}.`,
             status: "error",
             duration: 5000,
             isClosable: true,
