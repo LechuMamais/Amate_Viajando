@@ -32,6 +32,6 @@ export const YupResetPasswordSchema = yup.object().shape({
     .matches(/[0-9]/, "La contraseña debe tener al menos un número"),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('newPassword'), null], 'Las contraseñas no coinciden')
+    .oneOf([yup.ref("newPassword"), null], "Las contraseñas no coinciden")
     .required("Confirma tu nueva contraseña"),
 });

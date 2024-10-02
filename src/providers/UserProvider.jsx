@@ -9,12 +9,12 @@ export const UserProvider = ({ children }) => {
 
 
   const setLoggedInLocalStorage = ()=>{
-    localStorage.setItem('AmateViajandoLogged', 'true')
-  }
+    localStorage.setItem("AmateViajandoLogged", "true");
+  };
 
   const setLogOutInLocalStorage = ()=>{
-    localStorage.setItem('AmateViajandoLogged', 'false')
-  }
+    localStorage.setItem("AmateViajandoLogged", "false");
+  };
 
   const getUserFromLocalStorage = async () => {
     const tokenLocal = localStorage.getItem("accessToken");
@@ -22,17 +22,17 @@ export const UserProvider = ({ children }) => {
     if (!tokenLocal || !userIdLocal) {
       clearUserFromLocalStorage(setUser);
       setUser({ logged: false });
-      setLogOutInLocalStorage()
+      setLogOutInLocalStorage();
       return;
     }
     const userLogged = await checkLogged(userIdLocal, tokenLocal);
     if (userLogged.authorized == false) {
       clearUserFromLocalStorage(setUser);
       setUser({ logged: false });
-      setLogOutInLocalStorage()
+      setLogOutInLocalStorage();
     } else {
       setUser({ ...userLogged, logged: true, token: tokenLocal });
-      setLoggedInLocalStorage()
+      setLoggedInLocalStorage();
     }
   };
 

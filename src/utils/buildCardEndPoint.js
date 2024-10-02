@@ -8,6 +8,6 @@ export const buildCardEndPoint = (usingFor, obj, _id, destination_id) => {
     } else if (usingFor === "updateTours") {
         return `/update-tour/${_id}`;
     } else if (usingFor === "favouriteTours") {
-        return `/destinations/${obj.destinationId}/tours/${_id}`
+        return `/destinations/${obj.destinationId}/tours/${_id}`;
     }
 };

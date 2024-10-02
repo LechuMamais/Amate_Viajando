@@ -18,7 +18,7 @@ const colors = {
         quattuordecary: "#000000",
         quindecary: "#000000",
     }
-}
+};
 
 export const theme = extendTheme({ colors });
 

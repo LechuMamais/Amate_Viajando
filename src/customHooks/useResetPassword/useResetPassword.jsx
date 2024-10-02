@@ -84,7 +84,7 @@ const useResetPassword = () => {
         const userDataForLogin = {
           email: payload.email,
           password: payload.newPassword,
-        }
+        };
         //console.log(userDataForLogin)
         //console.log('Starting LoginAfterRegister')
         await loginAfterRegister(userDataForLogin);

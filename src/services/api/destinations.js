@@ -23,10 +23,10 @@ export const getDestinations = async () => {
   export const createDestination = async (destination, token) => {
     try {
       const response = await fetch(DESTINATIONS_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(destination)
       });
@@ -39,10 +39,10 @@ export const getDestinations = async () => {
   export const updateDestination = async (id, destination, token) => {
     try {
       const response = await fetch(`${DESTINATIONS_URL}/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(destination)
       });
@@ -55,24 +55,24 @@ export const getDestinations = async () => {
   export const deleteImageFromDestination = async (image_id, destination_id, token) => {
     try {
       const response = await fetch(`${DESTINATIONS_URL}/${destination_id}/deleteImage/${image_id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       });
       return await handleResponse(response);
     } catch (error) {
       handleError(error);
     }
-  }
+  };
   
   export const deleteDestination = async (id, token) => {
     try {
       const response = await fetch(`${DESTINATIONS_URL}/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Authorization': `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         }
       });
       return await handleResponse(response);

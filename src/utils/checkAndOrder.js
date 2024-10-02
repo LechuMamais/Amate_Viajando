@@ -7,4 +7,4 @@ export const checkAndOrder = (obj) => {
     if (obj.tours && obj.tours.length > 0) {
         obj.tours = orderArray(obj.tours);
     }
-}
+};

@@ -23,20 +23,20 @@ export const getImages = async () => {
   export const createImage = async (imageData, token) => {
     try {
       const response = await fetch(IMAGES_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         },
         body: imageData
       });
   
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
   
       return await response.json();
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       throw error;
     }
   };
@@ -44,9 +44,9 @@ export const getImages = async () => {
   export const updateImage = async (id, imageData, token) => {
     try {
       const response = await fetch(`${IMAGES_URL}/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Authorization': `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         },
         body: imageData
       });
@@ -59,9 +59,9 @@ export const getImages = async () => {
   export const deleteImage = async (id, token) => {
     try {
       const response = await fetch(`${IMAGES_URL}/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Authorization': `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         }
       });
       return await handleResponse(response);

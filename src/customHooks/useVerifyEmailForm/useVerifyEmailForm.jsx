@@ -41,7 +41,7 @@ const useVerifyEmailForm = () => {
           duration: 5000,
           isClosable: true,
         });
-        window.location.href = "/email_verification"
+        window.location.href = "/email_verification";
       }
     } catch (error) {
       setError("server", {
@@ -58,7 +58,7 @@ const useVerifyEmailForm = () => {
           duration: 5000,
           isClosable: true,
         });
-        window.location.href = "/email_verification"
+        window.location.href = "/email_verification";
       } else {
         toast({
           title: "Error al verificar tu correo.",
@@ -67,7 +67,7 @@ const useVerifyEmailForm = () => {
           duration: 5000,
           isClosable: true,
         });
-        window.location.href = "/email_verification"
+        window.location.href = "/email_verification";
       }
     }
     setLoading(false);

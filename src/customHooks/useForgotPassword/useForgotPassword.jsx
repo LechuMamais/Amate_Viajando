@@ -27,7 +27,7 @@ const useForgotPassword = () => {
         duration: 5000,
         isClosable: true,
       });
-      window.location = `/resetPassword/${values.email}`
+      window.location = `/resetPassword/${values.email}`;
 
     } catch (error) {
       toast({

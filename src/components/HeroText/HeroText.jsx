@@ -3,7 +3,7 @@ import { Box, Button, Heading, Text, Flex } from "@chakra-ui/react";
 import { useContact } from "../../customHooks/useContact/useContact";
 
 const HeroText = () => {
-  const coachMessage = `Hola, me interesa el coaching viajero y quisiera más información. ¿Cuándo podríamos agendar una cita?`;
+  const coachMessage = "Hola, me interesa el coaching viajero y quisiera más información. ¿Cuándo podríamos agendar una cita?";
   const { whatsappUrl, icons } = useContact(null, null, coachMessage);
 
   return (

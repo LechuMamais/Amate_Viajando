@@ -10,7 +10,7 @@ export const isTourInFavorites = (user, tour_id, destination_id) => {
     );
     return found;
   } else {
-    return false
+    return false;
   }
 };
 

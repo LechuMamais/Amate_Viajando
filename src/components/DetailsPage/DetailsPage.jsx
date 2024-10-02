@@ -83,7 +83,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
           </Box>
           {children}
           <CardsList
-            headingText={`Otros destinos`}
+            headingText={"Otros destinos"}
             descriptionText={"De la Patagonia Argentina"}
             arrayToRender={allDestinations?.filter(
               (dest) => dest._id !== destination?._id

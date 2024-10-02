@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { checkPasswordStrength } from './usePasswordForm.functions';
+import { useState } from "react";
+import { checkPasswordStrength } from "./usePasswordForm.functions";
 
 const usePasswordForm = () => {
     const [showPassword, setShowPassword] = useState(false);

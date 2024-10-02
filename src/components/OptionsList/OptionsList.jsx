@@ -62,7 +62,7 @@ const OptionsList = () => {
       </ListItem>
     </UnorderedList>
   </Box>
-  )
-}
+  );
+};
 
-export default OptionsList
+export default OptionsList;

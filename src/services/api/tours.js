@@ -23,10 +23,10 @@ export const getTours = async () => {
   export const createTour = async (tour, token) => {
     try {
       const response = await fetch(TOURS_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(tour)
       });
@@ -39,41 +39,41 @@ export const getTours = async () => {
   export const updateTour = async (id, tour, token) => {
     try {
       const response = await fetch(`${TOURS_URL}/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(tour)
       });
       return await handleResponse(response);
     } catch (error) {
       handleError(error);
-    }x
+    }x;
   };
 
   export const deleteImageFromTour = async (image_id, tour_id, token) => {
-    console.log(tour_id)
+    console.log(tour_id);
     try {
       const response = await fetch(`${TOURS_URL}/${tour_id}/deleteImage/${image_id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       });
       return await handleResponse(response);
     } catch (error) {
       handleError(error);
     }
-  }
+  };
   
   export const deleteTour = async (id, token) => {
     try {
       const response = await fetch(`${TOURS_URL}/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Authorization': `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         }
       });
       return await handleResponse(response);

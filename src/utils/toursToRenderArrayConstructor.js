@@ -4,6 +4,6 @@ export const toursToRenderArrayConstructor = (destination) => {
     destination?.tours.map((tour) => {
         tour.tourObj.order = tour.order;
         array.push(tour.tourObj);
-    })
-    return array
-}
+    });
+    return array;
+};

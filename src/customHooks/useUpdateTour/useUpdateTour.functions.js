@@ -30,7 +30,7 @@ export const fetchTourAndSetValues = async (setTour, setValue, toast, tour_id, t
 export const submitHandler = async (data, token, tour, tour_id, toast, navigate) => {
     try {
         const { images, ...formData } = data;
-        console.log("pato")
+        console.log("pato");
         const imageIds = await handleImageUpdate(images, tour, token);
         formData.images = imageIds;
         await updateTour(tour_id, formData, token);
