@@ -13,8 +13,9 @@ Modificar los controllers con los popupate
 Actualizar la base de datos con la informacion que ya está
 Actualizar el front
 
-Por hacer:  
- - Poner el logo y la imagen en mailer.js - Correccion de Santi en Auth con la password - isAuth\_ Chequear que esté ok la parte de req.user = user; user.password = null - Controladores para agregar tour a fav y a carritos => que no se dupliquen. - Controladores para quitar tour de favoritos y de carrito - users, isAuth, isAdmin, carrito, etc. - Carrito: manejar opciones de tour: precio y cantidad de pax.
+Por hacer:
+
+- Poner el logo y la imagen en mailer.js - Correccion de Santi en Auth con la password - isAuth\_ Chequear que esté ok la parte de req.user = user; user.password = null - Controladores para agregar tour a fav y a carritos => que no se dupliquen. - Controladores para quitar tour de favoritos y de carrito - users, isAuth, isAdmin, carrito, etc. - Carrito: manejar opciones de tour: precio y cantidad de pax.
 
 ---
 
@@ -54,11 +55,6 @@ Por hacer:
 
     - HOME:
         Arreglar el minibug, de que si la pantalla es más corta que el contenido, abajo queda sin fondo!
-
-    - Skeleton loaders
-
-
-
 
 
     - Tours: Que tengan PRECIO
