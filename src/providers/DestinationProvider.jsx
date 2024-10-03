@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { AllDestinationsContext } from "./AllDestinationsProvider";
-import { toursToRenderArrayConstructor } from "../utils/toursToRenderArrayConstructor";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { AllDestinationsContext } from './AllDestinationsProvider';
+import { toursToRenderArrayConstructor } from '../utils/toursToRenderArrayConstructor';
 
 export const DestinationContext = createContext();
 

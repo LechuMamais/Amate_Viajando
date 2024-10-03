@@ -1,12 +1,12 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Box } from "@chakra-ui/react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import DetailsPage from "../../components/DetailsPage/DetailsPage";
-import { useContext } from "react";
-import { DestinationContext } from "../../providers/DestinationProvider";
-import ToursButtonContainer from "../../components/ToursButtonContainer/ToursButtonContainer";
-import CardsList from "../../components/CardsList/CardsList";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Box } from '@chakra-ui/react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import DetailsPage from '../../components/DetailsPage/DetailsPage';
+import { useContext } from 'react';
+import { DestinationContext } from '../../providers/DestinationProvider';
+import ToursButtonContainer from '../../components/ToursButtonContainer/ToursButtonContainer';
+import CardsList from '../../components/CardsList/CardsList';
 
 const Tour = () => {
   const { tour_id } = useParams();
@@ -19,13 +19,13 @@ const Tour = () => {
 
   return (
     <Box as='main' flex='1'>
-      <DetailsPage obj={tour} descriptionParagraphs={tour?.longDescription.split("\n")} usingFor={"tour"}>
+      <DetailsPage obj={tour} descriptionParagraphs={tour?.longDescription.split('\n')} usingFor={'tour'}>
         <ToursButtonContainer tour={tour} destination={destination} tour_id={tour_id} />
         <CardsList
           headingText={`Otros tours en ${destination?.name}`}
-          descriptionText={"Seleccionados para tí"}
+          descriptionText={'Seleccionados para tí'}
           arrayToRender={destination?.tours.filter((other_tour) => other_tour._id !== tour?._id)}
-          usingFor={"tours"}
+          usingFor={'tours'}
           loading={loading}
         />
       </DetailsPage>

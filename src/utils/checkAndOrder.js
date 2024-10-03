@@ -1,4 +1,4 @@
-import { orderArray } from "./orderArray";
+import { orderArray } from './orderArray';
 
 export const checkAndOrder = (obj) => {
     if (obj.images && obj.images.length > 0) {

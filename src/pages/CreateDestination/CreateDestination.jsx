@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
-import { Box, Button, Stack, Heading, useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../providers/UserProvider";
-import BackButton from "../../components/BackButton/BackButton";
-import TourDestinationForm from "../../components/TourDestinationForm/TourDestinationForm";
-import ImagesForm from "../../components/ImagesForm/ImagesForm";
-import { handleCreateTourDestinationSubmit } from "../../utils/handleCreateTourDestinationSubmit";
-import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { Box, Button, Stack, Heading, useToast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../providers/UserProvider';
+import BackButton from '../../components/BackButton/BackButton';
+import TourDestinationForm from '../../components/TourDestinationForm/TourDestinationForm';
+import ImagesForm from '../../components/ImagesForm/ImagesForm';
+import { handleCreateTourDestinationSubmit } from '../../utils/handleCreateTourDestinationSubmit';
+import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
 
 const CreateDestination = () => {
   const { user } = useContext(UserContext);
@@ -21,11 +21,11 @@ const CreateDestination = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      heading: "",
-      description: "",
-      longDescription: "",
-      images: [{ name: "", alt: "", description: "", url: null }],
+      name: '',
+      heading: '',
+      description: '',
+      longDescription: '',
+      images: [{ name: '', alt: '', description: '', url: null }],
       tours: [],
     },
   });
@@ -36,7 +36,7 @@ const CreateDestination = () => {
         as='form'
         spacing={4}
         onSubmit={handleSubmit((data) =>
-          handleCreateTourDestinationSubmit(data, user.token, toast, "destination", navigate, reloadDestinations),
+          handleCreateTourDestinationSubmit(data, user.token, toast, 'destination', navigate, reloadDestinations),
         )}
       >
         <BackButton to='/profile' />

@@ -1,5 +1,5 @@
-import { Box, Text, Button, VStack, Image } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Text, Button, VStack, Image } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
@@ -30,7 +30,7 @@ const NotFound = () => {
         </Text>
 
         <Link to='/'>
-          <Button colorScheme='teal' bg='teal.600' color='white' size='lg' px={8} _hover={{ bg: "teal.700" }}>
+          <Button colorScheme='teal' bg='teal.600' color='white' size='lg' px={8} _hover={{ bg: 'teal.700' }}>
             Volver al inicio
           </Button>
         </Link>

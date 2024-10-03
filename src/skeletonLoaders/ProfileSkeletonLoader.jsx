@@ -1,5 +1,5 @@
-import { Box, Container } from "@chakra-ui/react";
-import CardsList from "../components/CardsList/CardsList";
+import { Box, Container } from '@chakra-ui/react';
+import CardsList from '../components/CardsList/CardsList';
 
 const ProfileSkeletonLoader = () => {
   return (

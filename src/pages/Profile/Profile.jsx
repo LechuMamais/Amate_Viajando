@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
-import { Box, Container } from "@chakra-ui/react";
-import AdminProfile from "../../components/AdminProfile/AdminProfile";
-import UserProfile from "../../components/UserProfile/UserProfile";
-import ProfileSkeletonLoader from "../../skeletonLoaders/ProfileSkeletonLoader";
+import { useContext } from 'react';
+import { UserContext } from '../../providers/UserProvider';
+import { Box, Container } from '@chakra-ui/react';
+import AdminProfile from '../../components/AdminProfile/AdminProfile';
+import UserProfile from '../../components/UserProfile/UserProfile';
+import ProfileSkeletonLoader from '../../skeletonLoaders/ProfileSkeletonLoader';
 
 const Profile = () => {
   const { user, loading } = useContext(UserContext);
@@ -17,8 +17,8 @@ const Profile = () => {
           <ProfileSkeletonLoader></ProfileSkeletonLoader>
         ) : (
           <>
-            {user.role === "admin" && <AdminProfile user={user} />}
-            {user.role === "user" && <UserProfile user={user} loading={loading} />}
+            {user.role === 'admin' && <AdminProfile user={user} />}
+            {user.role === 'user' && <UserProfile user={user} loading={loading} />}
           </>
         )}
       </Container>

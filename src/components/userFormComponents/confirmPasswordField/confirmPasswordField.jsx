@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
 
 const ConfirmPasswordField = ({ register, error, watch }) => (
   <FormControl id='confirmPassword' isInvalid={error}>
@@ -6,9 +6,9 @@ const ConfirmPasswordField = ({ register, error, watch }) => (
     <Input
       id='confirm-password-input'
       type='password'
-      {...register("confirmPassword", {
-        required: "Introduce la confirmación de la contraseña",
-        validate: (value) => value === watch("password") || "Las contraseñas no coinciden",
+      {...register('confirmPassword', {
+        required: 'Introduce la confirmación de la contraseña',
+        validate: (value) => value === watch('password') || 'Las contraseñas no coinciden',
       })}
     />
     {error && (

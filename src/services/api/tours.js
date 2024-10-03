@@ -1,6 +1,6 @@
-import { TOURS_URL } from "../../resources/api.endpoints";
-import { handleError } from "../../utils/handleError";
-import { handleResponse } from "../../utils/handleResponse";
+import { TOURS_URL } from '../../resources/api.endpoints';
+import { handleError } from '../../utils/handleError';
+import { handleResponse } from '../../utils/handleResponse';
 
 export const getTours = async () => {
   try {
@@ -23,10 +23,10 @@ export const getTourById = async (id) => {
 export const createTour = async (tour, token) => {
   try {
     const response = await fetch(TOURS_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(tour)
     });
@@ -39,10 +39,10 @@ export const createTour = async (tour, token) => {
 export const updateTour = async (id, tour, token) => {
   try {
     const response = await fetch(`${TOURS_URL}/${id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(tour)
     });
@@ -56,10 +56,10 @@ export const deleteImageFromTour = async (image_id, tour_id, token) => {
   console.log(tour_id);
   try {
     const response = await fetch(`${TOURS_URL}/${tour_id}/deleteImage/${image_id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
     });
     return await handleResponse(response);
@@ -71,9 +71,9 @@ export const deleteImageFromTour = async (image_id, tour_id, token) => {
 export const deleteTour = async (id, token) => {
   try {
     const response = await fetch(`${TOURS_URL}/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Authorization": `Bearer ${token}`
+        'Authorization': `Bearer ${token}`
       }
     });
     return await handleResponse(response);

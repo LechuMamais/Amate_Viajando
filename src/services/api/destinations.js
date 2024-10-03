@@ -1,6 +1,6 @@
-import { DESTINATIONS_URL } from "../../resources/api.endpoints";
-import { handleError } from "../../utils/handleError";
-import { handleResponse } from "../../utils/handleResponse";
+import { DESTINATIONS_URL } from '../../resources/api.endpoints';
+import { handleError } from '../../utils/handleError';
+import { handleResponse } from '../../utils/handleResponse';
 
 export const getDestinations = async () => {
   try {
@@ -23,10 +23,10 @@ export const getDestinationById = async (id) => {
 export const createDestination = async (destination, token) => {
   try {
     const response = await fetch(DESTINATIONS_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(destination)
     });
@@ -39,10 +39,10 @@ export const createDestination = async (destination, token) => {
 export const updateDestination = async (id, destination, token) => {
   try {
     const response = await fetch(`${DESTINATIONS_URL}/${id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(destination)
     });
@@ -55,10 +55,10 @@ export const updateDestination = async (id, destination, token) => {
 export const deleteImageFromDestination = async (image_id, destination_id, token) => {
   try {
     const response = await fetch(`${DESTINATIONS_URL}/${destination_id}/deleteImage/${image_id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
     });
     return await handleResponse(response);
@@ -70,9 +70,9 @@ export const deleteImageFromDestination = async (image_id, destination_id, token
 export const deleteDestination = async (id, token) => {
   try {
     const response = await fetch(`${DESTINATIONS_URL}/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Authorization": `Bearer ${token}`
+        'Authorization': `Bearer ${token}`
       }
     });
     return await handleResponse(response);

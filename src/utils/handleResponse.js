@@ -1,9 +1,9 @@
-import { checkAndOrder } from "./checkAndOrder";
+import { checkAndOrder } from './checkAndOrder';
 
 export const handleResponse = async (response) => {
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.message || "Something went wrong");
+    throw new Error(error.message || 'Something went wrong');
   }
   const res = await response.json();
 
@@ -11,7 +11,7 @@ export const handleResponse = async (response) => {
     res.forEach((item) => {
       checkAndOrder(item);
     });
-  } else if (typeof res === "object" && res !== null) {
+  } else if (typeof res === 'object' && res !== null) {
     checkAndOrder(res);
   }
 

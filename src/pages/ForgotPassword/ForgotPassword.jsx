@@ -1,6 +1,6 @@
-import { Box, Button, VStack, Text } from "@chakra-ui/react";
-import EmailField from "../../components/userFormComponents/emailField/emailField";
-import useForgotPassword from "../../customHooks/useForgotPassword/useForgotPassword";
+import { Box, Button, VStack, Text } from '@chakra-ui/react';
+import EmailField from '../../components/userFormComponents/emailField/emailField';
+import useForgotPassword from '../../customHooks/useForgotPassword/useForgotPassword';
 
 const ForgotPassword = () => {
   const { register, errors, isSubmitting, onSubmit } = useForgotPassword();

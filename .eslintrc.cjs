@@ -20,6 +20,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'semi': ['error', 'always'],
-    'quotes': ['error', 'double'],
+    'quotes': ['error', 'single'],
   },
 }

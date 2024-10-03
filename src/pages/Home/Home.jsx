@@ -1,19 +1,19 @@
-import "./Home.css";
-import { useEffect } from "react";
-import { Box, Flex, Image } from "@chakra-ui/react";
-import { Lumiflex } from "uvcanvas";
-import { handleHomeScroll } from "../../handleScroll/handleHomeScroll";
-import HeroText from "../../components/HeroText/HeroText";
+import './Home.css';
+import { useEffect } from 'react';
+import { Box, Flex, Image } from '@chakra-ui/react';
+import { Lumiflex } from 'uvcanvas';
+import { handleHomeScroll } from '../../handleScroll/handleHomeScroll';
+import HeroText from '../../components/HeroText/HeroText';
 
 const Home = () => {
   useEffect(() => {
-    window.addEventListener("scroll", handleHomeScroll);
+    window.addEventListener('scroll', handleHomeScroll);
     return () => {
-      window.removeEventListener("scroll", handleHomeScroll);
+      window.removeEventListener('scroll', handleHomeScroll);
     };
   }, []);
 
-  const heroImageUrl = "/assets/Logo_Acuarelas_redondo.png";
+  const heroImageUrl = '/assets/Logo_Acuarelas_redondo.png';
 
   return (
     <Box as='main' flex='1' minHeight='calc(100lvh-72px)'>
@@ -32,18 +32,18 @@ const Home = () => {
       <Flex
         className='hero'
         direction='column'
-        justifyContent={{ base: "space-between", md: "center" }}
+        justifyContent={{ base: 'space-between', md: 'center' }}
         w='100%'
         minH='100lvh'
         maxH='1400px'
         mt='-72px'
-        gap={{ base: 0, md: "clamp(2rem, 4.5vh, 24rem)" }}
+        gap={{ base: 0, md: 'clamp(2rem, 4.5vh, 24rem)' }}
         mx='auto'
         alignItems='center'
         pb={{ base: 0, md: 4 }}
       >
         <Flex
-          flex={{ base: "1", md: "" }}
+          flex={{ base: '1', md: '' }}
           className='hero-image-wrapper'
           direction='column'
           alignItems='center'
@@ -57,8 +57,8 @@ const Home = () => {
             alignItems='center'
             justifyItems='center'
             w={{
-              base: "clamp(300px, 50vmin, 1024px)",
-              md: "clamp(300px, 50vmin, 1024px)",
+              base: 'clamp(300px, 50vmin, 1024px)',
+              md: 'clamp(300px, 50vmin, 1024px)',
             }}
           >
             <Image

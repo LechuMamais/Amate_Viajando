@@ -1,6 +1,6 @@
-import { Box, Button, Flex, Skeleton, Text } from "@chakra-ui/react";
-import CardsList from "../CardsList/CardsList";
-import MyLink from "../MyLink/MyLink";
+import { Box, Button, Flex, Skeleton, Text } from '@chakra-ui/react';
+import CardsList from '../CardsList/CardsList';
+import MyLink from '../MyLink/MyLink';
 
 const UserProfile = ({ user, loading }) => {
   const transformedFavouriteTours = user.favouriteTours?.map((favTour) => ({
@@ -19,17 +19,17 @@ const UserProfile = ({ user, loading }) => {
         </Box>
       </Skeleton>
       <CardsList
-        headingText={"Tours Favoritos"}
-        descriptionText={""}
+        headingText={'Tours Favoritos'}
+        descriptionText={''}
         arrayToRender={transformedFavouriteTours}
-        usingFor={"favouriteTours"}
+        usingFor={'favouriteTours'}
         loading={loading}
       />
       {user.favouriteTours.length === 0 && (
         <Flex direction='column' alignItems='center' gap={4}>
           <Text textAlign='center'>Aún no has agregado tours a tu lista de favoritos</Text>
           <MyLink to='/destinations'>
-            <Button size='lg' p={6} mx='auto' my={{ base: 2, md: 3, lg: 4 }} fontWeight={"light"}>
+            <Button size='lg' p={6} mx='auto' my={{ base: 2, md: 3, lg: 4 }} fontWeight={'light'}>
               Ver Destinos
             </Button>
           </MyLink>

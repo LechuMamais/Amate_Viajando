@@ -1,5 +1,5 @@
-import { Text, Flex, Button } from "@chakra-ui/react";
-import { useContact } from "../../customHooks/useContact/useContact";
+import { Text, Flex, Button } from '@chakra-ui/react';
+import { useContact } from '../../customHooks/useContact/useContact';
 
 const ContactTourButtons = ({ tourName, destinationName }) => {
   const { whatsappUrl, emailUrl, icons } = useContact(tourName, destinationName);
@@ -11,12 +11,12 @@ const ContactTourButtons = ({ tourName, destinationName }) => {
         textAlign='justify'
         color='gray.600'
         lineHeight='1.5em'
-        letterSpacing={{ base: 0, md: "0.04em" }}
+        letterSpacing={{ base: 0, md: '0.04em' }}
         fontSize='lg'
       >
         Si te interesa este tour y quieres más información, no dudes en ponerte en contacto con nosotros.
       </Text>
-      <Flex direction={{ base: "column", md: "row" }} gap={2}>
+      <Flex direction={{ base: 'column', md: 'row' }} gap={2}>
         <Button
           as='a'
           href={whatsappUrl}

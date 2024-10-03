@@ -1,5 +1,5 @@
-import ContactTourButtons from "../ContactTourButtons/ContactTourButtons";
-import { Flex } from "@chakra-ui/react";
+import ContactTourButtons from '../ContactTourButtons/ContactTourButtons';
+import { Flex } from '@chakra-ui/react';
 
 const ToursButtonContainer = ({ tour, destination }) => {
   return (

@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from "react";
-import { useToast } from "@chakra-ui/react";
-import { useNavigate, useParams } from "react-router-dom";
-import { UserContext } from "../../providers/UserProvider";
-import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
-import { fetchSetTours } from "../../services/fetchSetTours";
-import { deleteAllImages } from "../../services/deleteAllImages";
-import { fetchDestinationAndSetValues, handleDeleteDestination, submitHandler } from "./useUpdateDestination.functions";
+import { useState, useEffect, useContext } from 'react';
+import { useToast } from '@chakra-ui/react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { UserContext } from '../../providers/UserProvider';
+import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
+import { fetchSetTours } from '../../services/fetchSetTours';
+import { deleteAllImages } from '../../services/deleteAllImages';
+import { fetchDestinationAndSetValues, handleDeleteDestination, submitHandler } from './useUpdateDestination.functions';
 
 export const useUpdateDestination = (setValue) => {
   const { user } = useContext(UserContext);

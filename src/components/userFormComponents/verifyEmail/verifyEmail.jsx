@@ -1,5 +1,5 @@
-import { VStack, Text, Button, Input, Box } from "@chakra-ui/react";
-import useVerifyEmailForm from "../../../customHooks/useVerifyEmailForm/useVerifyEmailForm";
+import { VStack, Text, Button, Input, Box } from '@chakra-ui/react';
+import useVerifyEmailForm from '../../../customHooks/useVerifyEmailForm/useVerifyEmailForm';
 
 const VerifyEmail = ({ email }) => {
   const { handleSubmit, register, formState, loading, submitVerificationToken, generateAndSendNewVerificationToken } =
@@ -13,18 +13,18 @@ const VerifyEmail = ({ email }) => {
             Verificación de correo
           </Text>
           <Text>Introduce el código de verificación enviado a tu correo:</Text>
-          <Input type='text' {...register("verificationToken")} maxLength={6} placeholder='Código de verificación' />
+          <Input type='text' {...register('verificationToken')} maxLength={6} placeholder='Código de verificación' />
           {formState.errors.verificationToken && (
             <Text color='red.500'>{formState.errors.verificationToken.message}</Text>
           )}
-          <Input type='hidden' {...register("email")} value={email} />
+          <Input type='hidden' {...register('email')} value={email} />
           <Button
             type='submit'
             colorScheme='blue'
             isLoading={loading}
             spinnerPlacement='end'
             loadingText='Verificar'
-            w={{ base: "100%" }}
+            w={{ base: '100%' }}
           >
             Verificar
           </Button>

@@ -1,8 +1,8 @@
-import { Box, Container } from "@chakra-ui/react";
-import CardsList from "../../components/CardsList/CardsList";
-import { useContext } from "react";
-import { AllDestinationsContext } from "../../providers/AllDestinationsProvider";
-import { toursToRenderArrayConstructor } from "../../utils/toursToRenderArrayConstructor";
+import { Box, Container } from '@chakra-ui/react';
+import CardsList from '../../components/CardsList/CardsList';
+import { useContext } from 'react';
+import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
+import { toursToRenderArrayConstructor } from '../../utils/toursToRenderArrayConstructor';
 
 const Tours = () => {
   const { allDestinations, loading } = useContext(AllDestinationsContext);
@@ -16,7 +16,7 @@ const Tours = () => {
             headingText={destination.name}
             descriptionText={`Los mejores tours en ${destination.name} seleccionados para ti.`}
             arrayToRender={toursToRenderArrayConstructor(destination)}
-            usingFor={"tours"}
+            usingFor={'tours'}
             loading={loading}
           />
         ))}
