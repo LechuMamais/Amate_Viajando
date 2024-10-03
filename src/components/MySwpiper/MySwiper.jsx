@@ -3,27 +3,17 @@ import { useEffect } from 'react';
 import Swiper from 'swiper';
 import 'swiper/css';
 import './MySwiper.css';
-//import 'swiper/css/navigation';
-//import 'swiper/css/pagination';
 
 const MySwiper = ({ obj }) => {
   useEffect(() => {
     const swiper = new Swiper('.swiper', {
       modules: [],
-      direction: 'horizontal', // Cambiado a horizontal para un mejor uso en pantallas touch
+      direction: 'horizontal',
       loop: true,
-      /*pagination: {
-        el: '.swiper-pagination',
-        clickable: true, // Hacer clic en los puntos de paginación
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },*/
     });
 
     return () => {
-      swiper.destroy(); // Destruir la instancia de Swiper cuando el componente se desmonta
+      swiper.destroy();
     };
   }, []);
 
