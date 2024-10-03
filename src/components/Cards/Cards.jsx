@@ -1,4 +1,3 @@
-import './Cards.css';
 import { Box, Card, Heading, Image, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import MyLink from '../MyLink/MyLink';
@@ -9,14 +8,20 @@ const Cards = ({ obj, usingFor }) => {
   const { destination_id } = useParams();
 
   return (
-    <Card>
+    <Card
+      variant='elevated'
+      borderRadius='xl'
+      overflow='hidden'
+      transition='all 400ms ease-in'
+      _hover={{ boxShadow: '2px 2px 8px 4px rgba(0,0,0,0.06)' }}
+    >
       <MyLink to={buildCardEndPoint(usingFor, obj, _id, destination_id)}>
-        <Box overflow='hidden' borderRadius='xl'>
+        <Box>
           {images?.length > 0 ? (
             <Image
               src={images[0]?.imgObj?.url}
               alt={images[0]?.imgObj?.alt}
-              width={800}
+              w='100%'
               height={{ base: '300', sm: '400' }}
               objectFit='cover'
             />

@@ -9,7 +9,7 @@ const MyLink = ({ children, to }) => {
   });
 
   return (
-    <ChakraLink as={ReactRouterLink} to={to}>
+    <ChakraLink as={ReactRouterLink} to={to} _hover={{ textDecor: 'none' }}>
       {children}
     </ChakraLink>
   );
