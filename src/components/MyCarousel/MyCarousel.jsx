@@ -5,10 +5,9 @@ import { Carousel } from 'react-responsive-carousel';
 
 const MyCarousel = ({ obj }) => {
   return (
-    <Box w='full' overflow='hidden'>
+    <Box overflow='hidden'>
       {obj?.images && obj.images.length > 0 && (
         <Carousel
-          className='w-full'
           useKeyboardArrows={true}
           statusFormatter={() => {
             return <></>;

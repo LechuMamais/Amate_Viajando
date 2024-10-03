@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { handleDetailsPageScroll } from '../../handleScroll/handleDetailsPageScroll';
 import AddAndRemoveFromFavoritesButton from '../AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton';
 import { useParams } from 'react-router-dom';
+import MySwiper from '../MySwpiper/MySwiper';
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
@@ -31,7 +32,12 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
         </Skeleton>
       ) : (
         <>
-          <MyCarousel obj={obj} />
+          <Box w='100%' h='100%' display={{ base: 'none', md: 'inherit' }}>
+            <MyCarousel obj={obj} />
+          </Box>
+          <Box w='100%' h='100%' display={{ base: 'inherit', md: 'none' }}>
+            <MySwiper obj={obj}></MySwiper>
+          </Box>
           <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
             {usingFor == 'destination' && (
               <MyLink to='/destinations'>
