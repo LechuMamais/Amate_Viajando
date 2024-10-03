@@ -1,7 +1,6 @@
 import { Box, Skeleton, SkeletonText } from '@chakra-ui/react';
 
 const CardSkeletonLoader = () => {
-  console.log('CardSkeletor');
   return (
     <Box borderRadius='xl' overflow='hidden'>
       <Skeleton height={{ base: '300px', sm: '400px' }} width='100%' />

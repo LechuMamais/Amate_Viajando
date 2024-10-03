@@ -7,8 +7,6 @@ import ProfileSkeletonLoader from '../../skeletonLoaders/ProfileSkeletonLoader';
 
 const Profile = () => {
   const { user, loading } = useContext(UserContext);
-  console.log(user);
-  console.log(loading);
 
   return (
     <Box as='main' flex={1}>
