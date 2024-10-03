@@ -1,6 +1,5 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Button, Container, Flex, Heading, Text, Stack, Box, Skeleton } from '@chakra-ui/react';
-import MyCarousel from '../MyCarousel/MyCarousel';
 import CardsList from '../CardsList/CardsList';
 import MyLink from '../MyLink/MyLink';
 import { useContext } from 'react';
@@ -10,7 +9,7 @@ import { useEffect } from 'react';
 import { handleDetailsPageScroll } from '../../handleScroll/handleDetailsPageScroll';
 import AddAndRemoveFromFavoritesButton from '../AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton';
 import { useParams } from 'react-router-dom';
-import MySwiper from '../MySwpiper/MySwiper';
+import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
@@ -32,12 +31,8 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
         </Skeleton>
       ) : (
         <>
-          <Box w='100%' h='100%' display={{ base: 'none', md: 'inherit' }}>
-            <MyCarousel obj={obj} />
-          </Box>
-          <Box w='100%' h='100%' display={{ base: 'inherit', md: 'none' }}>
-            <MySwiper obj={obj}></MySwiper>
-          </Box>
+          <ResponsiveCarousel obj={obj} />
+
           <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
             {usingFor == 'destination' && (
               <MyLink to='/destinations'>
