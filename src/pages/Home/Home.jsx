@@ -2,7 +2,7 @@ import './Home.css';
 import { useEffect } from 'react';
 import { Box, Flex, Image } from '@chakra-ui/react';
 import { Lumiflex } from 'uvcanvas';
-import { handleHomeScroll } from '../../handleScroll/handleHomeScroll';
+import { handleHomeScroll } from '../../utils/handleScroll/handleHomeScroll';
 import HeroText from '../../components/HeroText/HeroText';
 
 const Home = () => {
