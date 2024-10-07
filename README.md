@@ -2,7 +2,7 @@
 
 ## Descripción del Proyecto
 
-Amate Viajando es una web app desarrollada para una agencia de turismo que opera principalmente en la Patagonia argentina. Su propósito es mostrar las opciones de tours que se ofrecen en los distintos destinos donde la agencia tiene operaciones. Está dirigida a viajeros de todo tipo que deseen conocer y explorar la Patagonia.
+Amate Viajando es una web app desarrollada para una agencia de turismo que opera principalmente en la Patagonia Argentina. Su propósito es mostrar las opciones de tours que se ofrecen en los distintos destinos donde la agencia tiene operaciones. Está dirigida a viajeros de todo tipo que deseen conocer y explorar la Patagonia.
 
 ### Funcionalidades clave:
 
@@ -197,7 +197,7 @@ rules: {
  semi: ['error', 'always'],
  quotes: ['error', 'single'],
 },
-};
+}
 ```
 
 ## Contribuciones:
