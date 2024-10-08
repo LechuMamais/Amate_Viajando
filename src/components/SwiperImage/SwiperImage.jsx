@@ -7,7 +7,7 @@ const SwiperImage = ({ img }) => {
 
   return (
     <Skeleton className='swiper-slide' key={img._id} h='100%' w='100%' isLoaded={!loading} fadeDuration={1}>
-      <Box minH='100%'>
+      <Box>
         <img
           src={buildCloudinaryImageUrl(img.imgObj.url, window.innerWidth, window.innerHeight)}
           alt={img.imgObj.alt}

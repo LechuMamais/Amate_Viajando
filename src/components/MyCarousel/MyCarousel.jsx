@@ -6,8 +6,7 @@ import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 import { useEffect, useState } from 'react';
 
 const MyCarousel = ({ obj }) => {
-  const [loading, setLoading] = useState(true); // Estado para controlar la carga
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (obj?.images) {
       setLoading(true);
