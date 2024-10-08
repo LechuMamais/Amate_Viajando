@@ -9,6 +9,7 @@ const MyCarousel = ({ obj }) => {
     <Box overflow='hidden'>
       {obj?.images && obj.images.length > 0 && (
         <Carousel
+          key={obj.id || obj._id}
           useKeyboardArrows={true}
           statusFormatter={() => {
             return <></>;
