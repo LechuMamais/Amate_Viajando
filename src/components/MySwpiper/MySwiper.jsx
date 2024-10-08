@@ -7,7 +7,7 @@ const MySwiper = ({ obj }) => {
   useSwiper('.swiper', obj);
 
   return (
-    <Box className='swiper' h='100%'>
+    <Box className='swiper parallaxSlider' h='100%'>
       <Box className='swiper-wrapper' h='100%'>
         {obj?.images?.map((img) => (
           <SwiperImage img={img} key={img._id} />

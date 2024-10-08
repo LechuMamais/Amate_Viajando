@@ -5,7 +5,7 @@ export const handleDetailsPageScroll = () => {
     const parallaxBrightnessFactor = 0.05;
     const parallaxBlurFactor = 0.0075;
     const scrolled = window.scrollY;
-    const carouselElement = document.querySelector('.carousel');
+    const carouselElement = document.querySelector('.parallaxSlider');
     const blurScrollDelay = 400;
     if (carouselElement) {
         carouselElement.style.height = `calc(100vh - ${headerHeight} - ${scrolled * parallaxTranslateFactor}px)`;

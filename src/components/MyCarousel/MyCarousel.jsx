@@ -25,7 +25,7 @@ const MyCarousel = ({ obj }) => {
             showThumbs={false}
           >
             {obj.images.map((img) => (
-              <Box key={img._id} className='carousel-img-container'>
+              <Box key={img._id} className='carousel-img-container parallaxSlider'>
                 <img
                   src={buildCloudinaryImageUrl(img.imgObj.url, window.innerWidth, window.innerHeight)}
                   alt={img.imgObj.alt}
