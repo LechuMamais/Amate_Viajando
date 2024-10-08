@@ -7,10 +7,9 @@ export const handleDetailsPageScroll = () => {
     const scrolled = window.scrollY;
     const carouselElement = document.querySelector('.carousel');
     const blurScrollDelay = 400;
-    //console.log(scrolled);
     if (carouselElement) {
         carouselElement.style.height = `calc(100vh - ${headerHeight} - ${scrolled * parallaxTranslateFactor}px)`;
         carouselElement.style.transform = `scale(${1 + scrolled * parallaxScaleFactor})`;
-        carouselElement.style.filter = `brightness(${100 + scrolled * parallaxBrightnessFactor}%) blur(${scrolled >= blurScrollDelay ? (scrolled - blurScrollDelay) * parallaxBlurFactor : 0}px)`;
+        carouselElement.firstChild.style.filter = `brightness(${100 + scrolled * parallaxBrightnessFactor}%) blur(${scrolled >= blurScrollDelay ? (scrolled - blurScrollDelay) * parallaxBlurFactor : 0}px)`;
     }
 };
