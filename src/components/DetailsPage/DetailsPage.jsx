@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { DestinationContext } from '../../providers/DestinationProvider';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
 import { useEffect } from 'react';
-import { handleDetailsPageScroll } from '../../utils/handleScroll/handleDetailsPageScroll';
+import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 import AddAndRemoveFromFavoritesButton from '../AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton';
 import { useParams } from 'react-router-dom';
 import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
