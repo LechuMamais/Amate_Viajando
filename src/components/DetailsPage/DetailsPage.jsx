@@ -1,4 +1,3 @@
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Button, Container, Flex, Heading, Text, Stack, Box, Skeleton } from '@chakra-ui/react';
 import CardsList from '../CardsList/CardsList';
 import MyLink from '../MyLink/MyLink';

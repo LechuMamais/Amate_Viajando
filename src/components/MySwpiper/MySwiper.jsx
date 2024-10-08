@@ -18,7 +18,7 @@ const MySwiper = ({ obj }) => {
   }, []);
 
   return (
-    <Box className='swiper' h='100%'>
+    <Box className='swiper carousel' h='100%'>
       <Box className='swiper-wrapper' h='100%'>
         {obj?.images?.map((img) => (
           <Box className='swiper-slide' key={img._id} minH='100%'>
