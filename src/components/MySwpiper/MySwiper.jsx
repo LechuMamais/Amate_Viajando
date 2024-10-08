@@ -3,7 +3,7 @@ import './MySwiper.css';
 import { Box } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import Swiper from 'swiper';
-import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
+import SwiperImage from '../SwiperImage/SwiperImage';
 
 const MySwiper = ({ obj }) => {
   useEffect(() => {
@@ -22,18 +22,9 @@ const MySwiper = ({ obj }) => {
     <Box className='swiper carousel' h='100%'>
       <Box className='swiper-wrapper' h='100%'>
         {obj?.images?.map((img) => (
-          <Box className='swiper-slide' key={img._id} minH='100%'>
-            <img
-              src={buildCloudinaryImageUrl(img.imgObj.url, window.innerWidth, window.innerHeight)}
-              alt={img.imgObj.alt}
-              width={1920}
-              height={1000}
-              className=''
-            />
-          </Box>
+          <SwiperImage img={img} key={img._id} />
         ))}
       </Box>
-      <div className='swiper-pagination'></div>
     </Box>
   );
 };
