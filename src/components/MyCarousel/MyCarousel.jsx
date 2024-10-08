@@ -14,7 +14,7 @@ const MyCarousel = ({ obj }) => {
   }, [obj]);
 
   return (
-    <Box overflow='hidden'>
+    <Box overflow='hidden' className='parallaxSlider'>
       {obj?.images && obj.images.length > 0 && (
         <Skeleton height='calc(100vh-72px)' width='100%' isLoaded={!loading} fadeDuration={1}>
           <Carousel
@@ -25,7 +25,7 @@ const MyCarousel = ({ obj }) => {
             showThumbs={false}
           >
             {obj.images.map((img) => (
-              <Box key={img._id} className='carousel-img-container parallaxSlider'>
+              <Box key={img._id} className='carousel-img-container'>
                 <img
                   src={buildCloudinaryImageUrl(img.imgObj.url, window.innerWidth, window.innerHeight)}
                   alt={img.imgObj.alt}
