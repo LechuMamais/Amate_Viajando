@@ -7,7 +7,7 @@ const Home = () => {
   const heroImageUrl = '/assets/Logo_Acuarelas_redondo.png';
 
   return (
-    <Box as='main' flex='1' minHeight='min(calc(100lvh - 72px), 600px)'>
+    <Box as='main' flex='1'>
       <Box
         minHeight='100lvh'
         className='hero-background'
