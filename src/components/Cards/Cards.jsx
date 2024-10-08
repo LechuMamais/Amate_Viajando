@@ -2,7 +2,7 @@ import { Box, Card, Heading, Image, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import MyLink from '../MyLink/MyLink';
 import { buildCardEndPoint } from '../../utils/buildCardEndPoint';
-import { buildCloudinaryCardUrl } from '../../utils/buildCloudinaryCardUrl';
+import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 
 const Cards = ({ obj, usingFor }) => {
   const { heading, description, _id, images } = obj;
@@ -21,7 +21,7 @@ const Cards = ({ obj, usingFor }) => {
         <Box>
           {images?.length > 0 ? (
             <Image
-              src={buildCloudinaryCardUrl(images[0]?.imgObj?.url, imageWidth)}
+              src={buildCloudinaryImageUrl(images[0]?.imgObj?.url, imageWidth)}
               alt={images[0]?.imgObj?.alt}
               w='100%'
               height={{ base: '300', sm: '400' }}

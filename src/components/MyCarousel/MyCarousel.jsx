@@ -2,6 +2,7 @@ import './MyCarousel.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Box } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
+import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 
 const MyCarousel = ({ obj }) => {
   return (
@@ -14,16 +15,12 @@ const MyCarousel = ({ obj }) => {
           }}
           showThumbs={false}
         >
-          {obj.images.map((image, index) => (
+          {obj.images.map((img, index) => (
             <div key={index} className='carousel-img-container'>
               <img
-                src={image.imgObj.url}
-                alt={image.imgObj.alt}
-                width={1920}
-                height={1000}
-                className='w-full  object-cover'
+                src={buildCloudinaryImageUrl(img.imgObj.url, window.innerWidth, window.innerHeight)}
+                alt={img.imgObj.alt}
               />
-              {/*<p className="legend">{image.description}</p>*/}
             </div>
           ))}
         </Carousel>
