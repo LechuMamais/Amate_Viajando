@@ -1,27 +1,18 @@
 import './Home.css';
-import { useEffect } from 'react';
 import { Box, Flex, Image } from '@chakra-ui/react';
 import { Lumiflex } from 'uvcanvas';
-import { handleHomeScroll } from '../../utils/handleScroll/handleHomeScroll';
 import HeroText from '../../components/HeroText/HeroText';
 
 const Home = () => {
-  useEffect(() => {
-    window.addEventListener('scroll', handleHomeScroll);
-    return () => {
-      window.removeEventListener('scroll', handleHomeScroll);
-    };
-  }, []);
-
   const heroImageUrl = '/assets/Logo_Acuarelas_redondo.png';
 
   return (
-    <Box as='main' flex='1' minHeight='calc(100lvh-72px)'>
+    <Box as='main' flex='1' minHeight='min(calc(100lvh - 72px), 600px)'>
       <Box
-        minH='100vh'
+        minHeight='100lvh'
         className='hero-background'
         w='100%'
-        h='100px'
+        h='100%'
         position='absolute'
         top='0px'
         left='0px'
@@ -60,6 +51,7 @@ const Home = () => {
               base: 'clamp(300px, 50vmin, 1024px)',
               md: 'clamp(300px, 50vmin, 1024px)',
             }}
+            p={4}
           >
             <Image
               bgColor='#FFFFFF'

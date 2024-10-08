@@ -6,3 +6,7 @@
   box-shadow: 20px 20px 60px #9f9f9f76,
     -20px -20px 60px #ffffff28;
 }
+
+.hero-background canvas {
+  height: 100% !important;
+}

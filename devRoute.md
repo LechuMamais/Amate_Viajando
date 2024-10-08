@@ -52,11 +52,3 @@ FRONTEND:
     - Prettier
 
 Por hacer:
-
-    - HOME:
-        Arreglar el minibug, de que si la pantalla es más corta que el contenido, abajo queda sin fondo!
-
-
-    - Tours: Que tengan PRECIO
-
-    - Renombrar orderImagesArray

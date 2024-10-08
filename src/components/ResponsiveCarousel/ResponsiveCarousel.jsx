@@ -15,7 +15,6 @@ const ResponsiveCarousel = ({ obj }) => {
     checkTouchDevice();
   }, []);
 
-  // Use both touch and viewport detection
   const shouldUseMobileComponent = isTouchDevice && isMobileViewport;
 
   return (
