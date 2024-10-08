@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 import { Box, Skeleton } from '@chakra-ui/react';
 
 const SwiperImage = ({ img }) => {
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-  }, [img]);
 
   return (
     <Skeleton className='swiper-slide' key={img._id} h='100%' w='100%' isLoaded={!loading} fadeDuration={1}>

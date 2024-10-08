@@ -19,15 +19,14 @@ const MyCarousel = ({ obj }) => {
       {obj?.images && obj.images.length > 0 && (
         <Skeleton height='calc(100vh-72px)' width='100%' isLoaded={!loading} fadeDuration={1}>
           <Carousel
-            key={obj.id || obj._id}
             useKeyboardArrows={true}
             statusFormatter={() => {
               return <></>;
             }}
             showThumbs={false}
           >
-            {obj.images.map((img, index) => (
-              <div key={index} className='carousel-img-container'>
+            {obj.images.map((img) => (
+              <Box key={img._id} className='carousel-img-container'>
                 <img
                   src={buildCloudinaryImageUrl(img.imgObj.url, window.innerWidth, window.innerHeight)}
                   alt={img.imgObj.alt}
@@ -35,7 +34,7 @@ const MyCarousel = ({ obj }) => {
                     setLoading(false);
                   }}
                 />
-              </div>
+              </Box>
             ))}
           </Carousel>
         </Skeleton>

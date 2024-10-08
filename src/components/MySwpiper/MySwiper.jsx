@@ -16,7 +16,7 @@ const MySwiper = ({ obj }) => {
     return () => {
       swiper.destroy();
     };
-  }, []);
+  }, [obj]);
 
   return (
     <Box className='swiper carousel' h='100%'>
