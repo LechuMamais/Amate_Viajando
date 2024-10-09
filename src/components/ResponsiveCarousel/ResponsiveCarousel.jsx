@@ -1,23 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useBreakpointValue } from '@chakra-ui/react';
 import MySwiper from '../MySwpiper/MySwiper';
 import MyCarousel from '../MyCarousel/MyCarousel';
+import { useCheckMobile } from '../../customHooks/useCheckMobile/useCheckMobile';
 
 const ResponsiveCarousel = ({ obj }) => {
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const isMobileViewport = useBreakpointValue({ base: true, md: false });
+  const isMobileDevice = useCheckMobile();
 
-  useEffect(() => {
-    const checkTouchDevice = () => {
-      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
-    };
-
-    checkTouchDevice();
-  }, []);
-
-  const shouldUseMobileComponent = isTouchDevice && isMobileViewport;
-
-  return <>{shouldUseMobileComponent ? <MySwiper obj={obj} /> : <MyCarousel obj={obj} />}</>;
+  return <>{isMobileDevice ? <MySwiper obj={obj} /> : <MyCarousel obj={obj} />}</>;
 };
 
 export default ResponsiveCarousel;

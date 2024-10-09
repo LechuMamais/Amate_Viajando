@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom';
 import MyLink from '../MyLink/MyLink';
 import { buildCardEndPoint } from '../../utils/buildCardEndPoint';
 import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
+import { useCheckMobile } from '../../customHooks/useCheckMobile/useCheckMobile';
 
 const Cards = ({ obj, usingFor }) => {
   const { heading, description, _id, images } = obj;
   const { destination_id } = useParams();
-  const imageWidth = 736;
+  const isMobileDevice = useCheckMobile();
+  const transformScaleFactor = isMobileDevice ? 1 : 1.02;
+  const imageWidth = Math.ceil(736 * transformScaleFactor);
 
   return (
     <Card
@@ -15,30 +18,35 @@ const Cards = ({ obj, usingFor }) => {
       borderRadius='xl'
       overflow='hidden'
       transition='all 400ms ease-in'
-      _hover={{ boxShadow: '2px 2px 8px 4px rgba(0,0,0,0.06)' }}
+      _hover={{
+        boxShadow: '2px 2px 8px 4px rgba(0,0,0,0.06)',
+        '.chakra-link .card-image': { transform: `scale(${transformScaleFactor})` },
+      }}
     >
       <MyLink to={buildCardEndPoint(usingFor, obj, _id, destination_id)}>
-        <Box>
-          {images?.length > 0 ? (
+        {images?.length > 0 ? (
+          <Box overflow='hidden'>
             <Image
+              className='card-image'
               src={buildCloudinaryImageUrl(images[0]?.imgObj?.url, imageWidth)}
               alt={images[0]?.imgObj?.alt}
               w='100%'
               height={{ base: '300', sm: '400' }}
               objectFit='cover'
+              transition='all 800ms ease-in-out'
             />
-          ) : (
-            <Box bg='gray.100' height={{ base: '300', sm: '400' }}></Box>
-          )}
-
-          <Box p={{ base: 4, sm: 6 }}>
-            <Heading as='h3' size='md' fontWeight='semibold'>
-              {heading}
-            </Heading>
-            <Text mt={2} color='gray.500'>
-              {description}
-            </Text>
           </Box>
+        ) : (
+          <Box bg='gray.100' height={{ base: '300', sm: '400' }}></Box>
+        )}
+
+        <Box p={{ base: 4, sm: 6 }}>
+          <Heading as='h3' size='md' fontWeight='semibold'>
+            {heading}
+          </Heading>
+          <Text mt={2} color='gray.500'>
+            {description}
+          </Text>
         </Box>
       </MyLink>
     </Card>
