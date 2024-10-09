@@ -17,10 +17,13 @@ const Cards = ({ obj, usingFor }) => {
       variant='elevated'
       borderRadius='xl'
       overflow='hidden'
-      transition='all 400ms ease-in'
+      transition='box-shadow 400ms ease-in'
       _hover={{
         boxShadow: '2px 2px 8px 4px rgba(0,0,0,0.06)',
-        '.chakra-link .card-image': { transform: `scale(${transformScaleFactor})` },
+        '.chakra-link .card-image': {
+          transform: `scale(${transformScaleFactor})`,
+          transition: 'transform 1000ms ease',
+        },
       }}
     >
       <MyLink to={buildCardEndPoint(usingFor, obj, _id, destination_id)}>
@@ -33,7 +36,7 @@ const Cards = ({ obj, usingFor }) => {
               w='100%'
               height={{ base: '300', sm: '400' }}
               objectFit='cover'
-              transition='all 800ms ease-in-out'
+              transition='transform 1600ms ease-in-out 400ms'
             />
           </Box>
         ) : (

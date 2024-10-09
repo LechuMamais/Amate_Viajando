@@ -1,8 +1,6 @@
 # Ideas para versiones futuras
 
-- Modificaciones al componente Card:
-
-  - Agregarle el corazón de fav, y talvez alguna animación a la imagen cuando hover o focus
+- Al componente Card, agregarle el corazón de fav
 
 - Blog: Sección donde el usuario admin pueda escribir entradas de blog y generar contenido, y los usuarios puedan responder con comentarios.
 
