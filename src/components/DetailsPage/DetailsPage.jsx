@@ -23,7 +23,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   }, []);
 
   return (
-    <Skeleton w='100lvw' h='calc(100lvh-72px)' isLoaded={!loading}>
+    <Skeleton w='100lvw' h='calc(100lvh-72px)' isLoaded={!loading} overflow='hidden'>
       <ResponsiveCarousel obj={obj} />
 
       <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
