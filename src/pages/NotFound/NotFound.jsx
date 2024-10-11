@@ -2,6 +2,10 @@ import { Box, Text, Button, VStack, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+  const goBack = () => {
+    window.history.back();
+  };
+
   return (
     <Box as='main' flex='1' textAlign='center' py={10} px={6} minH='100vh' bgColor='#F8F8F8'>
       <VStack spacing={6} alignItems='center'>
@@ -16,10 +20,14 @@ const NotFound = () => {
         </Text>
 
         <Link to='/'>
-          <Button colorScheme='teal' bg='teal.600' color='white' size='lg' px={8} _hover={{ bg: 'teal.700' }}>
+          <Button colorScheme='teal' bg='teal.600' color='white' size='lg' px={8} _hover={{ bg: 'teal.700' }} w='200px'>
             Volver al inicio
           </Button>
         </Link>
+
+        <Button onClick={goBack} colorScheme='gray' size='lg' px={8} w='200px'>
+          Ir atrás
+        </Button>
       </VStack>
     </Box>
   );
