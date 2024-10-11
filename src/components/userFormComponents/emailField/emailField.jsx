@@ -6,7 +6,10 @@ const EmailField = ({ register, error }) => (
     <Input
       {...register('email', {
         required: 'Introduce tu email',
-        pattern: { value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, message: 'Introduce un email válido' },
+        pattern: {
+          value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          message: 'Introduce un email válido',
+        },
       })}
     />
     {error && (
