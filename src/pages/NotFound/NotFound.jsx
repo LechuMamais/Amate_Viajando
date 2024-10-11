@@ -3,22 +3,8 @@ import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
-    <Box
-      as='main'
-      flex='1'
-      textAlign='center'
-      py={10}
-      px={6}
-      minH='100vh'
-      //bgGradient="linear(to-r, teal.400, blue.500)"
-      bgColor='#F8F8F8'
-      //color="white"
-    >
+    <Box as='main' flex='1' textAlign='center' py={10} px={6} minH='100vh' bgColor='#F8F8F8'>
       <VStack spacing={6} alignItems='center'>
-        {/*<Heading as="h1" fontSize="6xl">
-          404
-        </Heading>*/}
-
         <Image src='/assets/err_404.png' alt='ERROR 404 - Not found' maxW='300px' />
 
         <Text fontSize='2xl' mt={3}>
