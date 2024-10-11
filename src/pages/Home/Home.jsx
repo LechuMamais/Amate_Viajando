@@ -1,10 +1,20 @@
 import './Home.css';
-import { Box, Flex, Image } from '@chakra-ui/react';
+import { Box, Flex, Image, useBreakpointValue } from '@chakra-ui/react';
 import { Lumiflex } from 'uvcanvas';
 import HeroText from '../../components/HeroText/HeroText';
 
 const Home = () => {
-  const heroImageUrl = '/assets/Logo_Acuarelas_redondo.png';
+  const heroImageUrlSmall = '/assets/Logo_Acuarelas_redondo_248.png';
+  const heroImageUrlMedium = '/assets/Logo_Acuarelas_redondo_368.png';
+  const heroImageUrlLarge = '/assets/Logo_Acuarelas_redondo_460.png';
+  const heroImageUrlXLarge = '/assets/Logo_Acuarelas_redondo_520.png';
+
+  const heroImageUrl = useBreakpointValue({
+    base: heroImageUrlSmall,
+    sm: heroImageUrlMedium,
+    lg: heroImageUrlLarge,
+    xl: heroImageUrlXLarge,
+  });
 
   return (
     <Box as='main' flex='1'>
@@ -34,7 +44,7 @@ const Home = () => {
         pb={{ base: 0, md: 4 }}
       >
         <Flex
-          flex={{ base: '1', md: '' }}
+          flex={1}
           className='hero-image-wrapper'
           direction='column'
           alignItems='center'
@@ -47,10 +57,7 @@ const Home = () => {
             direction='column'
             alignItems='center'
             justifyItems='center'
-            w={{
-              base: 'clamp(300px, 50vmin, 1024px)',
-              md: 'clamp(300px, 50vmin, 1024px)',
-            }}
+            w='clamp(300px, 60vmin, 1024px)'
             p={4}
           >
             <Image
@@ -59,9 +66,9 @@ const Home = () => {
               src={heroImageUrl}
               alt='Amate_Viajando_Logo'
               objectFit='cover'
-              mt={{ base: 0, md: 8 }}
               zIndex='1'
               opacity='0.8'
+              mt={{ base: 0, md: 8 }}
               border='10px solid #FFFFFF'
               borderRadius='100%'
             />
