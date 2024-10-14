@@ -1,4 +1,4 @@
-import { Button, Container, Flex, Heading, Text, Stack, Box, Skeleton } from '@chakra-ui/react';
+import { Button, Container, Flex, Heading, Text, Stack, Box } from '@chakra-ui/react';
 import CardsList from '../CardsList/CardsList';
 import MyLink from '../MyLink/MyLink';
 import { useContext } from 'react';
@@ -23,7 +23,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   }, []);
 
   return (
-    <Skeleton w='100lvw' h='calc(100lvh-72px)' isLoaded={!loading} overflow='hidden'>
+    <>
       <ResponsiveCarousel obj={obj} />
 
       <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
@@ -69,7 +69,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
           />
         </Flex>
       </Container>
-    </Skeleton>
+    </>
   );
 };
 
