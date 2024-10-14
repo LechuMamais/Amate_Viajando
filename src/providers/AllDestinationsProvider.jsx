@@ -11,6 +11,7 @@ export const AllDestinationsProvider = ({ children }) => {
     try {
       setLoading(true);
       const data = await getDestinations();
+      console.log(data);
       setAllDestinations(data);
     } catch (error) {
       console.error('Error fetching destinations:', error);

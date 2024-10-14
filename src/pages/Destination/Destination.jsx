@@ -1,26 +1,17 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Box } from '@chakra-ui/react';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import DetailsPage from '../../components/DetailsPage/DetailsPage';
 import { DestinationContext } from '../../providers/DestinationProvider';
 import CardsList from '../../components/CardsList/CardsList';
 import NotFound from '../NotFound/NotFound';
 
 const Destination = () => {
-  const { destination, loading } = useContext(DestinationContext);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    if (!loading && destination?.name == null) {
-      setNotFound(true);
-    } else {
-      setNotFound(false);
-    }
-  }, [destination, loading]);
+  const { destination, loading, destinationNotFound } = useContext(DestinationContext);
 
   return (
     <Box as='main' flex='1'>
-      {notFound ? (
+      {destinationNotFound ? (
         <NotFound />
       ) : (
         <DetailsPage

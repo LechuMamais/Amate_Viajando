@@ -9,14 +9,22 @@ export const DestinationProvider = ({ children }) => {
   const { allDestinations, loading } = useContext(AllDestinationsContext);
   const { destination_id } = useParams();
   const [destination, setDestination] = useState(null);
+  const [destinationNotFound, setDestinationNotFound] = useState(false);
 
   useEffect(() => {
     if (destination_id && !loading) {
       const actualDestination = allDestinations.find((destination) => destination._id === destination_id);
+      if (!actualDestination) {
+        setDestinationNotFound(true);
+      }
       const toursToRender = toursToRenderArrayConstructor(actualDestination);
       setDestination({ ...actualDestination, tours: toursToRender });
     }
   }, [destination_id, allDestinations, loading]);
 
-  return <DestinationContext.Provider value={{ destination, loading }}>{children}</DestinationContext.Provider>;
+  return (
+    <DestinationContext.Provider value={{ destination, loading, destinationNotFound }}>
+      {children}
+    </DestinationContext.Provider>
+  );
 };
