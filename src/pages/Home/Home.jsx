@@ -17,7 +17,7 @@ const Home = () => {
   });
 
   return (
-    <Box as='main' flex='1'>
+    <>
       <Box
         minHeight='100lvh'
         className='hero-background'
@@ -76,7 +76,7 @@ const Home = () => {
         </Flex>
         <HeroText />
       </Flex>
-    </Box>
+    </>
   );
 };
 

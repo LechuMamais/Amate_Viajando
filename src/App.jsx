@@ -19,49 +19,51 @@ import VerifyEmail from './components/userFormComponents/verifyEmail/verifyEmail
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import NotFound from './pages/NotFound/NotFound';
+import { Box } from '@chakra-ui/react';
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/logout' element={<Logout />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/email_verification' element={<VerifyEmail />} />
-        <Route path='/forgotPassword' element={<ForgotPassword />} />
-        <Route path='/resetPassword/:email' element={<ResetPassword />} />
-        <Route path='/profile' element={<Profile />} />
+      <Box as='main' flex={1}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/email_verification' element={<VerifyEmail />} />
+          <Route path='/forgotPassword' element={<ForgotPassword />} />
+          <Route path='/resetPassword/:email' element={<ResetPassword />} />
+          <Route path='/profile' element={<Profile />} />
 
-        <Route path='/destinations' element={<Destinations />} />
-        <Route
-          path='/destinations/:destination_id'
-          element={
-            <DestinationProvider>
-              <Destination />
-            </DestinationProvider>
-          }
-        />
-        {/*<Route path="/destinations/:destination_id/tours" element={<DestinationProvider><Tours /></DestinationProvider>} />*/}
-        <Route
-          path='/destinations/:destination_id/tours/:tour_id'
-          element={
-            <DestinationProvider>
-              <Tour />
-            </DestinationProvider>
-          }
-        />
+          <Route path='/destinations' element={<Destinations />} />
+          <Route
+            path='/destinations/:destination_id'
+            element={
+              <DestinationProvider>
+                <Destination />
+              </DestinationProvider>
+            }
+          />
+          <Route
+            path='/destinations/:destination_id/tours/:tour_id'
+            element={
+              <DestinationProvider>
+                <Tour />
+              </DestinationProvider>
+            }
+          />
 
-        <Route path='/tours' element={<Tours />} />
+          <Route path='/tours' element={<Tours />} />
 
-        <Route path='/create-tour' element={<CreateTour />} />
-        <Route path='/create-destination' element={<CreateDestination />} />
-        <Route path='/update-destination/:destination_id' element={<UpdateDestination />} />
-        <Route path='/update-tour/:tour_id' element={<UpdateTour />} />
+          <Route path='/create-tour' element={<CreateTour />} />
+          <Route path='/create-destination' element={<CreateDestination />} />
+          <Route path='/update-destination/:destination_id' element={<UpdateDestination />} />
+          <Route path='/update-tour/:tour_id' element={<UpdateTour />} />
 
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Box>
       <Footer />
     </div>
   );

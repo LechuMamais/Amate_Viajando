@@ -7,7 +7,7 @@ const NotFound = () => {
   };
 
   return (
-    <Box as='main' flex='1' textAlign='center' py={10} px={6} minH='100vh' bgColor='#F8F8F8'>
+    <Box textAlign='center' py={10} px={6} minH='100vh' bgColor='#F8F8F8'>
       <VStack spacing={6} alignItems='center'>
         <Image src='/assets/err_404.png' alt='ERROR 404 - Not found' maxW='300px' />
 

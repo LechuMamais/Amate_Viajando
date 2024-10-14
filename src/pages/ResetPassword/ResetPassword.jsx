@@ -20,51 +20,49 @@ const ResetPassword = () => {
   const { errors } = formState;
 
   return (
-    <Box as='main' flex='1'>
-      <Box maxW='sm' mx='auto' mt={8} p={4} borderWidth={1} borderRadius='lg'>
-        <VStack as='form' onSubmit={onSubmit} spacing={4}>
-          <Text fontSize='lg' mb={4}>
-            Restablecer Contraseña
-          </Text>
+    <Box maxW='sm' mx='auto' mt={8} p={4} borderWidth={1} borderRadius='lg'>
+      <VStack as='form' onSubmit={onSubmit} spacing={4}>
+        <Text fontSize='lg' mb={4}>
+          Restablecer Contraseña
+        </Text>
 
-          <FormControl id='verificationToken' isInvalid={errors.verificationToken} autoComplete='none'>
-            <FormLabel>Código de Verificación - 6 dígitos</FormLabel>
-            <Input type='number' {...register('verificationToken')} />
-            {errors.verificationToken && (
-              <Text color='red.500' my={2}>
-                {errors.verificationToken.message}
-              </Text>
-            )}
-          </FormControl>
+        <FormControl id='verificationToken' isInvalid={errors.verificationToken} autoComplete='none'>
+          <FormLabel>Código de Verificación - 6 dígitos</FormLabel>
+          <Input type='number' {...register('verificationToken')} />
+          {errors.verificationToken && (
+            <Text color='red.500' my={2}>
+              {errors.verificationToken.message}
+            </Text>
+          )}
+        </FormControl>
 
-          <PasswordField
-            register={register}
-            error={errors.password}
-            showPassword={showPassword}
-            togglePasswordVisibility={togglePasswordVisibility}
-            handlePasswordChange={handlePasswordChange}
-            validatePassword={validatePassword}
-            passwordSecurityLevel={passwordSecurityLevel}
-            isRegisterForm={true}
-            newPassword={true}
-          />
+        <PasswordField
+          register={register}
+          error={errors.password}
+          showPassword={showPassword}
+          togglePasswordVisibility={togglePasswordVisibility}
+          handlePasswordChange={handlePasswordChange}
+          validatePassword={validatePassword}
+          passwordSecurityLevel={passwordSecurityLevel}
+          isRegisterForm={true}
+          newPassword={true}
+        />
 
-          <ConfirmPasswordField register={register} error={errors.confirmPassword} watch={watch} />
+        <ConfirmPasswordField register={register} error={errors.confirmPassword} watch={watch} />
 
-          {errors.server && <Text color='red.500'>{errors.server.message}</Text>}
+        {errors.server && <Text color='red.500'>{errors.server.message}</Text>}
 
-          <Button
-            mt={4}
-            colorScheme='teal'
-            isLoading={loading}
-            type='submit'
-            spinnerPlacement='end'
-            loadingText='Restableciendo contraseña'
-          >
-            Restablecer contraseña
-          </Button>
-        </VStack>
-      </Box>
+        <Button
+          mt={4}
+          colorScheme='teal'
+          isLoading={loading}
+          type='submit'
+          spinnerPlacement='end'
+          loadingText='Restableciendo contraseña'
+        >
+          Restablecer contraseña
+        </Button>
+      </VStack>
     </Box>
   );
 };

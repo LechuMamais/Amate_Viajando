@@ -1,5 +1,4 @@
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Box, Skeleton } from '@chakra-ui/react';
+import { Skeleton } from '@chakra-ui/react';
 import { useContext } from 'react';
 import DetailsPage from '../../components/DetailsPage/DetailsPage';
 import { DestinationContext } from '../../providers/DestinationProvider';
@@ -10,27 +9,25 @@ const Destination = () => {
   const { destination, loading, destinationNotFound } = useContext(DestinationContext);
 
   return (
-    <Box as='main' flex='1'>
-      <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' h='calc(100lvh-72px)' overflow='hidden'>
-        {destinationNotFound ? (
-          <NotFound />
-        ) : (
-          <DetailsPage
-            obj={destination}
-            descriptionParagraphs={destination?.longDescription.split('\n')}
-            usingFor={'destination'}
-          >
-            <CardsList
-              headingText={`Que hacer en ${destination?.name}`}
-              descriptionText={'Seleccionados para tí'}
-              arrayToRender={destination?.tours}
-              usingFor={'tours'}
-              loading={loading}
-            />
-          </DetailsPage>
-        )}
-      </Skeleton>
-    </Box>
+    <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' h='calc(100lvh-72px)' overflow='hidden'>
+      {destinationNotFound ? (
+        <NotFound />
+      ) : (
+        <DetailsPage
+          obj={destination}
+          descriptionParagraphs={destination?.longDescription.split('\n')}
+          usingFor={'destination'}
+        >
+          <CardsList
+            headingText={`Que hacer en ${destination?.name}`}
+            descriptionText={'Seleccionados para tí'}
+            arrayToRender={destination?.tours}
+            usingFor={'tours'}
+            loading={loading}
+          />
+        </DetailsPage>
+      )}
+    </Skeleton>
   );
 };
 

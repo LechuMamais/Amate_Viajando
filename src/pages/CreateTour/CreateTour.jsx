@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Box, Button, Stack, Heading, useToast } from '@chakra-ui/react';
+import { Button, Stack, Heading, useToast, Container } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../providers/UserProvider';
 import BackButton from '../../components/BackButton/BackButton';
@@ -30,7 +30,7 @@ const CreateTour = () => {
   });
 
   return (
-    <Box as='main' flex={1} p={6}>
+    <Container maxW='container.lg' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
       <Stack
         as='form'
         spacing={4}
@@ -47,7 +47,7 @@ const CreateTour = () => {
         </Button>
         <BackButton to='/profile' />
       </Stack>
-    </Box>
+    </Container>
   );
 };
 
