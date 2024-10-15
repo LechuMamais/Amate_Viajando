@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Heading, Text } from '@chakra-ui/react';
 import Cards from '../Cards/Cards';
-import CardSkeletonLoader from '../../skeletonLoaders/CardSkeletonLoader';
+import CardSkeletonLoader from '../skeletonLoaders/CardSkeletonLoader';
 
 const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, loading }) => {
   const skeletonLoaders = Array(4)
