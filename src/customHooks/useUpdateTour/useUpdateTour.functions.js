@@ -1,12 +1,12 @@
 import { deleteTour, getTourById, updateTour } from '../../services/api/tours';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
-import { imagesArrayConstructor } from '../../utils/imagesArrayConstructor';
+import { orderedArrayConstructor } from '../../utils/orderedArrayConstructor';
 import { orderArray } from '../../utils/orderArray';
 
 export const fetchTourAndSetValues = async (setTour, setValue, toast, tour_id, token) => {
   try {
     const response = await getTourById(tour_id, token);
-    const imagesArray = imagesArrayConstructor(response);
+    const imagesArray = orderedArrayConstructor(response);
     const orderedImagesArray = orderArray(imagesArray);
 
     setTour({ ...response, images: orderedImagesArray });

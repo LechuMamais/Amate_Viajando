@@ -1,6 +1,6 @@
 import { deleteDestination, getDestinationById, updateDestination } from '../../services/api/destinations';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
-import { imagesArrayConstructor } from '../../utils/imagesArrayConstructor';
+import { imagesArrayConstructor } from '../../utils/orderedArrayConstructor';
 
 export const fetchDestinationAndSetValues = async (destination_id, setDestination, setValue, toast) => {
     try {

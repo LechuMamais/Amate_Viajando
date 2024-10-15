@@ -6,7 +6,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import ToursCheckboxGroup from '../../components/ToursCheckBoxGroup/ToursCheckBoxGroup';
 import MyModal from '../../components/MyModal/MyModal';
 import { useUpdateDestination } from '../../customHooks/useUpdateDestination/useUpdateDestination';
-import { toursArrayConstructor } from '../../utils/imagesArrayConstructor';
+import { orderedArrayConstructor } from '../../utils/orderedArrayConstructor';
 
 const UpdateDestination = () => {
   const {
@@ -42,7 +42,7 @@ const UpdateDestination = () => {
           allTours={allTours}
           control={control}
           errors={errors}
-          initialTours={toursArrayConstructor(destination.tours)}
+          initialTours={orderedArrayConstructor(destination.tours)}
         />
         <Button
           isLoading={loadingSubmit}
