@@ -20,6 +20,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import NotFound from './pages/NotFound/NotFound';
 import { Box } from '@chakra-ui/react';
+import Coaching from './pages/Coaching/Coaching';
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
           <Route path='/create-destination' element={<CreateDestination />} />
           <Route path='/update-destination/:destination_id' element={<UpdateDestination />} />
           <Route path='/update-tour/:tour_id' element={<UpdateTour />} />
+
+          <Route path='/coaching' element={<Coaching />} />
 
           <Route path='*' element={<NotFound />} />
         </Routes>

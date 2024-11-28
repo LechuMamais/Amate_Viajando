@@ -1,9 +1,9 @@
 import MyLink from '../../components/MyLink/MyLink';
 import { Box, Button, Heading, Text, Flex } from '@chakra-ui/react';
-import { useContact } from '../../customHooks/useContact/useContact';
+//import { useContact } from '../../customHooks/useContact/useContact';
 
 const HeroText = () => {
-  const { whatsappUrl, icons } = useContact(null, null, true);
+  //const { whatsappUrl } = useContact(null, null, true);
 
   return (
     <Box
@@ -47,8 +47,6 @@ const HeroText = () => {
           >
             La naturaleza enciende nuestros sentidos, nos transporta a lugares mágicos donde podremos escuchar nuestra
             voz interior.
-            {/* para iluminar el
-          destino correcto en ésta gran aventura.*/}
           </Text>
           <Flex direction={{ base: 'column', md: 'row' }} gap={{ base: 2, md: 8 }} justifyContent='center'>
             <MyLink to='/destinations'>
@@ -56,19 +54,21 @@ const HeroText = () => {
                 Ver destinos
               </Button>
             </MyLink>
-            <Button
-              size='lg'
-              w={{ base: '100%', md: '240px' }}
-              px={16}
-              as='a'
-              href={whatsappUrl}
-              target='_blank'
-              leftIcon={<icons.whatsapp size='24px' />}
-              variant='solid'
-              _hover={{ bgColor: 'white', color: '#000000d0' }}
-            >
-              Agendar cita
-            </Button>
+            <MyLink to='/coaching'>
+              <Button
+                size='lg'
+                w={{ base: '100%', md: '240px' }}
+                px={16}
+                //as='a'
+                //href={whatsappUrl}
+                //target='_blank'
+                //leftIcon={<icons.whatsapp size='24px' />}
+                variant='solid'
+                _hover={{ bgColor: 'white', color: '#000000d0' }}
+              >
+                Coaching Viajero
+              </Button>
+            </MyLink>
           </Flex>
         </Flex>
       </Box>
