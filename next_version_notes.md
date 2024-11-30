@@ -16,6 +16,10 @@
    .
    .
 
+# Micro mejoras
+
+    Utilizar el componente LocalizedHeaderAndText en DetailsPage
+
 # Ideas para versiones futuras
 
 - Al componente Card, agregarle el corazón de fav
