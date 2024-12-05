@@ -7,8 +7,6 @@ export const getArticleById = (id) => customFetch({ url: `${ARTICLES_URL}/${id}`
 
 export const createArticle = (data, token) => customFetch({ url: ARTICLES_URL, method: 'POST', bodyContent: data, token });
 
-export const updateArticle = (id, data, token) =>
-    customFetch({ url: `${ARTICLES_URL}/${id}`, method: 'PUT', bodyContent: data, token });
+export const updateArticle = (id, data, token) => customFetch({ url: `${ARTICLES_URL}/${id}`, method: 'PUT', bodyContent: data, token });
 
-export const deleteArticle = (id, token) =>
-    customFetch({ url: `${ARTICLES_URL}/${id}`, method: 'DELETE', token });
+export const deleteArticle = (id, token) => customFetch({ url: `${ARTICLES_URL}/${id}`, method: 'DELETE', token });

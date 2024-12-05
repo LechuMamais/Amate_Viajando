@@ -12,7 +12,7 @@ export const customFetch = async ({ url, method = 'GET', bodyContent = null, tok
             body: bodyContent && stringifyBody ? JSON.stringify(bodyContent) : bodyContent && !stringifyBody ? bodyContent : null,
         });
 
-        console.log(response);
+        //console.log(response);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
