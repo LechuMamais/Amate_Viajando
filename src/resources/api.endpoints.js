@@ -16,3 +16,5 @@ export const CHECK_LOGGED_URL = `${USERS_URL}/checkLogged`;
 export const ADD_TOUR_TO_CART_URL = `${USERS_URL}/addTourToCart`;
 export const ADD_TOUR_TO_FAVORITES_URL = `${USERS_URL}/addTourToFavorites`;
 export const REMOVE_TOUR_FROM_FAVORITES_URL = `${USERS_URL}/removeTourToFavorites`;
+
+export const ARTICLES_URL = `${BASE_URL}/articles`;

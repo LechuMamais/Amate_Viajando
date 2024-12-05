@@ -21,6 +21,10 @@ import ResetPassword from './pages/ResetPassword/ResetPassword';
 import NotFound from './pages/NotFound/NotFound';
 import { Box } from '@chakra-ui/react';
 import Coaching from './pages/Coaching/Coaching';
+import ArticleList from './pages/ArticlesList/ArticlesList';
+import ArticleDetail from './pages/ArticleDetails/ArticleDetails';
+import CreateArticle from './pages/CreateArticle/CreateArticle';
+import UpdateArticle from './pages/UpdateArticle/UpdateArticle';
 
 function App() {
   return (
@@ -63,6 +67,11 @@ function App() {
           <Route path='/update-tour/:tour_id' element={<UpdateTour />} />
 
           <Route path='/coaching' element={<Coaching />} />
+
+          <Route path='/articles' element={<ArticleList />} />
+          <Route path='/articles/:id' element={<ArticleDetail />} />
+          <Route path='/admin/articles/new' element={<CreateArticle />} />
+          <Route path='/admin/articles/edit/:id' element={<UpdateArticle />} />
 
           <Route path='*' element={<NotFound />} />
         </Routes>
