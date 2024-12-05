@@ -52,7 +52,21 @@ const UpdateArticle = () => {
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
       {articleData ? (
-        <ArticleEditor onSubmit={onSubmit} articleData={articleData} title='Actualizar Artículo' />
+        <ArticleEditor
+          onSubmit={onSubmit}
+          articleData={{
+            ...articleData,
+            images: articleData.images.map((img) => ({
+              name: img.imgObj.name,
+              description: img.imgObj.description,
+              alt: img.imgObj.alt,
+              url: img.imgObj.url,
+              order: img.order,
+              _id: img.imgObj._id,
+            })),
+          }}
+          title='Actualizar Artículo'
+        />
       ) : (
         <Text>Cargando datos del artículo...</Text>
       )}

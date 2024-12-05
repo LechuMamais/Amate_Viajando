@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
 import {
   Box,
@@ -18,12 +18,19 @@ import MyModal from '../MyModal/MyModal';
 import { useParams } from 'react-router-dom';
 import { handleDeleteImage } from '../../services/handleDeleteImage';
 
-const ImagesForm = ({ control, register, errors, usingFor }) => {
+const ImagesForm = ({ control, register, errors, usingFor, prevImages }) => {
   const { user } = useContext(UserContext);
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove, replace } = useFieldArray({
     control,
     name: 'images',
   });
+
+  useEffect(() => {
+    if (prevImages?.length) {
+      replace(prevImages); // Reemplaza los campos existentes por los iniciales
+    }
+  }, [prevImages, replace]);
+
   const { tour_id, destination_id } = useParams();
 
   return (

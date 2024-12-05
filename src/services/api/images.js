@@ -1,5 +1,5 @@
 import { IMAGES_URL } from '../../resources/api.endpoints';
-import { customFetch } from './customFetch';
+import { customFetch, customFileFetch } from './customFetch';
 
 export const getImages = async () => {
   return await customFetch({ url: IMAGES_URL });
@@ -10,11 +10,11 @@ export const getImageById = async (id) => {
 };
 
 export const createImage = async (imageData, token) => {
-  return await customFetch({ url: IMAGES_URL, method: 'POST', token: token, bodyContent: imageData, stringifyBody: false });
+  return await customFileFetch({ url: IMAGES_URL, method: 'POST', token: token, bodyContent: imageData, stringifyBody: false });
 };
 
 export const updateImage = async (id, imageData, token) => {
-  return await customFetch({ url: `${IMAGES_URL}/${id}`, method: 'PUT', token: token, bodyContent: imageData, stringifyBody: false });
+  return await customFileFetch({ url: `${IMAGES_URL}/${id}`, method: 'PUT', token: token, bodyContent: imageData, stringifyBody: false });
 
 };
 

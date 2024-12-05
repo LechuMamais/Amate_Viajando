@@ -1,12 +1,12 @@
 import { deleteTour, getTourById, updateTour } from '../../services/api/tours';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
-import { orderedArrayConstructor } from '../../utils/orderedArrayConstructor';
+import { orderedImgObjArrayConstructor } from '../../utils/orderedImgObjArrayConstructor';
 import { orderArray } from '../../utils/orderArray';
 
 export const fetchTourAndSetValues = async (setTour, setValue, toast, tour_id, token) => {
   try {
     const response = await getTourById(tour_id, token);
-    const imagesArray = orderedArrayConstructor(response);
+    const imagesArray = orderedImgObjArrayConstructor(response.images);
     const orderedImagesArray = orderArray(imagesArray);
 
     setTour({ ...response, images: orderedImagesArray });
@@ -30,7 +30,6 @@ export const fetchTourAndSetValues = async (setTour, setValue, toast, tour_id, t
 export const submitHandler = async (data, token, tour, tour_id, toast, navigate) => {
   try {
     const { images, ...formData } = data;
-    console.log('pato');
     const imageIds = await handleImageUpdate(images, tour, token);
     formData.images = imageIds;
     await updateTour(tour_id, formData, token);

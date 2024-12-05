@@ -47,12 +47,12 @@ const ArticleEditor = ({ onSubmit, articleData, title }) => {
           />
         </Box>
 
-        {/* Formulario de imágenes */}
         <ImagesForm
           control={control}
           register={register}
           errors={{}} // Puedes añadir validación más avanzada aquí si es necesario
           usingFor='articles'
+          prevImages={articleData.images}
         />
 
         <Button colorScheme='teal' mt={4} type='submit'>

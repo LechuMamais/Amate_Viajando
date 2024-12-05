@@ -19,6 +19,7 @@ const UpdateTour = () => {
   if (!tour) {
     return <Text>Cargando...</Text>;
   }
+  console.log(tour.images);
 
   return (
     <Container maxW='container.lg' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }} p={6}>
@@ -26,7 +27,23 @@ const UpdateTour = () => {
         <BackButton to='/profile' />
         <Heading size='lg'>Actualizar Tour</Heading>
         <TourDestinationForm register={register} errors={errors} />
-        <ImagesForm control={control} register={register} errors={errors} tour_id={tour._id} usingFor='tour' />
+        <ImagesForm
+          control={control}
+          register={register}
+          errors={errors}
+          tour_id={tour._id}
+          usingFor='tour'
+          prevImages={() =>
+            tour?.images?.map((img) => ({
+              name: img.name,
+              description: img.description,
+              alt: img.alt,
+              url: img.url,
+              order: img.order,
+              _id: img._id,
+            }))
+          }
+        />
 
         <Button
           isLoading={loadingSubmit}
