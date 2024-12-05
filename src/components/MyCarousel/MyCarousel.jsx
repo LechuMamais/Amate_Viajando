@@ -12,6 +12,7 @@ const MyCarousel = ({ obj }) => {
       setLoading(true);
     }
   }, [obj]);
+  console.log(obj);
 
   return (
     <Box overflow='hidden' className='parallaxSlider'>

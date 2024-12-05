@@ -52,7 +52,7 @@ const ArticleEditor = ({ onSubmit, articleData, title }) => {
           register={register}
           errors={{}} // Puedes añadir validación más avanzada aquí si es necesario
           usingFor='articles'
-          prevImages={articleData.images}
+          prevImages={articleData?.images}
         />
 
         <Button colorScheme='teal' mt={4} type='submit'>

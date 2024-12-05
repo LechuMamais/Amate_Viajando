@@ -1,15 +1,50 @@
-import { Box, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+import { getArticleById } from '../../services/api/articles';
+import { useEffect, useState } from 'react';
+import ResponsiveCarousel from '../../components/ResponsiveCarousel/ResponsiveCarousel';
+import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 
-const ArticleDetail = ({ article }) => {
+const ArticleDetail = () => {
+  const articleID = useParams();
+  const [articleData, setArticleData] = useState(null);
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const article = await getArticleById(articleID.id);
+        setArticleData(article);
+      } catch (error) {
+        console.error('Error al obtener el artículo:', error);
+      }
+    };
+
+    fetchArticle();
+  }, [articleID]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleDetailsPageScroll);
+    return () => {
+      window.removeEventListener('scroll', handleDetailsPageScroll);
+    };
+  }, []);
+
   return (
-    <Box>
-      <Heading size='xl'>{article.title}</Heading>
-      <Text fontSize='lg' color='gray.600'>
-        {article.subtitle}
-      </Text>
-      <Image src={article.image} alt={article.title} my={4} />
-      <Box dangerouslySetInnerHTML={{ __html: article.content }} />
-    </Box>
+    <>
+      <ResponsiveCarousel obj={articleData} />
+      <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
+        {articleData ? (
+          <Flex direction='column' gap={6}>
+            <Heading size='xl'>{articleData.title}</Heading>
+            <Text fontSize='lg' color='gray.600'>
+              {articleData.subtitle}
+            </Text>
+            <Box dangerouslySetInnerHTML={{ __html: articleData.content }} />
+          </Flex>
+        ) : (
+          <Text>Cargando...</Text>
+        )}
+      </Container>
+    </>
   );
 };
 
