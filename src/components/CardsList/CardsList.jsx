@@ -2,7 +2,7 @@ import { Box, Container, Grid, Heading, Text } from '@chakra-ui/react';
 import Cards from '../Cards/Cards';
 import CardSkeletonLoader from '../skeletonLoaders/CardSkeletonLoader';
 
-const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, loading }) => {
+const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, loading, destinationID = '' }) => {
   const skeletonLoaders = Array(4)
     .fill()
     .map((_, index) => <CardSkeletonLoader key={index} />);
@@ -48,6 +48,7 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, load
                   usingFor={usingFor}
                   heading={usingFor == 'articles' || usingFor == 'updateArticles' ? obj.title : obj.heading}
                   description={usingFor == 'articles' || usingFor == 'updateArticles' ? obj.subtitle : obj.description}
+                  destinationID={destinationID}
                 />
               ))}
         </Grid>

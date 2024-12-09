@@ -5,7 +5,8 @@ import { buildCardEndPoint } from '../../utils/buildCardEndPoint';
 import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 import { useCheckMobile } from '../../customHooks/useCheckMobile/useCheckMobile';
 
-const Cards = ({ obj, usingFor, heading, description }) => {
+const Cards = ({ obj, usingFor, heading, description, destinationID }) => {
+  console.log(destinationID);
   const { _id, images } = obj;
   const { destination_id } = useParams();
   const isMobileDevice = useCheckMobile();
@@ -26,7 +27,7 @@ const Cards = ({ obj, usingFor, heading, description }) => {
         },
       }}
     >
-      <MyLink to={buildCardEndPoint(usingFor, obj, _id, destination_id)}>
+      <MyLink to={buildCardEndPoint(usingFor, obj, _id, destination_id ? destination_id : destinationID)}>
         {images?.length > 0 ? (
           <Box overflow='hidden'>
             <Image

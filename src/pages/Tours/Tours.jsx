@@ -17,6 +17,7 @@ const Tours = () => {
           arrayToRender={toursToRenderArrayConstructor(destination)}
           usingFor={'tours'}
           loading={loading}
+          destinationID={destination._id}
         />
       ))}
     </Container>
