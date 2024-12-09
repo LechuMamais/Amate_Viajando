@@ -24,7 +24,7 @@ const ArticleList = () => {
   }, []);
 
   return (
-    <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
+    <Container maxW='928px' px={{ base: 4, md: 6 }}>
       <CardsList
         headingText={'Reflexiones del viaje de la vida'}
         descriptionText={'Seleccionados para tí'}

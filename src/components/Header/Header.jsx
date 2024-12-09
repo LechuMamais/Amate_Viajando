@@ -54,6 +54,11 @@ const Header = React.memo(() => {
                   Tours
                 </MenuItem>
               </MyLink>
+              <MyLink to='/articles'>
+                <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
+                  Artículos
+                </MenuItem>
+              </MyLink>
               <MenuDivider />
               <MenuGroup title='Perfil'>
                 {logged ? (

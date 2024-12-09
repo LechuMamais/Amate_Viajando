@@ -15,12 +15,8 @@
    Falta ver como agregar la imagen usand ImagesForm
    Chequear que esté funcionando correctamente!
 
-   .
-
-   - Crear ArticlesList
-   - Agregar en el header y en otras partes, links a la seccion de artículos.
-
-   - En perfil de admin, mostrar la ArticlesList y al darle click ir a editar article
+   - ArticleDetail - que content se muestre con los estilos adecuados!
+   - SkeletonLoader de ArticleDetail
    - En el resto de la web, mostrar el ArticlesList.
 
 3. Cambair pagina destinos:

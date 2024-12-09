@@ -9,7 +9,6 @@ import BackButton from '../../components/BackButton/BackButton';
 //import { handleUpdateArticleSubmit } from '../../utils/handleCreateArticleSubmit';
 
 const submitHandler = async (data, token, article, toast, navigate) => {
-  console.log(article._id);
   try {
     // Separar imágenes del resto de los datos
     const { images, ...formData } = data;

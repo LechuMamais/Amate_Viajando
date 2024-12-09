@@ -9,7 +9,7 @@ const Tour = () => {
   const { tour, tourNotFound, loading, destination } = useTour();
 
   return (
-    <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' h='calc(100lvh-72px)' overflow='hidden'>
+    <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' minHeight='calc(100lvh - 72px)'>
       {tourNotFound ? (
         <NotFound />
       ) : (

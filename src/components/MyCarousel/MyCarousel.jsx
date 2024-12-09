@@ -12,12 +12,11 @@ const MyCarousel = ({ obj }) => {
       setLoading(true);
     }
   }, [obj]);
-  console.log(obj);
 
   return (
     <Box overflow='hidden' className='parallaxSlider'>
       {obj?.images && obj.images.length > 0 && (
-        <Skeleton height='calc(100vh-72px)' width='100%' isLoaded={!loading} fadeDuration={1}>
+        <Skeleton height='calc(100vh - 72px)' width='100%' isLoaded={!loading} fadeDuration={1}>
           <Carousel
             useKeyboardArrows={true}
             statusFormatter={() => {

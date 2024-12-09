@@ -4,13 +4,9 @@ export const handleImageUpdate = async (images, destination, token) => {
   const imageIds = [];
 
   const imagePromises = images.map(async (image) => {
-    console.log(image);
     if (image._id) {
       //console.log('Imagen ya existente en la base de datos');
       const originalImage = destination.images.find(img => img.imgObj._id === image._id);
-
-      console.log(destination.images[0].imgObj._id);
-      console.log(image._id);
       if (
         originalImage.name !== image.name ||
         originalImage.alt !== image.alt ||
