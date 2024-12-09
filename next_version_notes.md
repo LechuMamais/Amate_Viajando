@@ -18,6 +18,15 @@
    - Agregar, en profile/admin una seccion de editar articulos, borrar articulos y boton de crear articulo nuevo
    - Agregar en el header y en otras partes, links a la seccion de artículos.
 
+   .
+
+   UPDATE: Voy bien, falta copiar de los tours la gestion de las imagenes al actualizar los articles. Después será hacer test de todo
+   TO-DO:
+
+   - ArticlesList
+   - En perfil de admin, mostrar la ArticlesList y al darle click ir a editar article
+   - En el resto de la web, mostrar el ArticlesList.
+
 3. Cambair pagina destinos:
    Al darle click que ponga las banderas de los paises disponibles: Argentina, España italia
    Y al darle a la bandera, aparezcan los destinos dentro de esos paises
