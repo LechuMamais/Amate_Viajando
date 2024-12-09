@@ -70,8 +70,8 @@ function App() {
 
           <Route path='/articles' element={<ArticleList />} />
           <Route path='/articles/:id' element={<ArticleDetail />} />
-          <Route path='/admin/articles/new' element={<CreateArticle />} />
-          <Route path='/admin/articles/edit/:id' element={<UpdateArticle />} />
+          <Route path='/create-article' element={<CreateArticle />} />
+          <Route path='/update-article/:id' element={<UpdateArticle />} />
 
           <Route path='*' element={<NotFound />} />
         </Routes>

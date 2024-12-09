@@ -13,17 +13,13 @@
    .
    He decidido utilizar quill para el content, y usar un form normal para el titulo, subtitulo.
    Falta ver como agregar la imagen usand ImagesForm
-   Chequear que esté funcionando correctamente! Cosa que, de momento, ya sé que no.
-
-   - Agregar, en profile/admin una seccion de editar articulos, borrar articulos y boton de crear articulo nuevo
-   - Agregar en el header y en otras partes, links a la seccion de artículos.
+   Chequear que esté funcionando correctamente!
 
    .
 
-   UPDATE: Voy bien, falta copiar de los tours la gestion de las imagenes al actualizar los articles. Después será hacer test de todo
-   TO-DO:
+   - Crear ArticlesList
+   - Agregar en el header y en otras partes, links a la seccion de artículos.
 
-   - ArticlesList
    - En perfil de admin, mostrar la ArticlesList y al darle click ir a editar article
    - En el resto de la web, mostrar el ArticlesList.
 
@@ -49,6 +45,8 @@
 # Micro mejoras
 
     Utilizar el componente LocalizedHeaderAndText en DetailsPage - Para eso tendría que tener los destinos y tours en idiomas!
+
+    FIXEAR: Updater de tours y destinations
     .
 
 # Ideas para versiones futuras

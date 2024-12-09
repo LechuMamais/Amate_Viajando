@@ -5,8 +5,8 @@ import { buildCardEndPoint } from '../../utils/buildCardEndPoint';
 import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 import { useCheckMobile } from '../../customHooks/useCheckMobile/useCheckMobile';
 
-const Cards = ({ obj, usingFor }) => {
-  const { heading, description, _id, images } = obj;
+const Cards = ({ obj, usingFor, heading, description }) => {
+  const { _id, images } = obj;
   const { destination_id } = useParams();
   const isMobileDevice = useCheckMobile();
   const transformScaleFactor = isMobileDevice ? 1 : 1.02;

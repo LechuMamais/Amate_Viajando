@@ -4,6 +4,7 @@ import { getArticleById } from '../../services/api/articles';
 import { useEffect, useState } from 'react';
 import ResponsiveCarousel from '../../components/ResponsiveCarousel/ResponsiveCarousel';
 import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
+import BackButton from '../../components/BackButton/BackButton';
 
 const ArticleDetail = () => {
   const articleID = useParams();
@@ -33,13 +34,17 @@ const ArticleDetail = () => {
       <ResponsiveCarousel obj={articleData} />
       <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
         {articleData ? (
-          <Flex direction='column' gap={6}>
-            <Heading size='xl'>{articleData.title}</Heading>
-            <Text fontSize='lg' color='gray.600'>
-              {articleData.subtitle}
-            </Text>
-            <Box dangerouslySetInnerHTML={{ __html: articleData.content }} />
-          </Flex>
+          <>
+            <BackButton to='/articles' />
+            <Flex direction='column' gap={6}>
+              <Heading size='xl'>{articleData.title}</Heading>
+              <Text fontSize='lg' color='gray.600'>
+                {articleData.subtitle}
+              </Text>
+              <Box dangerouslySetInnerHTML={{ __html: articleData.content }} />
+            </Flex>
+            <BackButton to='/articles' />
+          </>
         ) : (
           <Text>Cargando...</Text>
         )}

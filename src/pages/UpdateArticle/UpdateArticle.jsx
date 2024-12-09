@@ -1,10 +1,11 @@
-import { Container, Text, useToast } from '@chakra-ui/react';
+import { Container, Flex, Text, useToast } from '@chakra-ui/react';
 import ArticleEditor from '../../components/ArticleEditor/ArticleEditor';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getArticleById, updateArticle } from '../../services/api/articles';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../providers/UserProvider';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
+import BackButton from '../../components/BackButton/BackButton';
 //import { handleUpdateArticleSubmit } from '../../utils/handleCreateArticleSubmit';
 
 const submitHandler = async (data, token, article, toast, navigate) => {
@@ -75,21 +76,25 @@ const UpdateArticle = () => {
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
       {articleData ? (
-        <ArticleEditor
-          onSubmit={onSubmit}
-          articleData={{
-            ...articleData,
-            images: articleData.images.map((img) => ({
-              name: img.imgObj.name,
-              description: img.imgObj.description,
-              alt: img.imgObj.alt,
-              url: img.imgObj.url,
-              order: img.order,
-              _id: img.imgObj._id,
-            })),
-          }}
-          title='Actualizar Artículo'
-        />
+        <Flex direction='column' gap={6}>
+          <BackButton to='/profile' />
+          <ArticleEditor
+            onSubmit={onSubmit}
+            articleData={{
+              ...articleData,
+              images: articleData.images.map((img) => ({
+                name: img.imgObj.name,
+                description: img.imgObj.description,
+                alt: img.imgObj.alt,
+                url: img.imgObj.url,
+                order: img.order,
+                _id: img.imgObj._id,
+              })),
+            }}
+            title='Actualizar Artículo'
+          />
+          <BackButton to='/profile' />
+        </Flex>
       ) : (
         <Text>Cargando datos del artículo...</Text>
       )}

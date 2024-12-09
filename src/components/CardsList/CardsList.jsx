@@ -41,7 +41,15 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, load
         >
           {loading
             ? skeletonLoaders
-            : arrayToRender?.map((obj) => <Cards key={obj._id} obj={obj} usingFor={usingFor} />)}
+            : arrayToRender?.map((obj) => (
+                <Cards
+                  key={obj._id}
+                  obj={obj}
+                  usingFor={usingFor}
+                  heading={usingFor == 'articles' || usingFor == 'updateArticles' ? obj.title : obj.heading}
+                  description={usingFor == 'articles' || usingFor == 'updateArticles' ? obj.subtitle : obj.description}
+                />
+              ))}
         </Grid>
       </Container>
     </Box>
