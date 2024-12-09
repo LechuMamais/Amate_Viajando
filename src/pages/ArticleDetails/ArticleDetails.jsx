@@ -30,15 +30,15 @@ const ArticleDetail = () => {
           <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
             {articleData ? (
               <>
-                <BackButton to='/articles' />
                 <Flex direction='column' gap={6}>
+                  <BackButton to='/articles' />
                   <Heading size='xl'>{articleData.title}</Heading>
                   <Text fontSize='lg' color='gray.600'>
                     {articleData.subtitle}
                   </Text>
                   <Box className='article-content' dangerouslySetInnerHTML={{ __html: articleData.content }} />
+                  <BackButton to='/articles' />
                 </Flex>
-                <BackButton to='/articles' />
               </>
             ) : (
               <Text>Cargando...</Text>
