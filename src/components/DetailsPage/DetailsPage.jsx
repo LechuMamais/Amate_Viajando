@@ -9,7 +9,7 @@ import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 import AddAndRemoveFromFavoritesButton from '../AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton';
 import { useParams } from 'react-router-dom';
 import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
-import ArticlesList from '../../pages/ArticlesList/ArticlesList';
+import ArticlesList from '../ArticlesList/ArticlesList';
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);

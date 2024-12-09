@@ -1,5 +1,5 @@
 import { Container } from '@chakra-ui/react';
-import ArticlesList from '../ArticlesList/ArticlesList';
+import ArticlesList from '../../components/ArticlesList/ArticlesList';
 
 const Articles = () => {
   return (

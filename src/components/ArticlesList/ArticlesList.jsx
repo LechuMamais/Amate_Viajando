@@ -1,4 +1,4 @@
-import CardsList from '../../components/CardsList/CardsList';
+import CardsList from '../CardsList/CardsList';
 import { getArticles } from '../../services/api/articles';
 import { useEffect, useState } from 'react';
 
