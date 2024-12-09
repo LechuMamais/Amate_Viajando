@@ -12,12 +12,10 @@
    Basico: Una gran imagen, y luego texto con bastante aire, posibilidad de agregar titulos y subtitulos h2 a h5
    .
    He decidido utilizar quill para el content, y usar un form normal para el titulo, subtitulo.
-   Falta ver como agregar la imagen usand ImagesForm
-   Chequear que esté funcionando correctamente!
 
    - ArticleDetail - que content se muestre con los estilos adecuados!
-   - SkeletonLoader de ArticleDetail
    - En el resto de la web, mostrar el ArticlesList.
+   - Refactorizar el código de esta sección!
 
 3. Cambair pagina destinos:
    Al darle click que ponga las banderas de los paises disponibles: Argentina, España italia

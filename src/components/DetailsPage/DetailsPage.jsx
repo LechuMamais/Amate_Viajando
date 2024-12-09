@@ -9,6 +9,7 @@ import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 import AddAndRemoveFromFavoritesButton from '../AddAndRemoveFromFavoritesButton/AddAndRemoveFromFavoritesButton';
 import { useParams } from 'react-router-dom';
 import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
+import ArticlesList from '../../pages/ArticlesList/ArticlesList';
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
@@ -67,6 +68,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
             usingFor={'destinations'}
             loading={loading}
           />
+          <ArticlesList></ArticlesList>
         </Flex>
       </Container>
     </>

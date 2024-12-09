@@ -1,9 +1,8 @@
-import { Container } from '@chakra-ui/react';
 import CardsList from '../../components/CardsList/CardsList';
 import { getArticles } from '../../services/api/articles';
 import { useEffect, useState } from 'react';
 
-const ArticleList = () => {
+const ArticlesList = () => {
   const [articlesData, setArticlesData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,16 +23,14 @@ const ArticleList = () => {
   }, []);
 
   return (
-    <Container maxW='928px' px={{ base: 4, md: 6 }}>
-      <CardsList
-        headingText={'Reflexiones del viaje de la vida'}
-        descriptionText={'Seleccionados para tí'}
-        arrayToRender={articlesData}
-        usingFor={'articles'}
-        loading={loading}
-      />
-    </Container>
+    <CardsList
+      headingText={'Reflexiones del viaje de la vida'}
+      descriptionText={'El viaje es hacia adentro'}
+      arrayToRender={articlesData}
+      usingFor={'articles'}
+      loading={loading}
+    />
   );
 };
 
-export default ArticleList;
+export default ArticlesList;

@@ -5,8 +5,7 @@ import { buildCardEndPoint } from '../../utils/buildCardEndPoint';
 import { buildCloudinaryImageUrl } from '../../utils/buildCloudinaryImageUrl';
 import { useCheckMobile } from '../../customHooks/useCheckMobile/useCheckMobile';
 
-const Cards = ({ obj, usingFor, heading, description, destinationID }) => {
-  console.log(destinationID);
+const Cards = ({ obj, usingFor, heading, description, destinationID = null }) => {
   const { _id, images } = obj;
   const { destination_id } = useParams();
   const isMobileDevice = useCheckMobile();
