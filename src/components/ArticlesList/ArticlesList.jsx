@@ -1,13 +1,14 @@
 import CardsList from '../../components/CardsList/CardsList';
-import { useFetchArticles } from '../../customHooks/useFetchArticles/useFetchArticles';
+import { useFetch } from '../../customHooks/useFetch/useFetch';
+import { fetchManager } from '../../resources/fetchManager';
 
 const ArticlesList = () => {
-  const { articlesData, loading } = useFetchArticles();
+  const { data, loading } = useFetch(fetchManager.articles);
   return (
     <CardsList
       headingText={'Reflexiones del viaje de la vida'}
       descriptionText={'El viaje es hacia adentro'}
-      arrayToRender={articlesData}
+      arrayToRender={data}
       usingFor={'articles'}
       loading={loading}
     />

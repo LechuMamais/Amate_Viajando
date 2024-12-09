@@ -6,11 +6,12 @@ import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 import BackButton from '../../components/BackButton/BackButton';
 import './ArticleDetails.css';
 import NotFound from '../NotFound/NotFound';
-import { useFetchArticle } from '../../customHooks/useFetchArticles/useFetchArticles';
+import { useFetch } from '../../customHooks/useFetch/useFetch';
+import { fetchManager } from '../../resources/fetchManager';
 
 const ArticleDetail = () => {
   const articleID = useParams();
-  const { articleData, loading, articleNotFound } = useFetchArticle(articleID.id);
+  const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, articleID.id);
 
   useEffect(() => {
     window.addEventListener('scroll', handleDetailsPageScroll);
