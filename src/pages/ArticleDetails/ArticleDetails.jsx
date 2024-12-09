@@ -1,36 +1,16 @@
 import { Box, Container, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
-import { getArticleById } from '../../services/api/articles';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ResponsiveCarousel from '../../components/ResponsiveCarousel/ResponsiveCarousel';
 import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 import BackButton from '../../components/BackButton/BackButton';
 import './ArticleDetails.css';
 import NotFound from '../NotFound/NotFound';
+import { useFetchArticle } from '../../customHooks/useFetchArticles/useFetchArticles';
 
 const ArticleDetail = () => {
   const articleID = useParams();
-  const [articleData, setArticleData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [articleNotFound, setArticleNotFound] = useState(false);
-
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const article = await getArticleById(articleID.id);
-        setArticleData(article);
-        setLoading(false);
-        if (!article._id) {
-          setArticleNotFound(true);
-          setLoading(false);
-        }
-      } catch (error) {
-        console.error('Error al obtener el artículo:', error);
-      }
-    };
-
-    fetchArticle();
-  }, [articleID]);
+  const { articleData, loading, articleNotFound } = useFetchArticle(articleID.id);
 
   useEffect(() => {
     window.addEventListener('scroll', handleDetailsPageScroll);

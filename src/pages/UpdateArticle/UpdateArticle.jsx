@@ -1,28 +1,24 @@
 import { Container, Flex, Text, useToast } from '@chakra-ui/react';
 import ArticleEditor from '../../components/ArticleEditor/ArticleEditor';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getArticleById, updateArticle } from '../../services/api/articles';
-import { useContext, useEffect, useState } from 'react';
+import { updateArticle } from '../../services/api/articles';
+import { useContext } from 'react';
 import { UserContext } from '../../providers/UserProvider';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
 import BackButton from '../../components/BackButton/BackButton';
-//import { handleUpdateArticleSubmit } from '../../utils/handleCreateArticleSubmit';
+import { useFetchArticle } from '../../customHooks/useFetchArticles/useFetchArticles';
+import NotFound from '../NotFound/NotFound';
 
 const submitHandler = async (data, token, article, toast, navigate) => {
   try {
-    // Separar imágenes del resto de los datos
     const { images, ...formData } = data;
 
-    // Actualizar imágenes utilizando la función reutilizable
     const imageIds = await handleImageUpdate(images, article, token);
 
-    // Añadir las imágenes actualizadas al formulario
     formData.images = imageIds;
 
-    // Enviar solicitud para actualizar el artículo
     await updateArticle(article._id, formData, token);
 
-    // Mostrar notificación de éxito
     toast({
       title: 'Artículo actualizado.',
       description: 'El artículo ha sido actualizado exitosamente.',
@@ -31,12 +27,10 @@ const submitHandler = async (data, token, article, toast, navigate) => {
       isClosable: true,
     });
 
-    // Navegar al perfil u otra página
     navigate('/profile');
   } catch (error) {
     console.error('Error al actualizar el artículo:', error);
 
-    // Mostrar notificación de error
     toast({
       title: 'Error',
       description: 'Hubo un error al actualizar el artículo.',
@@ -52,21 +46,9 @@ const UpdateArticle = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const [articleData, setArticleData] = useState(null);
   const toast = useToast();
 
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const article = await getArticleById(articleID.id);
-        setArticleData(article);
-      } catch (error) {
-        console.error('Error al obtener el artículo:', error);
-      }
-    };
-
-    fetchArticle();
-  }, [articleID]);
+  const { articleData, loading, articleNotFound } = useFetchArticle(articleID.id);
 
   const onSubmit = async (data) => {
     await submitHandler(data, user.token, articleData, toast, navigate);
@@ -74,7 +56,11 @@ const UpdateArticle = () => {
 
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
-      {articleData ? (
+      {loading ? (
+        <Text>Cargando datos del artículo...</Text>
+      ) : articleNotFound ? (
+        <NotFound />
+      ) : (
         <Flex direction='column' gap={6}>
           <BackButton to='/profile' />
           <ArticleEditor
@@ -94,8 +80,6 @@ const UpdateArticle = () => {
           />
           <BackButton to='/profile' />
         </Flex>
-      ) : (
-        <Text>Cargando datos del artículo...</Text>
       )}
     </Container>
   );

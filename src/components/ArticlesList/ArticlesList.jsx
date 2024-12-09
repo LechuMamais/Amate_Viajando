@@ -1,27 +1,8 @@
-import CardsList from '../CardsList/CardsList';
-import { getArticles } from '../../services/api/articles';
-import { useEffect, useState } from 'react';
+import CardsList from '../../components/CardsList/CardsList';
+import { useFetchArticles } from '../../customHooks/useFetchArticles/useFetchArticles';
 
 const ArticlesList = () => {
-  const [articlesData, setArticlesData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchArticles = async () => {
-      try {
-        const articles = await getArticles();
-
-        setArticlesData(articles);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error al obtener el artículo:', error);
-      }
-    };
-
-    fetchArticles();
-  }, []);
-
+  const { articlesData, loading } = useFetchArticles();
   return (
     <CardsList
       headingText={'Reflexiones del viaje de la vida'}
