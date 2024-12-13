@@ -1,17 +1,24 @@
-import { Container, useToast } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import ArticleEditor from '../../components/ArticleEditor/ArticleEditor';
 import { useContext } from 'react';
 import { UserContext } from '../../providers/UserProvider';
-import { useNavigate } from 'react-router-dom';
-import { handleCreateArticleSubmit } from '../../utils/handleCreateArticleSubmit';
+import { useUpdateFetch } from '../../customHooks/useFetch/useUpdateFetch';
+import { fetchManager } from '../../resources/fetchManager';
+import { handleImageUpdate } from '../../services/handleImageUpdate';
 
 const CreateArticle = () => {
-  const toast = useToast();
-  const navigate = useNavigate();
   const { user } = useContext(UserContext);
+  const { executeUpdate } = useUpdateFetch(fetchManager.createArticle);
 
   const onSubmit = async (data) => {
-    await handleCreateArticleSubmit(data, user.token, toast, navigate);
+    try {
+      const { images, ...formData } = data;
+      const imageIds = await handleImageUpdate(images, data, user.token);
+
+      await executeUpdate({ ...formData, images: imageIds }, user.token);
+    } catch (error) {
+      console.error('Error al crear el artículo:', error);
+    }
   };
 
   return (

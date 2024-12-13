@@ -16,6 +16,10 @@
    - ArticleDetail - que content se muestre con los estilos adecuados!
    - En el resto de la web, mostrar el ArticlesList.
    - Refactorizar el código de esta sección!
+     Estoy haciendo una locura:
+     pasar TODAS las funciones fetch centralizandolas en fetchManager, que tendrá todos los mensajes de toast, las ref a las funciones,
+     y toda la info necesaria para hacer todos los fetch de la APP
+     Sería algo asi como los ACTIONS de un Reducer? Chequear
 
 3. Cambair pagina destinos:
    Al darle click que ponga las banderas de los paises disponibles: Argentina, España italia
