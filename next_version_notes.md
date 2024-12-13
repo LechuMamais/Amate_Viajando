@@ -30,6 +30,14 @@
    país automaticamente al inicio.
    .
 
+   1. Actualizar el backend para agregar la propiedad country al model de destinations. Los valores de esta propiedad estarán reducidos al json
+      de los iso2code, para evitar posibles errores.
+   2. Modificar el formulario de create y update Destinations para agregar un campo tipo options con los paises. Podemos mostrar el nombre del país
+      pero guardar el valor del codigo ISO del json
+   3. Crear el componente de las banderas, que se muestra antes de mostrar los destinos. Otra opcion es mostrar todos los destinos, y un filtro
+      por países disponibles. Los países disponibles los vamos a obtener mapeando las propiedades country de los destinations. Las banderas las vamos
+      a sacar de https://flagsapi.com/#quick
+
 4. Idioma:
    Me parece superimportante que todos los destinos y tours tengan descripción en idiomas, minimamente ingles, castellano, italiano, portugues.
    El Hook que obtiene el idioma del browser debería ser utilizado por un provider, y en todos los componentes donde haya texto utilizarlo
