@@ -1,4 +1,4 @@
-import { Container, Flex, Text } from '@chakra-ui/react';
+import { Button, Container, Flex, Text } from '@chakra-ui/react';
 import ArticleEditor from '../../components/ArticleEditor/ArticleEditor';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
@@ -9,6 +9,8 @@ import NotFound from '../NotFound/NotFound';
 import { useFetch } from '../../customHooks/useFetch/useFetch';
 import { useUpdateFetch } from '../../customHooks/useFetch/useUpdateFetch'; // Nuevo hook
 import { fetchManager } from '../../resources/fetchManager';
+import MyModal from '../../components/MyModal/MyModal';
+import { deleteAllImages } from '../../services/deleteAllImages';
 
 const UpdateArticle = () => {
   const { id } = useParams();
@@ -16,6 +18,7 @@ const UpdateArticle = () => {
 
   const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, id);
   const { executeUpdate } = useUpdateFetch(fetchManager.updateArticle);
+  const { executeUpdate: executeDelete } = useUpdateFetch(fetchManager.deleteArticle);
 
   const onSubmit = async (data) => {
     try {
@@ -27,6 +30,15 @@ const UpdateArticle = () => {
     } catch (error) {
       console.error('Error en el manejo de imágenes o actualización:', error);
     }
+  };
+
+  const handleDeleteArticleButton = async () => {
+    await executeDelete(articleData._id, user.token);
+  };
+
+  const handleDeleteAllClick = async () => {
+    await deleteAllImages(articleData.images, user.token);
+    await executeDelete(articleData._id, user.token);
   };
 
   return (
@@ -43,16 +55,38 @@ const UpdateArticle = () => {
             articleData={{
               ...articleData,
               images: articleData.images.map((img) => ({
-                name: img.imgObj.name,
-                description: img.imgObj.description,
-                alt: img.imgObj.alt,
-                url: img.imgObj.url,
+                name: img.imgObj?.name,
+                description: img.imgObj?.description,
+                alt: img.imgObj?.alt,
+                url: img.imgObj?.url,
                 order: img.order,
-                _id: img.imgObj._id,
+                _id: img.imgObj?._id,
               })),
             }}
             title='Actualizar Artículo'
           />
+
+          <MyModal
+            heading='Confirmar eliminación'
+            question='¿Estás seguro de que deseas eliminar este artículo?'
+            text='¿Quieres eliminar también las imágenes de la base de datos?'
+            onAcceptClick={handleDeleteArticleButton}
+            buttonText='Eliminar destino'
+            type='delete'
+            modalMainButtonText='Eliminar sólo el destino'
+          >
+            <Button
+              onClick={handleDeleteAllClick}
+              mt={8}
+              size='md'
+              colorScheme='red'
+              w={{ base: '100%', md: '280px' }}
+              mb={8}
+            >
+              Borrar todo
+            </Button>
+          </MyModal>
+
           <BackButton to='/profile' />
         </Flex>
       )}
