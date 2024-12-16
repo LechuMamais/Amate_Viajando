@@ -1,14 +1,10 @@
 import { updateImage, createImage } from './api/images';
 
 export const handleImageUpdate = async (images, destination, token) => {
-  console.log(destination);
   const imageIds = [];
-
   const imagePromises = images.map(async (image) => {
-    console.log(image._id);
     if (image._id) {
       const originalImage = destination.images.find(img => img._id === image._id || img.imgObj._id === image._id);
-      console.log(originalImage);
       if (
         originalImage.name !== image.name ||
         originalImage.alt !== image.alt ||

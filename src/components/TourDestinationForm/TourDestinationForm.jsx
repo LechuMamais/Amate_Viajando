@@ -44,7 +44,11 @@ const TourDestinationForm = ({ register, errors, setValue, country = false }) =>
             <FormLabel htmlFor='country_iso2code'>
               <Text fontSize='lg'>País</Text>
             </FormLabel>
-            <Select id='country_iso2code' placeholder='Selecciona un país' onChange={handleCountryChange}>
+            <Select
+              id='country_iso2code'
+              placeholder={`${country ? country : 'Selecciona un país'}`}
+              onChange={handleCountryChange}
+            >
               {ISO2.map((country) => (
                 <option key={country.code} value={country.code}>
                   {country.name}

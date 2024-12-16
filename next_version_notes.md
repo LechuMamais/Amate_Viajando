@@ -34,6 +34,8 @@
       de los iso2code, para evitar posibles errores.
    2. Modificar el formulario de create y update Destinations para agregar un campo tipo options con los paises. Podemos mostrar el nombre del país
       pero guardar el valor del codigo ISO del json
+      Está hecho, faltaría chequear que los formularios de imágenes estén todos funcionando bien, porque he tenido que modificarlos!
+      Se podría hacer una función para que al cargar el updateDestination se muestre seleccionado el país original.
    3. Crear el componente de las banderas, que se muestra antes de mostrar los destinos. Otra opcion es mostrar todos los destinos, y un filtro
       por países disponibles. Los países disponibles los vamos a obtener mapeando las propiedades country de los destinations. Las banderas las vamos
       a sacar de https://flagsapi.com/#quick

@@ -35,20 +35,18 @@ export const fetchDestinationAndSetValues = async (destination_id, setDestinatio
 export const submitHandler = async (data, destination, token, destination_id, toast, reloadDestinations, navigate) => {
     try {
         const { images, tours, ...formData } = data;
-        console.log(images);
         const imageIds = await handleImageUpdate(
             images,
             destination,
             token
         );
         formData.images = imageIds;
-        console.log(formData.images);
+
         formData.tours = tours.map((tour) => ({
             tourObj: tour.tourObj,
             order:
                 tour.order !== undefined && tour.order !== null ? tour.order : 100,
         }));
-        console.log(formData);
 
         await updateDestination(destination_id, formData, token);
 
