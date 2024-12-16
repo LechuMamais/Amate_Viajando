@@ -23,7 +23,7 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
         if (usingFor === 'tour') {
             await createTour(formData, token);
         } else if (usingFor === 'destination') {
-            console.log('PATO');
+            console.log(formData);
             await createDestination(formData, token);
         }
 

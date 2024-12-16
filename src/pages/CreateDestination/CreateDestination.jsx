@@ -17,6 +17,7 @@ const CreateDestination = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     control,
     formState: { errors },
   } = useForm({
@@ -25,6 +26,8 @@ const CreateDestination = () => {
       heading: '',
       description: '',
       longDescription: '',
+      country_name: 'Argentina',
+      country_iso2code: 'AR',
       images: [{ name: '', alt: '', description: '', url: null }],
       tours: [],
     },
@@ -41,7 +44,7 @@ const CreateDestination = () => {
       >
         <BackButton to='/profile' />
         <Heading fontSize='xl'>Nuevo Destino</Heading>
-        <TourDestinationForm register={register} errors={errors} />
+        <TourDestinationForm register={register} errors={errors} country={true} setValue={setValue} />
         <ImagesForm control={control} register={register} errors={errors} />
         <Button mt={4} colorScheme='teal' type='submit'>
           Crear Destino

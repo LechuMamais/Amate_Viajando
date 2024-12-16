@@ -21,7 +21,7 @@
      y toda la info necesaria para hacer todos los fetch de la APP
      Sería algo asi como los ACTIONS de un Reducer? Chequear
 
-3. Cambair pagina destinos:
+3. Cambiar pagina destinos:
    Al darle click que ponga las banderas de los paises disponibles: Argentina, España italia
    Y al darle a la bandera, aparezcan los destinos dentro de esos paises
    .
@@ -30,7 +30,7 @@
    país automaticamente al inicio.
    .
 
-   1. Actualizar el backend para agregar la propiedad country al model de destinations. Los valores de esta propiedad estarán reducidos al json
+   1. Actualizar el backend para agregar la propiedad country al model de destinations. Los valores de esta propiedad estarán reducidos al array
       de los iso2code, para evitar posibles errores.
    2. Modificar el formulario de create y update Destinations para agregar un campo tipo options con los paises. Podemos mostrar el nombre del país
       pero guardar el valor del codigo ISO del json

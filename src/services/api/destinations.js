@@ -14,7 +14,7 @@ export const createDestination = async (destination, token) => {
 };
 
 export const updateDestination = async (id, destination, token) => {
-  return await customFetch({ url: DESTINATIONS_URL, method: 'PUT', token: token, bodyContent: destination });
+  return await customFetch({ url: `${DESTINATIONS_URL}/${id}`, method: 'PUT', token: token, bodyContent: destination });
 };
 
 export const deleteImageFromDestination = async (image_id, destination_id, token) => {

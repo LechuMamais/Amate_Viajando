@@ -35,7 +35,7 @@ const UpdateDestination = () => {
       <Stack as='form' spacing={4} onSubmit={handleSubmit(onSubmit)}>
         <BackButton to='/profile' />
         <Heading size='lg'>Actualizar Destino</Heading>
-        <TourDestinationForm register={register} errors={errors} />
+        <TourDestinationForm register={register} errors={errors} country={true} setValue={setValue} />
         <ImagesForm control={control} register={register} errors={errors} usingFor='destination' />
         <ToursCheckboxGroup
           loading={loading}
