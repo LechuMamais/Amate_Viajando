@@ -4,7 +4,9 @@ import { useContext } from 'react';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
 
 const Destinations = () => {
-  const { allDestinations, loading } = useContext(AllDestinationsContext);
+  const { allDestinations, loading, countries } = useContext(AllDestinationsContext);
+
+  console.log(countries);
 
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }}>
