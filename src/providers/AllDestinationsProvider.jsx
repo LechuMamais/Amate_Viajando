@@ -1,34 +1,18 @@
-import { createContext, useEffect, useState } from 'react';
-import { getDestinations } from '../services/api/destinations';
+import { createContext } from 'react';
+import { useFetch } from '../customHooks/useFetch/useFetch';
+import { fetchManager } from '../resources/fetchManager';
 
 export const AllDestinationsContext = createContext();
 
 export const AllDestinationsProvider = ({ children }) => {
-  const [allDestinations, setAllDestinations] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchAllDestinations = async () => {
-    try {
-      setLoading(true);
-      const data = await getDestinations();
-      setAllDestinations(data);
-    } catch (error) {
-      console.error('Error fetching destinations:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchAllDestinations();
-  }, []);
+  const { data: allDestinations, loading, refetch } = useFetch(fetchManager.destinations);
 
   return (
     <AllDestinationsContext.Provider
       value={{
-        allDestinations,
+        allDestinations: allDestinations || [],
         loading,
-        reloadDestinations: fetchAllDestinations,
+        reloadDestinations: refetch,
       }}
     >
       {children}

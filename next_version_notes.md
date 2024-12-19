@@ -46,6 +46,7 @@
    En la BD, donde hay texto, tiene que haber un objeto con el idioma primero, habrá que modificar todos los create y los update para agregar
    la posibilidad de tener todo en varios idiomas!
 
+\*ERROR: Al actualizar el orden de imagenes de destinos
 .
 
 .
@@ -56,6 +57,8 @@
 
     FIXEAR: Updater de tours y destinations
     .
+
+    Usar el textarea de Quill para las longDescription de Tours y Destinations
 
 # Ideas para versiones futuras
 

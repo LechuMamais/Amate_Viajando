@@ -4,7 +4,7 @@ import { fetchManager } from '../../resources/fetchManager';
 
 const ArticlesList = () => {
   const { data, loading } = useFetch(fetchManager.articles);
-  console.log(data);
+
   return (
     <CardsList
       headingText={'Reflexiones del viaje de la vida'}

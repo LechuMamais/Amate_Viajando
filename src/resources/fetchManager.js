@@ -1,4 +1,5 @@
 import { createArticle, deleteArticle, getArticleById, getArticles, updateArticle } from '../services/api/articles';
+import { getDestinations } from '../services/api/destinations';
 
 export const fetchManager = {
     articles: { fetchFunction: getArticles, toastErrorMessage: { title: 'Error al obtener los artículos', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } },
@@ -21,4 +22,5 @@ export const fetchManager = {
         toastSuccessMessage: { title: 'Artículo eliminado.', content: 'El artículo ha sido eliminado exitosamente.' },
         navigateEndPoint: '/profile'
     },
+    destinations: { fetchFunction: getDestinations, toastErrorMessage: { title: 'Error al obtener los destinos', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } },
 };
