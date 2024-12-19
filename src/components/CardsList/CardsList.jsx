@@ -7,8 +7,10 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, load
     .fill()
     .map((_, index) => <CardSkeletonLoader key={index} />);
 
+  console.log(usingFor);
+
   return (
-    <Box py={{ base: 12, md: 24, lg: 32 }}>
+    <Box py={usingFor.includes('update') ? { base: 12 } : { base: 12, md: 24, lg: 32 }}>
       <Container maxW='container.lg' px={0}>
         <Box textAlign='center' mb={8}>
           <Heading
