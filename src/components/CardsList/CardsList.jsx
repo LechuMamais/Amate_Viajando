@@ -6,9 +6,6 @@ const CardsList = ({ headingText, descriptionText, arrayToRender, usingFor, load
   const skeletonLoaders = Array(4)
     .fill()
     .map((_, index) => <CardSkeletonLoader key={index} />);
-
-  console.log(usingFor);
-
   return (
     <Box py={usingFor.includes('update') ? { base: 12 } : { base: 12, md: 24, lg: 32 }}>
       <Container maxW='container.lg' px={0}>

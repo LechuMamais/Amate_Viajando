@@ -9,7 +9,7 @@ const Profile = () => {
   const { user, loading } = useContext(UserContext);
 
   return (
-    <Container maxW='container.lg' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
+    <Container maxW='container.lg' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24 }}>
       {loading ? (
         <ProfileSkeletonLoader></ProfileSkeletonLoader>
       ) : (
