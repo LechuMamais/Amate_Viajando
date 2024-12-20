@@ -35,15 +35,18 @@ export const CoachingText = {
     },
     it: {
         heading: 'Cos’è il Travel Coaching?',
-        text: [
-            'Partiamo dal presupposto che il coaching è una formazione attraverso la quale acquisirai strumenti per scoprire il tuo scopo, il tuo scopo viaggiando.',
-            'Coloro che leggono Scopri il tuo scopo possono sembrare un po\' esoterici, è vero, poiché possiamo assicurare che in una società così dormiente, ciò che viene fatto normalmente è seguire le masse, seguire il sistema imposto sotto il concetto di normalità, guidando una vita senza pause, tutto che va oltre le 24 ore al giorno che abbiamo, aggiungendo innumerevoli malattie al corpo e inibito dallo stress, avvolto nei debiti e legato al romanticismo della frase un giorno cambierà.',
-            'Bene, smettila... è davvero questa la vita che vuoi vivere?', 'If all this resonates with you, but you don\'t want to be the one with the few days of vacation, it\'s time for you to wake up and make the big change. You are the change to be better than your old version.',
-            'Hai un\'essenza unica, sei l\'unico responsabile della tua vita, il nostro team di Amate Viajando vuole che tu reagisca e scopra cosa c\'è nel tuo DNA, sei brillante solo in una cosa e questo è il tuo potenziale.',
-            'Sei pronto? Di di sì.',
-            'Il tuo scopo, la tua meravigliosa nuova vita.', 'Il tuo scopo e il viaggio dei tuoi sogni verso il tuo vero risveglio.',
-            'Viaggiando nella presenza e nella coscienza entriamo nella terra fertile verso la nostra Libertà.',
-            'Viaggiare, scoprire te stesso sarà la tua passione, viaggiando inizierai ad amare te stesso e ad apprezzare ciò che meriti veramente.',
-            'AMATI VIAGGIANDO.',]
+        text:
+            [
+                'Innanzitutto il coaching è una formazione attraverso la quale acquisirai strumenti per scoprire il tuo scopo, il tuo scopo viaggiando.',
+                'Per Coloro che leggono, scoprire lo scopo può sembrare un po\' esoterico, è vero, poiché viviamo in una società dormiente. Ciò che viene fatto normalmente è seguire le masse, seguire il sistema imposto sotto il concetto di normalità, conducendo una vita senza pause, correndo contro il tempo, provocando innumerevoli malattie al corpo, inibito dallo stress, e avvolto nei debiti ma vivendo nell’idea che un giorno forse tutto possa cambiare.',
+                'Bene, smettila... è davvero questa la vita che vuoi vivere?',
+                'Hai un\'essenza unica, sei l\'unico responsabile della tua vita, il nostro team di Amate Viajando vuole che tu reagisca e scopra cosa c\'è nel tuo DNA.',
+                'Sei pronto? Di di sì.',
+                'Il tuo scopo, la tua meravigliosa nuova vita.',
+                'Il tuo scopo e il viaggio dei tuoi sogni verso il tuo vero risveglio.',
+                'Viaggiando nella presenza e nella coscienza entriamo nella terra fertile verso la nostra Libertà.',
+                'Viaggiare, scoprire te stesso sarà la tua passione, viaggiando inizierai ad amare te stesso e ad apprezzare ciò che meriti veramente.',
+                'AMATI VIAGGIANDO.'
+            ]
     },
 };
