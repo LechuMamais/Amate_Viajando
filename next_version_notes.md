@@ -30,21 +30,67 @@
    país automaticamente al inicio.
    .
 
-   1. Actualizar el backend para agregar la propiedad country al model de destinations. Los valores de esta propiedad estarán reducidos al array
-      de los iso2code, para evitar posibles errores.
-   2. Modificar el formulario de create y update Destinations para agregar un campo tipo options con los paises. Podemos mostrar el nombre del país
-      pero guardar el valor del codigo ISO del json
+   1. Actualizar el backend para agregar la propiedad country al model de destinations. Los valores de esta propiedad estarán reducidos al array de los iso2code, para evitar posibles errores.
+   2. Modificar el formulario de create y update Destinations para agregar un campo tipo options con los paises. Podemos mostrar el nombre del país pero guardar el valor del codigo ISO del json
       Está hecho, faltaría chequear que los formularios de imágenes estén todos funcionando bien, porque he tenido que modificarlos!
       Se podría hacer una función para que al cargar el updateDestination se muestre seleccionado el país original.
-   3. Crear el componente de las banderas, que se muestra antes de mostrar los destinos. Otra opcion es mostrar todos los destinos, y un filtro
-      por países disponibles. Los países disponibles los vamos a obtener mapeando las propiedades country de los destinations. Las banderas las vamos
-      a sacar de https://flagsapi.com/#quick
+   3. Crear el componente de las banderas, que se muestra antes de mostrar los destinos. Otra opcion es mostrar todos los destinos, y un filtro por países disponibles.
+      Los países disponibles los vamos a obtener mapeando las propiedades country de los destinations. Las banderas las vamos a sacar de https://flagsapi.com/#quick
 
 4. Idioma:
    Me parece superimportante que todos los destinos y tours tengan descripción en idiomas, minimamente ingles, castellano, italiano, portugues.
    El Hook que obtiene el idioma del browser debería ser utilizado por un provider, y en todos los componentes donde haya texto utilizarlo.
-   En la BD, donde hay texto, tiene que haber un objeto con el idioma primero, habrá que modificar todos los create y los update para agregar
-   la posibilidad de tener todo en varios idiomas!
+   En la BD, donde hay texto, tiene que haber un objeto con el idioma primero, habrá que modificar todos los create y los update para agregar la posibilidad de tener todo en varios idiomas!
+
+   Se va a guardar en la BD:
+   eng: {
+   name: { type: String, required: true },
+   heading: { type: String, required: true },
+   description: { type: String, required: true },
+   longDescription: { type: String, required: true }
+   },
+   esp: {
+   name: { type: String, required: true },
+   heading: { type: String, required: true },
+   description: { type: String, required: true },
+   longDescription: { type: String, required: true }
+   },
+   ita: {
+   name: { type: String, required: true },
+   heading: { type: String, required: true },
+   description: { type: String, required: true },
+   longDescription: { type: String, required: true }
+   },
+   por: {
+   name: { type: String, required: true },
+   heading: { type: String, required: true },
+   description: { type: String, required: true },
+   longDescription: { type: String, required: true }
+   }
+
+   Pero el backend siempre va a recibir el lang, y va a devolver sólo los valores correspondientes al lang recibido.
+
+   1. Backend:
+
+   - Models, agregar una propiedad por cada idioma, y como valor un objeto con las propiedades y valores en cada idioma. Primero voy a dejar las propiedades originales, para que no es rompa la web mientras actualizo la BD
+   - Controllers:
+     - Utils: Una función que reciba un valor y un idioma, y le pida a mi openAi API estos valores traducidos en ese idioma.
+     - Create: si falta algun idioma, se lo pida a mi openAi API traducido, y luego lo guarde en la BD.
+     - Update: Podria hacer que el backend sea capaz de recibir algún boolean por cada idioma.propiedad, que indique si es necesario traducirlo o no, así el admin puede controlar la posibilidad de que, al cambiar el valor en un idioma, se traduzca automáticamente o no los valores de esa propiedad en otros idiomas.
+     - GET: Deberían ser capaces de recibir un valor language, y devolver sólo los valores en el idioma seleccionado. De esta forma se alivianaría mucho la carga de tráfico de la BD, y en el front podremos mantener sin actualizar todos los componentes que renderizan y muestran cosas.
+
+   2. Frontend:
+
+   - /utils/languages.js: Array de idiomas disponibles.
+   - LanguageProvider -> Almacena y obtiene el idioma del user en el localStorage
+   - Dentro del menu del header, un selector de idiomas. Obtiene el listado de AllDestinationsProvider (mapeando todos los destinations y obteniendo los idiomas disponibles en cada uno) - Al seleccionar un idioma, modificar el valor language del localStorage y refrescar la página con el nuevo idioma seleccionado.
+   - Actualizar los Create para que puedan manejar los idiomas. Habrá que hacer una especie de selector que muestre los formularios de texto para distintos idiomas, y luego al enviarlo, que sea capaz de darle el formato correcto. Posibilidad de elegir si traducir automáticamente al crear, o escribir manualmente.
+   - Actualizar los Update para que puedan manejar los idiomas. Misma lógica, que se pueda elegir si traducir automáticamente o manualmente.
+   - Destination, Tour y Article: Que tome el idioma del provider, y haga las peticiones incluyendo el valor de lang. El backend devolverá sólo los valores correspondientes al idioma seleccionado, sin modificar el formato original que estamos manejando hasta ahora.
+
+.
+
+.
 
 \*ERROR: Al actualizar el orden de imagenes de destinos
 .
