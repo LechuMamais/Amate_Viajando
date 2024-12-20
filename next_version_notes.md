@@ -42,7 +42,7 @@
 
 4. Idioma:
    Me parece superimportante que todos los destinos y tours tengan descripción en idiomas, minimamente ingles, castellano, italiano, portugues.
-   El Hook que obtiene el idioma del browser debería ser utilizado por un provider, y en todos los componentes donde haya texto utilizarlo
+   El Hook que obtiene el idioma del browser debería ser utilizado por un provider, y en todos los componentes donde haya texto utilizarlo.
    En la BD, donde hay texto, tiene que haber un objeto con el idioma primero, habrá que modificar todos los create y los update para agregar
    la posibilidad de tener todo en varios idiomas!
 
