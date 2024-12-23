@@ -1,13 +1,26 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useFetch } from '../customHooks/useFetch/useFetch';
 import { fetchManager } from '../resources/fetchManager';
+import { LanguageContext } from './LanguageProvider';
 
 export const AllDestinationsContext = createContext();
 
 export const AllDestinationsProvider = ({ children }) => {
-  const { data: allDestinations, loading, refetch } = useFetch(fetchManager.destinations);
+  const { language } = useContext(LanguageContext);
+  console.log('Language on all destinations provider:', language);
+
+  const { data: allDestinations, loading, refetch } = useFetch(fetchManager.destinations, language?.iso3code, false); // autoFetch desactivado
   const [countries, setCountries] = useState([]);
 
+  console.log('allDestinations:', allDestinations);
+
+  useEffect(() => {
+    if (language?.iso3code) {
+      refetch();
+    }
+  }, [language, refetch]);
+
+  // Extraer países únicos cuando cambian las destinaciones
   useEffect(() => {
     if (allDestinations) {
       const uniqueCountriesMap = new Map();

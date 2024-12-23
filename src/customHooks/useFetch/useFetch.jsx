@@ -1,11 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useToast } from '@chakra-ui/react';
 
-export const useFetch = (fetchManager, args = null) => {
+export const useFetch = (fetchManager, args = null, autoFetch = true) => {
   const toast = useToast();
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(false);
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
@@ -26,8 +25,10 @@ export const useFetch = (fetchManager, args = null) => {
   }, [fetchManager, args, toast]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    if (autoFetch) {
+      fetchData();
+    }
+  }, [fetchData, autoFetch]);
 
   return { data, loading, refetch: fetchData };
 };

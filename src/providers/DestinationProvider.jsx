@@ -16,6 +16,8 @@ export const DestinationProvider = ({ children }) => {
       const actualDestination = allDestinations.find((destination) => destination._id === destination_id);
       if (!actualDestination) {
         setDestinationNotFound(true);
+      } else {
+        setDestinationNotFound(false);
       }
       const toursToRender = toursToRenderArrayConstructor(actualDestination);
       setDestination({ ...actualDestination, tours: toursToRender });

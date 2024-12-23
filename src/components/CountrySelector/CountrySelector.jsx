@@ -18,7 +18,7 @@ const CountrySelector = ({ countries, selectedCountry, setSelectedCountry }) => 
       <MenuList maxH='300px' overflowY='auto' minW={{ base: 'calc(100svw - 32px)', sm: '280px' }}>
         <MenuItem onClick={() => setSelectedCountry(null)}>
           <Flex alignItems='center' w='100%' h='100%'>
-            <Image src='../../../public/assets/planet-earth.png' alt='World' w='28px' mr='8px' ml='2px' />
+            <Image src='../../../assets/planet-earth.png' alt='World' w='28px' mr='8px' ml='2px' />
             Todos los países del mundo
           </Flex>
         </MenuItem>

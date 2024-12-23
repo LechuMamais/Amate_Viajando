@@ -74,26 +74,36 @@
 
    - Models, agregar una propiedad por cada idioma, y como valor un objeto con las propiedades y valores en cada idioma. Primero voy a dejar las propiedades originales, para que no es rompa la web mientras actualizo la BD
    - Controllers:
+
      - Utils: Una función que reciba un valor y un idioma, y le pida a mi openAi API estos valores traducidos en ese idioma.
      - Create: si falta algun idioma, se lo pida a mi openAi API traducido, y luego lo guarde en la BD.
-     - Update: Podria hacer que el backend sea capaz de recibir algún boolean por cada idioma.propiedad, que indique si es necesario traducirlo o no, así el admin puede controlar la posibilidad de que, al cambiar el valor en un idioma, se traduzca automáticamente o no los valores de esa propiedad en otros idiomas.
-     - GET: Deberían ser capaces de recibir un valor language, y devolver sólo los valores en el idioma seleccionado. De esta forma se alivianaría mucho la carga de tráfico de la BD, y en el front podremos mantener sin actualizar todos los componentes que renderizan y muestran cosas.
+     - Update: Para saber si el admin quiere volver a traducir algún valor, (traduciendolo de otro idioma) haremos que el frontend envíe el campo vacío, y entonces utilizar la misma funcion completeTranslations que utiliza el create. Ésta me parece la manera más sencilla de manejarlo.
+     - GET: Van a recibir el valor lang en los params, y devolver sólo los valores en el idioma seleccionado, en el formato anterior. De esta forma se alivianaría mucho la carga de tráfico de la BD, y en el front podremos mantener sin actualizar todos los componentes que renderizan y muestran cosas.
+
+     -------------------------------- DONE --------------------------------
+
+     .
 
    2. Frontend:
 
-   - /utils/languages.js: Array de idiomas disponibles.
+   - /utils/languages.js: Array de idiomas disponibles. - CHECKEAR si al final lo necesitamos
    - LanguageProvider -> Almacena y obtiene el idioma del user en el localStorage
-   - Dentro del menu del header, un selector de idiomas. Obtiene el listado de AllDestinationsProvider (mapeando todos los destinations y obteniendo los idiomas disponibles en cada uno) - Al seleccionar un idioma, modificar el valor language del localStorage y refrescar la página con el nuevo idioma seleccionado.
+   - Destination, Tour y Article: Que tome el idioma del provider, y haga las peticiones incluyendo el valor de lang. El backend devolverá sólo los valores correspondientes al idioma seleccionado, sin modificar el formato original que estamos manejando hasta ahora. - DONE
+   - ---> Chequear porque tour y destination se rerenderizan tantas veces!!!
+   - Dentro del menu del header, un selector de idiomas. Obtiene el listado de AllDestinationsProvider (mapeando todos los destinations y obteniendo los idiomas disponibles en cada uno) - Al seleccionar un idioma, modificar el valor language del localStorage y refrescar la página con el nuevo idioma seleccionado. - DONE
    - Actualizar los Create para que puedan manejar los idiomas. Habrá que hacer una especie de selector que muestre los formularios de texto para distintos idiomas, y luego al enviarlo, que sea capaz de darle el formato correcto. Posibilidad de elegir si traducir automáticamente al crear, o escribir manualmente.
    - Actualizar los Update para que puedan manejar los idiomas. Misma lógica, que se pueda elegir si traducir automáticamente o manualmente.
-   - Destination, Tour y Article: Que tome el idioma del provider, y haga las peticiones incluyendo el valor de lang. El backend devolverá sólo los valores correspondientes al idioma seleccionado, sin modificar el formato original que estamos manejando hasta ahora.
 
 .
 
-.
+3.  Transformar la información ya cargada - agregandoles los idiomas - DONE
+    Por ultimo, borrar las propiedades fuera de uso de los modelos
+
+4.  Traducir todo el resto de la web. Es decir, todo lo que no viene de la BD.
+    Para eso voy a hacer un resource con un objeto, cuyos valores sean los nombres del valor de cada cosa que está en la web, en los 4 idiomas.
 
 \*ERROR: Al actualizar el orden de imagenes de destinos
-.
+\*CHECK: demasiados rerenders en tour y destination
 
 .
 

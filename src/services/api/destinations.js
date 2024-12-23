@@ -1,12 +1,12 @@
 import { DESTINATIONS_URL } from '../../resources/api.endpoints';
 import { customFetch } from './customFetch';
 
-export const getDestinations = async () => {
-  return await customFetch({ url: DESTINATIONS_URL });
+export const getDestinations = async (language) => {
+  return await customFetch({ url: `${DESTINATIONS_URL}/${language}` });
 };
 
-export const getDestinationById = async (id) => {
-  return await customFetch({ url: `${DESTINATIONS_URL}/${id}` });
+export const getDestinationById = async (id, language) => {
+  return await customFetch({ url: `${DESTINATIONS_URL}/${id}/${language}` });
 };
 
 export const createDestination = async (destination, token) => {

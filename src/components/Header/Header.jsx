@@ -5,6 +5,7 @@ import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider } from '@c
 import MyLink from '../MyLink/MyLink';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
 
 const Header = React.memo(() => {
   const [logged, setLogged] = useState(false);
@@ -22,20 +23,18 @@ const Header = React.memo(() => {
   return (
     <Flex as='header' zIndex='100' h='72px'>
       {!isHome && (
-        <Box className='home-link-container' zIndex='200'>
-          <Link to={'/'} w='72px' h='72px'>
-            <Image
-              px={4}
-              pb={2}
-              w='88px'
-              h='72px'
-              src={logo_url}
-              alt='Amate Viajando'
-              objectFit='cover'
-              position='absolute'
-            />
-          </Link>
-        </Box>
+        <Link to={'/'} w='72px' h='72px'>
+          <Image
+            px={4}
+            pb={2}
+            w='88px'
+            h='72px'
+            src={logo_url}
+            alt='Amate Viajando'
+            objectFit='cover'
+            position='absolute'
+          />
+        </Link>
       )}
 
       <Spacer />
@@ -73,6 +72,7 @@ const Header = React.memo(() => {
                       <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Ver carrito</MenuItem>
                     </MyLink>
                     */}
+                    <LanguageSelector />
 
                     <MyLink to={'/logout'}>
                       <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }} color={'red.400'} pl={4}>

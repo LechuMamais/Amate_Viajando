@@ -7,6 +7,7 @@ import NotFound from '../NotFound/NotFound';
 
 const Destination = () => {
   const { destination, loading, destinationNotFound } = useContext(DestinationContext);
+  console.log('Reloading destination');
 
   return (
     <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' minHeight='calc(100lvh - 72px)'>
