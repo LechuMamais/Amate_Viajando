@@ -6,7 +6,6 @@ import { LanguageContext } from '../../providers/LanguageProvider';
 
 const LanguageSelector = () => {
   const { language, changeLanguage } = useContext(LanguageContext);
-  console.log('Language on language selector:', language);
   return (
     <Menu>
       <MenuButton as={Button} leftIcon={<Icon as={FaGlobe} />} variant='subtle'>

@@ -2,9 +2,12 @@ import { useTranslation } from 'react-i18next';
 import CardsList from '../../components/CardsList/CardsList';
 import { useFetch } from '../../customHooks/useFetch/useFetch';
 import { fetchManager } from '../../resources/fetchManager';
+import { useContext } from 'react';
+import { LanguageContext } from '../../providers/LanguageProvider';
 
 const ArticlesList = () => {
-  const { data, loading } = useFetch(fetchManager.articles);
+  const { language } = useContext(LanguageContext);
+  const { data, loading } = useFetch(fetchManager.articles, language?.iso3code);
   const { t } = useTranslation('ArticlesList');
 
   return (

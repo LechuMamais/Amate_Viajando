@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import ResponsiveCarousel from '../../components/ResponsiveCarousel/ResponsiveCarousel';
 import { handleDetailsPageScroll } from '../../utils/handleDetailsPageScroll';
 import BackButton from '../../components/BackButton/BackButton';
@@ -8,10 +8,13 @@ import './ArticleDetails.css';
 import NotFound from '../NotFound/NotFound';
 import { useFetch } from '../../customHooks/useFetch/useFetch';
 import { fetchManager } from '../../resources/fetchManager';
+import { LanguageContext } from '../../providers/LanguageProvider';
 
 const ArticleDetail = () => {
-  const articleID = useParams();
-  const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, articleID.id);
+  const { language } = useContext(LanguageContext);
+  const { id: articleID } = useParams();
+  const args = useMemo(() => [language?.iso3code, articleID], [language?.iso3code, articleID]);
+  const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, args, true);
 
   useEffect(() => {
     window.addEventListener('scroll', handleDetailsPageScroll);

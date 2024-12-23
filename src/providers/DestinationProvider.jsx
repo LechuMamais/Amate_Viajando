@@ -18,9 +18,9 @@ export const DestinationProvider = ({ children }) => {
         setDestinationNotFound(true);
       } else {
         setDestinationNotFound(false);
+        const toursToRender = toursToRenderArrayConstructor(actualDestination);
+        setDestination({ ...actualDestination, tours: toursToRender });
       }
-      const toursToRender = toursToRenderArrayConstructor(actualDestination);
-      setDestination({ ...actualDestination, tours: toursToRender });
     }
   }, [destination_id, allDestinations, loading]);
 

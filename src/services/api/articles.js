@@ -1,9 +1,9 @@
 import { ARTICLES_URL } from '../../resources/api.endpoints';
 import { customFetch } from './customFetch';
 
-export const getArticles = () => customFetch({ url: ARTICLES_URL, method: 'GET' });
+export const getArticles = (language) => customFetch({ url: `${ARTICLES_URL}/lang/${language}` });
 
-export const getArticleById = (id) => customFetch({ url: `${ARTICLES_URL}/${id}`, method: 'GET' });
+export const getArticleById = (language, id) => customFetch({ url: `${ARTICLES_URL}/lang/${language}/id/${id}` });
 
 export const createArticle = (data, token) => customFetch({ url: ARTICLES_URL, method: 'POST', bodyContent: data, token });
 

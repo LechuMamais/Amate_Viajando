@@ -8,7 +8,9 @@ export const useFetch = (fetchManager, args = null, autoFetch = true) => {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const fetchedData = args ? await fetchManager.fetchFunction(args) : await fetchManager.fetchFunction();
+      const fetchedData = Array.isArray(args)
+        ? await fetchManager.fetchFunction(...args)
+        : await fetchManager.fetchFunction(args);
       setData(fetchedData);
     } catch (error) {
       console.error(fetchManager.toastErrorMessage.title, error);

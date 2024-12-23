@@ -8,17 +8,20 @@ import { AllDestinationsProvider } from './providers/AllDestinationsProvider.jsx
 import { UserProvider } from './providers/UserProvider.jsx';
 import { LanguageProvider } from './providers/LanguageProvider.jsx';
 import '../i18n.js';
+import { Suspense } from 'react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <LanguageProvider>
-      <ChakraProvider theme={theme}>
-        <AllDestinationsProvider>
-          <UserProvider>
-            <App />
-          </UserProvider>
-        </AllDestinationsProvider>
-      </ChakraProvider>
-    </LanguageProvider>
+    <Suspense fallback={<div></div>}>
+      <LanguageProvider>
+        <ChakraProvider theme={theme}>
+          <AllDestinationsProvider>
+            <UserProvider>
+              <App />
+            </UserProvider>
+          </AllDestinationsProvider>
+        </ChakraProvider>
+      </LanguageProvider>
+    </Suspense>
   </BrowserRouter>,
 );

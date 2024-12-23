@@ -11,6 +11,7 @@ const Destinations = () => {
   const { t } = useTranslation('Destinations');
 
   const filteredDestinations = useMemo(() => {
+    if (!allDestinations?.length) return [];
     if (!selectedCountry) return allDestinations;
     return allDestinations.filter((destination) => destination.country_iso2code === selectedCountry);
   }, [allDestinations, selectedCountry]);

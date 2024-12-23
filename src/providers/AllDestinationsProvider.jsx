@@ -7,12 +7,13 @@ export const AllDestinationsContext = createContext();
 
 export const AllDestinationsProvider = ({ children }) => {
   const { language } = useContext(LanguageContext);
-  console.log('Language on all destinations provider:', language);
-
-  const { data: allDestinations, loading, refetch } = useFetch(fetchManager.destinations, language?.iso3code, false); // autoFetch desactivado
+  const {
+    data: allDestinations = [],
+    loading,
+    refetch,
+  } = useFetch(fetchManager.destinations, language?.iso3code, false); // autoFetch desactivado
   const [countries, setCountries] = useState([]);
-
-  console.log('allDestinations:', allDestinations);
+  console.log(allDestinations);
 
   useEffect(() => {
     if (language?.iso3code) {
@@ -20,7 +21,7 @@ export const AllDestinationsProvider = ({ children }) => {
     }
   }, [language, refetch]);
 
-  // Extraer países únicos cuando cambian las destinaciones
+  // Extraer países únicos
   useEffect(() => {
     if (allDestinations) {
       const uniqueCountriesMap = new Map();
