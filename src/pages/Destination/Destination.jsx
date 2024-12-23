@@ -4,10 +4,11 @@ import DetailsPage from '../../components/DetailsPage/DetailsPage';
 import { DestinationContext } from '../../providers/DestinationProvider';
 import CardsList from '../../components/CardsList/CardsList';
 import NotFound from '../NotFound/NotFound';
+import { useTranslation } from 'react-i18next';
 
 const Destination = () => {
   const { destination, loading, destinationNotFound } = useContext(DestinationContext);
-  console.log('Reloading destination');
+  const { t } = useTranslation('Destination');
 
   return (
     <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' minHeight='calc(100lvh - 72px)'>
@@ -20,8 +21,8 @@ const Destination = () => {
           usingFor={'destination'}
         >
           <CardsList
-            headingText={`Que hacer en ${destination?.name}`}
-            descriptionText={'Seleccionados para tí'}
+            headingText={t('DestinationToursHeading', { destinationName: destination?.name })}
+            descriptionText={t('DestinationToursSubHeading')}
             arrayToRender={destination?.tours}
             usingFor={'tours'}
             loading={loading}

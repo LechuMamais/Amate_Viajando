@@ -7,6 +7,7 @@ import { theme } from './resources/theme.js';
 import { AllDestinationsProvider } from './providers/AllDestinationsProvider.jsx';
 import { UserProvider } from './providers/UserProvider.jsx';
 import { LanguageProvider } from './providers/LanguageProvider.jsx';
+import '../i18n.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>

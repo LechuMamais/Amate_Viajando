@@ -1,8 +1,10 @@
 import { Image, Menu, MenuButton, MenuItem, MenuList, Button, Text, Flex, MenuDivider } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
 const CountrySelector = ({ countries, selectedCountry, setSelectedCountry }) => {
+  const { t } = useTranslation('CountrySelector');
   const selectedCountryName =
-    countries.find((country) => country.iso2Code === selectedCountry)?.name || 'Todos los países';
+    countries.find((country) => country.iso2Code === selectedCountry)?.name || t('AllCountries');
 
   return (
     <Menu>
@@ -19,7 +21,7 @@ const CountrySelector = ({ countries, selectedCountry, setSelectedCountry }) => 
         <MenuItem onClick={() => setSelectedCountry(null)}>
           <Flex alignItems='center' w='100%' h='100%'>
             <Image src='../../../assets/planet-earth.png' alt='World' w='28px' mr='8px' ml='2px' />
-            Todos los países del mundo
+            {t('AllCountries')}
           </Flex>
         </MenuItem>
         <MenuDivider />

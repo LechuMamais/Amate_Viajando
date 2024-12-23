@@ -3,10 +3,12 @@ import CardsList from '../../components/CardsList/CardsList';
 import { useContext, useState, useMemo } from 'react';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
 import CountrySelector from '../../components/CountrySelector/CountrySelector';
+import { useTranslation } from 'react-i18next';
 
 const Destinations = () => {
   const { allDestinations, loading, countries } = useContext(AllDestinationsContext);
   const [selectedCountry, setSelectedCountry] = useState('');
+  const { t } = useTranslation('Destinations');
 
   const filteredDestinations = useMemo(() => {
     if (!selectedCountry) return allDestinations;
@@ -21,8 +23,8 @@ const Destinations = () => {
         setSelectedCountry={setSelectedCountry}
       />
       <CardsList
-        headingText={'Patagonia Argentina'}
-        descriptionText={'Encuéntrate en los destinos naturales más espectaculares del sur del mundo'}
+        headingText={t('Heading')}
+        descriptionText={t('SubHeading')}
         arrayToRender={filteredDestinations}
         usingFor={'destinations'}
         loading={loading}

@@ -99,8 +99,14 @@
 3.  Transformar la información ya cargada - agregandoles los idiomas - DONE
     Por ultimo, borrar las propiedades fuera de uso de los modelos
 
-4.  Traducir todo el resto de la web. Es decir, todo lo que no viene de la BD.
-    Para eso voy a hacer un resource con un objeto, cuyos valores sean los nombres del valor de cada cosa que está en la web, en los 4 idiomas.
+4.  Traducir contenido estático de la web.
+    Para eso, vamos a utilizar la librería i18next, en confluencia con nuestro provider, que centraliza el control del idioma en nuestra aplicación. - DONE
+
+- Traducir todos los toast
+- No voy a traducir la parte de admin profile, porque no lo necesitamos.
+- Ver que pasa con el hook useLocalizedContent - ELIMINADO: Ya no es necesario
+
+5.  Hacer toda la adaptación para los Articles!!!
 
 \*ERROR: Al actualizar el orden de imagenes de destinos
 \*CHECK: demasiados rerenders en tour y destination

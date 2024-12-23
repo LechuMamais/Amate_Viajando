@@ -1,0 +1,22 @@
+{
+    "title": "Accedi",
+    "email": "E-mail",
+    "password": "Password",
+    "login": "Login",
+    "register": "Registrati",
+    "forgot": "Hai dimenticato la password?",
+    "error": "Email o password errati",
+    "newPassowrd": "Nuova password",
+    "passwordRequired": "Inserisci la tua password",
+    "securityLevel": "Livello di sicurezza",
+    "low": "Basso",
+    "medium": "Medio",
+    "strong": "Forte",
+    "veryStrong": "Molto forte",
+    "emailRequired": "Inserisci la tua email",
+    "emailInvalidPattern": "Inserisci un'e-mail valida",
+    "RecoverPassword": "Recupera password",
+    "ResetPassword": "Reimposta password",
+    "VerificationCode": "Codice di verifica - 6 cifre",
+    "ResetingPassword": "Reimpostazione della password"
+}

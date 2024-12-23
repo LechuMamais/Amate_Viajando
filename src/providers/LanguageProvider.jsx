@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { languagesAvailable } from '../utils/languagesAvailable';
+import i18n from 'i18next';
 
 export const LanguageContext = createContext();
 
@@ -32,6 +33,9 @@ export const LanguageProvider = ({ children }) => {
       if (lang.iso3code === newLang) {
         setLanguage(lang);
         localStorage.setItem('lang', newLang);
+
+        i18n.changeLanguage(lang.iso2code); // Aquí pasas el código que i18next entiende, como 'es', 'en', 'it', etc.
+
         location.reload();
       }
     });
@@ -39,7 +43,10 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     checkAndSetLanguage();
-  }, []);
+    if (language?.iso2code) {
+      i18n.changeLanguage(language.iso2code);
+    }
+  }, [language]);
 
   return <LanguageContext.Provider value={{ language, changeLanguage }}>{children}</LanguageContext.Provider>;
 };

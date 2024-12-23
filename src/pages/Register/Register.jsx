@@ -4,6 +4,7 @@ import EmailField from '../../components/userFormComponents/emailField/emailFiel
 import PasswordField from '../../components/userFormComponents/passwordField/passwordField';
 import ConfirmPasswordField from '../../components/userFormComponents/confirmPasswordField/confirmPasswordField';
 import useRegisterForm from '../../customHooks/useRegisterForm/useRegisterForm';
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = () => {
   const {
@@ -19,12 +20,13 @@ const RegisterForm = () => {
     register,
     watch,
   } = useRegisterForm();
+  const { t } = useTranslation('Register');
 
   return (
     <Box maxW='sm' mx='auto' mt={8} p={4} borderWidth={1} borderRadius='lg'>
       <VStack as='form' onSubmit={handleSubmit(submit)} spacing={4}>
         <Text fontSize='2xl' mb={4}>
-          Comencemos...
+          {t('Begin')}
         </Text>
         <UserNameField register={register} error={formState.errors.userName} />
         <EmailField register={register} error={formState.errors.email} />
@@ -49,7 +51,7 @@ const RegisterForm = () => {
           loadingText='Registrarse'
           w={{ base: '100%', md: '160px' }}
         >
-          Registrarse
+          {t('SubmitButton')}
         </Button>
       </VStack>
     </Box>

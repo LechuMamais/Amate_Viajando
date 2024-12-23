@@ -3,9 +3,11 @@ import CardsList from '../../components/CardsList/CardsList';
 import { useContext } from 'react';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
 import { toursToRenderArrayConstructor } from '../../utils/toursToRenderArrayConstructor';
+import { useTranslation } from 'react-i18next';
 
 const Tours = () => {
   const { allDestinations, loading } = useContext(AllDestinationsContext);
+  const { t } = useTranslation('Tours');
 
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }}>
@@ -13,7 +15,7 @@ const Tours = () => {
         <CardsList
           key={destination._id}
           headingText={destination.name}
-          descriptionText={`Los mejores tours en ${destination.name} seleccionados para ti.`}
+          descriptionText={t('ToursSubHeading', { destinationName: destination?.name })}
           arrayToRender={toursToRenderArrayConstructor(destination)}
           usingFor={'tours'}
           loading={loading}

@@ -4,16 +4,18 @@ import useLogin from '../../customHooks/useLogin/useLogin';
 import EmailField from '../../components/userFormComponents/emailField/emailField';
 import PasswordField from '../../components/userFormComponents/passwordField/passwordField';
 import useRegisterForm from '../../customHooks/useRegisterForm/useRegisterForm';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const { register, errors, isSubmitting, onSubmit } = useLogin();
   const { showPassword, togglePasswordVisibility, handlePasswordChange, validatePassword } = useRegisterForm();
+  const { t } = useTranslation('Login');
 
   return (
     <Box maxW='sm' mx='auto' mt={8} p={4} borderWidth={1} borderRadius='lg'>
       <VStack as='form' onSubmit={onSubmit} spacing={4}>
         <Text fontSize='2xl' mb={4}>
-          Iniciar sesión
+          {t('title')}
         </Text>
         <EmailField register={register} error={errors.email} />
 
@@ -35,19 +37,19 @@ const Login = () => {
           spinnerPlacement='end'
           loadingText='Iniciar Sesión'
         >
-          Iniciar Sesión
+          {t('login')}
         </Button>
 
         <Stack direction='row' justifyContent='space-around' w='100%'>
           <MyLink to='/forgotPassword'>
             <Text as='button' color='teal.500'>
-              ¿Olvidaste tu contraseña?
+              {t('forgot')}
             </Text>
           </MyLink>
 
           <MyLink to='/register'>
             <Text as='button' color='teal.500'>
-              Regístrate
+              {t('register')}
             </Text>
           </MyLink>
         </Stack>

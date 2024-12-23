@@ -1,9 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import MyLink from '../../components/MyLink/MyLink';
 import { Box, Button, Heading, Text, Flex } from '@chakra-ui/react';
-//import { useContact } from '../../customHooks/useContact/useContact';
 
 const HeroText = () => {
-  //const { whatsappUrl } = useContact(null, null, true);
+  const { t } = useTranslation('Home');
 
   return (
     <Box
@@ -33,7 +33,7 @@ const HeroText = () => {
             mb={{ base: 4, md: 6 }}
             fontSize={{ base: '2xl', sm: '2xl', md: '3xl' }}
           >
-            Descubre tu propósito viajando
+            {t('HeroTitle')}
           </Heading>
           <Text
             className='yeseva-one-regular'
@@ -45,13 +45,12 @@ const HeroText = () => {
             mb={{ base: 4, md: 6 }}
             letterSpacing='1.1px'
           >
-            La naturaleza enciende nuestros sentidos, nos transporta a lugares mágicos donde podremos escuchar nuestra
-            voz interior.
+            {t('HeroText')}
           </Text>
           <Flex direction={{ base: 'column', md: 'row' }} gap={{ base: 2, md: 8 }} justifyContent='center'>
             <MyLink to='/destinations'>
               <Button size='lg' colorScheme='blackAlpha' px={16} w={{ base: '100%', md: '240px' }} isDisabled={false}>
-                Ver destinos
+                {t('DestinationsButton')}
               </Button>
             </MyLink>
             <MyLink to='/coaching'>
@@ -59,14 +58,10 @@ const HeroText = () => {
                 size='lg'
                 w={{ base: '100%', md: '240px' }}
                 px={16}
-                //as='a'
-                //href={whatsappUrl}
-                //target='_blank'
-                //leftIcon={<icons.whatsapp size='24px' />}
                 variant='solid'
                 _hover={{ bgColor: 'white', color: '#000000d0' }}
               >
-                Coaching Viajero
+                {t('CoachingButton')}
               </Button>
             </MyLink>
           </Flex>

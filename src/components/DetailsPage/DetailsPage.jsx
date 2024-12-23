@@ -10,11 +10,13 @@ import AddAndRemoveFromFavoritesButton from '../AddAndRemoveFromFavoritesButton/
 import { useParams } from 'react-router-dom';
 import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
 import ArticlesList from '../ArticlesList/ArticlesList';
+import { useTranslation } from 'react-i18next';
 
 const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
   const { destination } = useContext(DestinationContext);
   const { tour_id } = useParams();
   const { allDestinations, loading } = useContext(AllDestinationsContext);
+  const { t } = useTranslation('DetailsPage');
 
   useEffect(() => {
     window.addEventListener('scroll', handleDetailsPageScroll);
@@ -31,7 +33,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
         {usingFor == 'destination' && (
           <MyLink to='/destinations'>
             <Button size='lg' variant='link' p={6} pl={0} my={{ base: 2, md: 3, lg: 4 }} fontWeight={'light'}>
-              Más Destinos
+              {t('MoreDestinationsButton')}
             </Button>
           </MyLink>
         )}
@@ -62,8 +64,8 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
           </Box>
           {children}
           <CardsList
-            headingText={'Otros destinos'}
-            descriptionText={'De la Patagonia Argentina'}
+            headingText={t('OtherDestinationsHeading')}
+            descriptionText={t('OtherDestinationsSubHeading')}
             arrayToRender={allDestinations?.filter((dest) => dest._id !== destination?._id)}
             usingFor={'destinations'}
             loading={loading}

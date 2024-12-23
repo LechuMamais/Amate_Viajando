@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Skeleton, Text } from '@chakra-ui/react';
 import CardsList from '../CardsList/CardsList';
 import MyLink from '../MyLink/MyLink';
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = ({ user, loading }) => {
   const transformedFavouriteTours = user.favouriteTours?.map((favTour) => ({
@@ -8,7 +9,7 @@ const UserProfile = ({ user, loading }) => {
     destinationId: favTour.destinationId,
     ...favTour.tourId,
   }));
-
+  const { t } = useTranslation('UserProfile');
   return (
     <Flex direction='column' gap={8}>
       <Skeleton height='40px' w='100%' isLoaded={!loading} fadeDuration={2}>
@@ -19,7 +20,7 @@ const UserProfile = ({ user, loading }) => {
         </Box>
       </Skeleton>
       <CardsList
-        headingText={'Tours Favoritos'}
+        headingText={t('FavouriteTours')}
         descriptionText={''}
         arrayToRender={transformedFavouriteTours}
         usingFor={'favouriteTours'}
@@ -27,10 +28,10 @@ const UserProfile = ({ user, loading }) => {
       />
       {user.favouriteTours.length === 0 && (
         <Flex direction='column' alignItems='center' gap={4}>
-          <Text textAlign='center'>Aún no has agregado tours a tu lista de favoritos</Text>
+          <Text textAlign='center'>{t('NoFavouriteTours')}</Text>
           <MyLink to='/destinations'>
             <Button size='lg' p={6} mx='auto' my={{ base: 2, md: 3, lg: 4 }} fontWeight={'light'}>
-              Ver Destinos
+              {t('SeeDestinations')}
             </Button>
           </MyLink>
         </Flex>

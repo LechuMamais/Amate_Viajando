@@ -6,14 +6,16 @@ import MyLink from '../MyLink/MyLink';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 const Header = React.memo(() => {
   const [logged, setLogged] = useState(false);
+  const { t } = useTranslation('Header');
   const isHome = useLocation().pathname === '/';
   const logo_url = '/assets/logo_header.png';
 
   useEffect(() => {
-    if (localStorage.getItem('AmateViajandoLogged') == 'true') {
+    if (localStorage.getItem('AmateViajandoLogged') === 'true') {
       setLogged(true);
     } else {
       setLogged(false);
@@ -42,48 +44,43 @@ const Header = React.memo(() => {
         <Menu>
           <MenuButton as={IconButton} aria-label='Options' icon={<HamburgerIcon />} variant='outline' />
           <MenuList className='header-menu-list' border='none' bgColor='#ffffffce'>
-            <MenuGroup title='Viaja'>
+            <MenuGroup title={t('Travel')}>
               <MyLink to='/destinations'>
                 <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
-                  Destinos
+                  {t('Destinations')}
                 </MenuItem>
               </MyLink>
               <MyLink to='/tours'>
                 <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
-                  Tours
+                  {t('Tours')}
                 </MenuItem>
               </MyLink>
               <MyLink to='/articles'>
                 <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
-                  Artículos
+                  {t('Articles')}
                 </MenuItem>
               </MyLink>
               <MenuDivider />
-              <MenuGroup title='Perfil'>
+              <LanguageSelector />
+              <MenuGroup title={t('Profile')}>
                 {logged ? (
                   <>
                     <MyLink to={'/profile'}>
                       <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
-                        Mi cuenta
+                        {t('MyAccount')}
                       </MenuItem>
                     </MyLink>
-                    {/*
-                    <MyLink to={"/carrito"}>
-                      <MenuItem bgColor="transparent" _hover={{bgColor:"#ffffffab"}}>Ver carrito</MenuItem>
-                    </MyLink>
-                    */}
-                    <LanguageSelector />
 
                     <MyLink to={'/logout'}>
                       <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }} color={'red.400'} pl={4}>
-                        Cerrar Sesión
+                        {t('LogOut')}
                       </MenuItem>
                     </MyLink>
                   </>
                 ) : (
                   <MyLink to={'/login'}>
                     <MenuItem bgColor='transparent' _hover={{ bgColor: '#ffffffab' }}>
-                      Login
+                      {t('Login')}
                     </MenuItem>
                   </MyLink>
                 )}

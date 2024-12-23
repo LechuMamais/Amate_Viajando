@@ -2,8 +2,11 @@ import { Box, Button, VStack, Text, FormControl, FormLabel, Input } from '@chakr
 import PasswordField from '../../components/userFormComponents/passwordField/passwordField';
 import ConfirmPasswordField from '../../components/userFormComponents/confirmPasswordField/confirmPasswordField';
 import useResetPassword from '../../customHooks/useResetPassword/useResetPassword';
+import { useTranslation } from 'react-i18next';
 
 const ResetPassword = () => {
+  const { t } = useTranslation('Login');
+
   const {
     register,
     formState,
@@ -23,11 +26,11 @@ const ResetPassword = () => {
     <Box maxW='sm' mx='auto' mt={8} p={4} borderWidth={1} borderRadius='lg'>
       <VStack as='form' onSubmit={onSubmit} spacing={4}>
         <Text fontSize='lg' mb={4}>
-          Restablecer Contraseña
+          {t('ResetPassword')}
         </Text>
 
         <FormControl id='verificationToken' isInvalid={errors.verificationToken} autoComplete='none'>
-          <FormLabel>Código de Verificación - 6 dígitos</FormLabel>
+          <FormLabel>{t('VerificationCode')}</FormLabel>
           <Input type='number' {...register('verificationToken')} />
           {errors.verificationToken && (
             <Text color='red.500' my={2}>
@@ -58,9 +61,9 @@ const ResetPassword = () => {
           isLoading={loading}
           type='submit'
           spinnerPlacement='end'
-          loadingText='Restableciendo contraseña'
+          loadingText={t('ResetingPassword')}
         >
-          Restablecer contraseña
+          {t('ResetPassword')}
         </Button>
       </VStack>
     </Box>
