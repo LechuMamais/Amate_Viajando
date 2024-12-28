@@ -50,8 +50,8 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     checkAndSetLanguage();
-    if (language?.iso3code) {
-      i18n.changeLanguage(language.iso3code);
+    if (language?.iso2code) {
+      i18n.changeLanguage(language.iso2code);
     }
   }, [language]);
 

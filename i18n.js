@@ -11,7 +11,7 @@ i18n
         supportedLngs: ['es', 'en', 'pt', 'it'],
         fallbackLng: 'es',
         backend: {
-            loadPath: '/public/lang/{{lng}}/{{ns}}.json' // Ruta de los archivos JSON
+            loadPath: '/lang/{{lng}}/{{ns}}.json' // Ruta de los archivos JSON
         },
         interpolation: {
             escapeValue: false // React ya escapa los valores por defecto
