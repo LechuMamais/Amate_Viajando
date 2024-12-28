@@ -1,0 +1,11 @@
+{
+    "Begin": "Iniziamo...",
+    "SubmitButton": "Registrati",
+    "userName": "Nome utente",
+    "userNameRequired": "Inserisci il nome utente",
+    "userNameMinLength": "Il nome utente deve contenere almeno 3 caratteri",
+    "userNameMaxLength": "Il nome utente non può superare i 18 caratteri",
+    "ConfirmPassword": "Conferma password",
+    "ConfirmPasswordRequired": "Inserisci la conferma della password",
+    "ConfirmPasswordMatch": "Le password non corrispondono"
+}
