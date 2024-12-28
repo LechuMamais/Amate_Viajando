@@ -5,12 +5,18 @@ import i18n from 'i18next';
 export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState({ iso3code: localStorage.getItem('lang') });
+  console.log('LanguageProvider');
+
+  const findSameLang = (lang) => {
+    return languagesAvailable.find((language) => language.iso3code === lang);
+  };
+
+  const [language, setLanguage] = useState(findSameLang(localStorage.getItem('lang')));
 
   const checkAndSetLanguage = () => {
     const localSavedLang = localStorage.getItem('lang');
     if (localSavedLang) {
-      const lang = languagesAvailable.find((lang) => lang.iso3code === localSavedLang);
+      const lang = findSameLang(localSavedLang);
 
       if (lang) {
         setLanguage(lang);
@@ -43,8 +49,8 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     checkAndSetLanguage();
-    if (language?.iso2code) {
-      i18n.changeLanguage(language.iso2code);
+    if (language?.iso3code) {
+      i18n.changeLanguage(language.iso3code);
     }
   }, [language]);
 

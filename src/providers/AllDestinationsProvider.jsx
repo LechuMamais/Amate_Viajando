@@ -7,6 +7,7 @@ export const AllDestinationsContext = createContext();
 
 export const AllDestinationsProvider = ({ children }) => {
   const { language } = useContext(LanguageContext);
+  console.log('Languaje: ', language);
   const {
     data: allDestinations = [],
     loading,

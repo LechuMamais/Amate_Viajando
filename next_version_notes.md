@@ -110,9 +110,10 @@
 
 \*ERROR: Al actualizar el orden de imagenes de destinos
 \*CHECK: demasiados rerenders en tour y destination
-\*ERROR: Tenemos un error bastante fiero en la vinculación entre el AllDestinationProvider, y i18n
+\*ERROR: Tenemos un error bastante fiero en la vinculación entre el AllDestinationProvider, y i18n.
 Momentaneamente está saldado poniendole un <Suspense fallback={<div></div>}> en main.jsx, pero rompe todos los skeleton loaders.
 Además, se generan demasiados rerenders, que a su vez implican demasiadas peticiones a la API. Hay cositas por optimizar acá.
+También hay un tema entre i18n y LanguageProvider, chequear las anotaciones en i18n.js
 
 .
 

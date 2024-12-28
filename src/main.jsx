@@ -11,17 +11,17 @@ import '../i18n.js';
 import { Suspense } from 'react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <Suspense fallback={<div></div>}>
-      <LanguageProvider>
-        <ChakraProvider theme={theme}>
-          <AllDestinationsProvider>
-            <UserProvider>
+  <LanguageProvider>
+    <BrowserRouter>
+      <Suspense fallback={<div></div>}>
+        <AllDestinationsProvider>
+          <UserProvider>
+            <ChakraProvider theme={theme}>
               <App />
-            </UserProvider>
-          </AllDestinationsProvider>
-        </ChakraProvider>
-      </LanguageProvider>
-    </Suspense>
-  </BrowserRouter>,
+            </ChakraProvider>
+          </UserProvider>
+        </AllDestinationsProvider>
+      </Suspense>
+    </BrowserRouter>
+  </LanguageProvider>,
 );
