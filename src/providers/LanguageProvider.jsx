@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import { languagesAvailable } from '../utils/languagesAvailable';
 import i18n from 'i18next';
 
@@ -34,19 +34,22 @@ export const LanguageProvider = ({ children }) => {
     }
   };
 
-  const changeLanguage = (newLang) => {
-    languagesAvailable.map((lang) => {
-      if (lang.iso3code === newLang) {
-        setLanguage(lang);
-        localStorage.setItem('lang', newLang);
+  const changeLanguage = useMemo(
+    () => (newLang) => {
+      languagesAvailable.map((lang) => {
+        if (lang.iso3code === newLang) {
+          setLanguage(lang);
+          localStorage.setItem('lang', newLang);
 
-        console.log('newLang', lang.iso2code);
-        i18n.changeLanguage(lang.iso2code); // Aquí pasas el código que i18next entiende, como 'es', 'en', 'it', etc.
+          console.log('newLang', lang.iso2code);
+          i18n.changeLanguage(lang.iso2code); // Aquí pasas el código que i18next entiende, como 'es', 'en', 'it', etc.
 
-        location.reload();
-      }
-    });
-  };
+          location.reload();
+        }
+      });
+    },
+    [], // No depende de ninguna variable, por lo que su referencia no cambiará.
+  );
 
   useEffect(() => {
     checkAndSetLanguage();
@@ -55,5 +58,7 @@ export const LanguageProvider = ({ children }) => {
     }
   }, [language]);
 
-  return <LanguageContext.Provider value={{ language, changeLanguage }}>{children}</LanguageContext.Provider>;
+  const value = useMemo(() => ({ language, changeLanguage }), [language, changeLanguage]);
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };

@@ -13,15 +13,15 @@ import { Suspense } from 'react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <LanguageProvider>
     <BrowserRouter>
-      <Suspense fallback={<div></div>}>
-        <AllDestinationsProvider>
+      <AllDestinationsProvider>
+        <Suspense fallback={<div></div>}>
           <UserProvider>
             <ChakraProvider theme={theme}>
               <App />
             </ChakraProvider>
           </UserProvider>
-        </AllDestinationsProvider>
-      </Suspense>
+        </Suspense>
+      </AllDestinationsProvider>
     </BrowserRouter>
   </LanguageProvider>,
 );

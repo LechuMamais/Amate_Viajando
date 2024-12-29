@@ -109,11 +109,13 @@
 5.  Hacer toda la adaptación para los Articles!!!
 
 \*ERROR: Al actualizar el orden de imagenes de destinos
-\*CHECK: demasiados rerenders en tour y destination
+\*CHECK: demasiados rerenders en tour y destination - AllDestinationProvider se renderiza 3 veces, 1 antes de hacer fetch, otra durante, y una tercera vez al tener los datos. Esto implica rerenders innecesarios en los children. VER
 \*ERROR: Tenemos un error bastante fiero en la vinculación entre el AllDestinationProvider, y i18n.
 Momentaneamente está saldado poniendole un <Suspense fallback={<div></div>}> en main.jsx, pero rompe todos los skeleton loaders.
 Además, se generan demasiados rerenders, que a su vez implican demasiadas peticiones a la API. Hay cositas por optimizar acá.
 También hay un tema entre i18n y LanguageProvider, chequear las anotaciones en i18n.js
+
+HOME => Que el logo sea link a destinos
 
 .
 

@@ -5,6 +5,7 @@ export const useFetch = (fetchManager, args = null, autoFetch = true) => {
   const toast = useToast();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
@@ -12,6 +13,9 @@ export const useFetch = (fetchManager, args = null, autoFetch = true) => {
         ? await fetchManager.fetchFunction(...args)
         : await fetchManager.fetchFunction(args);
       setData(fetchedData);
+      //console.log(args);
+      //console.log('Fetched Data! correct');
+      //console.log(fetchedData);
     } catch (error) {
       console.error(fetchManager.toastErrorMessage.title, error);
       toast({
