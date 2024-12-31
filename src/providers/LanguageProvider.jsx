@@ -37,7 +37,6 @@ export const LanguageProvider = ({ children }) => {
           setLanguage(lang);
           localStorage.setItem('lang', newLang);
 
-          console.log('newLang', lang.iso2code);
           i18n.changeLanguage(lang.iso2code); // Aquí pasas el código que i18next entiende, como 'es', 'en', 'it', etc.
 
           location.reload();
