@@ -1,41 +1,20 @@
 import { Box, Button, Text, Flex } from '@chakra-ui/react';
 import MyLink from '../../components/MyLink/MyLink';
 import CardsList from '../../components/CardsList/CardsList';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { fetchSetTours } from '../../services/fetchSetTours';
 import { useContext } from 'react';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
-import { getArticles } from '../../services/api/articles';
+import { LanguageContext } from '../../providers/LanguageProvider';
+import { fetchManager } from '../../resources/fetchManager';
+import { useFetch } from '../../customHooks/useFetch/useFetch';
 
 const AdminProfile = ({ user }) => {
-  const { allDestinations, loading } = useContext(AllDestinationsContext);
+  const { language } = useContext(LanguageContext);
+  const { allDestinations, loading: loadingDestinations } = useContext(AllDestinationsContext);
+  const { data: articlesData, loading: loadingArticles } = useFetch(fetchManager.articles, language.iso3code);
+  const { data: toursData, loading: loadingTours } = useFetch(fetchManager.tours, language.iso3code);
 
-  const [tours, setTours] = useState([]);
-  const [loadingTours, setLoadingTours] = useState(true);
-
-  const [articlesData, setArticlesData] = useState(null);
-
-  useEffect(() => {
-    fetchSetTours(setTours, setLoadingTours);
-  }, []);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const articles = await getArticles();
-
-        setArticlesData(articles);
-      } catch (error) {
-        console.error('Error al obtener el artículo:', error);
-      }
-    };
-
-    fetchArticles();
-  }, []);
-
-  if (loading || loadingTours) {
-    return <Text>Loading</Text>;
+  if (!language || loadingDestinations || loadingArticles || loadingTours) {
+    return <Text>Loading...</Text>;
   }
 
   return (
@@ -49,29 +28,31 @@ const AdminProfile = ({ user }) => {
         </Text>
       </Box>
 
+      {/* Articles Section */}
       <Flex direction='column' gap={6} borderWidth='1px' p={4}>
         <CardsList
-          headingText={'Modificar Artículos'}
-          descriptionText={'Selecciona el artículo que quieras modificar'}
+          headingText='Modificar Artículos'
+          descriptionText='Selecciona el artículo que quieras modificar'
           arrayToRender={articlesData}
-          usingFor={'updateArticles'}
-          loading={loading}
+          usingFor='updateArticles'
+          loading={loadingArticles}
         />
 
         <MyLink to='/create-article'>
           <Button mt={4} colorScheme='teal' w={{ base: '100%', md: '300px' }} size='lg'>
-            Crear Nuevo Articulo
+            Crear Nuevo Artículo
           </Button>
         </MyLink>
       </Flex>
 
+      {/* Destinations Section */}
       <Flex direction='column' gap={6} borderWidth='1px' p={4}>
         <CardsList
-          headingText={'Modificar Destinos'}
-          descriptionText={'Selecciona el destino que quieras modificar'}
+          headingText='Modificar Destinos'
+          descriptionText='Selecciona el destino que quieras modificar'
           arrayToRender={allDestinations}
-          usingFor={'updateDestinations'}
-          loading={loading}
+          usingFor='updateDestinations'
+          loading={loadingDestinations}
         />
 
         <MyLink to='/create-destination'>
@@ -81,17 +62,15 @@ const AdminProfile = ({ user }) => {
         </MyLink>
       </Flex>
 
+      {/* Tours Section */}
       <Flex direction='column' gap={6} borderWidth='1px' p={4}>
-        {loadingTours ? (
-          <div>Loading...</div>
-        ) : (
-          <CardsList
-            headingText={'Modificar Tours'}
-            descriptionText={'Selecciona el tour que quieras modificar'}
-            arrayToRender={tours}
-            usingFor={'updateTours'}
-          />
-        )}
+        <CardsList
+          headingText='Modificar Tours'
+          descriptionText='Selecciona el tour que quieras modificar'
+          arrayToRender={toursData}
+          usingFor='updateTours'
+          loading={loadingTours}
+        />
 
         <MyLink to='/create-tour'>
           <Button mt={4} colorScheme='teal' w={{ base: '100%', md: '300px' }} size='lg'>

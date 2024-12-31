@@ -3,8 +3,11 @@ import { createImage } from '../services/api/images';
 import { createTour } from '../services/api/tours';
 
 export const handleCreateTourDestinationSubmit = async (data, token, toast, usingFor, navigate, reloadDestinations) => {
+    console.log('Submiting new Tour/Destination');
+
     try {
         const { images, ...formData } = data;
+        console.log(data);
         let imageIds = [];
 
         for (const image of images) {
@@ -19,11 +22,11 @@ export const handleCreateTourDestinationSubmit = async (data, token, toast, usin
         }
 
         formData.images = imageIds;
+        console.log(formData);
 
         if (usingFor === 'tour') {
             await createTour(formData, token);
         } else if (usingFor === 'destination') {
-            console.log(formData);
             await createDestination(formData, token);
         }
 

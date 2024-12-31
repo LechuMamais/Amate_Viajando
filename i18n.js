@@ -9,7 +9,7 @@ i18n
     .use(initReactI18next) // Integra con React
     .init({
         supportedLngs: ['es', 'en', 'pt', 'it'],
-        fallbackLng: 'es',
+        fallbackLng: 'en',
         backend: {
             loadPath: '/lang/{{lng}}/{{ns}}.json' // Ruta de los archivos JSON
         },

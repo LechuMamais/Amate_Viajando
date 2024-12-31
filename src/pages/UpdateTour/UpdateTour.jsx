@@ -1,22 +1,26 @@
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Stack, Heading, Text, Container } from '@chakra-ui/react';
-import TourDestinationForm from '../../components/TourDestinationForm/TourDestinationForm';
 import ImagesForm from '../../components/ImagesForm/ImagesForm';
 import BackButton from '../../components/BackButton/BackButton';
 import MyModal from '../../components/MyModal/MyModal';
 import { useUpdateTour } from '../../customHooks/useUpdateTour/useUpdateTour';
+import TourDestinationLangTab from '../../components/TourDestinationLangTab/TourDestinationLangTab';
+import { prevImagesArrayConstructor } from '../../utils/prevImagesArrayConstructor';
 
 const UpdateTour = () => {
   const {
     register,
     handleSubmit,
-    control,
     setValue,
+    control,
     formState: { errors },
   } = useForm();
-  const { tour, loadingSubmit, onSubmit, handleDeleteTourButton, handleDeleteAllClick } = useUpdateTour(setValue);
+  const { tour, loading, loadingSubmit, onSubmit, handleDeleteTourButton, handleDeleteAllClick } = useUpdateTour();
 
-  if (!tour) {
+  const prevImages = useMemo(() => prevImagesArrayConstructor(tour?.images), [tour?.images]);
+
+  if (!tour || loading) {
     return <Text>Cargando...</Text>;
   }
 
@@ -25,23 +29,14 @@ const UpdateTour = () => {
       <Stack as='form' spacing={4} onSubmit={handleSubmit(onSubmit)}>
         <BackButton to='/profile' />
         <Heading size='lg'>Actualizar Tour</Heading>
-        <TourDestinationForm register={register} errors={errors} />
+        <TourDestinationLangTab register={register} errors={errors} setValue={setValue} defaultValues={tour} />
         <ImagesForm
           control={control}
           register={register}
           errors={errors}
           tour_id={tour._id}
           usingFor='tour'
-          prevImages={() =>
-            tour?.images?.map((img) => ({
-              name: img.name,
-              description: img.description,
-              alt: img.alt,
-              url: img.url,
-              order: img.order,
-              _id: img._id,
-            }))
-          }
+          prevImages={prevImages}
         />
 
         <Button

@@ -1,59 +1,16 @@
-import { Box, Button, Container, Heading, Input, Text } from '@chakra-ui/react';
-import ReactQuill from 'react-quill';
+import { Box, Button, Container, Heading } from '@chakra-ui/react';
 import './ArticleEditor.css';
-import 'react-quill/dist/quill.snow.css';
-import { useForm, Controller } from 'react-hook-form';
 import ImagesForm from '../ImagesForm/ImagesForm';
+import TourDestinationLangTab from '../TourDestinationLangTab/TourDestinationLangTab';
 
-const ArticleEditor = ({ onSubmit, articleData, title }) => {
-  const {
-    handleSubmit,
-    register,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      title: articleData?.title || '',
-      subtitle: articleData?.subtitle || '',
-      content: articleData?.content || '',
-      images: articleData?.images || [],
-    },
-  });
-
-  const handleFormSubmit = (data) => {
-    onSubmit(data);
-  };
-
+const ArticleEditor = ({ handleSubmit, onSubmit, title, register, control, errors, prevImages }) => {
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }}>
       <Heading mb={6}>{title}</Heading>
-      <Box as='form' onSubmit={handleSubmit(handleFormSubmit)}>
-        {errors.title && <Text color='red.500'>{errors.title.message}</Text>}
-        <Input
-          id='title'
-          placeholder='Título'
-          {...register('title', { required: 'El título es obligatorio' })}
-          mb={4}
-        />
+      <Box as='form' onSubmit={handleSubmit(onSubmit)}>
+        <TourDestinationLangTab control={control} register={register} errors={errors} article={true} />
 
-        {errors.subtitle && <Text color='red.500'>{errors.subtitle.message}</Text>}
-        <Input placeholder='Subtítulo' {...register('subtitle', { required: 'El subtítulo es obligatorio' })} mb={4} />
-
-        <Box mb={4}>
-          <Controller
-            name='content'
-            control={control}
-            render={({ field }) => <ReactQuill theme='snow' value={field.value} onChange={field.onChange} />}
-          />
-        </Box>
-
-        <ImagesForm
-          control={control}
-          register={register}
-          errors={{}} // Puedes añadir validación más avanzada aquí si es necesario
-          usingFor='articles'
-          prevImages={articleData?.images}
-        />
+        <ImagesForm control={control} register={register} errors={errors} usingFor='articles' prevImages={prevImages} />
 
         <Button colorScheme='teal' mt={4} type='submit'>
           Guardar Artículo

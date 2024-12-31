@@ -12,9 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { Controller } from 'react-hook-form';
 
-const ToursCheckboxGroup = ({ loading, allTours, control, errors, initialTours }) => {
-  if (loading) return <Text>Loading...</Text>;
-
+const ToursCheckboxGroup = ({ allTours, control, errors, initialTours }) => {
   return (
     <Box borderWidth='1px' borderRadius='lg' p={4} mb={4}>
       <FormControl isInvalid={errors.tours}>

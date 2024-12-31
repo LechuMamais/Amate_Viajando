@@ -1,30 +1,23 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../../providers/UserProvider';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
-import { fetchSetTours } from '../../services/fetchSetTours';
 import { deleteAllImages } from '../../services/deleteAllImages';
-import { fetchDestinationAndSetValues, handleDeleteDestination, submitHandler } from './useUpdateDestination.functions';
+import { handleDeleteDestination, submitHandler } from './useUpdateDestination.functions';
+import { useFetch } from '../useFetch/useFetch';
+import { fetchManager } from '../../resources/fetchManager';
 
-export const useUpdateDestination = (setValue) => {
+export const useUpdateDestination = () => {
   const { user } = useContext(UserContext);
   const { reloadDestinations } = useContext(AllDestinationsContext);
   const navigate = useNavigate();
   const { destination_id } = useParams();
-  const [destination, setDestination] = useState(null);
-  const [allTours, setAllTours] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const args = useMemo(() => [destination_id, 'all'], [destination_id]);
+  const { data: destination } = useFetch(fetchManager.destination, args);
+  const { data: allTours } = useFetch(fetchManager.tours, 'esp');
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const toast = useToast();
-
-  useEffect(() => {
-    fetchSetTours(setAllTours, setLoading);
-  }, []);
-
-  useEffect(() => {
-    fetchDestinationAndSetValues(destination_id, setDestination, setValue, toast);
-  }, [destination_id, setValue, toast]);
 
   const onSubmit = async (data, event) => {
     setLoadingSubmit(true);
@@ -50,7 +43,6 @@ export const useUpdateDestination = (setValue) => {
   return {
     destination,
     allTours,
-    loading,
     loadingSubmit,
     onSubmit,
     handleDeleteDestinationButton,

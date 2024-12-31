@@ -13,7 +13,6 @@ export const AllDestinationsProvider = ({ children }) => {
     loading,
     refetch,
   } = useFetch(fetchManager.destinations, language?.iso3code, false); // autoFetch desactivado
-  console.log(allDestinations);
 
   useEffect(() => {
     if (language?.iso3code) {

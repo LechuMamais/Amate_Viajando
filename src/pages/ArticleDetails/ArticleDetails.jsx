@@ -12,8 +12,8 @@ import { LanguageContext } from '../../providers/LanguageProvider';
 
 const ArticleDetail = () => {
   const { language } = useContext(LanguageContext);
-  const { id: articleID } = useParams();
-  const args = useMemo(() => [language?.iso3code, articleID], [language?.iso3code, articleID]);
+  const { article_id } = useParams();
+  const args = useMemo(() => [language?.iso3code, article_id], [language?.iso3code, article_id]);
   const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, args, true);
 
   useEffect(() => {

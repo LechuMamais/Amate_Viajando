@@ -1,12 +1,12 @@
 import { TOURS_URL } from '../../resources/api.endpoints';
 import { customFetch } from './customFetch';
 
-export const getTours = async () => {
-  return await customFetch({ url: TOURS_URL });
+export const getTours = async (language) => {
+  return await customFetch({ url: `${TOURS_URL}/${language}` });
 };
 
-export const getTourById = async (id) => {
-  return await customFetch({ url: `${TOURS_URL}/${id}` });
+export const getTourById = async (id, language) => {
+  return await customFetch({ url: `${TOURS_URL}/${id}/${language}` });
 };
 
 export const createTour = async (tour, token) => {

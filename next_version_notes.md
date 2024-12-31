@@ -108,6 +108,19 @@
 
 5.  Hacer toda la adaptación para los Articles!!!
 
+6.  Modificar los CREATE
+    Habrá que crear un componente Tabs de chakraUI v2 que nos muestre una tab con un TourDestinationForm por cada idioma disponible en la app.
+    Luego, al darle a submit, el form debe meter la información de cada tab dentro del body antes de enviarlo.
+
+7.  Modificar los UPDATE!
+    Vamos a necesitar obtener de la BD la info de lo que estemos actualizando, en todos los idiomas disponibles. Una opcion es que el back pueda recibir el 'all' y de esa forma devuelva todos los idiomas. - DONE
+    Después, mostrar el componente de Tabs, pero precargado con la info según el lang. - DONE
+    Actualizar el envío y testear
+    TOUR: DONE
+    DESTINATIONS: Falta
+
+8.  Modificar los CREATE Y UPDATE de Articles. - DONE
+
 \*ERROR: Al actualizar el orden de imagenes de destinos
 \*CHECK: demasiados rerenders en tour y destination - AllDestinationProvider se renderiza 3 veces, 1 antes de hacer fetch, otra durante, y una tercera vez al tener los datos. Esto implica rerenders innecesarios en los children. VER
 \*ERROR: Tenemos un error bastante fiero en la vinculación entre el AllDestinationProvider, y i18n.

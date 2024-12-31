@@ -1,36 +1,5 @@
-import { deleteDestination, getDestinationById, updateDestination } from '../../services/api/destinations';
+import { deleteDestination, updateDestination } from '../../services/api/destinations';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
-import { orderedImgObjArrayConstructor } from '../../utils/orderedImgObjArrayConstructor';
-
-export const fetchDestinationAndSetValues = async (destination_id, setDestination, setValue, toast) => {
-    try {
-        const response = await getDestinationById(destination_id);
-        const imagesArray = orderedImgObjArrayConstructor(response.images);
-        setDestination({ ...response, images: imagesArray });
-        setValue('name', response.name);
-        setValue('heading', response.heading);
-        setValue('description', response.description);
-        setValue('longDescription', response.longDescription);
-        setValue('country_name', response.country_name);
-        setValue('country_iso2code', response.country_iso2code);
-        setValue('images', imagesArray);
-        setValue(
-            'tours',
-            response.tours.map((tour) => ({
-                tourObj: tour.tourObj._id,
-                order: tour.order || 100,
-            }))
-        );
-    } catch (error) {
-        toast({
-            title: 'Error',
-            description: 'No se pudo cargar el destino.',
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
-        });
-    }
-};
 
 export const submitHandler = async (data, destination, token, destination_id, toast, reloadDestinations, navigate) => {
     try {

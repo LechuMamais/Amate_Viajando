@@ -69,9 +69,9 @@ function App() {
           <Route path='/coaching' element={<Coaching />} />
 
           <Route path='/articles' element={<Articles />} />
-          <Route path='/articles/:id' element={<ArticleDetail />} />
+          <Route path='/articles/:article_id' element={<ArticleDetail />} />
           <Route path='/create-article' element={<CreateArticle />} />
-          <Route path='/update-article/:id' element={<UpdateArticle />} />
+          <Route path='/update-article/:article_id' element={<UpdateArticle />} />
 
           <Route path='*' element={<NotFound />} />
         </Routes>

@@ -1,7 +1,7 @@
 import { Button, Container, Flex, Text } from '@chakra-ui/react';
 import ArticleEditor from '../../components/ArticleEditor/ArticleEditor';
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
+import { useCallback, useContext, useEffect, useMemo } from 'react';
 import { UserContext } from '../../providers/UserProvider';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
 import BackButton from '../../components/BackButton/BackButton';
@@ -11,26 +11,50 @@ import { useUpdateFetch } from '../../customHooks/useFetch/useUpdateFetch'; // N
 import { fetchManager } from '../../resources/fetchManager';
 import MyModal from '../../components/MyModal/MyModal';
 import { deleteAllImages } from '../../services/deleteAllImages';
+import { useForm } from 'react-hook-form';
+import { languagesAvailable } from '../../utils/languagesAvailable';
+import { prevImagesArrayConstructor } from '../../utils/prevImagesArrayConstructor';
 
 const UpdateArticle = () => {
-  const { id } = useParams();
   const { user } = useContext(UserContext);
-
-  const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, id);
+  const { article_id } = useParams();
+  const args = useMemo(() => ['all', article_id], [article_id]);
+  const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, args);
   const { executeUpdate } = useUpdateFetch(fetchManager.updateArticle);
   const { executeUpdate: executeDelete } = useUpdateFetch(fetchManager.deleteArticle);
 
-  const onSubmit = async (data) => {
-    try {
-      const { images, ...formData } = data;
+  const {
+    handleSubmit,
+    register,
+    control,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
-      const imageIds = await handleImageUpdate(images, articleData, user.token);
-
-      await executeUpdate(articleData._id, { ...formData, images: imageIds }, user.token);
-    } catch (error) {
-      console.error('Error en el manejo de imágenes o actualización:', error);
+  useEffect(() => {
+    if (articleData) {
+      languagesAvailable.map((lang) => {
+        setValue(`${lang.iso3code}.title`, articleData[lang.iso3code]?.title || '');
+        setValue(`${lang.iso3code}.subtitle`, articleData[lang.iso3code]?.subtitle || '');
+        setValue(`${lang.iso3code}.content`, articleData[lang.iso3code]?.content || '');
+      });
     }
-  };
+  }, [articleData, setValue]);
+
+  const onSubmit = useCallback(
+    async (data) => {
+      try {
+        const { images, ...formData } = data;
+
+        const imageIds = await handleImageUpdate(images, articleData, user.token);
+
+        await executeUpdate(articleData._id, { ...formData, images: imageIds }, user.token);
+      } catch (error) {
+        console.error('Error en el manejo de imágenes o actualización:', error);
+      }
+    },
+    [articleData, user.token, executeUpdate],
+  );
 
   const handleDeleteArticleButton = async () => {
     await executeDelete(articleData._id, user.token);
@@ -40,6 +64,8 @@ const UpdateArticle = () => {
     await deleteAllImages(articleData.images, user.token);
     await executeDelete(articleData._id, user.token);
   };
+
+  const prevImages = useMemo(() => prevImagesArrayConstructor(articleData?.images), [articleData?.images]);
 
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
@@ -51,19 +77,13 @@ const UpdateArticle = () => {
         <Flex direction='column' gap={6}>
           <BackButton to='/profile' />
           <ArticleEditor
+            register={register}
+            control={control}
+            errors={errors}
+            handleSubmit={handleSubmit}
             onSubmit={onSubmit}
-            articleData={{
-              ...articleData,
-              images: articleData.images.map((img) => ({
-                name: img.imgObj?.name,
-                description: img.imgObj?.description,
-                alt: img.imgObj?.alt,
-                url: img.imgObj?.url,
-                order: img.order,
-                _id: img.imgObj?._id,
-              })),
-            }}
             title='Actualizar Artículo'
+            prevImages={prevImages}
           />
 
           <MyModal
@@ -71,9 +91,9 @@ const UpdateArticle = () => {
             question='¿Estás seguro de que deseas eliminar este artículo?'
             text='¿Quieres eliminar también las imágenes de la base de datos?'
             onAcceptClick={handleDeleteArticleButton}
-            buttonText='Eliminar destino'
+            buttonText='Eliminar artículo'
             type='delete'
-            modalMainButtonText='Eliminar sólo el destino'
+            modalMainButtonText='Eliminar sólo el artículo'
           >
             <Button
               onClick={handleDeleteAllClick}

@@ -27,14 +27,14 @@ const ImagesForm = ({ control, register, errors, usingFor, prevImages }) => {
 
   useEffect(() => {
     if (prevImages?.length) {
-      replace(prevImages); // Reemplaza los campos existentes por los iniciales
+      replace(prevImages);
     }
   }, [prevImages, replace]);
 
-  const { tour_id, destination_id } = useParams();
+  const { tour_id, destination_id, article_id } = useParams();
 
   return (
-    <Box borderWidth='1px' borderRadius='lg' p={4} mb={4} bg='gray.100'>
+    <Box borderWidth='1px' borderRadius='lg' p={4} my={4} bg='gray.100'>
       <Stack spacing={4}>
         <Heading size='lg' mb={4}>
           Imágenes
@@ -50,7 +50,7 @@ const ImagesForm = ({ control, register, errors, usingFor, prevImages }) => {
                 question='¿Estás seguro de que deseas eliminar esta imagen?'
                 text='Se borraran todos los datos de la imagen'
                 onAcceptClick={() =>
-                  handleDeleteImage(index, item, usingFor, remove, tour_id, destination_id, user.token)
+                  handleDeleteImage(index, item, usingFor, remove, tour_id, destination_id, article_id, user.token)
                 }
                 buttonText='Eliminar imagen'
                 type='delete'

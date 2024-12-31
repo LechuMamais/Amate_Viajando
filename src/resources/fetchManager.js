@@ -1,5 +1,6 @@
 import { createArticle, deleteArticle, getArticleById, getArticles, updateArticle } from '../services/api/articles';
 import { getDestinationById, getDestinations } from '../services/api/destinations';
+import { getTourById, getTours } from '../services/api/tours';
 
 export const fetchManager = {
     articles: { fetchFunction: (language) => getArticles(language), toastErrorMessage: { title: 'Error al obtener los artículos', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } },
@@ -23,5 +24,7 @@ export const fetchManager = {
         navigateEndPoint: '/profile'
     },
     destinations: { fetchFunction: (language) => getDestinations(language), toastErrorMessage: { title: 'Error al obtener los destinos', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } },
-    destination: { fetchFunction: (language, id) => getDestinationById(language, id), toastErrorMessage: { title: 'Error al obtener el destino', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } }
+    destination: { fetchFunction: (language, id) => getDestinationById(language, id), toastErrorMessage: { title: 'Error al obtener el destino', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } },
+    tours: { fetchFunction: (language) => getTours(language), toastErrorMessage: { title: 'Error al obtener los tours', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } },
+    tour: { fetchFunction: (language, id) => getTourById(language, id), toastErrorMessage: { title: 'Error al obtener el tour', content: 'Parece que tenemos problemas con las base de datos, por favor intenta nuevamente más tarde.' } }
 };

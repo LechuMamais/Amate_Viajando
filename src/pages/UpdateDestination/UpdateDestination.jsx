@@ -1,12 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { Button, Stack, Heading, Text, Container } from '@chakra-ui/react';
-import TourDestinationForm from '../../components/TourDestinationForm/TourDestinationForm';
 import ImagesForm from '../../components/ImagesForm/ImagesForm';
 import BackButton from '../../components/BackButton/BackButton';
 import ToursCheckboxGroup from '../../components/ToursCheckBoxGroup/ToursCheckBoxGroup';
 import MyModal from '../../components/MyModal/MyModal';
 import { useUpdateDestination } from '../../customHooks/useUpdateDestination/useUpdateDestination';
 import { orderedArrayConstructor } from '../../utils/orderedArrayConstructor';
+import TourDestinationLangTab from '../../components/TourDestinationLangTab/TourDestinationLangTab';
+import CountrySelectorForm from '../../components/CountrySelectorForm/CountrySelectorForm';
+import { useMemo } from 'react';
+import { prevImagesArrayConstructor } from '../../utils/prevImagesArrayConstructor';
 
 const UpdateDestination = () => {
   const {
@@ -16,15 +19,10 @@ const UpdateDestination = () => {
     setValue,
     formState: { errors },
   } = useForm();
-  const {
-    destination,
-    allTours,
-    loading,
-    loadingSubmit,
-    onSubmit,
-    handleDeleteDestinationButton,
-    handleDeleteAllClick,
-  } = useUpdateDestination(setValue);
+  const { destination, allTours, loadingSubmit, onSubmit, handleDeleteDestinationButton, handleDeleteAllClick } =
+    useUpdateDestination(setValue);
+
+  const prevImages = useMemo(() => prevImagesArrayConstructor(destination?.images), [destination?.images]);
 
   if (!destination) {
     return <Text>Cargando...</Text>;
@@ -35,15 +33,16 @@ const UpdateDestination = () => {
       <Stack as='form' spacing={4} onSubmit={handleSubmit(onSubmit)}>
         <BackButton to='/profile' />
         <Heading size='lg'>Actualizar Destino</Heading>
-        <TourDestinationForm
+        <TourDestinationLangTab register={register} errors={errors} setValue={setValue} defaultValues={destination} />
+        <CountrySelectorForm errors={errors} setValue={setValue} defaultValues={destination} />
+        <ImagesForm
+          control={control}
           register={register}
           errors={errors}
-          country={destination.country_name}
-          setValue={setValue}
+          usingFor='destination'
+          prevImages={prevImages}
         />
-        <ImagesForm control={control} register={register} errors={errors} usingFor='destination' />
         <ToursCheckboxGroup
-          loading={loading}
           allTours={allTours}
           control={control}
           errors={errors}

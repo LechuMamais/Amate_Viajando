@@ -5,7 +5,6 @@ export const deleteAllImages = async (images, token) => {
     images.map((image) => {
       deleteImage(image?.imgObj?._id, token);
       deleteImage(image?._id, token);
-
     })
   );
 };

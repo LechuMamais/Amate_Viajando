@@ -1,31 +1,5 @@
-import { deleteTour, getTourById, updateTour } from '../../services/api/tours';
+import { deleteTour, updateTour } from '../../services/api/tours';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
-import { orderedImgObjArrayConstructor } from '../../utils/orderedImgObjArrayConstructor';
-import { orderArray } from '../../utils/orderArray';
-
-export const fetchTourAndSetValues = async (setTour, setValue, toast, tour_id, token) => {
-  try {
-    const response = await getTourById(tour_id, token);
-    const imagesArray = orderedImgObjArrayConstructor(response.images);
-    const orderedImagesArray = orderArray(imagesArray);
-
-    setTour({ ...response, images: orderedImagesArray });
-
-    setValue('name', response.name);
-    setValue('heading', response.heading);
-    setValue('description', response.description);
-    setValue('longDescription', response.longDescription);
-    setValue('images', imagesArray);
-  } catch (error) {
-    toast({
-      title: 'Error',
-      description: 'No se pudo cargar el tour.',
-      status: 'error',
-      duration: 5000,
-      isClosable: true,
-    });
-  }
-};
 
 export const submitHandler = async (data, token, tour, tour_id, toast, navigate) => {
   try {

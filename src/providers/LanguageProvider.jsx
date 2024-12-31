@@ -5,11 +5,7 @@ import i18n from 'i18next';
 export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  console.log('LanguageProvider');
-
-  const findSameLang = (lang) => {
-    return languagesAvailable.find((language) => language.iso3code === lang);
-  };
+  const findSameLang = (lang) => languagesAvailable.find((language) => language.iso3code === lang);
 
   const [language, setLanguage] = useState(findSameLang(localStorage.getItem('lang')));
 

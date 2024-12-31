@@ -15,7 +15,7 @@ const Profile = () => {
       ) : (
         <>
           {user.role === 'admin' && <AdminProfile user={user} />}
-          {user.role === 'user' && <UserProfile user={user} loading={loading} />}
+          {user.role === 'user' && <UserProfile user={user} />}
         </>
       )}
     </Container>

@@ -4,10 +4,12 @@ import { Button, Stack, Heading, useToast, Container } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../providers/UserProvider';
 import BackButton from '../../components/BackButton/BackButton';
-import TourDestinationForm from '../../components/TourDestinationForm/TourDestinationForm';
 import ImagesForm from '../../components/ImagesForm/ImagesForm';
 import { handleCreateTourDestinationSubmit } from '../../utils/handleCreateTourDestinationSubmit';
 import { AllDestinationsContext } from '../../providers/AllDestinationsProvider';
+import { defaultLangValues } from '../../utils/defaultLangValues';
+import TourDestinationLangTab from '../../components/TourDestinationLangTab/TourDestinationLangTab';
+import CountrySelectorForm from '../../components/CountrySelectorForm/CountrySelectorForm';
 
 const CreateDestination = () => {
   const { user } = useContext(UserContext);
@@ -22,10 +24,7 @@ const CreateDestination = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: '',
-      heading: '',
-      description: '',
-      longDescription: '',
+      ...defaultLangValues,
       country_name: 'Argentina',
       country_iso2code: 'AR',
       images: [{ name: '', alt: '', description: '', url: null }],
@@ -44,7 +43,8 @@ const CreateDestination = () => {
       >
         <BackButton to='/profile' />
         <Heading fontSize='xl'>Nuevo Destino</Heading>
-        <TourDestinationForm register={register} errors={errors} country={true} setValue={setValue} />
+        <TourDestinationLangTab register={register} errors={errors} country={true} />
+        <CountrySelectorForm errors={errors} setValue={setValue} />
         <ImagesForm control={control} register={register} errors={errors} />
         <Button mt={4} colorScheme='teal' type='submit'>
           Crear Destino
