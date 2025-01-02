@@ -2,6 +2,7 @@ import './Home.css';
 import { Box, Flex, Image, useBreakpointValue } from '@chakra-ui/react';
 import { Lumiflex } from 'uvcanvas';
 import HeroText from '../../components/HeroText/HeroText';
+import MyLink from '../../components/MyLink/MyLink';
 
 const Home = () => {
   const heroImageUrlSmall = '/assets/Logo_Acuarelas_redondo_248.png';
@@ -60,18 +61,20 @@ const Home = () => {
             w='clamp(300px, 60vmin, 1024px)'
             p={4}
           >
-            <Image
-              bgColor='#FFFFFF'
-              id='Amate_Viajando_Hero_img'
-              src={heroImageUrl}
-              alt='Amate_Viajando_Logo'
-              objectFit='cover'
-              zIndex='1'
-              opacity='0.8'
-              mt={{ base: 0, md: 8 }}
-              border='10px solid #FFFFFF'
-              borderRadius='100%'
-            />
+            <MyLink to='/destinations'>
+              <Image
+                bgColor='#FFFFFF'
+                id='Amate_Viajando_Hero_img'
+                src={heroImageUrl}
+                alt='Amate_Viajando_Logo'
+                objectFit='cover'
+                zIndex='1'
+                opacity='0.8'
+                mt={{ base: 0, md: 8 }}
+                border='10px solid #FFFFFF'
+                borderRadius='100%'
+              />
+            </MyLink>
           </Flex>
         </Flex>
         <HeroText />
