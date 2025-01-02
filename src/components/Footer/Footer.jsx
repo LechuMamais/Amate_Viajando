@@ -5,7 +5,7 @@ import { footerGradient } from '../../resources/footerGradient';
 const Footer = () => {
   return (
     <Box as='footer' py={{ base: 6, md: 8 }} zIndex={300} bgColor='white' w='100%' bgImage={footerGradient}>
-      <Flex justify='space-between' align='center' px='4' direction={{ base: 'column-reverse', sm: 'row' }} gap={4}>
+      <Flex justify='space-between' align='center' px='10' direction={{ base: 'column-reverse', sm: 'row' }} gap={4}>
         <Text>&copy; {new Date().getFullYear()} Amate Viajando ®</Text>
         <Flex>
           <Link href='https://www.instagram.com/amateviajando/' isExternal aria-label='Instagram' mx='2'>
