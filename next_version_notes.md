@@ -128,8 +128,6 @@ Momentaneamente está saldado poniendole un <Suspense fallback={<div></div>}> en
 Además, se generan demasiados rerenders, que a su vez implican demasiadas peticiones a la API. Hay cositas por optimizar acá.
 También hay un tema entre i18n y LanguageProvider, chequear las anotaciones en i18n.js
 
-HOME => Que el logo sea link a destinos
-
 .
 
 # Micro mejoras

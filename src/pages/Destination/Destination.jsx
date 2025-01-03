@@ -10,9 +10,6 @@ const Destination = () => {
   const { destination, loading, destinationNotFound } = useContext(DestinationContext);
   const { t } = useTranslation('Destination');
 
-  console.log('Rendering Destination Page');
-  console.log(destination?.name);
-
   return (
     <Skeleton isLoaded={!loading} fadeDuration={2} w='100lvw' minHeight='calc(100lvh - 72px)'>
       {destinationNotFound ? (
