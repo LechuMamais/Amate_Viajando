@@ -11,17 +11,20 @@ const Tours = () => {
 
   return (
     <Container maxW='928px' px={{ base: 4, md: 6 }}>
-      {allDestinations?.map((destination) => (
-        <CardsList
-          key={destination?._id}
-          headingText={destination?.name}
-          descriptionText={t('ToursSubHeading', { destinationName: destination?.name })}
-          arrayToRender={toursToRenderArrayConstructor(destination)}
-          usingFor={'tours'}
-          loading={loading}
-          destinationID={destination?._id}
-        />
-      ))}
+      {allDestinations?.map(
+        (destination) =>
+          destination.tours.length > 0 && (
+            <CardsList
+              key={destination?._id}
+              headingText={destination?.name}
+              descriptionText={t('ToursSubHeading', { destinationName: destination?.name })}
+              arrayToRender={toursToRenderArrayConstructor(destination)}
+              usingFor={'tours'}
+              loading={loading}
+              destinationID={destination?._id}
+            />
+          ),
+      )}
     </Container>
   );
 };
