@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+/*import { createContext, useEffect, useMemo, useState } from 'react';
 import { languagesAvailable } from '../utils/languagesAvailable';
 import i18n from 'i18next';
 
@@ -57,7 +57,7 @@ export const LanguageProvider = ({ children }) => {
   const value = useMemo(() => ({ language, changeLanguage }), [language, changeLanguage]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
-};
+};*/
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -66,7 +66,6 @@ export const LanguageProvider = ({ children }) => {
 // Pero, hay que chequear que funcione, ya que se debería volver a pedirle a la BD los datos en el idioma seleccionado.
 // Vamos a intentar implementarlo después de agregar el alemán en toda la aplicación.
 
-/*
 import { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import { languagesAvailable } from '../utils/languagesAvailable';
 import i18n from 'i18next';
@@ -123,5 +122,3 @@ export const LanguageProvider = ({ children }) => {
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
-
-*/
