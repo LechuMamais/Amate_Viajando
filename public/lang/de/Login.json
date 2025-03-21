@@ -1,0 +1,22 @@
+{
+    "title": "Anmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "forgot": "Passwort vergessen?",
+    "error": "Falsche E-Mail oder falsches Passwort",
+    "newPassowrd": "Neues Passwort",
+    "passwordRequired": "Gib dein Passwort ein",
+    "securityLevel": "Sicherheitsstufe",
+    "low": "Niedrig",
+    "medium": "Mittel",
+    "strong": "Hoch",
+    "veryStrong": "Sehr hoch",
+    "emailRequired": "Gib deine E-Mail-Adresse ein",
+    "emailInvalidPattern": "Gib eine gültige E-Mail-Adresse ein",
+    "RecoverPassword": "Passwort wiederherstellen",
+    "ResetPassword": "Passwort zurücksetzen",
+    "VerificationCode": "Verifizierungscode - 6-stellig",
+    "ResetingPassword": "Passwort wird zurückgesetzt"
+}

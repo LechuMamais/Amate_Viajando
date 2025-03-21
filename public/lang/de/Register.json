@@ -1,0 +1,11 @@
+{
+    "Begin": "Lass uns beginnen...",
+    "SubmitButton": "Registrieren",
+    "userName": "Benutzername",
+    "userNameRequired": "Gib deinen Benutzernamen ein",
+    "userNameMinLength": "Der Benutzername muss mindestens 3 Zeichen lang sein",
+    "userNameMaxLength": "Der Benutzername darf nicht länger als 18 Zeichen sein",
+    "ConfirmPassword": "Passwort bestätigen",
+    "ConfirmPasswordRequired": "Gib die Passwortbestätigung ein",
+    "ConfirmPasswordMatch": "Die Passwörter stimmen nicht überein"
+}

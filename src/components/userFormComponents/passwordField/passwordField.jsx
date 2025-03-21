@@ -15,7 +15,7 @@ const PasswordField = ({
   const { t } = useTranslation('Login');
   return (
     <FormControl id='password' isInvalid={error}>
-      <FormLabel>{newPassword ? t('newPassowrd') : t('passowrd')}</FormLabel>
+      <FormLabel>{newPassword ? t('newPassowrd') : t('password')}</FormLabel>
       <InputGroup>
         <Input
           id='password-input'
