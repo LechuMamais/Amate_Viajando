@@ -17,7 +17,7 @@ const Destination = () => {
       ) : (
         <DetailsPage
           obj={destination}
-          descriptionParagraphs={destination?.longDescription.split('\n')}
+          descriptionParagraphs={destination?.longDescription.replace(/\\n/g, '\n').split('\n')}
           usingFor={'destination'}
         >
           <CardsList
