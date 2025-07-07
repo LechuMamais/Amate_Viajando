@@ -8,8 +8,9 @@ import { useUpdateDestination } from '../../customHooks/useUpdateDestination/use
 import { orderedArrayConstructor } from '../../utils/orderedArrayConstructor';
 import TourDestinationLangTab from '../../components/TourDestinationLangTab/TourDestinationLangTab';
 import CountrySelectorForm from '../../components/CountrySelectorForm/CountrySelectorForm';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { prevImagesArrayConstructor } from '../../utils/prevImagesArrayConstructor';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 const UpdateDestination = () => {
   const {
@@ -19,6 +20,7 @@ const UpdateDestination = () => {
     setValue,
     formState: { errors },
   } = useForm();
+  const [isSaving, setIsSaving] = useState(false);
   const { destination, allTours, loadingSubmit, onSubmit, handleDeleteDestinationButton, handleDeleteAllClick } =
     useUpdateDestination(setValue);
 
@@ -27,6 +29,16 @@ const UpdateDestination = () => {
   if (!destination) {
     return <Text>Cargando...</Text>;
   }
+
+  const onSubmitClick = handleSubmit(async (formData) => {
+    setIsSaving(true);
+    try {
+      await onSubmit(formData); // ✅ ahora recibe los datos correctos
+    } finally {
+      setIsSaving(false);
+    }
+  });
+
 
   return (
     <Container maxW='container.lg' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }}>
@@ -57,6 +69,7 @@ const UpdateDestination = () => {
           colorScheme='teal'
           type='submit'
           w={{ base: '100%', md: '320px' }}
+          onClick={onSubmitClick}
         >
           {loadingSubmit ? 'Actualizando' : 'Actualizar Destino'}
         </Button>
@@ -83,6 +96,7 @@ const UpdateDestination = () => {
         </MyModal>
         <BackButton to='/profile' />
       </Stack>
+      <LoadingModal isOpen={isSaving} />
     </Container>
   );
 };

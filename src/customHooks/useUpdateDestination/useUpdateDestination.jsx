@@ -19,9 +19,8 @@ export const useUpdateDestination = () => {
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const toast = useToast();
 
-  const onSubmit = async (data, event) => {
+  const onSubmit = async (data) => {
     setLoadingSubmit(true);
-    event.preventDefault();
     await submitHandler(data, destination, user.token, destination_id, toast, reloadDestinations, navigate);
     setLoadingSubmit(false);
   };

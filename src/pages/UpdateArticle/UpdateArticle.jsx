@@ -1,7 +1,7 @@
 import { Button, Container, Flex, Text } from '@chakra-ui/react';
 import ArticleEditor from '../../components/ArticleEditor/ArticleEditor';
 import { useParams } from 'react-router-dom';
-import { useCallback, useContext, useEffect, useMemo } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { UserContext } from '../../providers/UserProvider';
 import { handleImageUpdate } from '../../services/handleImageUpdate';
 import BackButton from '../../components/BackButton/BackButton';
@@ -14,6 +14,7 @@ import { deleteAllImages } from '../../services/deleteAllImages';
 import { useForm } from 'react-hook-form';
 import { languagesAvailable } from '../../utils/languagesAvailable';
 import { prevImagesArrayConstructor } from '../../utils/prevImagesArrayConstructor';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 const UpdateArticle = () => {
   const { user } = useContext(UserContext);
@@ -22,6 +23,7 @@ const UpdateArticle = () => {
   const { data: articleData, loading, articleNotFound } = useFetch(fetchManager.article, args);
   const { executeUpdate } = useUpdateFetch(fetchManager.updateArticle);
   const { executeUpdate: executeDelete } = useUpdateFetch(fetchManager.deleteArticle);
+  const [isSaving, setIsSaving] = useState(false);
 
   const {
     handleSubmit,
@@ -43,6 +45,7 @@ const UpdateArticle = () => {
 
   const onSubmit = useCallback(
     async (data) => {
+      setIsSaving(true);
       try {
         const { images, ...formData } = data;
 
@@ -51,6 +54,8 @@ const UpdateArticle = () => {
         await executeUpdate(articleData._id, { ...formData, images: imageIds }, user.token);
       } catch (error) {
         console.error('Error en el manejo de imágenes o actualización:', error);
+      } finally {
+        setIsSaving(false);
       }
     },
     [articleData, user.token, executeUpdate],
@@ -110,6 +115,7 @@ const UpdateArticle = () => {
           <BackButton to='/profile' />
         </Flex>
       )}
+      <LoadingModal isOpen={isSaving} onClose={() => setIsSaving(false)} />
     </Container>
   );
 };

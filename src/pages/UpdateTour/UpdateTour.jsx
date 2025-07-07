@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Stack, Heading, Text, Container } from '@chakra-ui/react';
 import ImagesForm from '../../components/ImagesForm/ImagesForm';
@@ -7,6 +7,7 @@ import MyModal from '../../components/MyModal/MyModal';
 import { useUpdateTour } from '../../customHooks/useUpdateTour/useUpdateTour';
 import TourDestinationLangTab from '../../components/TourDestinationLangTab/TourDestinationLangTab';
 import { prevImagesArrayConstructor } from '../../utils/prevImagesArrayConstructor';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 const UpdateTour = () => {
   const {
@@ -17,12 +18,22 @@ const UpdateTour = () => {
     formState: { errors },
   } = useForm();
   const { tour, loading, loadingSubmit, onSubmit, handleDeleteTourButton, handleDeleteAllClick } = useUpdateTour();
+  const [isSaving, setIsSaving] = useState(false);
 
   const prevImages = useMemo(() => prevImagesArrayConstructor(tour?.images), [tour?.images]);
 
   if (!tour || loading) {
     return <Text>Cargando...</Text>;
   }
+
+    const onSubmitClick = handleSubmit(async (formData) => {
+    setIsSaving(true);
+    try {
+      await onSubmit(formData); // ✅ ahora recibe los datos correctos
+    } finally {
+      setIsSaving(false);
+    }
+  });
 
   return (
     <Container maxW='container.lg' px={{ base: 4, md: 6 }} py={{ base: 12, md: 24, lg: 32 }} p={6}>
@@ -48,6 +59,7 @@ const UpdateTour = () => {
           colorScheme='teal'
           type='submit'
           w={{ base: '100%', md: '320px' }}
+          onClick={onSubmitClick}
         >
           {loadingSubmit ? 'Actualizando' : 'Actualizar Tour'}
         </Button>
@@ -75,6 +87,7 @@ const UpdateTour = () => {
 
         <BackButton to='/profile' />
       </Stack>
+      <LoadingModal isOpen={isSaving} />
     </Container>
   );
 };
