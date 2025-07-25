@@ -28,7 +28,7 @@ const Home = () => {
       const scrollY = window.scrollY;
       const parallax = document.querySelector('.parallax-image');
       if (parallax) {
-        parallax.style.transform = `translateY(${scrollY * 0.2}px)`;
+        parallax.style.transform = `translateY(${scrollY * 0.075}px)`;
       }
     };
 
@@ -62,7 +62,7 @@ const Home = () => {
         mt='-132px'
         mb='0px'
         p='80px'
-        gap={{ base: 1, md: 'clamp(2rem, 4.5vh, 24rem)' }}
+        gap='1'
         mx='auto'
         alignItems='center'
         pb={{ base: 0, md: 4 }}
@@ -79,7 +79,7 @@ const Home = () => {
             direction='column'
             alignItems='center'
             justifyItems='center'
-            w='clamp(150px, 30vmin, 1024px)'
+            w='clamp(150px, 15vmin, 1024px)'
             p={2}
           >
             <Image
@@ -90,7 +90,7 @@ const Home = () => {
               objectFit='cover'
               zIndex='1'
               opacity='0.8'
-              mt={{ base: 0, md: 8 }}
+              mt='0'
               border='2px solid #FFFFFF'
               borderRadius='100%'
             />
@@ -117,7 +117,7 @@ const Home = () => {
         <MyLink to='https://wa.me/5492942639282?text=Hola%20Amate%20Viajando,%20me%20gustaría%20saber%20más%20sobre%20el%20coaching%20emocional.'>
           <Button
             size='md'
-            w={{ base: '100%', md: '240px' }}
+            w='100%'
             px={8}
             mb='12'
             variant='solid'
@@ -131,7 +131,7 @@ const Home = () => {
       <Box
         className='HomeImageContainer'
         w='100%'
-        h={{ base: '60px', sm: '100px', md: '120px', lg: '160px' }}
+        h={{ base: '60px', sm: '80px', md: '100px', lg: '100px' }}
         overflow='hidden'
         position='relative'
       >
@@ -140,7 +140,7 @@ const Home = () => {
           bottom='0'
           left='0'
           w='100%'
-          h='25lvh'
+          h='40lvh'
           bgImage="url('/beach.jpg')"
           bgSize='cover'
           bgPosition='center'

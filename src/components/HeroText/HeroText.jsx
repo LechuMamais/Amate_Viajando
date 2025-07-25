@@ -15,12 +15,10 @@ const HeroText = () => {
       <Flex
         direction='column'
         textAlign='center'
-        spacing={4}
+        spacing={6}
         w='100%'
-        px={{ base: 4, sm: 8, md: 16 }}
-        py={4}
-        pb={16}
-        borderRadius={{ base: '0', md: '16' }}
+        mt='2'
+
       >
         <Text
           as='h1'
