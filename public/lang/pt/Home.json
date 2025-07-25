@@ -1,6 +1,8 @@
 {
-    "HeroTitle": "Descubra seu propósito enquanto viaja",
-    "HeroText": "A natureza desperta nossos sentidos, transportando-nos para lugares mágicos onde podemos ouvir nossa voz interior.",
-    "DestinationsButton": "Ver destinos",
-    "CoachingButton": "Coaching de viagem"
+    "HeroTitle": "Viva sua experiência de",
+    "CoachingButton": "Coaching Emocional",
+    "HeroSubtitle": "Descubra seu propósito viajando",
+    "PersonalAdviceButton": "Aconselhamento Personalizado",
+    "HeroText": "A natureza desperta nossos sentidos, nos leva a lugares mágicos onde podemos ouvir nossa voz interior.",
+    "DestinationsButton": "Ver destinos"
 }

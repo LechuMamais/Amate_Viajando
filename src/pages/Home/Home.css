@@ -1,5 +1,5 @@
 .hero-background {
-  filter: hue-rotate(-70deg) saturate(120%) brightness(85%) contrast(100%);
+  filter: hue-rotate(-70deg) saturate(120%) brightness(85%) contrast(70%);
 }
 
 #Amate_Viajando_Hero_img {
@@ -9,4 +9,23 @@
 
 .hero-background canvas {
   height: 100% !important;
+}
+
+.parallax-image {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+@media (min-width: 768px) {
+  .parallax-image {
+    /* efecto parallax al hacer scroll */
+    position: fixed;
+    top: 0;
+    z-index: -1;
+  }
+
+  .HomeImageContainer {
+    position: relative;
+    z-index: 1;
+  }
 }
