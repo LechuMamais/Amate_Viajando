@@ -33,7 +33,7 @@ const ParallaxDivider = () => {
         bgPosition='center 100lvw'
         opacity={0.6}
         className='parallax-image'
-        transition='background-position 0.05s ease-out'
+        //transition='background-position 0.05s ease-out'
       />
     </Box>
   );
