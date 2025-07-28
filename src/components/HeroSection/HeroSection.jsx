@@ -26,7 +26,8 @@ const HeroSection = () => {
       id='Home'
       flexDirection={{ base: 'column', md: 'row' }}
       justifyContent='center'
-      h={{ md: '480px' }}
+      h={{ base: '100%', md: '480px' }}
+      minH={'400px'}
       w='100%'
       maxW='1024px'
       mx='auto'
@@ -40,7 +41,8 @@ const HeroSection = () => {
         overflow='hidden'
         w={{ base: '100%', md: 'calc(60% + 60px)' }}
         minW={{ base: '600px', md: '0px'}}
-        h={{ base: '48lvh', md: '600px' }}
+        h={{ base: '48%', md: '600px' }}
+        minH={'400px'}
         position='absolute'
         top={{ base: '0px', md: '-120px' }}
         left={{
