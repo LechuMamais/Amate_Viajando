@@ -70,7 +70,7 @@ const DetailsPage = ({ obj, descriptionParagraphs, usingFor, children }) => {
             usingFor={'destinations'}
             loading={loading}
           />
-          <ArticlesList></ArticlesList>
+          <ArticlesList />
         </Flex>
       </Container>
     </>

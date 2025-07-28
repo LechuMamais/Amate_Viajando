@@ -19,6 +19,7 @@ const ParallaxDivider = () => {
       className='HomeImageContainer'
       w='100%'
       h={{ base: '60px', sm: '80px', md: '100px', lg: '100px' }}
+      mt={{ base: '16', md: '24' }}
       overflow='hidden'
       position='relative'
     >

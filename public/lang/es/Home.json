@@ -4,5 +4,15 @@
     "HeroSubtitle": "Descubre tu propósito viajando",
     "PersonalAdviceButton": "Asesoramiento Personalizado",
     "HeroText": "La naturaleza enciende nuestros sentidos, nos transporta a lugares mágicos donde podremos escuchar nuestra voz interior.",
-    "DestinationsButton": "Encuentra tu próximo destino"
+    "DestinationsButton": "Encuentra tu próximo destino",
+    "IntroText": [
+        "Respira profundamente…",
+        "Has llegado, viajero.",
+        "Aquí no hay prisa,\nsolo espacio para sentir y escuchar.",
+        "Nos reunimos \npara recordar la verdad sagrada:\nel viaje hacia afuera\nes el camino que nos lleva hacia adentro,\nhacia el alma que habita en nuestro cuerpo,\nen cada emoción que se abre para ser comprendida y honrada.",
+        "Somos emociones, somos tribu.",
+        "🌿\nDonde el viaje es medicina sagrada,\nla emoción, guía del alma,\ny la tribu… es hogar.\n🌿",
+        "Aquí honramos el dolor,\nabrazamos lo que vibra,\ny liberamos lo que ya no somos.\nAmamos. Sentimos.\nCaminamos en verdad.",
+        "Bienvenid@ a Amate Viajando"
+    ]
 }

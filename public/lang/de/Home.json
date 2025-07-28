@@ -4,5 +4,15 @@
     "HeroSubtitle": "Entdecke deinen Zweck durch Reisen",
     "PersonalAdviceButton": "Individuelle Beratung",
     "HeroText": "Die Natur weckt unsere Sinne, bringt uns an magische Orte, an denen wir unsere innere Stimme hören können.",
-    "DestinationsButton": "Ziele ansehen"
+    "DestinationsButton": "Ziele ansehen",
+    "IntroText": [
+        "Atme tief durch…",
+        "Du bist angekommen, Reisende:r.",
+        "Hier gibt es keine Eile,\nnur Raum zum Fühlen und Zuhören.",
+        "Wir versammeln uns,\num eine heilige Wahrheit zu erinnern:\nDie Reise nach außen\nführt uns nach innen,\nzur Seele, die in unserem Körper wohnt,\nin jeder Emotion, die sich öffnet, um verstanden und geehrt zu werden.",
+        "Wir sind Emotionen, wir sind Stamm.",
+        "🌿\nWo die Reise heilige Medizin ist,\nEmotionen der Führer der Seele sind,\nund der Stamm… unser Zuhause.\n🌿",
+        "Hier ehren wir den Schmerz,\numarmen, was vibriert,\nund lassen los, was wir nicht mehr sind.\nWir lieben. Wir fühlen.\nWir gehen in Wahrheit.",
+        "Willkommen bei Amate Viajando"
+    ]
 }
