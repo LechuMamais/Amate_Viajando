@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import MyLink from '../../components/MyLink/MyLink';
 import { Box, Button, Text, Flex } from '@chakra-ui/react';
+import MyLink from '../MyLink/MyLink';
 
 const HeroText = () => {
   const { t } = useTranslation('Home');
@@ -9,8 +9,7 @@ const HeroText = () => {
     <Box
       className='hero-text-wrapper'
       zIndex='2'
-      overflow='hidden'
-      w={{ base: '100vw', md: 'min(960px, 90svw)' }}
+      w={{ base: '100vw', md: '100%' }}
     >
       <Flex
         direction='column'
@@ -18,7 +17,6 @@ const HeroText = () => {
         spacing={6}
         w='100%'
         mt='2'
-
       >
         <Text
           as='h1'
