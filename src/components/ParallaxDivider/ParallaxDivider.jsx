@@ -22,6 +22,8 @@ const ParallaxDivider = () => {
       mt={{ base: '16', md: '24' }}
       overflow='hidden'
       position='relative'
+      zIndex={10}
+      bgColor={'#FFFFFF'}
     >
       <Box
         position='absolute'
@@ -33,8 +35,8 @@ const ParallaxDivider = () => {
         bgSize='cover'
         bgPosition='center 100lvw'
         opacity={0.6}
+        bgColor={'gray.800'}
         className='parallax-image'
-        //transition='background-position 0.05s ease-out'
       />
     </Box>
   );

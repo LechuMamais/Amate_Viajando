@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Flex,
   Image,
@@ -7,10 +6,9 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Lumiflex } from 'uvcanvas';
 import HeroText from '../HeroText/HeroText';
-
 import MyLink from '../MyLink/MyLink';
+import LumiFlexContainer from '../LumiFlexContainer/LumiFlexContainer';
 
 const HeroSection = () => {
   const { t } = useTranslation('Home');
@@ -36,14 +34,12 @@ const HeroSection = () => {
       mb={{ base: '0', md: '80px' }}
       py={{ base: '0', md: '60px' }}
     >
-      <Box
+      <LumiFlexContainer
         className='hero-background'
-        overflow='hidden'
         w={{ base: '100%', md: 'calc(60% + 60px)' }}
         minW={{ base: '600px', md: '0px'}}
         h={{ base: '48%', md: '600px' }}
         minH={'400px'}
-        position='absolute'
         top={{ base: '0px', md: '-120px' }}
         left={{
           base: 'min(0px, calc((600px - 100lvw) / 2 * -1))',
@@ -54,9 +50,7 @@ const HeroSection = () => {
           base: '0% 0% 40% 60% / 0% 0% 41% 47%',
           md: '66% 39% 74% 100% / 76% 96% 77% 100%',
         }}
-      >
-        <Lumiflex />
-      </Box>
+      />
 
       <Flex
         className='hero'

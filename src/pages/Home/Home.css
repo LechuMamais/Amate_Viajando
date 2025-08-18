@@ -16,6 +16,70 @@
   transition: transform 0.1s ease-out;
 }
 
+@keyframes morphingBorder {
+  0% {
+    border-radius: 100% 71% 100% 71% / 73% 73% 100% 100%;
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    border-radius: 90% 77% 100% 84% / 90% 58% 100% 100%;
+    transform: translate(11px, -10px) scale(1.02);
+  }
+
+  50% {
+    border-radius: 90% 99% 89% 75% / 79% 58% 100% 100%;
+    transform: translate(-10px, 15px) scale(1.05);
+  }
+
+  75% {
+    border-radius: 71% 100% 100% 67% / 85% 71% 100% 84%;
+    transform: translate(10px, 8px) scale(1.02);
+  }
+
+  100% {
+    border-radius: 100% 71% 100% 71% / 73% 73% 100% 100%;
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes morphingBorderSecondary {
+  0% {
+    border-radius: 100% 71% 100% 71% / 73% 73% 100% 100%;
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    border-radius: 90% 77% 100% 84% / 90% 58% 100% 100%;
+    transform: translate(-8px, -6px) scale(1.02);
+  }
+
+  50% {
+    border-radius: 90% 99% 89% 75% / 79% 58% 100% 100%;
+    transform: translate(7px, 6px) scale(1.05);
+  }
+
+  75% {
+    border-radius: 71% 100% 100% 67% / 85% 71% 100% 84%;
+    transform: translate(5px, -8px) scale(1.02);
+  }
+
+  100% {
+    border-radius: 100% 71% 100% 71% / 73% 73% 100% 100%;
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+
+.lumi-morph {
+  animation: morphingBorder 10s ease-in-out infinite;
+}
+
+.lumi-morph-secondary {
+  animation: morphingBorderSecondary 11s ease-out infinite;
+}
+
+
 @media (min-width: 768px) {
   .parallax-image {
     /* efecto parallax al hacer scroll */
