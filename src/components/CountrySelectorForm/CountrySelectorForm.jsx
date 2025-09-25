@@ -12,6 +12,7 @@ const CountrySelectorForm = ({ errors, setValue, defaultValues = [''] }) => {
 
   const handleCountryChange = (e) => {
     const selectedCountry = ISO2.find((country) => country.code === e.target.value);
+    console.log('Selected country:', selectedCountry);
 
     if (selectedCountry) {
       setValue('country_name', selectedCountry.name);

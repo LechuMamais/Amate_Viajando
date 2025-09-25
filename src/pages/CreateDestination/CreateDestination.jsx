@@ -58,7 +58,7 @@ const CreateDestination = () => {
         <BackButton to='/profile' />
         <Heading fontSize='xl'>Nuevo Destino</Heading>
         <TourDestinationLangTab register={register} errors={errors} country={true} />
-        <CountrySelectorForm errors={errors} setValue={setValue} />
+        <CountrySelectorForm register={register} errors={errors} setValue={setValue} />
         <ImagesForm control={control} register={register} errors={errors} />
         <Button mt={4} colorScheme='teal' type='submit' onClick={handleClickSubmit}>
           Crear Destino
